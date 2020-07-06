@@ -18,7 +18,7 @@ function get(argvOptions= {}) {
    const packageConfig = getPackageConfig(process.cwd());
    const config = fs.readJSONSync(CONFIG);
 
-   config.rc = getVersion(packageConfig);
+   config.rc = getVersion();
    prepareReposUrl(config, argvOptions.protocol, argvOptions.gitMirror || config.gitMirror);
    setRepPathFromArgv(config, argvOptions);
 
@@ -54,10 +54,11 @@ function normalizeVersion(version) {
 }
 /**
  * Возыращает версию rc ветки
- * @param {Object} packageConfig  Конфиг npm пакета package.json
  * @return {String}
  */
-function getVersion(packageConfig) {
+function getVersion() {
+   const packageConfig = getPackageConfig(path.normalize(path.join(__dirname, '../..')));
+
    return `rc-${normalizeVersion(packageConfig.version)}`;
 }
 /**
