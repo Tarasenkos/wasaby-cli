@@ -57,7 +57,7 @@ class Build extends Base {
          } else {
             await this._initWithJinnee();
          }
-         await this._linkFolder();
+         await this._linkCDN();
          logger.log('Подготовка тестов завершена успешно');
       } catch (e) {
          e.message = `Сборка ресурсов завершена с ошибкой: ${e.message}`;
@@ -128,21 +128,17 @@ class Build extends Base {
    }
 
    /**
-    * Создает симлинки в рабочей директории, после прогона билдера
+    * Создает симлинки на cdn ресурсы
     * @return {Promise<void>}
     * @private
     */
-   _linkFolder() {
+   _linkCDN() {
       const promises = [];
-      for (const name of Object.keys(this._reposConfig)) {
-         if (this._reposConfig[name].linkFolders) {
-            for (const pathOriginal of Object.keys(this._reposConfig[name].linkFolders)) {
-               const pathDir = path.join(this._store, name, pathOriginal);
-               const pathLink = path.join(this._resources, this._reposConfig[name].linkFolders[pathOriginal]);
-               promises.push(fs.ensureSymlink(pathDir, pathLink));
-            }
-         }
-      }
+      this._modulesMap.getCDNModules().forEach((name) => {
+         const cfg = this._modulesMap.get(name);
+         const pathLink = path.join(this._resources, 'cdn', name);
+         promises.push(fs.copy(cfg.path, pathLink))
+      });
       return Promise.all(promises);
    }
 

@@ -249,7 +249,7 @@ class ModulesMap {
 
                cfg.id = xmlObj.ui_module.$.id;
                cfg.required = !!xmlObj.ui_module.$.required
-
+               cfg.forCDN = xmlObj.ui_module.$.for_cdn === "1";
                this._modulesMap.set(cfg.name, cfg);
             }
          })
@@ -329,6 +329,19 @@ class ModulesMap {
          cfg.depends = WSCoreDepends;
          this.set('WS.Core', cfg);
       }
+   }
+
+   /**
+    * Возвращает модули для cdn
+    */
+   getCDNModules() {
+      let modules = [];
+      this._modulesMap.forEach((cfg) => {
+         if (cfg.forCDN) {
+            modules.push(cfg.name);
+         }
+      });
+      return modules;
    }
 }
 
