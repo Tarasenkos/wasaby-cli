@@ -289,6 +289,22 @@ describe('modulesMap', () => {
          chai.expect(modulesMap.get('qweqwe123').required).is.true;
          chai.expect(['test11']).to.deep.equal(modulesMap.get('qweqwe123').depends);
       });
+      it('should add module with for_cdn', async () => {
+         stubXml.callsFake(() => Promise.resolve({
+            ui_module: {
+               $: {
+                  id: 'qweqwe123',
+                  for_cdn: '1'
+               },
+               name: 'qweqwe123'
+            }
+         }));
+         await modulesMap._addToModulesMap([{
+            name: 'qweqwe123',
+            rep: 'test1',
+         }]);
+         chai.expect(modulesMap.get('qweqwe123').forCDN).is.true;
+      })
    });
 
 
@@ -305,6 +321,20 @@ describe('modulesMap', () => {
 
       it('should return modules for test1 ', () => {
          chai.expect(modulesMap.getModulesByRep('test1')).to.deep.equal(['test11']);
+      });
+   });
+
+   describe('getCDNModules()', () => {
+      beforeEach(() => {
+         sinon.stub(modulesMap, '_modulesMap').value(
+             new Map([
+                ['test11', {name: 'test11', rep: 'test1', forCDN: true}],
+                ['test33', {name: 'test33', rep: 'test3', depends: []}]
+             ])
+         );
+      });
+      it('should return cdn modules', () => {
+         chai.expect(['test11']).to.deep.equal(modulesMap.getCDNModules());
       });
    });
 
