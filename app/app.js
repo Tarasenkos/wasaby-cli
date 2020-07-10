@@ -50,11 +50,6 @@ async function run(resources, port, start) {
    /*server side render*/
    app.get('/:moduleName/*', serverSideRender);
 
-   // support localization
-   app.get('/loadConfiguration', loadConfiguration);
-
-   app.get('/loadDictionary', loadDictionary);
-
    if (start) {
       openBrowser(availablePort);
    }
