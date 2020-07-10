@@ -179,7 +179,7 @@ class Test extends Base {
       const testConfig = require('../testConfig.base.json');
       let cfg = { ...testConfig };
       const fullName = name + (suffix || '');
-      let workspace = fsUtil.relative(this._options.workDir, this._workspace);
+      let workspace = fsUtil.relative(this._options.workDir, this._options.workspace);
       const testModulesArray = testModules instanceof Array ? testModules : [testModules];
       workspace = workspace || '.';
       cfg.url = { ...cfg.url };
@@ -229,7 +229,7 @@ class Test extends Base {
     * @returns {string}
     */
    getReportPath(fullName) {
-      const workspace = fsUtil.relative(process.cwd(), this._workspace);
+      const workspace = fsUtil.relative(process.cwd(), this._options.workspace);
       return REPORT_PATH.replace('{module}', fullName)
          .replace('{workspace}', workspace || '.');
    }
