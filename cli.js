@@ -146,7 +146,7 @@ class Cli {
          report: this._argvOptions.report,
          browser: this._argvOptions.browser,
          node: this._argvOptions.node,
-         grep: this._argvOptions.grep
+         argvOptions: this._argvOptions
       });
 
       await test.run();
