@@ -138,14 +138,15 @@ class Cli {
          testRep: this._testRep,
          workDir: this._workDir,
          workspace: this._workspace,
-         only: this._only,
+         only: this._only || !!this._argvOptions.grep,
          server: !!this._argvOptions.server,
          rc: this._rc,
          diff: this._argvOptions.diff,
          coverage: this._argvOptions.coverage,
          report: this._argvOptions.report,
          browser: this._argvOptions.browser,
-         node: this._argvOptions.node
+         node: this._argvOptions.node,
+         grep: this._argvOptions.grep
       });
 
       await test.run();

@@ -102,6 +102,7 @@ class Test extends Base {
       this._testOnlyNode = cfg.node;
       this._workDir = cfg.workDir;
       this._testOnlyBrowser = cfg.browser || cfg.server;
+      this._grep = cfg.grep;
       this._allowedErrorsSet = new Set();
       this._diff = new Map();
       this._portMap = new Map();
@@ -348,8 +349,8 @@ class Test extends Base {
             const coverage = this._coverage ? '--coverage' : '';
             const report = this._report === 'xml' ? '--report' : '';
             const unitsPath = require.resolve('saby-units/cli.js');
-
-            let args = [unitsPath, '--isolated', coverage, report, `--config=${pathToConfig}`];
+            const grep = this._grep ? `--grep="${this._grep}"` : '';
+            let args = [unitsPath, '--isolated', coverage, report, `--config=${pathToConfig}`, grep];
             await this._shell.spawn(
                'node',
                args,

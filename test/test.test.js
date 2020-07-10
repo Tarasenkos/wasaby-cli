@@ -340,6 +340,30 @@ describe('Test', () => {
       });
    });
 
+   describe('_startNodeTest()', () => {
+      let stubcli, stubfsjson, stubModuleMapGet;
+      beforeEach(() => {
+         stubcli = sinon.stub(test, '_reposConfig').value({
+            test: {
+            }
+         });
+         stubfsjson = sinon.stub(fs, 'readJsonSync').callsFake(() => {
+            return require('../testConfig.base.json');
+         });
+         stubModuleMapGet = sinon.stub(test._modulesMap, 'get').callsFake((name) => {
+            return {name: 'test1', testInBrowser: true};
+         });
+      });
+      it('should run tests with grep',(done) => {
+         test._startNodeTest('test1');
+         test._grep='testgrep'
+         stubSpawn.callsFake((cmd, args) => {
+            chai.expect(args).to.includes('--grep="testgrep"');
+            done();
+         })
+      });
+   });
+
    describe('._getErrorText()', () => {
       it('should prepare error text',() => {
          chai.expect('(node:) error').to.equal( test._getErrorText(' (node:123)     [error] '));
