@@ -65,7 +65,7 @@ describe('Test', () => {
    describe('._startBrowserTest()', () => {
       let stubcli, stubfsjson, stubOutputFile, stubModuleMapGet;
       beforeEach(() => {
-         stubcli = sinon.stub(test, '_reposConfig').value({
+         stubcli = sinon.stub(test._options, 'reposConfig').value({
             test: {
                unitInBrowser: true
             }
@@ -285,8 +285,8 @@ describe('Test', () => {
 
    describe('._getTestConfig()', function () {
       beforeEach(() => {
-         sinon.stub(test, '_workDir').value('/application');
-         sinon.stub(test, '_workspace').value('/application');
+         sinon.stub(test._options, 'workDir').value('/application');
+         sinon.stub(test._options, 'workspace').value('/application');
       });
       it('should return config' , async () => {
          let cfg = await test._getTestConfig();
@@ -297,7 +297,7 @@ describe('Test', () => {
       });
 
       it('should set checkLeaks in config' , async () => {
-         sinon.stub(test, '_ignoreLeaks').value(true);
+         test._options.chekLeaks = false;
          let cfg = await test._getTestConfig();
          chai.expect(cfg.ignoreLeaks).is.true;
       });
@@ -314,12 +314,12 @@ describe('Test', () => {
       let spySetDiff;
 
       it('shouldnt call setDiff if it disabled ', () => {
-         sinon.stub(test, '_isUseDiff').value(false);
+         test._options.diff = false;
          spySetDiff = sinon.stub(test, '_setDiffByRep').callsFake(() => Promise.reject());
          return test._setDiff();
       });
       it('should call setDiff if it enabled with argument test', (done) => {
-         sinon.stub(test, '_isUseDiff').value(true);
+         test._options.diff = true;
          spySetDiff = sinon.stub(test, '_setDiffByRep').callsFake(() => {
             done();
          });
@@ -337,6 +337,30 @@ describe('Test', () => {
          test._executeBrowserTestCmd().then(() => {
             chai.expect(spy.calledTwice).to.be.true;
          });
+      });
+   });
+
+   describe('_startNodeTest()', () => {
+      let stubcli, stubfsjson, stubModuleMapGet;
+      beforeEach(() => {
+         stubcli = sinon.stub(test._options, 'reposConfig').value({
+            test: {
+            }
+         });
+         stubfsjson = sinon.stub(fs, 'readJsonSync').callsFake(() => {
+            return require('../testConfig.base.json');
+         });
+         stubModuleMapGet = sinon.stub(test._modulesMap, 'get').callsFake((name) => {
+            return {name: 'test1', testInBrowser: true};
+         });
+      });
+      it('should run tests with grep',(done) => {
+         test._startNodeTest('test1');
+         test._options.argvOptions = {grep: 'testgrep'};
+         stubSpawn.callsFake((cmd, args) => {
+            chai.expect(args).to.includes('--grep=testgrep');
+            done();
+         })
       });
    });
 

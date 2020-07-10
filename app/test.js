@@ -86,21 +86,10 @@ class Test extends Base {
    constructor(cfg) {
       super(cfg);
       this._testReports = new Map();
-      this._resources = cfg.resources;
-      this._reposConfig = cfg.reposConfig;
       this._workspace = cfg.workspace || cfg.workDir;
+      this._options = cfg;
       this._testErrors = {};
-      this._rc = cfg.rc;
-      this._server = cfg.server;
-      this._testRep = cfg.testRep;
-      this._isUseDiff = cfg.diff;
-      this._coverage = cfg.coverage;
-      this._realResources = cfg.realResources;
-      this._ignoreLeaks = !cfg.checkLeaks;
       this._report = cfg.report || 'xml';
-      this._only = cfg.only;
-      this._testOnlyNode = cfg.node;
-      this._workDir = cfg.workDir;
       this._testOnlyBrowser = cfg.browser || cfg.server;
       this._allowedErrorsSet = new Set();
       this._diff = new Map();
@@ -190,7 +179,7 @@ class Test extends Base {
       const testConfig = require('../testConfig.base.json');
       let cfg = { ...testConfig };
       const fullName = name + (suffix || '');
-      let workspace = fsUtil.relative(this._workDir, this._workspace);
+      let workspace = fsUtil.relative(this._options.workDir, this._options.workspace);
       const testModulesArray = testModules instanceof Array ? testModules : [testModules];
       workspace = workspace || '.';
       cfg.url = { ...cfg.url };
@@ -198,21 +187,21 @@ class Test extends Base {
       cfg.url.port = this._port;
       this._portMap.set(name, this._port);
       cfg.tests = testModulesArray;
-      cfg.root = fsUtil.relative(process.cwd(), this._resources);
+      cfg.root = fsUtil.relative(process.cwd(), this._options.resources);
       cfg.htmlCoverageReport = cfg.htmlCoverageReport.replace('{module}', fullName).replace('{workspace}', workspace);
       cfg.jsonCoverageReport = cfg.jsonCoverageReport.replace('{module}', fullName).replace('{workspace}', workspace);
       cfg.report = this.getReportPath(fullName);
-      cfg.ignoreLeaks = this._ignoreLeaks;
+      cfg.ignoreLeaks = !this._options.checkLeaks;
       cfg.nyc = {
          'include': [],
          'reportDir': path.dirname(cfg.jsonCoverageReport),
-         'cwd': this._workDir,
-         'report': ['json','text','html'].includes(this._coverage) ? this._coverage : 'html'
+         'cwd': this._options.workDir,
+         'report': ['json','text','html'].includes(this._options.coverage) ? this._options.coverage : 'html'
       };
 
       let nycPath;
-      if (this._realResources) {
-         nycPath = path.relative(this._workDir, this._realResources);
+      if (this._options.realResources) {
+         nycPath = path.relative(this._options.workDir, this._options.realResources);
       }
 
       testModulesArray.forEach((testModuleName) => {
@@ -240,7 +229,7 @@ class Test extends Base {
     * @returns {string}
     */
    getReportPath(fullName) {
-      const workspace = fsUtil.relative(process.cwd(), this._workspace);
+      const workspace = fsUtil.relative(process.cwd(), this._options.workspace);
       return REPORT_PATH.replace('{module}', fullName)
          .replace('{workspace}', workspace || '.');
    }
@@ -287,12 +276,12 @@ class Test extends Base {
     * @private
     */
    _startTest() {
-      if (this._only) {
+      if (this._options.only) {
          // если тесты запускаются только по одному репозиторию то не разделяем их по модулям
-         logger.log('Запуск тестов', this._testRep);
+         logger.log('Запуск тестов', this._options.testRep);
          return Promise.all([
-            this._startNodeTest(this._testRep, this._modulesMap.getRequiredModules()),
-            this._startBrowserTest(this._testRep, this._modulesMap.getRequiredModules())
+            this._startNodeTest(this._options.testRep, this._modulesMap.getRequiredModules()),
+            this._startBrowserTest(this._options.testRep, this._modulesMap.getRequiredModules())
          ]);
       }
 
@@ -345,11 +334,12 @@ class Test extends Base {
                isBrowser: false
             });
 
-            const coverage = this._coverage ? '--coverage' : '';
+            const coverage = this._options.coverage ? '--coverage' : '';
             const report = this._report === 'xml' ? '--report' : '';
             const unitsPath = require.resolve('saby-units/cli.js');
-
-            let args = [unitsPath, '--isolated', coverage, report, `--config=${pathToConfig}`];
+            let args = [unitsPath, '--isolated', coverage, report, `--config=${pathToConfig}`].concat(
+               this._getUnknownArgs()
+            );
             await this._shell.spawn(
                'node',
                args,
@@ -388,7 +378,7 @@ class Test extends Base {
    async _startBrowserTest(name, testModules) {
       const moduleCfg = this._modulesMap.get(name);
       if (
-         !this._testOnlyNode &&
+         !this._options.node &&
             (
                (moduleCfg && moduleCfg.testInBrowser) ||
                !moduleCfg ||
@@ -396,7 +386,7 @@ class Test extends Base {
             )
       ) {
          const configPath = _private.getPathToTestConfig(name, true);
-         const coverage = this._coverage ? ' --coverage' : '';
+         const coverage = this._options.coverage ? ' --coverage' : '';
          logger.log('Запуск тестов в браузере', name);
 
          await this._makeTestConfig({
@@ -406,7 +396,7 @@ class Test extends Base {
             isBrowser: true
          });
 
-         if (this._server) {
+         if (this._options.server) {
             await Promise.all([
                this._executeBrowserTestCmd(
                   `node ${require.resolve('saby-units/cli/server.js')} --config=${configPath}`,
@@ -480,7 +470,7 @@ class Test extends Base {
          await this._setDiff();
          await this._loadErrorsSet();
          await this._startTest();
-         if (!this._server && this._report === 'xml') {
+         if (!this._options.server && this._report === 'xml') {
             await this.checkReport();
             await this.prepareReport();
          }
@@ -499,8 +489,8 @@ class Test extends Base {
     */
    _setDiff() {
       const result = [];
-      if (this._isUseDiff) {
-         for (const name of this._testRep) {
+      if (this._options.diff) {
+         for (const name of this._options.testRep) {
             if (name !== 'all') {
                result.push(this._setDiffByRep(name));
             }
@@ -521,8 +511,8 @@ class Test extends Base {
          name: repName
       });
       const branch = await git.getBranch();
-      if (this._rc && branch !== this._rc) {
-         this._diff.set(repName, await git.diff(branch, this._rc));
+      if (this._options.rc && branch !== this._options.rc) {
+         this._diff.set(repName, await git.diff(branch, this._options.rc));
       }
    }
 
@@ -554,6 +544,18 @@ class Test extends Base {
    async _loadErrorsSet() {
       const errors = await fs.readJSON(ALLOWED_ERRORS_FILE, Array.from(this._allowedErrorsSet));
       this._allowedErrorsSet = new Set(errors || []);
+   }
+
+   _getUnknownArgs() {
+      let args = [];
+      Object.keys(this._options.argvOptions).forEach((name) => {
+         if (!this._options.hasOwnProperty(name)) {
+            let value = this._options.argvOptions[name];
+            value = value.includes(' ') ? `"${value}"` : value;
+            args.push(`--${name}=${value}`);
+         }
+      });
+      return args;
    }
 
 }
