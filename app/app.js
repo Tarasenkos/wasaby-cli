@@ -123,36 +123,6 @@ function serverSideRender(req, res) {
    setDebugCookie(req, res);
 }
 
-function loadConfiguration(req, res) {
-   requirejs(['I18n/i18n'], (i18n) => {
-      const locale = req.query.locale || req.cookies.lang;
-      i18n.Loader.loadConfiguration(locale).then((configuration) => {
-         if (typeof req.query.v !== 'undefined') {
-            res.set('Cache-Control', 'public, max-age=315360000, immutable');
-         }
-         res.json(configuration);
-      }, (err) => {
-         res.status(404).send(err);
-      });
-   });
-}
-
-function loadDictionary(req, res) {
-   requirejs(['Core/i18n/Loader'], (Loader) => {
-      const module = req.query.module;
-      const locale = req.query.locale || req.cookies.lang;
-
-      Loader.default.dictionary(module, locale).then((dictionary) => {
-         if (typeof req.query.v !== 'undefined') {
-            res.set('Cache-Control', 'public, max-age=315360000, immutable');
-         }
-         res.json(dictionary);
-      }, (err) => {
-         res.status(404).send(err);
-      });
-   });
-}
-
 function setDebugCookie(req, res) {
    if (req.cookies.s3debug === undefined) {
       res.cookie('s3debug', true, { maxAge: 900000, httpOnly: true });
