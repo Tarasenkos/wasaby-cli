@@ -137,7 +137,9 @@ class Build extends Base {
       this._modulesMap.getCDNModules().forEach((name) => {
          const cfg = this._modulesMap.get(name);
          const pathLink = path.join(this._resources, 'cdn', name);
-         promises.push(fs.copy(cfg.path, pathLink))
+         promises.push(fs.copy(cfg.path, pathLink).catch((e) => {
+            logger.error(`Ошибка копирования модуля ${name}:  ${e}`);
+         }));
       });
       return Promise.all(promises);
    }
