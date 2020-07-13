@@ -117,6 +117,12 @@ class Build extends Base {
     */
    async _tslibInstall() {
       const wsCore = this._modulesMap.get('WS.Core');
+
+      // If there is no WS.Core in the project therefore nothing to install
+      if (!wsCore) {
+         return;
+      }
+
       const wsTslib = path.join(wsCore.path, 'ext', 'tslib.js');
       const tsLib = require.resolve('saby-typescript/tslib.js');
       logger.log(tsLib, 'tslib_path');
