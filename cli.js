@@ -68,6 +68,7 @@ class Cli {
     * @return {Promise<void>}
     */
    async run() {
+      throw "err"
       if (this.tasks.includes('initStore')) {
          await this.initStore();
       }
