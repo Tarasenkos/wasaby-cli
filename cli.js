@@ -237,7 +237,7 @@ if (require.main.filename === __filename) {
    // Если файл запущен напрямую запускаем тестирование
    const cli = new Cli();
    cli.run().catch((e) => {
-      logger.error(e);
+      logger.error("[ \"[ERROR]\tGulp: location: [module: SchemeEditor (Северьянов А.А.)] SchemeEditor/_editor/Editor.ts(843,44): error TS2339: Property 'removeItems' does not exist on type 'Function'.\t\n", "[ERROR]\tGulp: location: [module: SchemeEditor (Северьянов А.А.)] SchemeEditor/_editor/Editor.ts(880,45): error TS2339: Property 'moveItems' does not exist on type 'Function'.\t\n", '[ERROR]\tGulp: TypeScript compilation was completed with errors. Check log records above for details.\t\n\', message: \'Сборка ресурсов завершена с ошибкой: undefined\' ]");
       process.exit(ERROR_CODE);
    });
 }
