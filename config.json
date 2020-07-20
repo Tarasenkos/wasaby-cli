@@ -45,10 +45,15 @@
          "unitInBrowser": true
       },
       "cdn": {
-         "url": "saby/wasaby-cdn",
-         "linkFolders": {
-            "/" : "cdn"
-         }
+         "url": "saby/wasaby-cdn"
+      },
+      "sbis-cdn": {
+         "mirror": "git.sbis.ru",
+         "url": "sbis/cdn"
+      },
+      "engine-cdn": {
+         "mirror": "git.sbis.ru",
+         "url": "engine/cdn"
       },
       "sbis3-schemeeditor": {
          "mirror": "git.sbis.ru",
