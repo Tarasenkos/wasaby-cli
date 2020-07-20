@@ -72,6 +72,10 @@
          "mirror": "git.sbis.ru",
          "url": "navigation-configuration/navigation"
       },
+      "access-control": {
+         "mirror": "git.sbis.ru",
+         "url": "sbis/access-control"
+      },
       "rmi_test": {
          "mirror": "git.sbis.ru",
          "url": "sbis/rmi_test"
