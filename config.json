@@ -81,6 +81,10 @@
          "mirror": "git.sbis.ru",
          "url": "sbis/access-control"
       },
+      "sbis-core": {
+         "mirror": "git.sbis.ru",
+         "url": "sbis/core"
+      },
       "rmi_test": {
          "mirror": "git.sbis.ru",
          "url": "sbis/rmi_test"
