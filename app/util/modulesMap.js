@@ -195,7 +195,11 @@ class ModulesMap {
    _findModulesInStore() {
       const s3mods = [];
       Object.keys(this._reposConfig).forEach((name) => {
-         const repositoryPath = this.getRepositoryPath(name);
+         let repositoryPath = this.getRepositoryPath(name);
+         if (this._reposConfig[name].modulesPath) {
+            repositoryPath = path.join(repositoryPath, this._reposConfig[name].modulesPath);
+         }
+
          walkDir(repositoryPath, (filePath) => {
             if (filePath.includes('.s3mod')) {
                const splitFilePath = filePath.split(path.sep);
