@@ -45,10 +45,15 @@
          "unitInBrowser": true
       },
       "cdn": {
-         "url": "saby/wasaby-cdn",
-         "linkFolders": {
-            "/" : "cdn"
-         }
+         "url": "saby/wasaby-cdn"
+      },
+      "sbis-cdn": {
+         "mirror": "git.sbis.ru",
+         "url": "sbis/cdn"
+      },
+      "engine-cdn": {
+         "mirror": "git.sbis.ru",
+         "url": "engine/cdn"
       },
       "sbis3-schemeeditor": {
          "mirror": "git.sbis.ru",
@@ -71,6 +76,15 @@
       "navigation-configuration": {
          "mirror": "git.sbis.ru",
          "url": "navigation-configuration/navigation"
+      },
+      "access-control": {
+         "mirror": "git.sbis.ru",
+         "url": "sbis/access-control"
+      },
+      "sbis-core": {
+         "mirror": "git.sbis.ru",
+         "url": "sbis/core",
+         "modulesPath": "client"
       },
       "rmi_test": {
          "mirror": "git.sbis.ru",
