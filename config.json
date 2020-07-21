@@ -83,7 +83,8 @@
       },
       "sbis-core": {
          "mirror": "git.sbis.ru",
-         "url": "sbis/core"
+         "url": "sbis/core",
+         "modulesPath": "client"
       },
       "rmi_test": {
          "mirror": "git.sbis.ru",
