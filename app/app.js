@@ -10,6 +10,8 @@ const global = (function() {
 })();
 const resourceRoot = '/';
 
+
+
 /**
  * Запускает сервер приложения
  * @param {String} resources Путь до ресурсов
@@ -19,15 +21,16 @@ const resourceRoot = '/';
 async function run(resources, port, start) {
    const app = express();
    const availablePort = await getPort(port);
-   const relativeResources = path.isAbsolute(resources) ? path.relative(process.cwd(), resources) : resources;
+
+   process.chdir(resources);
 
    app.use(bodyParser.json());
    app.use(cookieParser());
-   app.use('/', serveStatic(relativeResources));
+   app.use('/', serveStatic('./'));
    app.listen(availablePort);
 
    let require = isolated.prepareTestEnvironment(
-      relativeResources,
+      '',
       undefined,
       false,
       undefined,
@@ -128,3 +131,4 @@ function setDebugCookie(req, res) {
 module.exports = {
    run: run
 };
+
