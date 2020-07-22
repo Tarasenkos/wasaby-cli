@@ -193,7 +193,6 @@ class Test extends Base {
       cfg.report = this.getReportPath(fullName);
       cfg.ignoreLeaks = !this._options.checkLeaks;
       cfg.nyc = {
-         'all': true,
          'include': [],
          'reportDir': path.dirname(cfg.jsonCoverageReport),
          'cwd': this._options.workDir,
