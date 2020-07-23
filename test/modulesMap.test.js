@@ -103,7 +103,7 @@ describe('modulesMap', () => {
       it('should return test2 only', () => {
          sinon.stub(modulesMap, '_only').value(true);
          stubTestRep = sinon.stub(modulesMap, '_testRep').value(['test2']);
-         chai.expect(modulesMap.getRequiredModules()).to.deep.equal(['test_test2']);
+         chai.expect(modulesMap.getRequiredModules()).to.deep.equal(['test22','test_test2']);
       });
 
       it('should return test list if check two unliked tests', () => {

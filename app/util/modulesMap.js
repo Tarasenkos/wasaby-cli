@@ -109,7 +109,7 @@ class ModulesMap {
       let list = [];
       if (this._only) {
          this._testRep.forEach((name) => {
-            list = list.concat(this.getTestModulesByRep(name));
+            list = list.concat(this.getModulesByRep(name));
          });
       } else if (!this._testRep.includes('all')) {
          this._testRep.forEach((testRep) => {
