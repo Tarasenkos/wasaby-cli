@@ -30,6 +30,7 @@ function get(argvOptions= {}) {
             }
          }
       }
+
       config.testRep = [packageConfig.name];
       if (!config.repositories.hasOwnProperty(packageConfig.name)) {
          config.repositories[packageConfig.name] = {};
@@ -68,7 +69,9 @@ function getVersion() {
  */
 function getPackageConfig(pathToRep) {
    const configPath = path.join(pathToRep, 'package.json');
-   return  fs.readJSONSync(configPath);
+   if (fs.existsSync(configPath)) {
+      return fs.readJSONSync(configPath);
+   }
 }
 
 /**
