@@ -98,7 +98,7 @@ class Store extends Base {
       await git.clean();
 
       if (isBranch && !branch.includes('rc-')) {
-         mergeWith =  mergeWith || git.getVersion();
+         mergeWith =  mergeWith || git.getVersion() || this._rc;
          logger.log(`Попытка смержить ветку '${branch}' с '${mergeWith}'`, name);
          await git.merge(mergeWith);
       }

@@ -130,7 +130,9 @@ class Git {
     */
    getVersion() {
       const packageConfig = config.getPackageConfig(this._path);
-      return config.getVersion(packageConfig);
+      if (packageConfig) {
+         return config.getVersion(packageConfig)
+      }
    }
 
    static isBranch(branch) {
