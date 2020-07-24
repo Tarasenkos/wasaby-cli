@@ -30,6 +30,7 @@ function get(argvOptions= {}) {
             }
          }
       }
+
       config.testRep = [packageConfig.name];
       if (!config.repositories.hasOwnProperty(packageConfig.name)) {
          config.repositories[packageConfig.name] = {};
