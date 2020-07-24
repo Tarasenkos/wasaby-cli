@@ -113,7 +113,7 @@ describe('Store', () => {
    });
 
    describe('.checkout()', () => {
-      let stubModule, stubReadJSON;
+      let stubModule, stubReadJSON, stubExists;
 
       beforeEach(() => {
          stubReadJSON = sinon.stub(fs, 'readJSONSync').callsFake((name) => {
@@ -125,10 +125,12 @@ describe('Store', () => {
             }
             return stubReadJSON.wrappedMethod();
          });
+         stubExists = sinon.stub(fs, 'existsSync').callsFake(name => name.includes('package.json'));
       });
 
       afterEach(() => {
          stubReadJSON.restore();
+         stubExists.restore();
       });
 
       it('should checkout branch', (done) => {
