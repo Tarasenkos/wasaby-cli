@@ -57,7 +57,7 @@ class Store extends Base {
 
       // если есть путь до репозитория то его не надо выкачивать
       if (!cfg.skip && !cfg.path) {
-         const branch = this._argvOptions[name] || this._rc;
+         const branch = this._argvOptions[name] || cfg.version || this._rc;
          await this.cloneRepToStore(name);
          await this.checkout(
             name,
