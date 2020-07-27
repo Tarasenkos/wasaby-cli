@@ -15,7 +15,19 @@
 если нужно обновить, какой либо репозитоий на специфическую ветку, то передаем параметр --[name]=my/branch, где [name]
 надо заменить на название, нужного репозитория, его можно посмотреть в package.json файле, параметр [name](https://docs.npmjs.com/files/package.json#name). 
     
-    npx wasaby-cli --tasks=initStore --rmi=my/branch     
+    npx wasaby-cli --tasks=initStore --rmi=my/branch   
+      
+Для того что бы добавить прикладные репозитории в сборку нужно в секции wasaby-cli вашего package.json файла, добавить  
+параметр repositories
+
+    {
+        "wasaby-cli": {
+            "repositories": {
+                "name": "https://git.sbis.ru/sbis/name.git",
+                "name2": "https://git.sbis.ru/sbis/name2.git#rc-20.6000"
+            }  
+        }
+    }
 
 ## Cборка приложения
 Приложение собирается через [wasaby-builder](https://github.com/saby/builder), в сборку попадают все зависимости 
@@ -40,7 +52,7 @@
 
 Так же можно запустить вотчер
     
-     npx wasaby-cli --tasks=build --watcher
+    npx wasaby-cli --tasks=build --watcher
               
           
 ## Запуск юнит тестов

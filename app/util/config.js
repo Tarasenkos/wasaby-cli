@@ -37,7 +37,9 @@ function get(argvOptions= {}) {
       }
       config.repositories[packageConfig.name].skipStore = true;
       config.repositories[packageConfig.name].path = process.cwd();
-      Object.assign(config, packageConfig['wasaby-cli'] || {});
+      const wsSection = packageConfig['wasaby-cli'] || {};
+      wsSection.repositories = Object.assign(config.repositories, getRepsFromConfig(wsSection));
+      Object.assign(config, wsSection);
    }
 
    return config;
@@ -120,6 +122,27 @@ function prepareReposUrl(config, protocol, gitMirror) {
    }
 }
 
+/**
+ * Возвращает список репозиториев из package.json
+ * @param {Object} wsSection секциия wasaby-cli из package.json
+ * return Object
+ */
+function getRepsFromConfig(wsSection) {
+   const result = {};
+
+   if (wsSection.repositories) {
+      Object.keys(wsSection.repositories).forEach(name => {
+         let url = wsSection.repositories[name].split('#');
+         result[name] = {
+            url: url[0],
+            version: url[1]
+         }
+      });
+   }
+
+   return result;
+}
+
 
 /**
  * cdn
@@ -147,5 +170,6 @@ function prepareReposUrl(config, protocol, gitMirror) {
 module.exports = {
    get: get,
    getVersion: getVersion,
-   getPackageConfig: getPackageConfig
+   getPackageConfig: getPackageConfig,
+   getRepsFromConfig: getRepsFromConfig
 };
