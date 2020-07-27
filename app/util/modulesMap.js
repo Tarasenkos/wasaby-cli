@@ -118,11 +118,13 @@ class ModulesMap {
             list = list.concat(requiredModules.length > 0 ? requiredModules : this.getModulesByRep(testRep));
             modules.forEach((name) => {
                const cfg = this._modulesMap.get(name);
-               this.getTestModulesByRep(cfg.rep).forEach((testModule) => {
-                  if (!list.includes(testModule)) {
-                     list.push(testModule);
-                  }
-               });
+               if (cfg) {
+                  this.getTestModulesByRep(cfg.rep).forEach((testModule) => {
+                     if (!list.includes(testModule)) {
+                        list.push(testModule);
+                     }
+                  });
+               }
             });
          });
       } else {
