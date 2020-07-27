@@ -113,4 +113,30 @@ describe('config', () => {
          chai.expect('git@platform-git.sbis.ru:test/test2.git').to.deep.equal(config.get(ssh).repositories.test2.url);
       });
    });
+
+   describe('getRepsFromConfig', () => {
+      it('should return reps', () => {
+         const wsSection = {
+           repositories: {
+              "name": "https://git.sbis.ru/sbis/name.git",
+              "name2": "https://git.sbis.ru/sbis/name2.git#rc-20.6000"
+           }
+         };
+         chai.expect(config.getRepsFromConfig(wsSection)).to.deep.equal({
+            name: {
+               url: 'https://git.sbis.ru/sbis/name.git',
+               version: undefined
+            },
+            name2: {
+               url: 'https://git.sbis.ru/sbis/name2.git',
+               version: 'rc-20.6000'
+            }
+
+         })
+      });
+
+      it('should return empty object', () => {
+         chai.expect(config.getRepsFromConfig({})).is.empty;
+      })
+   });
 });
