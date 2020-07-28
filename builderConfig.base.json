@@ -6,6 +6,7 @@
    "contents": true,
    "joinedMeta": true,
    "clearOutput": true,
+   "tsc": true,
    "less": true,
    "themes": true,
    "symlinks": true,
