@@ -37,7 +37,7 @@ class Build extends Base {
       this._watcher = cfg.watcher;
       this._builderCfg = path.join(process.cwd(), 'builderConfig.json');
       if (cfg.builderBaseConfig) {
-         this._builderBaseConfig = path.relative(__dirname, path.join(process.cwd(), cfg.builderBaseConfig));
+         this._builderBaseConfig = path.normalize(path.join(process.cwd(), cfg.builderBaseConfig));
       } else {
          this._builderBaseConfig = builderBaseConfig;
       }
@@ -79,8 +79,8 @@ class Build extends Base {
       await this._shell.execute(
          `node ${gulpPath} --gulpfile=${builderPath} ${build} --config=${this._builderCfg}`,
          process.cwd(), {
-            name: 'builder',
-            errorLabel: '[ERROR]'
+            force: true,
+            name: 'builder'
          }
       );
    }
