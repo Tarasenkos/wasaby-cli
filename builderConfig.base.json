@@ -7,7 +7,6 @@
    "tsconfig": "es5.test.json",
    "joinedMeta": true,
    "clearOutput": true,
-   "tsc": true,
    "less": true,
    "themes": true,
    "symlinks": true,
