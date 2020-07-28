@@ -4,7 +4,6 @@
    "logs": "./application/logs",
    "typescript": true,
    "contents": true,
-   "tsconfig": "es5.test.json",
    "joinedMeta": true,
    "clearOutput": true,
    "less": true,
