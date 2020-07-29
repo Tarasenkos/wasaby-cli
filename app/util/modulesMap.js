@@ -113,7 +113,7 @@ class ModulesMap {
          });
       } else if (!this._testRep.includes('all')) {
          this._testRep.forEach((testRep) => {
-            const modules = this.getParentModules(this.getModulesByRepWithDepends(testRep));
+            const modules = this.getParentModules(this.getModulesByRep(testRep));
             const requiredModules = this.getTestModulesByRep(testRep);
             list = list.concat(requiredModules.length > 0 ? requiredModules : this.getModulesByRep(testRep));
             modules.forEach((name) => {
@@ -132,21 +132,6 @@ class ModulesMap {
       }
       this._modulesList = list;
       return this._modulesList;
-   }
-
-   /**
-    * Возвращает список модулей содержащих юнит тесты и их зависимости
-    * @return {Array}
-    */
-   getModulesByRepWithDepends(name) {
-      let result = [];
-      const modules = this.getTestModulesByRep(name) || [];
-      modules.forEach((moduleName) => {
-         const cfg = this._modulesMap.get(moduleName);
-         result = result.concat(cfg.depends || []);
-         result.push(moduleName);
-      });
-      return result;
    }
 
    /**
