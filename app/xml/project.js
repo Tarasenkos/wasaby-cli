@@ -4,7 +4,10 @@ const fsUtil = require('../util/fs');
 const fs = require('fs-extra');
 
 function getUiModules(srv) {
-   return srv.service.items[0].ui_module || [];
+   if (!srv.service.items[0].ui_module) {
+      srv.service.items[0] = {ui_module: []}
+   }
+   return srv.service.items[0].ui_module;
 }
 
 function setUiModules(srv, modules) {
