@@ -7,8 +7,7 @@ function getUiModules(srv) {
    if (typeof srv.service.items[0] === 'object') {
       srv.service.items[0].ui_module = srv.service.items[0].ui_module || [];
    } else {
-      srv.service.items[0] = {ui_module: []}
-
+      srv.service.items[0] = {ui_module: []};
    }
 
    return srv.service.items[0].ui_module;
