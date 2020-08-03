@@ -1,3 +1,5 @@
+/* eslint-disable id-match */
+
 const path = require('path');
 const xml = require('./xml');
 const fsUtil = require('../util/fs');
@@ -5,9 +7,10 @@ const fs = require('fs-extra');
 
 function getUiModules(srv) {
    if (typeof srv.service.items[0] === 'object') {
+      // eslint-disable-next-line id-match
       srv.service.items[0].ui_module = srv.service.items[0].ui_module || [];
    } else {
-      srv.service.items[0] = {ui_module: []};
+      srv.service.items[0] = { ui_module: [] };
    }
 
    return srv.service.items[0].ui_module;
@@ -130,12 +133,13 @@ class Project {
    }
 
    /**
+    * /**
     * Возвращает список модулей из проекта
-    * @returns {Promise<Set<String>>>}
+    * @returns {Promise<any>}
     */
    async getProjectModules() {
       const srvPaths = await this.getServices();
-      const servicesModules = await Promise.all(srvPaths.map((srv) => this._getModulesFromSrv(srv)));
+      const servicesModules = await Promise.all(srvPaths.map(srv => this._getModulesFromSrv(srv)));
       return new Set(servicesModules.reduce((acc, val) => acc.concat(val)));
    }
 
@@ -181,12 +185,12 @@ class Project {
                const dirName = path.dirname(srvPath);
 
                modules.push({
-                  "$":{
-                     "id": cfg.id,
-                     "name": cfg.name,
-                     "url": fsUtil.relative(dirName, cfg.s3mod)
+                  '$': {
+                     'id': cfg.id,
+                     'name': cfg.name,
+                     'url': fsUtil.relative(dirName, cfg.s3mod)
                   }
-               })
+               });
             }
          });
 
@@ -202,11 +206,10 @@ class Project {
       const srvPaths = await this.getServices();
       const deploy = await this.getDeploy();
 
-      await Promise.all(srvPaths.map((srv) => this._updateSrvModules(srv)));
+      await Promise.all(srvPaths.map(srv => this._updateSrvModules(srv)));
       await this._addModulesToSrv(srvPaths[0]);
       await this._prepareDeployCfg(deploy);
    }
-
 }
 
 module.exports = Project;

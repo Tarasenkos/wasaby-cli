@@ -12,6 +12,7 @@ class Logger {
    constructor() {
       this._enableLog = true;
    }
+
    /**
     * Устанавливает путь до файла с логами
     * @param {String} file
@@ -54,7 +55,7 @@ class Logger {
    error(message) {
       // eslint-disable-next-line no-console
       console.error(message);
-      this._log(`[ERROR]: ${message}`, {flag: 'a'});
+      this._log(`[ERROR]: ${message}`, { flag: 'a' });
    }
 
    /**
@@ -71,9 +72,10 @@ class Logger {
    _log(message) {
       if (this.logFile) {
          try {
-            fs.outputFileSync(this.logFile, message, {flag: 'a'});
+            fs.outputFileSync(this.logFile, message, { flag: 'a' });
          } catch (e) {
             this.logFile = false;
+            // eslint-disable-next-line no-console
             console.error(`Ошибка создания лог файла: ${e}`);
          }
       }

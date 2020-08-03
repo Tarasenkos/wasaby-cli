@@ -1,24 +1,23 @@
+/* global requirejs */
+/* eslint-disable no-console */
 const isolated = require('saby-units/lib/isolated.js');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-const path = require('path');
 const serveStatic = require('serve-static');
 const getPort = require('./net/getPort');
 const global = (function() {
+   // eslint-disable-next-line no-eval
    return this || (0, eval)('this');
 })();
 const resourceRoot = '/';
-
-
 
 /**
  * Запускает сервер приложения
  * @param {String} resources Путь до ресурсов
  * @param {Number} port Порт на котором будет запущен сервер
- * @param {Boolean} start Запустить браузер
  */
-async function run(resources, port, start) {
+async function run(resources, port) {
    const app = express();
    const availablePort = await getPort(port);
 
@@ -40,22 +39,19 @@ async function run(resources, port, start) {
    global.require = require;
 
    console.log('start init');
-   require(['Env/Env', 'Application/Initializer', 'SbisEnv/PresentationService', 'UI/Base', 'Core/core-init'], function (Env, AppInit, PS, UIBase) {
+   require(['Env/Env', 'Application/Initializer', 'SbisEnv/PresentationService', 'UI/Base', 'Core/core-init'], function(Env, AppInit, PS, UIBase) {
       Env.constants.resourceRoot = resourceRoot;
       Env.constants.modules = require('json!/contents').modules;
+      // eslint-disable-next-line new-cap
       AppInit.default({ resourceRoot }, new PS.default({ resourceRoot }), new UIBase.StateReceiver());
       console.log(`server started http://localhost:${availablePort}`);
-   }, function (err) {
+   }, function(err) {
       console.error(err);
       console.error('core init failed');
    });
 
-   /*server side render*/
+   /* server side render */
    app.get('/:moduleName/*', serverSideRender);
-
-   if (start) {
-      openBrowser(availablePort);
-   }
 }
 
 
@@ -64,10 +60,8 @@ function serverSideRender(req, res) {
 
    if (!process.domain) {
       process.domain = {
-         enter: function () {
-         },
-         exit: function () {
-         }
+         enter: () => undefined,
+         exit: () => undefined
       };
    }
 
@@ -76,7 +70,7 @@ function serverSideRender(req, res) {
 
    const AppInit = requirejs('Application/Initializer');
    const UIBase = requirejs('UI/Base');
-   AppInit.startRequest(void 0, new UIBase.StateReceiver());
+   AppInit.startRequest(undefined, new UIBase.StateReceiver());
 
    const tpl = requirejs('wml!Controls/Application/Route');
 
@@ -85,12 +79,12 @@ function serverSideRender(req, res) {
       console.error('Incorrect url. Couldn\'t resolve path to root component');
    }
 
-   pathRoot = pathRoot.filter(function (el) {
+   pathRoot = pathRoot.filter(function(el) {
       return el.length > 0;
    });
 
    let cmp;
-   if (~pathRoot.indexOf('app')) {
+   if (pathRoot.indexOf('app') > -1) {
       cmp = pathRoot[0] + '/Index';
    } else {
       cmp = pathRoot.join('/') + '/Index';
@@ -117,7 +111,9 @@ function serverSideRender(req, res) {
    Promise.resolve(rendering).then((html) => {
       res.writeHead(200, { 'Content-Type': 'text/html' });
       res.end(html);
-   }).catch((e) => { res.status(500).end(JSON.stringify(e, null, 2)); });
+   }).catch((e) => {
+      res.status(500).end(JSON.stringify(e, null, 2));
+   });
    setDebugCookie(req, res);
 }
 
@@ -131,4 +127,3 @@ function setDebugCookie(req, res) {
 module.exports = {
    run: run
 };
-

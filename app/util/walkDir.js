@@ -1,11 +1,13 @@
 const fs = require('fs-extra');
 const path = require('path');
 const ENOENT = 'ENOENT';
+
 /**
  * Рекурсивно обходит дректории исключая симлинки
  * @param {String} rootDir - Директория которую надо обойти
  * @param {Function} callback - Коллбек, вызывается для файлов
  * @param {Array} exclude - Пути которые надо исключить
+ * @param currentDir {String}
  * @function walkDir
  * @author Ганшин Я.О
  */
@@ -14,7 +16,8 @@ function walkDir(rootDir, callback, exclude = [], currentDir = '') {
    const relativePath = path.relative(rootDir, defCurrentDir);
    if (fs.existsSync(defCurrentDir)) {
       fs.readdirSync(defCurrentDir).forEach((file) => {
-         if (file[0] === '.' ) { // пропускаем скрытые файлы
+         // пропускаем скрытые файлы
+         if (file[0] === '.') {
             return;
          }
 
@@ -29,8 +32,9 @@ function walkDir(rootDir, callback, exclude = [], currentDir = '') {
                }
             }
          } catch (error) {
-            if (!String(error).includes(ENOENT)) { // игнорируем ошибки существования файла
-               throw error
+            // игнорируем ошибки существования файла
+            if (!String(error).includes(ENOENT)) {
+               throw error;
             }
          }
       });

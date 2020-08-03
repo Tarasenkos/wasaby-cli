@@ -41,7 +41,7 @@ class DevServer {
       this._dbSchema = cfg.dbSchema;
       this._dbConnection = {
          host: cfg.dbHost || DB_CONNECTION.host,
-         dbName:  cfg.dbName || DB_CONNECTION.dbName,
+         dbName: cfg.dbName || DB_CONNECTION.dbName,
          login: cfg.dbLogin || DB_CONNECTION.login,
          password: cfg.dbPassword || DB_CONNECTION.password,
          port: cfg.dbPort || DB_CONNECTION.port
@@ -68,7 +68,7 @@ class DevServer {
       await this._linkCDN();
       await this.createIni();
 
-      process.on('SIGINT', async () => {
+      process.on('SIGINT', async() => {
          await this.stop();
       });
 
@@ -87,7 +87,7 @@ class DevServer {
     */
    async stop() {
       if (process.platform === 'win32') {
-         await this._shell.execute(`taskkill /im sbis-daemon.exe /F`, process.cwd());
+         await this._shell.execute('taskkill /im sbis-daemon.exe /F', process.cwd());
       } else {
          await Promise.all([
             this._stop(await this._getServicePath()),
@@ -113,6 +113,7 @@ class DevServer {
    /**
     * Запускает сервис
     * @param {String} name Название сервиса который нужно остановить
+    * @param {String} workDir Рабочая директория
     * @private
     */
    async _start(name, workDir) {
@@ -121,7 +122,7 @@ class DevServer {
             `sbis-daemon${EXE} --http --port=${this._port}`,
             workDir
          );
-      } catch(e) {
+      } catch (e) {
          logger.error(e);
          throw e;
       }
@@ -134,11 +135,11 @@ class DevServer {
     */
    async _stop(name) {
       try {
-         this._shell.execute(
+         await this._shell.execute(
             `${this._workDir}/${name}/sbis-daemon${EXE} --name "${name}" stop`,
             process.cwd()
          );
-      } catch(e) {
+      } catch (e) {
          logger.error(e);
          throw e;
       }

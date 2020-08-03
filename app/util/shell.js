@@ -23,7 +23,7 @@ class Shell {
     * Выполняет команду shell
     * @param {String} command - текст команды
     * @param {String} path - путь по которому надо выполнить команду
-    * @param {ExecParams} params Параметры
+    * @param {Object} params Параметры
     * @return {Promise<any>}
     * @public
     */

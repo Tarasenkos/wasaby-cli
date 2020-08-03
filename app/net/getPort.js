@@ -13,16 +13,18 @@ const MAX_PORT = 65536;
  * @param {Number} port
  * @returns {Promise<Number>}
  */
-const checkPort = (port) => new Promise((resolve, reject) => {
-   const server = net.createServer();
-   server.unref();
-   server.on('error', reject);
-   server.listen(port, () => {
-      server.close(() => {
-         resolve(port);
+const checkPort = function(port) {
+   return new Promise((resolve, reject) => {
+      const server = net.createServer();
+      server.unref();
+      server.on('error', reject);
+      server.listen(port, () => {
+         server.close(() => {
+            resolve(port);
+         });
       });
    });
-});
+};
 
 /**
  * Возвращает свободный порт

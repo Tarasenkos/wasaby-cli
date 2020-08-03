@@ -11,7 +11,7 @@ const PARALLEL_CHECKOUT = 2;
 /**
  * Класс отвечающий за подготовку репозиториев для тестирования
  * @class Store
- * @author Ганшин Я.О
+ * @author Ганшин Я.ОТывл
  */
 
 class Store extends Base {

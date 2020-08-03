@@ -3,6 +3,7 @@ const fs = require('fs-extra');
 const Shell = require('./shell');
 
 const _private = {
+
    /**
     * Возвращает путь до исполняемого файла джина
     * @returns {string}
@@ -27,7 +28,7 @@ const _private = {
       return `${path.join(pathToJinnee, 'jinnee-utility')} libjinnee-dbg-stand-deployment300.so`;
    }
 
-}
+};
 
 /**
  * Класс для вызова утилит из сдк
@@ -73,9 +74,10 @@ class sdk {
 
       return this._shell.execute(
          `${jinneeCli} --deploy_stand=${deploy} --logs_dir=${logs} --project=${project}`,
-         pathToJinnee, {
+         pathToJinnee,
+         {
             name: 'jinnee-deploy',
-            errorLabel: '[ERROR]	Gulp:'
+            errorLabel: '[ERROR] Gulp:'
          }
       );
    }
@@ -87,7 +89,7 @@ class sdk {
     */
    async getPathToJinnee() {
       const pathToSDK = this.getPathToSdk();
-      let pathToJinnee = '';
+      let pathToJinnee;
       if (this._pathToJinnee) {
          pathToJinnee = this._pathToJinnee;
       } else if (process.env.SDK) {

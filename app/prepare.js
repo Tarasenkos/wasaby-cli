@@ -18,7 +18,7 @@ class Prepare extends Base {
       this._store = cfg.store;
       this._rc = cfg.rc;
       this._resources = cfg.resources;
-      this._builderCache = cfg.builderCache
+      this._builderCache = cfg.builderCache;
    }
 
    async _run() {
@@ -48,6 +48,8 @@ class Prepare extends Base {
          }
       );
    }
+
+
    /**
     * Возвращает пути до модулей
     * @returns {Promise<{}>}
@@ -95,21 +97,23 @@ class Prepare extends Base {
     * @private
     */
    _getExclude() {
-      return [ path.relative(process.cwd(), this._resources), this._builderCache ];
+      return [path.relative(process.cwd(), this._resources), this._builderCache];
    }
 
    /**
     * Возвращает секцию paths из базового конфига
     * @param pathToConfig
-    * @returns {Promise<{module: [string]}|*>}
+    * @returns *
     * @private
     */
+   // eslint-disable-next-line consistent-return
    async _getPathFromConfig(pathToConfig) {
       const config = await fs.readJSON(pathToConfig);
       if (config.compilerOptions && config.compilerOptions.paths) {
          return config.compilerOptions.paths;
-      } else if(config.extends) {
-         return await this._getPathFromConfig(path.join(process.cwd(), config.extends));
+      } if (config.extends) {
+         const result = await this._getPathFromConfig(path.join(process.cwd(), config.extends));
+         return result;
       }
    }
 
@@ -119,11 +123,12 @@ class Prepare extends Base {
     * @returns {Promise<void>}
     * @private
     */
+   // eslint-disable-next-line class-methods-use-this
    async _writeConfig(config) {
       if (fs.existsSync(TSCONFIG_PATH)) {
          await fs.remove(TSCONFIG_PATH);
       }
-      await fs.writeJSON(TSCONFIG_PATH, config, {spaces: 4, EOL: '\n'});
+      await fs.writeJSON(TSCONFIG_PATH, config, { spaces: 4, EOL: '\n' });
    }
 }
 
