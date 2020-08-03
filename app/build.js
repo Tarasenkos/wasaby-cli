@@ -1,11 +1,9 @@
 const fs = require('fs-extra');
 const path = require('path');
 const logger = require('./util/logger');
-const ModulesMap = require('./util/modulesMap');
 const Base = require('./base');
 const Sdk = require('./util/sdk');
 const Project = require('./xml/project');
-const fsUtil = require('./util/fs');
 
 const builderConfigName = 'builderConfig.json';
 const builderBaseConfig = '../builderConfig.base.json';
@@ -14,7 +12,8 @@ const RELEASE_FLAGS = {
    wml: true,
    customPack: true,
    dependenciesGraph: true
-}
+};
+
 /**
  * Класс отвечающий за сборку ресурсов для тестов
  * @author Ганшин Я.О
@@ -22,7 +21,7 @@ const RELEASE_FLAGS = {
 
 class Build extends Base {
    constructor(cfg) {
-      super({...cfg, ...{reBuildMap: true}});
+      super({ ...cfg, ...{ reBuildMap: true } });
       this._store = cfg.store;
       this._rc = cfg.rc;
       this._reposConfig = cfg.reposConfig;
@@ -74,7 +73,7 @@ class Build extends Base {
    async _initWithBuilder(builderOutput) {
       const gulpPath = require.resolve('gulp/bin/gulp.js');
       const builderPath = require.resolve('sbis3-builder/gulpfile.js');
-      const build = this._watcher ? 'buildOnChangeWatcher' : 'build'
+      const build = this._watcher ? 'buildOnChangeWatcher' : 'build';
       await this._makeBuilderConfig(builderOutput);
       await this._shell.execute(
          `node ${gulpPath} --gulpfile=${builderPath} ${build} --config=${this._builderCfg}`,
@@ -108,7 +107,6 @@ class Build extends Base {
       await project.prepare();
 
       await sdk.jinneeDeploy(await project.getDeploy(), logs, project.file);
-
    }
 
    /**
@@ -171,7 +169,7 @@ class Build extends Base {
          }
       });
 
-      builderConfig = this._buildRelease ? {...builderConfig, ...RELEASE_FLAGS} : builderConfig;
+      builderConfig = this._buildRelease ? { ...builderConfig, ...RELEASE_FLAGS } : builderConfig;
       builderConfig.output = output || this._resources;
       builderConfig.logs = path.join(this._workDir, 'logs');
 

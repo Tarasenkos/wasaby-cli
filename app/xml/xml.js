@@ -16,7 +16,7 @@ const logger = require('../util/logger');
 function readXmlFile(filePath) {
    return new Promise((resolve, reject) => {
       const parser = new xml2js.Parser();
-      let xmlString = fs.readFileSync(filePath, 'utf8');
+      const xmlString = fs.readFileSync(filePath, 'utf8');
       parser.parseString(xmlString, (error, result) => {
          if (error === null) {
             resolve(result);

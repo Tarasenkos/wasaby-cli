@@ -86,7 +86,6 @@ class Test extends Base {
    constructor(cfg) {
       super(cfg);
       this._testReports = new Map();
-      this._workspace = cfg.workspace || cfg.workDir;
       this._options = cfg;
       this._testErrors = {};
       this._report = cfg.report || 'xml';
@@ -196,7 +195,7 @@ class Test extends Base {
          'include': [],
          'reportDir': path.dirname(cfg.jsonCoverageReport),
          'cwd': this._options.workDir,
-         'report': ['json','text','html'].includes(this._options.coverage) ? this._options.coverage : 'html'
+         'report': ['json', 'text', 'html'].includes(this._options.coverage) ? this._options.coverage : 'html'
       };
 
       let nycPath;
@@ -351,7 +350,7 @@ class Test extends Base {
                }
             );
 
-            //todo разобраться почему ошибки без стека, пока такие не учитываем
+            // todo разобраться почему ошибки без стека, пока такие не учитываем
             this._testErrors[processName] = this._shell.getErrorsByName(processName);
             if (this._testErrors[processName]) {
                this._testErrors[processName] = this._testErrors[processName].filter(msg => msg.includes('Stack:'));
@@ -362,6 +361,7 @@ class Test extends Base {
             if (this._shouldUpdateAllowedErrors) {
                this._testErrors[processName].map((msg) => {
                   this._allowedErrorsSet.add(this._getErrorText(msg));
+                  return undefined;
                });
             }
          }
@@ -521,9 +521,11 @@ class Test extends Base {
     * @param {String} text
     * @private
     */
-   _getErrorText(text){
-      let firstRow = text.split("\n")[0];
-      return firstRow.replace(/[\d\[\]]/g,'').replace(/\s{2,}/g, ' ').trim();
+   // eslint-disable-next-line class-methods-use-this
+   _getErrorText(text) {
+      let firstRow = text.split('\n')[0];
+      // eslint-disable-next-line no-useless-escape
+      return firstRow.replace(/[\d\[\]]/g, '').replace(/\s{2,}/g, ' ').trim();
    }
 
    /**
@@ -557,7 +559,6 @@ class Test extends Base {
       });
       return args;
    }
-
 }
 
 module.exports = Test;

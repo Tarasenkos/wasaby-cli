@@ -1,6 +1,7 @@
 const Shell = require('./shell');
-const config = require('./config')
+const config = require('./config');
 const ERROR_MERGE_CODE = 101;
+
 /**
  * Ксласс содержащий методы работы с гитом
  * @class Git
@@ -131,12 +132,13 @@ class Git {
    getVersion() {
       const packageConfig = config.getPackageConfig(this._path);
       if (packageConfig) {
-         return config.getVersion(packageConfig)
+         return config.getVersion(packageConfig);
       }
+      return undefined;
    }
 
    static isBranch(branch) {
-      return branch.includes('/') || branch.includes('rc-')
+      return branch.includes('/') || branch.includes('rc-');
    }
 }
 

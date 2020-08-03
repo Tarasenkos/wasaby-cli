@@ -14,7 +14,7 @@ const CONFIG = path.normalize(path.join(__dirname, '../../config.json'));
  * @param {Object} argvOptions Параметры из командной строки
  * return Object
  */
-function get(argvOptions= {}) {
+function get(argvOptions = {}) {
    const packageConfig = getPackageConfig(process.cwd());
    const config = fs.readJSONSync(CONFIG);
 
@@ -55,6 +55,7 @@ function normalizeVersion(version) {
    res.splice(-1, 1);
    return res.join('.');
 }
+
 /**
  * Возыращает версию rc ветки
  * @return {String}
@@ -64,23 +65,24 @@ function getVersion() {
 
    return `rc-${normalizeVersion(packageConfig.version)}`;
 }
+
 /**
  * Возвращает package.json
  * @param {String} pathToRep Путь до репозитория
- * return Object
+ * return Object|undefined
  */
 function getPackageConfig(pathToRep) {
    const configPath = path.join(pathToRep, 'package.json');
    if (fs.existsSync(configPath)) {
       return fs.readJSONSync(configPath);
    }
+   return undefined;
 }
 
 /**
 * возвращает объект с путями до репозитриев
 * @param {Object} config Конфиг приложения
 * @param {Object} argvOptions Параметры из командной строки
-* return Object
 */
 function setRepPathFromArgv(config, argvOptions) {
    for (const name of Object.keys(config.repositories)) {
@@ -110,13 +112,13 @@ function prepareReposUrl(config, protocol, gitMirror) {
 
    if (protocol === 'ssh') {
       prefix = 'git@';
-      suffix = ':'
+      suffix = ':';
    } else {
       prefix = 'https://';
-      suffix = '/'
+      suffix = '/';
    }
 
-   for(let name of Object.keys(config.repositories)) {
+   for (let name of Object.keys(config.repositories)) {
       const cfg = config.repositories[name];
       cfg.url = `${prefix}${cfg.mirror || gitMirror}${suffix}${cfg.url}.git`;
    }
@@ -131,12 +133,12 @@ function getRepsFromConfig(wsSection) {
    const result = {};
 
    if (wsSection.repositories) {
-      Object.keys(wsSection.repositories).forEach(name => {
+      Object.keys(wsSection.repositories).forEach((name) => {
          let url = wsSection.repositories[name].split('#');
          result[name] = {
             url: url[0],
             version: url[1]
-         }
+         };
       });
    }
 

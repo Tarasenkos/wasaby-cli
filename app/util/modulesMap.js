@@ -7,6 +7,7 @@ const fs = require('fs-extra');
 const MAP_FILE = path.normalize(path.join(__dirname, '..', '..', 'resources', 'modulesMap.json'));
 const CDN_REP_NAME = 'cdn';
 const WSCoreDepends = ['Types', 'Env', 'View', 'Vdom'];
+
 /**
  * Карта модулей s3mod, из всех репозиториев
  * @class ModulesMap
@@ -98,6 +99,8 @@ class ModulesMap {
       });
       return result;
    }
+
+
    /**
     * Возвращает список необходимых модулей
     * @return {Array}
@@ -140,7 +143,7 @@ class ModulesMap {
     * @return {Array}
     */
    getTestModulesByRep(repName) {
-      return  this.getModulesByRep(repName).filter((name) => this.get(name).unitTest);
+      return this.getModulesByRep(repName).filter(name => this.get(name).unitTest);
    }
 
    /**
@@ -171,7 +174,7 @@ class ModulesMap {
          await this._addToModulesMap(modules);
          await this._loadMap();
       }
-      this._addWsCoreDepends()
+      this._addWsCoreDepends();
    }
 
    /**
@@ -239,8 +242,8 @@ class ModulesMap {
                }
 
                cfg.id = xmlObj.ui_module.$.id;
-               cfg.required = !!xmlObj.ui_module.$.required
-               cfg.forCDN = xmlObj.ui_module.$.for_cdn === "1";
+               cfg.required = !!xmlObj.ui_module.$.required;
+               cfg.forCDN = xmlObj.ui_module.$.for_cdn === '1';
                this._modulesMap.set(cfg.name, cfg);
             }
          })
@@ -314,7 +317,7 @@ class ModulesMap {
    }
 
    _addWsCoreDepends() {
-      //У ws.core невозможно указать зависимости, удалить как удалят ws.core
+      // У ws.core невозможно указать зависимости, удалить как удалят ws.core
       if (this.has('WS.Core')) {
          let cfg = this.get('WS.Core');
          cfg.depends = WSCoreDepends;
