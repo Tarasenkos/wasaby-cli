@@ -137,7 +137,8 @@ function getRepsFromConfig(wsSection) {
          let url = wsSection.repositories[name].split('#');
          result[name] = {
             url: url[0],
-            version: url[1]
+            version: url[1],
+            load: true
          };
       });
    }
