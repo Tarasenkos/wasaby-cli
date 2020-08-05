@@ -336,7 +336,7 @@ class Test extends Base {
             const coverage = this._options.coverage ? '--coverage' : '';
             const report = this._report === 'xml' ? '--report' : '';
             const unitsPath = require.resolve('saby-units/cli.js');
-            let args = [unitsPath, '--isolated', coverage, report, `--config=${pathToConfig}`].concat(
+            let args = [unitsPath, '--isolated', coverage, report, `--configUnits=${pathToConfig}`].concat(
                this._getUnknownArgs()
             );
             await this._shell.spawn(
@@ -399,7 +399,7 @@ class Test extends Base {
          if (this._options.server) {
             await Promise.all([
                this._executeBrowserTestCmd(
-                  `node ${require.resolve('saby-units/cli/server.js')} --config=${configPath}`,
+                  `node ${require.resolve('saby-units/cli/server.js')} --configUnits=${configPath}`,
                   name,
                   configPath,
                   0
@@ -408,7 +408,7 @@ class Test extends Base {
             ]);
          } else {
             await this._executeBrowserTestCmd(
-               `node ${require.resolve('saby-units/cli.js')} --browser${coverage} --report --config=${configPath}`,
+               `node ${require.resolve('saby-units/cli.js')} --browser${coverage} --report --configUnits=${configPath}`,
                name,
                configPath,
                TEST_TIMEOUT
@@ -553,8 +553,12 @@ class Test extends Base {
       Object.keys(this._options.argvOptions).forEach((name) => {
          if (!this._options.hasOwnProperty(name)) {
             let value = this._options.argvOptions[name];
-            value = value.includes(' ') ? `"${value}"` : value;
-            args.push(`--${name}=${value}`);
+            if (typeof value === 'boolean') {
+               args.push(`--${name}`);
+            } else {
+               value = value.includes(' ') ? `"${value}"` : value;
+               args.push(`--${name}=${value}`);
+            }
          }
       });
       return args;
