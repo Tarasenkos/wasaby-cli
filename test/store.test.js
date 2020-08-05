@@ -280,4 +280,11 @@ describe('Store', () => {
          stubRepConf && stubRepConf.restore();
       });
    });
+
+   describe('._getForceLoadRepos()', () => {
+      it('should make store dir', () => {
+         sinon.stub(store, '_reposConfig').value({'test': {name: 'test', load: true}});
+         chai.expect(new Set(['test'])).to.deep.equal(store._getForceLoadRepos());
+      });
+   });
 });

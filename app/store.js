@@ -134,7 +134,8 @@ class Store extends Base {
       const reposFromMap = this._modulesMap.getRequiredRepositories();
       const reposFromArgv = this._getReposFromArgv();
       const reposFromProject = await this._getProjectRepos();
-      return new Set([...reposFromMap, ...reposFromArgv, ...reposFromProject]);
+      const reposFromConfig = this._getForceLoadRepos();
+      return new Set([...reposFromMap, ...reposFromArgv, ...reposFromProject, ...reposFromConfig]);
    }
 
    /**
@@ -170,6 +171,21 @@ class Store extends Base {
                repos.add(cfg.rep);
             }
          });
+      }
+      return repos;
+   }
+
+   /**
+    * Возвращает репозитории помеченные для загрузки из конфига
+    * @returns {Set<String>}
+    * @private
+    */
+   _getForceLoadRepos() {
+      const repos = new Set();
+      for (const name of Object.keys(this._reposConfig)) {
+         if (this._reposConfig[name].load) {
+            repos.add(name);
+         }
       }
       return repos;
    }
