@@ -92,9 +92,13 @@ class ModulesMap {
       modules.forEach((name) => {
          if (this._modulesMap.has(name) && !defTraverse.includes(name)) {
             const cfg = this._modulesMap.get(name);
-            const depends = this.getChildModules(cfg.depends, defTraverse.concat([name]));
+            const depends = cfg.depends.concat(this.getChildModules(cfg.depends, defTraverse.concat([name])));
             result.push(name);
-            result = result.concat(depends.filter(item => !result.includes(item)));
+            depends.forEach((item) => {
+               if (!result.includes(item)) {
+                  result.push(item);
+               }
+            });
          }
       });
       return result;
@@ -320,7 +324,7 @@ class ModulesMap {
       // У ws.core невозможно указать зависимости, удалить как удалят ws.core
       if (this.has('WS.Core')) {
          let cfg = this.get('WS.Core');
-         cfg.depends = WSCoreDepends;
+         cfg.depends = cfg.depends.concat(WSCoreDepends);
          this.set('WS.Core', cfg);
       }
    }
