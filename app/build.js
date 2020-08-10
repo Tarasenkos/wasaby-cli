@@ -34,6 +34,7 @@ class Build extends Base {
       this._projectPath = cfg.projectPath;
       this._pathToJinnee = cfg.pathToJinnee;
       this._watcher = cfg.watcher;
+      this._copyResources = cfg.copy;
       this._builderCfg = path.join(process.cwd(), 'builderConfig.json');
       if (cfg.builderBaseConfig) {
          this._builderBaseConfig = path.relative(__dirname, path.join(process.cwd(), cfg.builderBaseConfig));
@@ -171,6 +172,8 @@ class Build extends Base {
 
       builderConfig = this._buildRelease ? { ...builderConfig, ...RELEASE_FLAGS } : builderConfig;
       builderConfig.output = output || this._resources;
+      builderConfig.symlinks = !this._copyResources;
+
       builderConfig.logs = path.join(this._workDir, 'logs');
 
       return fs.outputFile(`./${builderConfigName}`, JSON.stringify(builderConfig, null, 4));

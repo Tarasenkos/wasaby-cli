@@ -109,6 +109,7 @@ class Cli {
          only: this._only,
          pathToJinnee: this._argvOptions.pathToJinnee,
          argvOptions: this._argvOptions,
+         copy: !!this._argvOptions.copy,
       });
 
       await build.run();
