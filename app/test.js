@@ -207,11 +207,14 @@ class Test extends Base {
          const moduleCfg = this._modulesMap.get(testModuleName);
          if (moduleCfg && moduleCfg.depends) {
             moduleCfg.depends.forEach((dependModuleName) => {
-               let nycModulePath = [dependModuleName, '**', '*.js'];
-               if (nycPath) {
-                  nycModulePath.unshift(nycPath);
+               const dependModuleCfg = this._modulesMap.get(dependModuleName);
+               if (moduleCfg.rep === name || (name instanceof Array && name.includes(dependModuleCfg.rep))) {
+                  let nycModulePath = [dependModuleName, '**', '*.js'];
+                  if (nycPath) {
+                     nycModulePath.unshift(nycPath);
+                  }
+                  cfg.nyc.include.push(nycModulePath.join('/'));
                }
-               cfg.nyc.include.push(nycModulePath.join('/'));
             });
          }
       });
