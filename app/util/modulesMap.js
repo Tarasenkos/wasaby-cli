@@ -274,7 +274,9 @@ class ModulesMap {
       const repos = new Set([CDN_REP_NAME]);
       modules.forEach((module) => {
          const moduleCfg = this._modulesMap.get(module);
-         repos.add(moduleCfg.rep);
+         if (moduleCfg) {
+            repos.add(moduleCfg.rep);
+         }
       });
       return repos;
    }
