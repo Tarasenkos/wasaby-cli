@@ -132,7 +132,6 @@ class Cli {
       const test = new Test({
          reposConfig: this._reposConfig,
          resources: this._resources,
-         realResources: this._realResources,
          store: this._store,
          testRep: this._testRep,
          workDir: this._workDir,
