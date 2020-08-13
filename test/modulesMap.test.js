@@ -364,4 +364,38 @@ describe('modulesMap', () => {
          chai.expect(modulesMap.getTestModulesByRep('test2')).to.deep.equal([]);
       });
    });
+
+   describe('.getRequiredRepositories()', () => {
+      let stubrep;
+      beforeEach(() => {
+         sinon.stub(modulesMap, '_reposConfig').value({
+            test1: {
+               test: 'path'
+            },
+            test2: {
+               test: 'path'
+            },
+            test3: {}
+         });
+
+         sinon.stub(modulesMap, '_modulesMap').value(
+            new Map([
+               ['test11', {name: 'test11', rep: 'test1', depends: ['test12'], unitTest: true}],
+               ['test12', {name: 'test12', rep: 'test1', depends: []}],
+               ['test21', {name: 'test21', rep: 'test2', depends: ['test25']}]
+            ])
+         );
+
+         stubrep = sinon.stub(modulesMap, '_testRep').value(['test1']);
+      });
+
+      it('should return required repositories', () => {
+         chai.expect(new Set(['cdn', 'test1'])).to.deep.equal(modulesMap.getRequiredRepositories());
+      });
+
+      it('should not throw error when depend doesnt exists in map', () => {
+         stubrep.value(['test2']);
+         chai.expect(() => { modulesMap.getRequiredRepositories()}).not.throw();
+      });
+   });
 });
