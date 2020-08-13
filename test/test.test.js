@@ -267,9 +267,12 @@ describe('Test', () => {
    });
 
    describe('._getTestConfig()', function() {
+      let stubRelative;
       beforeEach(() => {
          sinon.stub(test._options, 'workDir').value('/application');
          sinon.stub(test._options, 'workspace').value('/application');
+         sinon.stub(test._options, 'resources').value('');
+         stubRelative = sinon.stub(path, 'relative').callsFake((p) => p);
       });
       it('should return config', async() => {
          let cfg = await test._getTestConfig();
@@ -287,7 +290,7 @@ describe('Test', () => {
 
       it('should set relative path to nyc', async() => {
          let cfg = await test._getTestConfig('name');
-         chai.expect('./artifacts/name').is.equal(cfg.nyc.reportDir);
+         chai.expect('/application/artifacts/name').is.equal(cfg.nyc.reportDir);
          chai.expect(this._workDir).is.equal(cfg.nyc.root);
       });
 
@@ -296,11 +299,11 @@ describe('Test', () => {
             new Map([
                ['test11', {name: 'test11', rep: 'test1', depends: ['test22']}],
                ['test22', {name: 'test44', rep: 'test2', depends: []}],
-               ['test_test1', {name: 'test_test1', rep: 'test1', depends: ['test11'], unitTest: true}],
+               ['test_test1', {name: 'test_test1', rep: 'test1', depends: ['test11'], unitTest: true}]
             ])
          );
          let cfg = await test._getTestConfig('test1', 'node', 'test_test1');
-         chai.expect([ 'test11/**/*.js' ]).to.deep.equal(cfg.nyc.include);
+         chai.expect([ '/application/test11/**/*.js' ]).to.deep.equal(cfg.nyc.include);
       });
 
       it('should filter modules from another repository', async() => {
@@ -312,7 +315,7 @@ describe('Test', () => {
             ])
          );
          let cfg = await test._getTestConfig('test1', 'node', 'test_test1');
-         chai.expect([ 'test11/**/*.js' ]).to.deep.equal(cfg.nyc.include);
+         chai.expect([ '/application/test11/**/*.js' ]).to.deep.equal(cfg.nyc.include);
       });
 
       it('should not throw error when module not exists in modules map', async() => {
@@ -323,8 +326,12 @@ describe('Test', () => {
             ])
          );
          let cfg = await test._getTestConfig('test1', 'node', 'test_test1');
-         chai.expect([ 'test11/**/*.js' ]).to.deep.equal(cfg.nyc.include);
+         chai.expect([ '/application/test11/**/*.js' ]).to.deep.equal(cfg.nyc.include);
       });
+
+      afterEach(() => {
+         stubRelative.restore();
+      })
    });
 
    describe('._setDiff()', function() {

@@ -24,8 +24,8 @@ function walkDir(rootDir, callback, exclude = [], currentDir = '') {
          const fullPath = path.join(defCurrentDir, file);
          try {
             const lstat = fs.lstatSync(fullPath);
-            if (!exclude.includes(fullPath) && !lstat.isSymbolicLink()) {
-               if (lstat.isDirectory()) {
+            if (!exclude.includes(fullPath)) {
+               if (lstat.isDirectory() && !lstat.isSymbolicLink()) {
                   walkDir(rootDir, callback, exclude, fullPath);
                } else {
                   callback(path.join(relativePath, file));

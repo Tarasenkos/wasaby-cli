@@ -198,10 +198,7 @@ class Test extends Base {
          'report': ['json', 'text', 'html'].includes(this._options.coverage) ? this._options.coverage : 'html'
       };
 
-      let nycPath;
-      if (this._options.realResources) {
-         nycPath = path.relative(this._options.workDir, this._options.realResources);
-      }
+      let nycPath = path.relative(this._options.workDir, this._options.resources);
       const namesArray = (names instanceof Array) ? names : [names];
       testModulesArray.forEach((testModuleName) => {
          const moduleCfg = this._modulesMap.get(testModuleName);
@@ -521,7 +518,7 @@ class Test extends Base {
 
    /**
     * Возвращает текст ошибки без цифр и пробелов
-    * @param {String} text
+    * @param {String} textАtslib
     * @private
     */
    // eslint-disable-next-line class-methods-use-this

@@ -131,8 +131,7 @@ describe('config', () => {
                url: 'https://git.sbis.ru/sbis/name2.git',
                version: 'rc-20.6000'
             }
-
-         })
+         });
       });
 
       it('should return empty object', () => {

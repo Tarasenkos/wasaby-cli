@@ -52,7 +52,6 @@ class Cli {
 
          // если сборка идет джином то исходники лежат в  intest-ps/ui/resources
          this._resources = path.join(this._workDir, 'intest-ps', 'ui', 'resources');
-         this._realResources = path.join(this._workDir, 'build-ui', 'resources');
          this._projectPath = this._argvOptions.projectDir ? path.join(this._argvOptions.projectDir, 'InTest.s3cld') : '';
          this._projectPath = this._argvOptions.project || this._projectPath;
       } else {
@@ -111,7 +110,6 @@ class Cli {
          argvOptions: this._argvOptions,
          copy: !!this._argvOptions.copy,
       });
-
       await build.run();
    }
 
@@ -134,7 +132,6 @@ class Cli {
       const test = new Test({
          reposConfig: this._reposConfig,
          resources: this._resources,
-         realResources: this._realResources,
          store: this._store,
          testRep: this._testRep,
          workDir: this._workDir,
