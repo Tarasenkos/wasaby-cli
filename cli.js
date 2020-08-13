@@ -110,7 +110,6 @@ class Cli {
          argvOptions: this._argvOptions,
          copy: !!this._argvOptions.copy,
       });
-f
       await build.run();
    }
 
