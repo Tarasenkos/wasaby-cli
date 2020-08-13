@@ -314,6 +314,17 @@ describe('Test', () => {
          let cfg = await test._getTestConfig('test1', 'node', 'test_test1');
          chai.expect([ 'test11/**/*.js' ]).to.deep.equal(cfg.nyc.include);
       });
+
+      it('should not throw error when module not exists in modules map', async() => {
+         sinon.stub(test._modulesMap, '_modulesMap').value(
+            new Map([
+               ['test11', {name: 'test11', rep: 'test1', depends: []}],
+               ['test_test1', {name: 'test_test1', rep: 'test1', depends: ['test11', 'test33'], unitTest: true}],
+            ])
+         );
+         let cfg = await test._getTestConfig('test1', 'node', 'test_test1');
+         chai.expect([ 'test11/**/*.js' ]).to.deep.equal(cfg.nyc.include);
+      });
    });
 
    describe('._setDiff()', function() {
