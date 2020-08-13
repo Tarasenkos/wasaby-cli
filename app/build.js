@@ -4,6 +4,7 @@ const logger = require('./util/logger');
 const Base = require('./base');
 const Sdk = require('./util/sdk');
 const Project = require('./xml/project');
+const walkDir = require('./util/walkDir');
 
 const builderConfigName = 'builderConfig.json';
 const builderBaseConfig = '../builderConfig.base.json';
@@ -60,7 +61,11 @@ class Build extends Base {
          await this._linkCDN();
          logger.log('Подготовка тестов завершена успешно');
       } catch (e) {
-         e.message = `Сборка ресурсов завершена с ошибкой: ${e.message}`;
+         if (e.message) {
+            e.message = `Сборка ресурсов завершена с ошибкой: ${e}`;
+         } else {
+            e = `Сборка ресурсов завершена с ошибкой: ${e}`;
+         }
          throw e;
       }
    }
@@ -106,6 +111,10 @@ class Build extends Base {
       });
 
       await project.prepare();
+
+      if (this._copyResources) {
+         this._copySymlincResources();
+      }
 
       await sdk.jinneeDeploy(await project.getDeploy(), logs, project.file);
    }
@@ -172,11 +181,23 @@ class Build extends Base {
 
       builderConfig = this._buildRelease ? { ...builderConfig, ...RELEASE_FLAGS } : builderConfig;
       builderConfig.output = output || this._resources;
-      builderConfig.symlinks = !this._copyResources;
+      //builderConfig.symlinks = !this._copyResources;
 
       builderConfig.logs = path.join(this._workDir, 'logs');
 
       return fs.outputFile(`./${builderConfigName}`, JSON.stringify(builderConfig, null, 4));
+   }
+
+   _copySymlincResources() {
+      walkDir(this._resources, (file) => {
+         const fullPath = path.join(this._resources, file);
+         const lstat = fs.lstatSync(fullPath);
+         if (lstat.isSymbolicLink()) {
+            const realpath = fs.realpathSync(fullPath);
+            fs.unlinkSync(fullPath);
+            fs.copy(realpath, fullPath);
+         }
+      });
    }
 }
 
