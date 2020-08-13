@@ -194,13 +194,14 @@ describe('Test', () => {
    });
 
    describe('.prepareReport()', () => {
-      let stubRead, stubWrite, stubTestReports, fsExistsSync, stubTestError;
+      let stubRead, stubWrite, stubTestReports, fsExistsSync, stubTestError, outputFileSync;
       beforeEach(() => {
          stubWrite = sinon.stub(xml, 'writeXmlFile').callsFake(() => undefined);
          stubTestError = sinon.stub(test, '_testErrors').value({});
          stubTestReports = sinon.stub(test, '_testReports').value(new Map([['test', {}], ['test1', {}]]));
          stubRead = sinon.stub(fs, 'readFileSync').callsFake(() => '<testsuite><testcase classname="test1"></testcase></testsuite>');
          fsExistsSync = sinon.stub(fs, 'existsSync').callsFake(() => true);
+         outputFileSync = sinon.stub(fs, 'outputFileSync').callsFake(() => true);
       });
 
       it('should return all test', (done) => {
@@ -232,6 +233,7 @@ describe('Test', () => {
          stubTestReports.restore();
          fsExistsSync.restore();
          stubTestError.restore();
+         outputFileSync.restore();
       });
    });
 
@@ -287,6 +289,18 @@ describe('Test', () => {
          let cfg = await test._getTestConfig('name');
          chai.expect('./artifacts/name').is.equal(cfg.nyc.reportDir);
          chai.expect(this._workDir).is.equal(cfg.nyc.root);
+      });
+
+      it('should filter modules from another repository', async() => {
+         sinon.stub(test._modulesMap, '_modulesMap').value(
+            new Map([
+               ['test11', {name: 'test11', rep: 'test1', depends: ['test22']}],
+               ['test22', {name: 'test44', rep: 'test2', depends: []}],
+               ['test_test1', {name: 'test_test1', rep: 'test1', depends: ['test11'], unitTest: true}],
+            ])
+         );
+         let cfg = await test._getTestConfig('test1', 'node', 'test_test1');
+         chai.expect([ 'test11/**/*.js' ]).to.deep.equal(cfg.nyc.include);
       });
 
       it('should filter modules from another repository', async() => {
