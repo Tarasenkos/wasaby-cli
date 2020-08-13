@@ -6,8 +6,7 @@ const fs = require('fs-extra');
 
 const MAP_FILE = path.normalize(path.join(__dirname, '..', '..', 'resources', 'modulesMap.json'));
 const CDN_REP_NAME = 'cdn';
-const WSCoreDepends = ['Types', 'Env', 'View', 'Vdom'];
-
+const WSCoreDepends = ['Types', 'Env', 'View', 'Vdom', 'UI'];
 /**
  * Карта модулей s3mod, из всех репозиториев
  * @class ModulesMap
@@ -274,7 +273,9 @@ class ModulesMap {
       const repos = new Set([CDN_REP_NAME]);
       modules.forEach((module) => {
          const moduleCfg = this._modulesMap.get(module);
-         repos.add(moduleCfg.rep);
+         if (moduleCfg) {
+            repos.add(moduleCfg.rep);
+         }
       });
       return repos;
    }
