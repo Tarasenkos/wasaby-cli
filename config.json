@@ -104,6 +104,10 @@
       },
       "wasaby-hot-reload": {
          "url": "saby/wasaby-hot-reload"
+      },
+      "imageEditor2": {
+         "mirror": "git.sbis.ru",
+         "url": "engine/imageeditor"
       }
    }
 }
