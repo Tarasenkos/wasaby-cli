@@ -278,9 +278,13 @@ class Test extends Base {
       if (this._options.only) {
          // если тесты запускаются только по одному репозиторию то не разделяем их по модулям
          logger.log('Запуск тестов', this._options.testRep);
+         let modules = this._modulesMap.getRequiredModules().filter((moduleName) => {
+            let cfg = this._modulesMap.get(moduleName);
+            return cfg && cfg.unitTest;
+         });
          return Promise.all([
-            this._startNodeTest(this._options.testRep, this._modulesMap.getRequiredModules()),
-            this._startBrowserTest(this._options.testRep, this._modulesMap.getRequiredModules())
+            this._startNodeTest(this._options.testRep, modules),
+            this._startBrowserTest(this._options.testRep, modules)
          ]);
       }
 
