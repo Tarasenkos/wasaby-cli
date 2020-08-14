@@ -195,7 +195,7 @@ class Build extends Base {
          if (lstat.isSymbolicLink()) {
             const realpath = fs.realpathSync(fullPath);
             fs.unlinkSync(fullPath);
-            fs.copy(realpath, fullPath);
+            fs.copySync(realpath, fullPath);
          }
       });
    }
