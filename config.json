@@ -46,10 +46,6 @@
          "mirror": "git.sbis.ru",
          "url": "warehouse/pricing-discount-cards"
       },
-      "education_edu-ui": {
-         "mirror": "git.sbis.ru",
-         "url": "education/edu-ui"
-      },
       "sbis_debuggingexamples": {
          "mirror": "git.sbis.ru",
          "url": "sbis/debuggingexamples"
@@ -62,13 +58,13 @@
          "mirror": "git.sbis.ru",
          "url": "sbis-plugin-extensions/edoscanloader"
       },
-      "sabytrade_warehouse": {
-         "mirror": "git.sbis.ru",
-         "url": "sabytrade/warehouse"
-      },
       "billing_accounts": {
          "mirror": "git.sbis.ru",
          "url": "billing/accounts"
+      },
+      "sabytrade_warehouse": {
+         "mirror": "git.sbis.ru",
+         "url": "sabytrade/warehouse"
       },
       "crm_wificonnect": {
          "mirror": "git.sbis.ru",
@@ -94,29 +90,29 @@
          "mirror": "git.sbis.ru",
          "url": "crm/videoregistration"
       },
-      "warehouse_gis-service": {
-         "mirror": "git.sbis.ru",
-         "url": "eo/requirement-parser"
-      },
       "warehouse_price-limitation": {
          "mirror": "git.sbis.ru",
          "url": "eo/requirement-parser"
       },
-      "billing_billing-ofd": {
+      "warehouse_gis-service": {
          "mirror": "git.sbis.ru",
-         "url": "billing/billing-ofd"
+         "url": "eo/requirement-parser"
       },
       "booking_composite-sales": {
          "mirror": "git.sbis.ru",
          "url": "booking/composite-sales"
       },
-      "staff_eribbon": {
+      "billing_billing-ofd": {
          "mirror": "git.sbis.ru",
-         "url": "staff/eribbon"
+         "url": "billing/billing-ofd"
       },
       "ocr-ml_recognition-stat": {
          "mirror": "git.sbis.ru",
          "url": "ocr-ml/recognition-stat"
+      },
+      "staff_eribbon": {
+         "mirror": "git.sbis.ru",
+         "url": "staff/eribbon"
       },
       "retail_core": {
          "mirror": "git.sbis.ru",
@@ -130,10 +126,6 @@
          "mirror": "git.sbis.ru",
          "url": "printforms/pt-components"
       },
-      "printforms_templateeditor": {
-         "mirror": "git.sbis.ru",
-         "url": "printforms/templateeditor"
-      },
       "integration_online": {
          "mirror": "git.sbis.ru",
          "url": "integration/online"
@@ -142,21 +134,33 @@
          "mirror": "git.sbis.ru",
          "url": "eo/requirement-parser"
       },
-      "crm_advert-service": {
+      "printforms_templateeditor": {
          "mirror": "git.sbis.ru",
-         "url": "crm/advert-service"
+         "url": "printforms/templateeditor"
       },
       "eo_rcservice": {
          "mirror": "git.sbis.ru",
          "url": "eo/requirement-parser"
       },
+      "crm_advert-service": {
+         "mirror": "git.sbis.ru",
+         "url": "crm/advert-service"
+      },
       "video_webinar-static": {
          "mirror": "git.sbis.ru",
          "url": "video/webinar-static"
       },
+      "online_inside": {
+         "mirror": "git.sbis.ru",
+         "url": "online/inside"
+      },
       "staff_cadres": {
          "mirror": "git.sbis.ru",
          "url": "staff/cadres"
+      },
+      "ofd_core": {
+         "mirror": "git.sbis.ru",
+         "url": "ofd/core"
       },
       "ofd_ofd": {
          "mirror": "git.sbis.ru",
@@ -165,10 +169,6 @@
       "billing_license-platform": {
          "mirror": "git.sbis.ru",
          "url": "billing/license-platform"
-      },
-      "ofd_core": {
-         "mirror": "git.sbis.ru",
-         "url": "ofd/core"
       },
       "person_person": {
          "mirror": "git.sbis.ru",
@@ -190,29 +190,29 @@
          "mirror": "git.sbis.ru",
          "url": "retail/salary"
       },
-      "person_person-verifications": {
+      "engine_schemeeditor": {
          "mirror": "git.sbis.ru",
-         "url": "person/person-verifications"
+         "url": "engine/schemeeditor"
       },
       "socnet_site-editor": {
          "mirror": "git.sbis.ru",
          "url": "socnet/site-editor"
       },
+      "person_person-verifications": {
+         "mirror": "git.sbis.ru",
+         "url": "person/person-verifications"
+      },
       "ofd_purchases": {
          "mirror": "git.sbis.ru",
          "url": "eo/requirement-parser"
       },
-      "staff_staff": {
+      "crm_audioplayer": {
          "mirror": "git.sbis.ru",
-         "url": "staff/staff"
+         "url": "crm/audioplayer"
       },
       "field-managment_presto-delivery": {
          "mirror": "git.sbis.ru",
          "url": "field-managment/presto-delivery"
-      },
-      "crm_audioplayer": {
-         "mirror": "git.sbis.ru",
-         "url": "crm/audioplayer"
       },
       "socnet_site-widgets": {
          "mirror": "git.sbis.ru",
@@ -229,6 +229,10 @@
       "eo_offline": {
          "mirror": "git.sbis.ru",
          "url": "eo/offline"
+      },
+      "staff_staff": {
+         "mirror": "git.sbis.ru",
+         "url": "staff/staff"
       },
       "bigdata_interfaces": {
          "mirror": "git.sbis.ru",
@@ -258,13 +262,13 @@
          "mirror": "git.sbis.ru",
          "url": "service-center/service-center"
       },
-      "retail_themes": {
-         "mirror": "git.sbis.ru",
-         "url": "retail/themes"
-      },
       "eo_requirement-processing-service": {
          "mirror": "git.sbis.ru",
          "url": "eo/requirement-processing-service"
+      },
+      "retail_themes": {
+         "mirror": "git.sbis.ru",
+         "url": "retail/themes"
       },
       "warehouse_code-templates": {
          "mirror": "git.sbis.ru",
@@ -274,25 +278,21 @@
          "mirror": "git.sbis.ru",
          "url": "eo/requirement-parser"
       },
-      "work-time-mgmt_works-management": {
+      "person_photo": {
          "mirror": "git.sbis.ru",
-         "url": "work-time-mgmt/works-management"
+         "url": "person/photo"
       },
       "contragents_contractors-mobile-api": {
          "mirror": "git.sbis.ru",
          "url": "contragents/contractors-mobile-api"
       },
-      "person_photo": {
+      "work-time-mgmt_works-management": {
          "mirror": "git.sbis.ru",
-         "url": "person/photo"
+         "url": "work-time-mgmt/works-management"
       },
       "security_jcollector": {
          "mirror": "git.sbis.ru",
          "url": "eo/requirement-parser"
-      },
-      "warehouse_nomenclature": {
-         "mirror": "git.sbis.ru",
-         "url": "warehouse/nomenclature"
       },
       "global_catalog_recipe": {
          "mirror": "git.sbis.ru",
@@ -310,17 +310,17 @@
          "mirror": "git.sbis.ru",
          "url": "showcase/admin"
       },
-      "warehouse_docs": {
+      "contragents_admin-spp": {
          "mirror": "git.sbis.ru",
-         "url": "warehouse/docs"
+         "url": "eo/requirement-parser"
       },
       "fed_flca": {
          "mirror": "git.sbis.ru",
          "url": "fed/flca"
       },
-      "root_sbis3-notes": {
+      "warehouse_nomenclature": {
          "mirror": "git.sbis.ru",
-         "url": "root/sbis3-notes"
+         "url": "warehouse/nomenclature"
       },
       "engine_informers": {
          "mirror": "git.sbis.ru",
@@ -334,21 +334,21 @@
          "mirror": "git.sbis.ru",
          "url": "sbis-plugin-extensions/remote-helper"
       },
-      "sites_tensor_ru": {
-         "mirror": "git.sbis.ru",
-         "url": "sites/tensor_ru"
-      },
       "sbis-plugin-extensions_disk-service": {
          "mirror": "git.sbis.ru",
          "url": "sbis-plugin-extensions/disk-service"
       },
-      "pe_planned-events-service": {
+      "sites_tensor_ru": {
          "mirror": "git.sbis.ru",
-         "url": "pe/planned-events-service"
+         "url": "sites/tensor_ru"
       },
       "sbis-plugin-extensions_video-call-service": {
          "mirror": "git.sbis.ru",
          "url": "sbis-plugin-extensions/video-call-service"
+      },
+      "pe_planned-events-service": {
+         "mirror": "git.sbis.ru",
+         "url": "pe/planned-events-service"
       },
       "sbisdisk_multimedia-converter": {
          "mirror": "git.sbis.ru",
@@ -362,9 +362,9 @@
          "mirror": "git.sbis.ru",
          "url": "sbis-plugin-extensions/screenshot-service"
       },
-      "pe_regl-operations": {
+      "socnet_socnet-aggregation": {
          "mirror": "git.sbis.ru",
-         "url": "pe/regl-operations"
+         "url": "eo/requirement-parser"
       },
       "sites_mili": {
          "mirror": "git.sbis.ru",
@@ -373,6 +373,14 @@
       "work-time-mgmt_autocatalog": {
          "mirror": "git.sbis.ru",
          "url": "eo/requirement-parser"
+      },
+      "pe_regl-operations": {
+         "mirror": "git.sbis.ru",
+         "url": "pe/regl-operations"
+      },
+      "warehouse_docs": {
+         "mirror": "git.sbis.ru",
+         "url": "warehouse/docs"
       },
       "warehouse_price-formation": {
          "mirror": "git.sbis.ru",
@@ -402,13 +410,13 @@
          "mirror": "git.sbis.ru",
          "url": "eo/core"
       },
-      "aps_applied-code-editor": {
-         "mirror": "git.sbis.ru",
-         "url": "aps/applied-code-editor"
-      },
       "buh_salary": {
          "mirror": "git.sbis.ru",
          "url": "buh/salary"
+      },
+      "aps_applied-code-editor": {
+         "mirror": "git.sbis.ru",
+         "url": "aps/applied-code-editor"
       },
       "warehouse_stats": {
          "mirror": "git.sbis.ru",
@@ -430,6 +438,10 @@
          "mirror": "git.sbis.ru",
          "url": "work-time-mgmt/booking-service"
       },
+      "navigation-configuration_general-interface-settings": {
+         "mirror": "git.sbis.ru",
+         "url": "navigation-configuration/general-interface-settings"
+      },
       "notice_distribution": {
          "mirror": "git.sbis.ru",
          "url": "notice/distribution"
@@ -437,10 +449,6 @@
       "navigation-configuration_configuration": {
          "mirror": "git.sbis.ru",
          "url": "navigation-configuration/configuration"
-      },
-      "navigation-configuration_general-interface-settings": {
-         "mirror": "git.sbis.ru",
-         "url": "navigation-configuration/general-interface-settings"
       },
       "edo_edo-admin": {
          "mirror": "git.sbis.ru",
@@ -466,29 +474,33 @@
          "mirror": "git.sbis.ru",
          "url": "eo/requirement-parser"
       },
-      "ca_edo-crypto": {
-         "mirror": "git.sbis.ru",
-         "url": "ca/edo-crypto"
-      },
       "ca_ca": {
          "mirror": "git.sbis.ru",
          "url": "eo/requirement-parser"
+      },
+      "ca_edo-crypto": {
+         "mirror": "git.sbis.ru",
+         "url": "ca/edo-crypto"
       },
       "sites_sbisru": {
          "mirror": "git.sbis.ru",
          "url": "sites/sbisru"
       },
-      "disk_client": {
-         "mirror": "git.sbis.ru",
-         "url": "disk/client"
-      },
       "fed_sbis-ru": {
          "mirror": "git.sbis.ru",
          "url": "fed/sbis-ru"
       },
+      "disk_client": {
+         "mirror": "git.sbis.ru",
+         "url": "disk/client"
+      },
       "edo_edo-client": {
          "mirror": "git.sbis.ru",
          "url": "edo/edo-client"
+      },
+      "edo_roaming-tools": {
+         "mirror": "git.sbis.ru",
+         "url": "eo/requirement-parser"
       },
       "pm_meeting-service": {
          "mirror": "git.sbis.ru",
@@ -506,6 +518,10 @@
          "mirror": "git.sbis.ru",
          "url": "eo/requirement-parser"
       },
+      "work-time-mgmt_acs-robot": {
+         "mirror": "git.sbis.ru",
+         "url": "work-time-mgmt/acs-robot"
+      },
       "integration_config": {
          "mirror": "git.sbis.ru",
          "url": "integration/online"
@@ -514,17 +530,21 @@
          "mirror": "git.sbis.ru",
          "url": "pm/working-area"
       },
-      "billing_billing": {
-         "mirror": "git.sbis.ru",
-         "url": "billing/billing"
-      },
       "reclamations_contract-service": {
          "mirror": "git.sbis.ru",
          "url": "reclamations/contract-service"
       },
+      "pm_meetings": {
+         "mirror": "git.sbis.ru",
+         "url": "pm/meetings"
+      },
       "pm_core": {
          "mirror": "git.sbis.ru",
          "url": "pm/core"
+      },
+      "billing_billing": {
+         "mirror": "git.sbis.ru",
+         "url": "billing/billing"
       },
       "edo_docview-service": {
          "mirror": "git.sbis.ru",
@@ -538,10 +558,6 @@
          "mirror": "git.sbis.ru",
          "url": "eo/requirement-parser"
       },
-      "pm_meetings": {
-         "mirror": "git.sbis.ru",
-         "url": "pm/meetings"
-      },
       "crm_core": {
          "mirror": "git.sbis.ru",
          "url": "crm/core"
@@ -554,9 +570,21 @@
          "mirror": "git.sbis.ru",
          "url": "eo/requirement-parser"
       },
+      "work-time-mgmt_geocoding": {
+         "mirror": "git.sbis.ru",
+         "url": "field-managment/presto-delivery"
+      },
       "root_sbis3-retail": {
          "mirror": "git.sbis.ru",
          "url": "root/sbis3-retail"
+      },
+      "work-time-mgmt_activity": {
+         "mirror": "git.sbis.ru",
+         "url": "work-time-mgmt/activity"
+      },
+      "contragents_online": {
+         "mirror": "git.sbis.ru",
+         "url": "contragents/online"
       },
       "message_msg": {
          "mirror": "git.sbis.ru",
@@ -566,10 +594,6 @@
          "mirror": "git.sbis.ru",
          "url": "aps/applied-code"
       },
-      "work-time-mgmt_event-calendar": {
-         "mirror": "git.sbis.ru",
-         "url": "work-time-mgmt/event-calendar"
-      },
       "work-time-mgmt_core": {
          "mirror": "git.sbis.ru",
          "url": "work-time-mgmt/core"
@@ -578,9 +602,9 @@
          "mirror": "git.sbis.ru",
          "url": "eo/requirement-parser"
       },
-      "edo_core": {
+      "work-time-mgmt_event-calendar": {
          "mirror": "git.sbis.ru",
-         "url": "edo/docs-external-processing"
+         "url": "work-time-mgmt/event-calendar"
       },
       "socnet_news": {
          "mirror": "git.sbis.ru",
@@ -594,9 +618,17 @@
          "mirror": "git.sbis.ru",
          "url": "eo/requirement-parser"
       },
+      "edo_core": {
+         "mirror": "git.sbis.ru",
+         "url": "edo/docs-external-processing"
+      },
       "plugin_core": {
          "mirror": "git.sbis.ru",
          "url": "contragents/contractors-mobile-api"
+      },
+      "root_money-acquiring": {
+         "mirror": "git.sbis.ru",
+         "url": "root/money-acquiring"
       },
       "root_sbis3-paysys": {
          "mirror": "git.sbis.ru",
@@ -605,6 +637,18 @@
       "root_sbis3-classifiers": {
          "mirror": "git.sbis.ru",
          "url": "eo/requirement-parser"
+      },
+      "sbis_admin": {
+         "mirror": "git.sbis.ru",
+         "url": "eo/requirement-parser"
+      },
+      "root_sbis3-notes": {
+         "mirror": "git.sbis.ru",
+         "url": "root/sbis3-notes"
+      },
+      "root_sbis3-personal-calendar": {
+         "mirror": "git.sbis.ru",
+         "url": "root/sbis3-personal-calendar"
       },
       "root_sbis3-eo-stat-prot": {
          "mirror": "git.sbis.ru",
@@ -618,7 +662,15 @@
          "mirror": "git.sbis.ru",
          "url": "fed/documentformats"
       },
+      "work-time-mgmt_time-zone": {
+         "mirror": "git.sbis.ru",
+         "url": "work-time-mgmt/time-zone"
+      },
       "root_sbis3-fileloader": {
+         "mirror": "git.sbis.ru",
+         "url": "eo/requirement-parser"
+      },
+      "root_help-sbis-ru": {
          "mirror": "git.sbis.ru",
          "url": "eo/requirement-parser"
       },
@@ -626,21 +678,17 @@
          "mirror": "git.sbis.ru",
          "url": "fed/core"
       },
-      "root_help-sbis-ru": {
-         "mirror": "git.sbis.ru",
-         "url": "eo/requirement-parser"
-      },
       "root_sbis3-bank-integration": {
          "mirror": "git.sbis.ru",
          "url": "root/sbis3-bank-integration"
       },
-      "root_sbis3-nomcatalog": {
-         "mirror": "git.sbis.ru",
-         "url": "root/sbis3-nomcatalog"
-      },
       "video_webrtc-stat": {
          "mirror": "git.sbis.ru",
          "url": "video/webrtc-stat"
+      },
+      "root_sbis3-nomcatalog": {
+         "mirror": "git.sbis.ru",
+         "url": "root/sbis3-nomcatalog"
       },
       "root_sbis3-collation": {
          "mirror": "git.sbis.ru",
@@ -658,17 +706,29 @@
          "mirror": "git.sbis.ru",
          "url": "root/sbis3-person"
       },
-      "root_sbis3-crypto": {
+      "socnet_socnet": {
          "mirror": "git.sbis.ru",
-         "url": "root/sbis3-crypto"
+         "url": "socnet/socnet"
+      },
+      "root_wi.sbis": {
+         "mirror": "git.sbis.ru",
+         "url": "root/wi.sbis"
       },
       "root_sbis3-warehouse": {
          "mirror": "git.sbis.ru",
          "url": "root/sbis3-warehouse"
       },
+      "root_sbis3-crypto": {
+         "mirror": "git.sbis.ru",
+         "url": "root/sbis3-crypto"
+      },
       "video_videocall": {
          "mirror": "git.sbis.ru",
          "url": "video/videocall"
+      },
+      "root_sbis3-tender": {
+         "mirror": "git.sbis.ru",
+         "url": "eo/requirement-parser"
       },
       "root_sbis3-eo": {
          "mirror": "git.sbis.ru",
