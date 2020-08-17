@@ -190,10 +190,6 @@
          "mirror": "git.sbis.ru",
          "url": "retail/salary"
       },
-      "engine_schemeeditor": {
-         "mirror": "git.sbis.ru",
-         "url": "engine/schemeeditor"
-      },
       "person_person-verifications": {
          "mirror": "git.sbis.ru",
          "url": "person/person-verifications"
