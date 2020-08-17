@@ -46,10 +46,6 @@
          "mirror": "git.sbis.ru",
          "url": "warehouse/pricing-discount-cards"
       },
-      "sbis_debuggingexamples": {
-         "mirror": "git.sbis.ru",
-         "url": "sbis/debuggingexamples"
-      },
       "plugin_software-monitoring": {
          "mirror": "git.sbis.ru",
          "url": "plugin/software-monitoring"
