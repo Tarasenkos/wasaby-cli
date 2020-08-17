@@ -318,6 +318,10 @@
          "mirror": "git.sbis.ru",
          "url": "fed/flca"
       },
+      "root_sbis3-notes": {
+         "mirror": "git.sbis.ru",
+         "url": "root/sbis3-notes"
+      },
       "engine_informers": {
          "mirror": "git.sbis.ru",
          "url": "engine/informers"
