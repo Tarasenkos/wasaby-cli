@@ -118,6 +118,11 @@
          "mirror": "git.sbis.ru",
          "url": "engine/informers",
          "isNotPlatform": true
+      },
+      "sbis-notes": {
+         "mirror": "git.sbis.ru",
+         "url": "root/sbis3-notes",
+         "isNotPlatform": true
       }
    }
 }
