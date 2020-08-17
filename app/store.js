@@ -91,7 +91,15 @@ class Store extends Base {
          try {
             await git.checkout(branch);
          } catch (err) {
-            throw new Error(`Ошибка при переключение на ветку ${branch} в репозитории ${name}: ${err}`);
+            if (branch.endsWith('000')) {
+               try {
+                  await git.checkout(`${branch.slice(0, branch.length - 3)}100`);
+               } catch (err) {
+                  throw new Error(`Ошибка при переключение на ветку ${branch} в репозитории ${name}: ${err}`);
+               }
+            } else {
+               throw new Error(`Ошибка при переключение на ветку ${branch} в репозитории ${name}: ${err}`);
+            }
          }
       }
       await git.reset(isBranch ? `remotes/origin/${branch}` : branch);
