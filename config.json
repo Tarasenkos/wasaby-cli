@@ -678,14 +678,6 @@
          "mirror": "git.sbis.ru",
          "url": "eo/requirement-parser"
       },
-      "saby_UI": {
-         "mirror": "git.sbis.ru",
-         "url": "sbis/rmi"
-      },
-      "saby_wasaby-controls": {
-         "mirror": "git.sbis.ru",
-         "url": "sbis/controls"
-      },
       "sbis3.engine": {
          "mirror": "git.sbis.ru",
          "url": "sbis/engine",

@@ -93,7 +93,8 @@ class Store extends Base {
          } catch (err) {
             if (branch.endsWith('000')) {
                try {
-                  await git.checkout(`${branch.slice(0, branch.length - 3)}100`);
+                  branch = `${branch.slice(0, branch.length - 3)}100`;
+                  await git.checkout(branch);
                } catch (err) {
                   throw new Error(`Ошибка при переключение на ветку ${branch} в репозитории ${name}: ${err}`);
                }
