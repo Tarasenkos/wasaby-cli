@@ -108,6 +108,16 @@
       "imageEditor2": {
          "mirror": "git.sbis.ru",
          "url": "engine/imageeditor"
+      },
+      "sbis-person": {
+         "mirror": "git.sbis.ru",
+         "url": "person/person",
+         "isNotPlatform": true
+      },
+      "engine-informers": {
+         "mirror": "git.sbis.ru",
+         "url": "engine/informers",
+         "isNotPlatform": true
       }
    }
 }
