@@ -183,7 +183,11 @@ class Project {
             if (!this._modulesInSrv.includes(moduleName)) {
                const cfg = this._modulesMap.get(moduleName);
                const dirName = path.dirname(srvPath);
-
+               //TODO удалить
+               if (cfg === undefined) {
+                  console.log(moduleName);
+                  return;
+               }
                modules.push({
                   '$': {
                      'id': cfg.id,
