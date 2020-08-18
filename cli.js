@@ -47,6 +47,11 @@ class Cli {
          this._testRep = 'all';
       }
 
+      // Если для тестирования указали все репозитории, то протестируем только платформенные репозитории.
+      if (this._testRep === 'all' && this._testRep.includes('all')) {
+         this._testRep = require('./resources/platformTest.json');
+      }
+
       if (this._argvOptions.projectDir || this._argvOptions.project) {
          this._buildTools = 'jinnee';
 
