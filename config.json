@@ -494,10 +494,6 @@
          "mirror": "git.sbis.ru",
          "url": "edo/edo-client"
       },
-      "edo_roaming-tools": {
-         "mirror": "git.sbis.ru",
-         "url": "edo/roaming-tools"
-      },
       "pm_meeting-service": {
          "mirror": "git.sbis.ru",
          "url": "pm/meeting-service"
