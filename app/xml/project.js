@@ -185,7 +185,7 @@ class Project {
                const dirName = path.dirname(srvPath);
                //TODO удалить
                if (cfg === undefined) {
-                  console.log(moduleName);
+                  console.log('Not found:: ' + moduleName);
                   return;
                }
                modules.push({

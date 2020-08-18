@@ -612,11 +612,11 @@
       },
       "edo_core": {
          "mirror": "git.sbis.ru",
-         "url": "edo/docs-external-processing"
+         "url": "edo/core"
       },
       "plugin_core": {
          "mirror": "git.sbis.ru",
-         "url": "contragents/contractors-mobile-api"
+         "url": "plugin/core"
       },
       "root_money-acquiring": {
          "mirror": "git.sbis.ru",
