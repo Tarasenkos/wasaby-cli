@@ -169,13 +169,17 @@ class Build extends Base {
 
       this._modulesMap.getChildModules(testList).forEach((moduleName) => {
          const cfg = this._modulesMap.get(moduleName);
-         const isNameInConfig = builderConfig.modules.find(item => (item.name === moduleName));
-         if (!isNameInConfig) {
-            builderConfig.modules.push({
-               name: moduleName,
-               path: cfg.path,
-               required: cfg.required
-            });
+
+         //TODO Удалить, довабил по ошибке https://online.sbis.ru/opendoc.html?guid=4c7b5d67-6afa-4222-b3cd-22b2e658b3a8
+         if (cfg !== undefined) {
+            const isNameInConfig = builderConfig.modules.find(item => (item.name === moduleName));
+            if (!isNameInConfig) {
+               builderConfig.modules.push({
+                  name: moduleName,
+                  path: cfg.path,
+                  required: cfg.required
+               });
+            }
          }
       });
 

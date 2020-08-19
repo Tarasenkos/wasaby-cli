@@ -241,14 +241,16 @@ class Test extends Base {
     */
    _shouldTestModule(moduleName) {
       const modulesCfg = this._modulesMap.get(moduleName);
+      //TODO Удалить, довабил по ошибке https://online.sbis.ru/opendoc.html?guid=4c7b5d67-6afa-4222-b3cd-22b2e658b3a8
+      if (modulesCfg !== undefined) {
+         if (this._diff.has(modulesCfg.rep)) {
+            const diff = this._diff.get(modulesCfg.rep);
 
-      if (this._diff.has(modulesCfg.rep)) {
-         const diff = this._diff.get(modulesCfg.rep);
+            return diff.some(filePath => filePath.includes(moduleName + path.sep));
+         }
 
-         return diff.some(filePath => filePath.includes(moduleName + path.sep));
+         return true;
       }
-
-      return true;
    }
 
    /**
@@ -280,7 +282,10 @@ class Test extends Base {
          logger.log('Запуск тестов', this._options.testRep);
          let modules = this._modulesMap.getRequiredModules().filter((moduleName) => {
             let cfg = this._modulesMap.get(moduleName);
-            return cfg && cfg.unitTest;
+            //TODO Удалить, довабил по ошибке https://online.sbis.ru/opendoc.html?guid=4c7b5d67-6afa-4222-b3cd-22b2e658b3a8
+            if (cfg !== undefined) {
+               return cfg && cfg.unitTest;
+            }
          });
          return Promise.all([
             this._startNodeTest(this._options.testRep, modules),
