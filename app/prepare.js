@@ -88,7 +88,12 @@ class Prepare extends Base {
     */
    _getRelativePath(moduleName) {
       const cfg = this._modulesMap.get(moduleName);
-      return unixify(path.relative(process.cwd(), cfg.path));
+      //TODO Удалить, довабил по ошибке https://online.sbis.ru/opendoc.html?guid=4c7b5d67-6afa-4222-b3cd-22b2e658b3a8
+      if (cfg !== undefined) {
+         return unixify(path.relative(process.cwd(), cfg.path));
+      }
+
+      return '';
    }
 
    /**

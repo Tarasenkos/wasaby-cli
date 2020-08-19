@@ -184,13 +184,16 @@ class Project {
                const cfg = this._modulesMap.get(moduleName);
                const dirName = path.dirname(srvPath);
 
-               modules.push({
-                  '$': {
-                     'id': cfg.id,
-                     'name': cfg.name,
-                     'url': fsUtil.relative(dirName, cfg.s3mod)
-                  }
-               });
+               //TODO Удалить, довабил по ошибке https://online.sbis.ru/opendoc.html?guid=4c7b5d67-6afa-4222-b3cd-22b2e658b3a8
+               if (cfg !== undefined) {
+                  modules.push({
+                     '$': {
+                        'id': cfg.id,
+                        'name': cfg.name,
+                        'url': fsUtil.relative(dirName, cfg.s3mod)
+                     }
+                  });
+               }
             }
          });
 
