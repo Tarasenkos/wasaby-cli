@@ -21,7 +21,7 @@
       "express": "^4.16.3",
       "fs-extra": "^7.0.1",
       "p-map": "^2.1.0",
-      "saby-typescript": "git+https://github.com/saby/TypeScript.git#rc-20.7000",
+      "saby-typescript": "git+https://github.com/saby/TypeScript.git#20.7000/feature/typescript-4",
       "saby-units": "git+https://github.com/saby/Units.git#rc-20.7000",
       "sbis3-builder": "git+https://github.com/saby/Builder.git#rc-20.7000",
       "serve-static": "^1.14.1",
