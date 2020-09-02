@@ -136,6 +136,6 @@ describe('config', () => {
 
       it('should return empty object', () => {
          chai.expect(config.getRepsFromConfig({})).is.empty;
-      })
+      });
    });
 });

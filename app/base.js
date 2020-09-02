@@ -10,6 +10,7 @@ const ModulesMap = require('./util/modulesMap');
 class Base {
    constructor(cfg) {
       this._shell = new Shell();
+      this._options = cfg;
       this._modulesMap = new ModulesMap({
          reposConfig: cfg.reposConfig,
          store: cfg.store,
