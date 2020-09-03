@@ -124,7 +124,7 @@ describe('Build', () => {
 
    describe('_initWithBuilder', () => {
       it('should start watcher', (done) => {
-         build._watcher = true;
+         build._options.watcher = true;
          build._initWithBuilder();
          stubExecute.callsFake((cmd) => {
             if (cmd.includes('buildOnChangeWatcher')) {
@@ -152,7 +152,7 @@ describe('Build', () => {
       });
 
       it('should run jinnee from pathToJinnee', (done) => {
-         sinon.stub(build, '_pathToJinnee').value('path/to/jinnee');
+         build._options.pathToJinnee = 'path/to/jinnee';
          stubExecute.callsFake((cmd, path) => {
             if (path === 'path/to/jinnee') {
                done();

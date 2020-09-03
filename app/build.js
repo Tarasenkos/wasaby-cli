@@ -24,18 +24,6 @@ class Build extends Base {
    constructor(cfg) {
       super({ ...cfg, ...{ reBuildMap: true } });
       this._store = cfg.store;
-      this._rc = cfg.rc;
-      this._reposConfig = cfg.reposConfig;
-      this._buildTools = cfg.buildTools;
-      this._buildRelease = cfg.release;
-      this._resources = cfg.resources;
-      this._workDir = cfg.workDir;
-      this._builderCache = cfg.builderCache;
-      this._workspace = cfg.workspace;
-      this._projectPath = cfg.projectPath;
-      this._pathToJinnee = cfg.pathToJinnee;
-      this._watcher = cfg.watcher;
-      this._copyResources = cfg.copy;
       this._builderCfg = path.join(process.cwd(), 'builderConfig.json');
       if (cfg.builderBaseConfig) {
          this._builderBaseConfig = path.relative(__dirname, path.join(process.cwd(), cfg.builderBaseConfig));
@@ -53,7 +41,7 @@ class Build extends Base {
          logger.log('Подготовка тестов');
 
          await this._tslibInstall();
-         if (this._buildTools === 'builder') {
+         if (this._options.buildTools === 'builder') {
             await this._initWithBuilder();
          } else {
             await this._initWithJinnee();
@@ -79,7 +67,7 @@ class Build extends Base {
    async _initWithBuilder(builderOutput) {
       const gulpPath = require.resolve('gulp/bin/gulp.js');
       const builderPath = require.resolve('sbis3-builder/gulpfile.js');
-      const build = this._watcher ? 'buildOnChangeWatcher' : 'build';
+      const build = this._options.watcher ? 'buildOnChangeWatcher' : 'build';
       await this._makeBuilderConfig(builderOutput);
       await this._shell.execute(
          `node ${gulpPath} --gulpfile=${builderPath} ${build} --config=${this._builderCfg}`,
@@ -96,27 +84,28 @@ class Build extends Base {
     * @private
     */
    async _initWithJinnee() {
-      const logs = path.join(this._workDir, 'logs');
+      const logs = path.join(this._options.workDir, 'logs');
       const sdk = new Sdk({
-         rc: this._rc,
-         workspace: this._workspace,
-         pathToJinnee: this._pathToJinnee
+         rc: this._options.rc,
+         workspace: this._options.workspace,
+         pathToJinnee: this._options.pathToJinnee
       });
 
       const project = new Project({
-         file: this._projectPath,
+         file: this._options.projectPath,
          modulesMap: this._modulesMap,
-         workDir: this._workDir,
-         builderCache: this._builderCache
+         workDir: this._options.workDir,
+         builderCache: this._options.builderCache
       });
 
       await project.prepare();
 
-      if (this._copyResources) {
-         this._copySymlincResources();
+      await sdk.jinneeDeploy(await project.getDeploy(), logs, project.file);
+
+      if (this._options.copy) {
+         Build._copySymlincResources(this._options.resources);
       }
 
-      await sdk.jinneeDeploy(await project.getDeploy(), logs, project.file);
    }
 
    /**
@@ -150,7 +139,7 @@ class Build extends Base {
       const promises = [];
       this._modulesMap.getCDNModules().forEach((name) => {
          const cfg = this._modulesMap.get(name);
-         const pathLink = path.join(this._resources, 'cdn', name);
+         const pathLink = path.join(this._options.resources, 'cdn', name);
          promises.push(fs.copy(cfg.path, pathLink).catch((e) => {
             logger.error(`Ошибка копирования модуля ${name}:  ${e}`);
          }));
@@ -183,23 +172,27 @@ class Build extends Base {
          }
       });
 
-      builderConfig = this._buildRelease ? { ...builderConfig, ...RELEASE_FLAGS } : builderConfig;
-      builderConfig.output = output || this._resources;
-      //builderConfig.symlinks = !this._copyResources;
+      builderConfig = this._options.release ? { ...builderConfig, ...RELEASE_FLAGS } : builderConfig;
+      builderConfig.output = output || this._options.resources;
+      builderConfig.symlinks = !this._options.copy;
 
-      builderConfig.logs = path.join(this._workDir, 'logs');
+      builderConfig.logs = path.join(this._options.workDir, 'logs');
 
       return fs.outputFile(`./${builderConfigName}`, JSON.stringify(builderConfig, null, 4));
    }
 
-   _copySymlincResources() {
-      walkDir(this._resources, (file) => {
-         const fullPath = path.join(this._resources, file);
+   static _copySymlincResources(resources) {
+      walkDir(resources, (file) => {
+         const fullPath = path.join(resources, file);
          const lstat = fs.lstatSync(fullPath);
          if (lstat.isSymbolicLink()) {
             const realpath = fs.realpathSync(fullPath);
+            const stat = fs.statSync(fullPath);
             fs.unlinkSync(fullPath);
             fs.copySync(realpath, fullPath);
+            if (stat.isDirectory()) {
+               Build._copySymlincResources(resources);
+            }
          }
       });
    }

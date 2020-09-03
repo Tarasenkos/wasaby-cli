@@ -11,7 +11,7 @@ const fsUtil = require('./util/fs');
 
 const BROWSER_SUFFIX = '_browser';
 const NODE_SUFFIX = '_node';
-const PARALLEL_TEST_COUNT = 2;
+const PARALLEL_TEST_COUNT = 1;
 const TEST_TIMEOUT = 60 * 5 * 1000;
 const REPORT_PATH = '{workspace}/artifacts/{module}/xunit-report.xml';
 const ALLOWED_ERRORS_FILE = path.normalize(path.join(__dirname, '..', 'resources', 'allowedErrors.json'));
@@ -86,7 +86,6 @@ class Test extends Base {
    constructor(cfg) {
       super(cfg);
       this._testReports = new Map();
-      this._options = cfg;
       this._testErrors = {};
       this._report = cfg.report || 'xml';
       this._testOnlyBrowser = cfg.browser || cfg.server;
@@ -205,8 +204,8 @@ class Test extends Base {
          if (moduleCfg && moduleCfg.depends) {
             moduleCfg.depends.forEach((dependModuleName) => {
                const dependModuleCfg = this._modulesMap.get(dependModuleName);
-               if (dependModuleCfg && namesArray.includes(dependModuleCfg.rep)) {
-                  let nycModulePath = [dependModuleName, '**', '*.js'];
+               let nycModulePath = [dependModuleName, '**', '*.js'];
+               if (!this._options.only || dependModuleCfg && namesArray.includes(dependModuleCfg.rep)) {
                   if (nycPath) {
                      nycModulePath.unshift(nycPath);
                   }
