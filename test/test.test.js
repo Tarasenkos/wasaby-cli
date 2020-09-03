@@ -319,6 +319,7 @@ describe('Test', () => {
       });
 
       it('should not throw error when module not exists in modules map', async() => {
+         test._options.only = true;
          sinon.stub(test._modulesMap, '_modulesMap').value(
             new Map([
                ['test11', {name: 'test11', rep: 'test1', depends: []}],
