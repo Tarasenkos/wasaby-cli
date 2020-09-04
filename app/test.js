@@ -11,10 +11,12 @@ const fsUtil = require('./util/fs');
 
 const BROWSER_SUFFIX = '_browser';
 const NODE_SUFFIX = '_node';
-const PARALLEL_TEST_COUNT = 1;
+const PARALLEL_TEST_COUNT = 2;
 const TEST_TIMEOUT = 60 * 5 * 1000;
 const REPORT_PATH = '{workspace}/artifacts/{module}/xunit-report.xml';
 const ALLOWED_ERRORS_FILE = path.normalize(path.join(__dirname, '..', 'resources', 'allowedErrors.json'));
+const MAX_TEST_RESTART = 5;
+
 
 const _private = {
 
@@ -92,6 +94,7 @@ class Test extends Base {
       this._allowedErrorsSet = new Set();
       this._diff = new Map();
       this._portMap = new Map();
+      this._restartCounter = {};
       if (this._report === 'console') {
          logger.silent();
       }
@@ -450,6 +453,7 @@ class Test extends Base {
     */
    async _executeBrowserTestCmd(cmd, moduleName, configPath, timeout) {
       try {
+         this._restartCounter[moduleName] = this._restartCounter[moduleName] ? this._restartCounter[moduleName]++ : 1;
          await this._shell.execute(
             cmd,
             process.cwd(),
@@ -459,13 +463,23 @@ class Test extends Base {
             }
          );
       } catch (errors) {
-         if (errors.some(error => (error.includes('EADDRINUSE') || error.includes('ECHROMEDRIVER')))) {
+         if (errors.some(Test.includesEnvError) && this._restartCounter[moduleName] < MAX_TEST_RESTART) {
+            this._restartCounter[moduleName]++;
             logger.log('Ошибка окружения, повторный запуск тестов', moduleName);
             await this._executeBrowserTestCmd(cmd, moduleName, configPath);
          } else {
             this._testErrors[moduleName + BROWSER_SUFFIX] = errors;
          }
       }
+   }
+
+   /**
+    *
+    * @param {String} error - Текст ошибки
+    * @returns {Boolean}
+    */
+   static includesEnvError(error) {
+      return error.includes('EADDRINUSE') || error.includes('ECHROMEDRIVER') || error.includes('Failed to fetch');
    }
 
    /**
