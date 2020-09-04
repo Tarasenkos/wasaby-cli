@@ -359,8 +359,18 @@ describe('Test', () => {
             stubExecute.callsFake(() => Promise.resolve());
             return Promise.reject(['ECHROMEDRIVER']);
          });
-         test._executeBrowserTestCmd().then(() => {
+         return test._executeBrowserTestCmd().then(() => {
             chai.expect(spy.calledTwice).to.be.true;
+         });
+      });
+
+      it('should not infint calls itself', () => {
+         let spy = sinon.spy(test, '_executeBrowserTestCmd');
+         stubExecute.callsFake(() => {
+            return Promise.reject(['ECHROMEDRIVER']);
+         });
+         return test._executeBrowserTestCmd().then(() => {
+            chai.expect(5).to.be.equal(spy.callCount);
          });
       });
    });
