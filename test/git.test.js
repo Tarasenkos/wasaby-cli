@@ -61,7 +61,7 @@ describe('Git', () => {
             });
 
             return git.merge('test').catch(function (e) {
-                chai.expect(e.message).to.equal("Ошибка при мерже 'test': Error: origin");
+                chai.expect(e.message).to.equal("Конфликт при мерже 'test': Error: origin");
             });
         });
     });
