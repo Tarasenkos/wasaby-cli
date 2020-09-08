@@ -183,7 +183,8 @@ class Cli {
          testRep: this._testRep,
          only: this._only,
          resources: this._resources,
-         builderCache: this._builderCache
+         builderCache: this._builderCache,
+         tsconfig: this._argvOptions.tsconfig
       });
 
       await makeTsConfig.run();
