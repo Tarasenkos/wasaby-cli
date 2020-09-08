@@ -27,26 +27,17 @@ describe('Store', () => {
    });
 
    describe('_writeConfig', () => {
-      let stubRemove;
-      beforeEach(() => {
-         stubRemove = sinon.stub(fs, 'remove').callsFake(() => undefined);
-      });
-      afterEach(() => {
-         stubRemove.restore();
-      });
       it('should write config', (done) => {
          writeJSON.callsFake(() => {
             done();
          });
-         prepare._writeConfig('path/to/config');
+         Prepare.writeConfig('path/to/config');
       });
 
-      it('should remove config if it exists', (done) => {
+      it('should not rewrite config if it exists', () => {
          existsSync.callsFake(() => true);
-         stubRemove.callsFake(() => {
-            done();
-         });
-         prepare._writeConfig('path/to/config');
+         Prepare.writeConfig('path/to/config');
+         chai.expect(writeJSON.notCalled).is.true;
       });
    });
 
@@ -66,7 +57,7 @@ describe('Store', () => {
       });
 
       it('should return paths', async () => {
-         let paths = await prepare._getPathFromConfig('path/to/config');
+         let paths = await prepare._getPathsFromConfig('path/to/config');
          chai.expect({module: ['path/to/module']}).to.deep.equal(paths);
       });
    });
