@@ -109,6 +109,10 @@
 
     npx wasaby-cli --tasks=prepare --sbis3-ws=path/to/ws
         
+Генерируемый tsconfig можно унаследовать от своего, если нужно добавить какие-то параметры, по умолчанию он наследуется от saby-typescript/configs/es5.dev.json  
+
+    npx wasaby-cli --tasks=prepare --tsconfig=path/to/tsconfig   
+        
 ## Параметры
 Все параметры можно передавать как в командной строке через --, так и в секции wasaby-cli вашего package.json файла
 
@@ -131,3 +135,4 @@
 * grep - Запустить тесты соответсвующие регулярному выражению  
 * builderConfig - Путь до базового конфига билдера 
 * copy - Копировать ресурсы, по умолчанию создаются симлинки
+* tsconfig - Путь до базового tsconfig, по умолчнию берется saby-typescript/configs/es5.dev.json 

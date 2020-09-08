@@ -1,8 +1,8 @@
 const fs = require('fs-extra');
 const path = require('path');
 const Base = require('./base');
-
-const BASE_CONFIG = 'saby-typescript/configs/es5.dev.json';
+const logger = require('./util/logger');
+const BASE_CONFIG = require.resolve('saby-typescript/configs/es5.dev.json');
 
 const TS_CONFIG_TEMPLATE = require('../resources/tsconfig.template.json');
 const TSCONFIG_PATH = path.join(process.cwd(), 'tsconfig.json');
@@ -15,10 +15,7 @@ const TSCONFIG_PATH = path.join(process.cwd(), 'tsconfig.json');
 class Prepare extends Base {
    constructor(cfg) {
       super(cfg);
-      this._store = cfg.store;
-      this._rc = cfg.rc;
-      this._resources = cfg.resources;
-      this._builderCache = cfg.builderCache;
+      this._tsconfig = cfg.tsconfig || BASE_CONFIG;
    }
 
    async _run() {
@@ -26,15 +23,24 @@ class Prepare extends Base {
       await this.tsInstall();
    }
 
+   /**
+    * Создает tsconfig
+    * @returns {Promise<void>}
+    */
    async makeTsConfig() {
       const config = { ...TS_CONFIG_TEMPLATE };
-      config.extends = path.relative(process.cwd(), require.resolve(BASE_CONFIG));
+
+      config.extends = `.${path.sep}` + path.relative(process.cwd(), this._tsconfig);
       config.compilerOptions.paths = await this._getPaths();
       config.exclude = this._getExclude();
 
-      this._writeConfig(config);
+      Prepare.writeConfig(config);
    }
 
+   /**
+    * Копирует tslib в Core
+    * @returns {Promise<*>}
+    */
    async tsInstall() {
       const wsCore = this._modulesMap.get('WS.Core');
       const wsTslib = path.join(wsCore.path, 'ext', 'tslib.js');
@@ -52,7 +58,7 @@ class Prepare extends Base {
 
    /**
     * Возвращает пути до модулей
-    * @returns {Promise<{}>}
+    * @returns {Promise<*>}
     * @private
     */
    async _getPaths() {
@@ -65,7 +71,7 @@ class Prepare extends Base {
          }
       });
 
-      const configPaths = await this._getPathFromConfig(require.resolve(BASE_CONFIG));
+      const configPaths = await this._getPathsFromConfig(this._tsconfig);
       Object.keys(configPaths).forEach((name) => {
          configPaths[name] = configPaths[name].map((pathFromConfig) => {
             let splitedPath = pathFromConfig.split('/');
@@ -82,18 +88,13 @@ class Prepare extends Base {
 
    /**
     * Возвращет относительный путь до модуля в формате unix
-    * @param moduleName
-    * @returns {string}
+    * @param {String} moduleName Название модуля
+    * @returns {String}
     * @private
     */
    _getRelativePath(moduleName) {
       const cfg = this._modulesMap.get(moduleName);
-      //TODO Удалить, довабил по ошибке https://online.sbis.ru/opendoc.html?guid=4c7b5d67-6afa-4222-b3cd-22b2e658b3a8
-      if (cfg !== undefined) {
-         return unixify(path.relative(process.cwd(), cfg.path));
-      }
-
-      return '';
+      return `.${path.sep}` + path.relative(process.cwd(), cfg.path);
    }
 
    /**
@@ -102,43 +103,43 @@ class Prepare extends Base {
     * @private
     */
    _getExclude() {
-      return [path.relative(process.cwd(), this._resources), this._builderCache];
+      return [path.relative(process.cwd(), this._options.resources), this._options.builderCache];
    }
 
    /**
     * Возвращает секцию paths из базового конфига
     * @param pathToConfig
-    * @returns *
+    * @returns {Promise<*>}
     * @private
     */
-   // eslint-disable-next-line consistent-return
-   async _getPathFromConfig(pathToConfig) {
+   async _getPathsFromConfig(pathToConfig) {
       const config = await fs.readJSON(pathToConfig);
+      let result = {};
+
       if (config.compilerOptions && config.compilerOptions.paths) {
-         return config.compilerOptions.paths;
-      } if (config.extends) {
-         const result = await this._getPathFromConfig(path.join(process.cwd(), config.extends));
-         return result;
+         result = config.compilerOptions.paths;
       }
+
+      if (config.extends) {
+         result = {...result, ...this._getPathsFromConfig(path.join(process.cwd(), config.extends))};
+      }
+
+      return result;
    }
 
    /**
     * Сохраняет конфиг
-    * @param config
+    * @param {Object} config
     * @returns {Promise<void>}
     * @private
     */
-   // eslint-disable-next-line class-methods-use-this
-   async _writeConfig(config) {
-      if (fs.existsSync(TSCONFIG_PATH)) {
-         await fs.remove(TSCONFIG_PATH);
+   static async writeConfig(config) {
+      if (!fs.existsSync(TSCONFIG_PATH)) {
+         await fs.writeJSON(TSCONFIG_PATH, config, { spaces: 4, EOL: '\n' });
+      } else {
+         logger.log('tsconfig уже существует');
       }
-      await fs.writeJSON(TSCONFIG_PATH, config, { spaces: 4, EOL: '\n' });
    }
-}
-
-function unixify(str) {
-   return String(str).replace(/\\/g, '/');
 }
 
 module.exports = Prepare;
