@@ -94,7 +94,9 @@ class Prepare extends Base {
     */
    _getRelativePath(moduleName) {
       const cfg = this._modulesMap.get(moduleName);
-      return `.${path.sep}` + path.relative(process.cwd(), cfg.path);
+      if (cfg !== undefined) {
+         return `.${path.sep}` + path.relative(process.cwd(), cfg.path);
+      }
    }
 
    /**
