@@ -12,12 +12,13 @@ class Base {
       this._shell = new Shell();
       this._options = cfg;
       this._modulesMap = new ModulesMap({
-         reposConfig: cfg.reposConfig,
+         config: cfg.config,
          store: cfg.store,
          testRep: cfg.testRep,
          resources: cfg.resources,
          only: cfg.only,
-         reBuildMap: cfg.reBuildMap
+         reBuildMap: cfg.reBuildMap,
+         modules: cfg.argvOptions.modules || cfg.config.modules
       });
    }
 

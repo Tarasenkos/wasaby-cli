@@ -15,14 +15,17 @@ describe('Test', () => {
       test = new Test({
          rc: 'rc-12',
          store: '',
-         reposConfig: {
-            test1: {},
-            test2: {}
+         config: {
+            repositories: {
+               test1: {},
+               test2: {}
+            }
          },
          workspace: '',
          workDir: '',
          resources: '',
-         testRep: ['test1']
+         testRep: ['test1'],
+         argvOptions: {}
       });
       stubfsAppend = sinon.stub(fs, 'appendFileSync').callsFake(() => undefined);
       stubExecute = sinon.stub(shell.prototype, 'execute').callsFake(() => Promise.resolve());
@@ -63,7 +66,7 @@ describe('Test', () => {
    describe('._startBrowserTest()', () => {
       let stubcli, stubfsjson, stubOutputFile, stubModuleMapGet;
       beforeEach(() => {
-         stubcli = sinon.stub(test._options, 'reposConfig').value({
+         stubcli = sinon.stub(test._options, 'config').value({
             test: {
                unitInBrowser: true
             }
@@ -94,15 +97,18 @@ describe('Test', () => {
          test = new Test({
             rc: 'rc-12',
             store: '',
-            reposConfig: {
-               test: {
-                  unitInBrowser: true
+            config: {
+               repositories: {
+                  test: {
+                     unitInBrowser: true
+                  }
                }
             },
             workspace: '',
             workDir: '',
             resources: '',
-            server: true
+            server: true,
+            argvOptions: {}
          });
          sinon.stub(test._modulesMap, 'get').callsFake(() => ({ name: 'test1', testInBrowser: true }));
          stubOutputFile = sinon.stub(fs, 'outputFileSync').callsFake(() => undefined);
@@ -378,7 +384,7 @@ describe('Test', () => {
    describe('_startNodeTest()', () => {
       let stubcli, stubfsjson, stubModuleMapGet;
       beforeEach(() => {
-         stubcli = sinon.stub(test._options, 'reposConfig').value({
+         stubcli = sinon.stub(test._options, 'config').value({
             test: {
             }
          });

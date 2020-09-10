@@ -14,7 +14,8 @@ const WSCoreDepends = ['Types', 'Env', 'View', 'Vdom', 'UI'];
  */
 class ModulesMap {
    constructor(cfg) {
-      this._reposConfig = cfg.reposConfig;
+      this._config = cfg.config;
+      this._modules = cfg.modules;
       this._store = cfg.store;
       this._testRep = cfg.testRep;
       this._modulesMap = new Map();
@@ -103,7 +104,6 @@ class ModulesMap {
       return result;
    }
 
-
    /**
     * Возвращает список необходимых модулей
     * @return {Array}
@@ -113,7 +113,9 @@ class ModulesMap {
          return this._modulesList;
       }
       let list = [];
-      if (this._only) {
+      if (this._modules) {
+         list = this.getChildModules(this._modules);
+      } else if (this._only) {
          this._testRep.forEach((name) => {
             list = list.concat(this.getModulesByRep(name));
          });
@@ -187,10 +189,10 @@ class ModulesMap {
     */
    _findModulesInStore() {
       const s3mods = [];
-      Object.keys(this._reposConfig).forEach((name) => {
+      Object.keys(this._config.repositories).forEach((name) => {
          let repositoryPath = this.getRepositoryPath(name);
-         if (this._reposConfig[name].modulesPath) {
-            repositoryPath = path.join(repositoryPath, this._reposConfig[name].modulesPath);
+         if (this._config.repositories[name].modulesPath) {
+            repositoryPath = path.join(repositoryPath, this._config.repositories[name].modulesPath);
          }
 
          walkDir(repositoryPath, (filePath) => {
@@ -238,7 +240,7 @@ class ModulesMap {
                }
 
                if (xmlObj.ui_module.unit_test) {
-                  const repCfg = this._reposConfig[cfg.rep];
+                  const repCfg = this._config.repositories[cfg.rep];
                   const onlyNode = xmlObj.ui_module.unit_test[0].$ && xmlObj.ui_module.unit_test[0].$.onlyNode;
                   cfg.unitTest = true;
                   cfg.testInBrowser = repCfg.unitInBrowser && !(onlyNode);
@@ -261,7 +263,7 @@ class ModulesMap {
     * @return {string}
     */
    getRepositoryPath(repName) {
-      return this._reposConfig[repName].path || path.join(this._store, repName);
+      return this._config.repositories[repName].path || path.join(this._store, repName);
    }
 
    /**

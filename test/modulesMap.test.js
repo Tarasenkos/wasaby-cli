@@ -10,9 +10,11 @@ let stubfsAppend;
 describe('modulesMap', () => {
    beforeEach(() => {
       modulesMap = new ModulesMap({
-         reposConfig: {
-            test1: {},
-            test2: {}
+         config: {
+            repositories: {
+               test1: {},
+               test2: {}
+            }
          },
          store: ''
       });
@@ -64,14 +66,16 @@ describe('modulesMap', () => {
    describe('.getRequiredModules()', () => {
       let stubrepos, stubTestRep, stubModulesMap;
       beforeEach(() => {
-         stubrepos = sinon.stub(modulesMap, '_reposConfig').value({
-            test1: {
-               test: 'path'
-            },
-            test2: {
-               test: 'path'
-            },
-            test3: {}
+         stubrepos = sinon.stub(modulesMap, '_config').value({
+            repositories: {
+               test1: {
+                  test: 'path'
+               },
+               test2: {
+                  test: 'path'
+               },
+               test3: {}
+            }
          });
 
          stubModulesMap = sinon.stub(modulesMap, '_modulesMap').value(
@@ -113,9 +117,14 @@ describe('modulesMap', () => {
          chai.expect(modulesMap.getRequiredModules()).to.deep.equal(['test_test4', 'test_test3']);
       });
 
-      it('should return ', () => {
+      it('should return modules for test4', () => {
          stubTestRep = sinon.stub(modulesMap, '_testRep').value(['test4']);
          chai.expect(modulesMap.getRequiredModules()).to.deep.equal(['test_test4']);
+      });
+
+      it('should return modules for test11', () => {
+         stubTestRep = sinon.stub(modulesMap, '_modules').value(['test11']);
+         chai.expect(modulesMap.getRequiredModules()).to.deep.equal(['test11', 'test22' ]);
       });
 
       afterEach(() => {
@@ -368,14 +377,16 @@ describe('modulesMap', () => {
    describe('.getRequiredRepositories()', () => {
       let stubrep;
       beforeEach(() => {
-         sinon.stub(modulesMap, '_reposConfig').value({
-            test1: {
-               test: 'path'
-            },
-            test2: {
-               test: 'path'
-            },
-            test3: {}
+         sinon.stub(modulesMap, '_config').value({
+            repositories: {
+               test1: {
+                  test: 'path'
+               },
+               test2: {
+                  test: 'path'
+               },
+               test3: {}
+            }
          });
 
          sinon.stub(modulesMap, '_modulesMap').value(
