@@ -34,7 +34,8 @@ const checkPort = function(port) {
 module.exports = async function getPort(minPort) {
    for (let port = minPort || MIN_PORT; port <= MAX_PORT; port++) {
       try {
-         return await checkPort(port); // eslint-disable-line no-await-in-loop
+         // eslint-disable-next-line no-await-in-loop
+         return await checkPort(port);
       } catch (error) {
          if (!['EADDRINUSE', 'EACCES'].includes(error.code)) {
             throw error;
