@@ -1,4 +1,4 @@
-const child_process = require('child_process');
+const childProcess = require('child_process');
 const logger = require('./logger');
 
 /**
@@ -32,7 +32,7 @@ class Shell {
          cwd: path || process.cwd(),
          ...params
       };
-      const childProccess = child_process.exec(command, execParams);
+      const childProccess = childProcess.exec(command, execParams);
       return this._subscribeProcess(childProccess, execParams);
    }
 
@@ -45,7 +45,7 @@ class Shell {
     * @public
     */
    spawn(command, args, params) {
-      const childProccess = child_process.spawn(command, args, params);
+      const childProccess = childProcess.spawn(command, args, params);
       return this._subscribeProcess(childProccess, params);
    }
 
@@ -75,7 +75,8 @@ class Shell {
          childProccess.stderr.on('data', (data) => {
             const dataString = data.toString();
             logger.log(dataString, params.processName);
-            //TODO надо подумать как фильтровать warning
+
+            // TODO надо подумать как фильтровать warning
             if (!(/warning/i.test(dataString))) {
                errors.push(dataString);
             }
@@ -126,8 +127,6 @@ class Shell {
    getErrorsByName(name) {
       return this._errors.get(name);
    }
-
-
 }
 
 module.exports = Shell;
