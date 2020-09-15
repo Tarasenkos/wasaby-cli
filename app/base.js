@@ -18,7 +18,7 @@ class Base {
          resources: cfg.resources,
          only: cfg.only,
          reBuildMap: cfg.reBuildMap,
-         modules: cfg.argvOptions.modules || cfg.config.modules
+         modules: cfg.argvOptions.entry || cfg.config.entry
       });
    }
 

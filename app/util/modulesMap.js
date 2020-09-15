@@ -15,7 +15,7 @@ const WSCoreDepends = ['Types', 'Env', 'View', 'Vdom', 'UI'];
 class ModulesMap {
    constructor(cfg) {
       this._config = cfg.config;
-      this._modules = cfg.modules;
+      this._entry = ModulesMap.prepareEntryPointModules(cfg.entry);
       this._store = cfg.store;
       this._testRep = cfg.testRep;
       this._modulesMap = new Map();
@@ -113,8 +113,8 @@ class ModulesMap {
          return this._modulesList;
       }
       let list = [];
-      if (this._modules) {
-         list = this.getChildModules(this._modules);
+      if (this._entry.length > 0) {
+         list = this.getChildModules(this.getEntryModules());
       } else if (this._only) {
          this._testRep.forEach((name) => {
             list = list.concat(this.getModulesByRep(name));
@@ -201,11 +201,13 @@ class ModulesMap {
                splitFilePath.splice(-1, 1);
                const modulePath = path.join.apply(path, splitFilePath);
                const moduleName = splitFilePath[splitFilePath.length - 1];
+               const absolutePath = path.join(repositoryPath, filePath);
                s3mods.push({
-                  s3mod: path.join(repositoryPath, filePath),
+                  s3mod: absolutePath,
                   name: moduleName,
                   path: path.join(repositoryPath, modulePath),
-                  rep: name
+                  rep: name,
+                  entry: this._entry.includes(absolutePath)
                });
             }
          }, [path.join(repositoryPath, 'build-ui'), path.join(repositoryPath, 'node_modules'), this._resources]);
@@ -222,7 +224,7 @@ class ModulesMap {
    async _addToModulesMap(modules) {
       await pMap(modules, cfg => (
          xml.readXmlFile(cfg.s3mod).then((xmlObj) => {
-            if (!this._modulesMap.has(cfg.name) && xmlObj.ui_module) {
+            if (!this._modulesMap.has(cfg.name) && xmlObj.ui_module || cfg.entry) {
                cfg.depends = [];
 
                if (xmlObj.ui_module.depends && xmlObj.ui_module.depends[0]) {
@@ -334,6 +336,7 @@ class ModulesMap {
 
    /**
     * Возвращает модули для cdn
+    * @returns {Array<String>}
     */
    getCDNModules() {
       let modules = [];
@@ -343,6 +346,44 @@ class ModulesMap {
          }
       });
       return modules;
+   }
+
+   /**
+    * Возвращает модули указанные в точке входа
+    * @returns {Array<String>}
+    */
+   getEntryModules() {
+      const result = [];
+      this._modulesMap.forEach(cfg => {
+         if (cfg.entry) {
+            result.push(cfg.name);
+         }
+      });
+      return result;
+   }
+
+   /**
+    * Нормализует пути до модулей
+    * @returns {Array<String>}
+    * @private
+    */
+   static prepareEntryPointModules(entry) {
+      if (entry) {
+         return entry.map((pathToModule) => {
+            let absolutePath = pathToModule;
+
+            if (!path.isAbsolute(absolutePath)) {
+               absolutePath = path.normalize(path.join(process.cwd(), pathToModule));
+            }
+
+            if (!fs.existsSync(absolutePath)) {
+               throw new Error(`Не найден модуль ${absolutePath}, указанный в параметре entry, проверьте указанный путь.`);
+            }
+
+            return absolutePath;
+         });
+      }
+      return [];
    }
 }
 

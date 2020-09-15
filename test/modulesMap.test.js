@@ -46,13 +46,15 @@ describe('modulesMap', () => {
                s3mod: path.join('test1', 'tttModule', 'ttt.s3mod'),
                name: 'tttModule',
                path:  path.join('test1', 'tttModule'),
-               rep: 'test1'
+               rep: 'test1',
+               entry: false
             },
             {
                s3mod: path.join('test2', 'tttModule', 'ttt.s3mod'),
                name: 'tttModule',
                path: path.join('test2', 'tttModule'),
-               rep: 'test2'
+               rep: 'test2',
+               entry: false
             }
          ]);
       });
@@ -123,7 +125,8 @@ describe('modulesMap', () => {
       });
 
       it('should return modules for test11', () => {
-         stubTestRep = sinon.stub(modulesMap, '_modules').value(['test11']);
+         stubTestRep = sinon.stub(modulesMap, '_entry').value(['test11']);
+         modulesMap.get('test11').entry = true;
          chai.expect(modulesMap.getRequiredModules()).to.deep.equal(['test11', 'test22' ]);
       });
 
