@@ -113,6 +113,11 @@
 
     npx wasaby-cli --tasks=prepare --tsconfig=path/to/tsconfig   
         
+## Создать модуль
+Что бы создать модуль s3mod 
+
+    npx wasaby-cli --tasks=app
+        
 ## Параметры
 Все параметры можно передавать как в командной строке через --, так и в секции wasaby-cli вашего package.json файла
 
