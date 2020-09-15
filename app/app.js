@@ -39,19 +39,27 @@ async function run(resources, port) {
    global.require = require;
 
    console.log('start init');
-   require(['Env/Env', 'Application/Initializer', 'SbisEnv/PresentationService', 'UI/Base', 'Core/core-init'], function(Env, AppInit, PS, UIBase) {
-      Env.constants.resourceRoot = resourceRoot;
-      Env.constants.modules = require('json!/contents').modules;
-      // eslint-disable-next-line new-cap
-      AppInit.default({ resourceRoot }, new PS.default({ resourceRoot }), new UIBase.StateReceiver());
-      console.log(`server started http://localhost:${availablePort}`);
-   }, function(err) {
-      console.error(err);
-      console.error('core init failed');
+   const ready = new Promise((resolve, reject) => {
+      require(['Env/Env', 'Application/Initializer', 'SbisEnv/PresentationService', 'UI/Base', 'Core/core-init'], function(Env, AppInit, PS, UIBase) {
+         Env.constants.resourceRoot = resourceRoot;
+         Env.constants.modules = require('json!/contents').modules;
+         // eslint-disable-next-line new-cap
+         AppInit.default({ resourceRoot }, new PS.default({ resourceRoot }), new UIBase.StateReceiver());
+         console.log(`server started http://localhost:${availablePort}`);
+         resolve();
+      }, function(err) {
+         console.error(err);
+         console.error('core init failed');
+         reject(err);
+      });
    });
 
    /* server side render */
-   app.get('/:moduleName/*', serverSideRender);
+   app.get('/:moduleName/*', (req, res) => {
+      ready.then(() => {
+         serverSideRender(req, res);
+      });
+   });
 }
 
 
