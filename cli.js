@@ -220,7 +220,7 @@ class Cli {
    async createModule() {
       const createModule = new CreateModule({
          rc: this._rc,
-         reposConfig: this._reposConfig,
+         config: this._config,
          store: this._store,
          testRep: this._testRep,
          only: this._only,
