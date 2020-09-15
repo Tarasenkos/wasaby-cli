@@ -10,13 +10,16 @@ let existsSync;
 describe('Store', () => {
    beforeEach(() => {
       prepare = new Prepare({
-         reposConfig: {
-            test1: {},
-            test2: {}
+         config: {
+            repositories: {
+               test1: {},
+               test2: {}
+            }
          },
          store: 'store',
          testRep: ['name'],
-         resources: 'application'
+         resources: 'application',
+         argvOptions: {}
       });
       writeJSON = sinon.stub(fs, 'writeJSON').callsFake(() => undefined);
       existsSync = sinon.stub(fs, 'existsSync').callsFake(() => undefined);

@@ -19,15 +19,18 @@ describe('Build', () => {
    beforeEach(() => {
       build = new Build({
          testRep: ['test1'],
-         reposConfig: {
-            test1: {},
-            test2: {},
-            'sbis3-ws': {}
+         config: {
+            repositories: {
+               test1: {},
+               test2: {},
+               'sbis3-ws': {}
+            }
          },
          store: '',
          workDir: '',
          workspace: 'application',
-         rc: 'rc-10.1000'
+         rc: 'rc-10.1000',
+         argvOptions: {}
       });
       stubExecute = sinon.stub(Shell.prototype, 'execute').callsFake(() => undefined);
    });
@@ -40,11 +43,14 @@ describe('Build', () => {
       it('should run builder', (done) => {
          let buildB = new Build({
             testRep: ['test1'],
-            reposConfig: {
-               test1: {}
+            config: {
+               repositories: {
+                  test1: {}
+               }
             },
             store: '',
-            buildTools: 'builder'
+            buildTools: 'builder',
+            argvOptions: {}
          });
          sinon.stub(buildB, '_modulesMap').value({build: () => undefined, getCDNModules:() => []});
          sinon.stub(buildB, '_tslibInstall').callsFake(() => undefined);
@@ -56,11 +62,14 @@ describe('Build', () => {
       it('should run genie', (done) => {
          let buildG = new Build({
             testRep: ['test1'],
-            reposConfig: {
-               test1: {}
+            config: {
+               repositories: {
+                  test1: {}
+               }
             },
             store: '',
-            buildTools: 'jinnee'
+            buildTools: 'jinnee',
+            argvOptions: {}
          });
          sinon.stub(buildG, '_modulesMap').value({build: () => undefined, getCDNModules:() => []});
          sinon.stub(buildG, '_tslibInstall').callsFake(() => undefined);

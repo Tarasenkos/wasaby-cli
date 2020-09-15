@@ -20,9 +20,11 @@ describe('Store', () => {
          rc: 'rc-12',
          store: '',
          argvOptions: {},
-         reposConfig: {
-            test1: {},
-            test2: {}
+         config: {
+            repositories: {
+               test1: {},
+               test2: {}
+            }
          },
          testRep:['name']
       });
@@ -38,8 +40,8 @@ describe('Store', () => {
          stubMkDir = sinon.stub(fs, 'mkdirs').callsFake(() => {
             return Promise.resolve();
          });
-         stubRepConf = sinon.stub(store, '_reposConfig').value( {
-            test: {}
+         stubRepConf = sinon.stub(store, '_config').value( {
+            repositories: {test: {}}
          });
       });
       it('should checkout brunch', (done) => {
@@ -77,9 +79,11 @@ describe('Store', () => {
    describe('.cloneRepToStore()', () => {
       let stubRepos, stubfs;
       beforeEach(() => {
-         stubRepos = sinon.stub(store, '_reposConfig').value({
-            test: {
-               url: 'test@test.git'
+         stubRepos = sinon.stub(store, '_config').value({
+            repositories: {
+               test: {
+                  url: 'test@test.git'
+               }
             }
          });
          stubfs = sinon.stub(fs, 'existsSync').callsFake(() => false);
@@ -263,7 +267,7 @@ describe('Store', () => {
          stubmkdirs = sinon.stub(fs, 'mkdirs').callsFake((path) => {
             makeDir = path;
          });
-         stubRepos = sinon.stub(store, '_reposConfig').value({});
+         stubRepos = sinon.stub(store, '_config').value({repositories: {}});
          initRepStore = sinon.stub(store, 'initRep').callsFake((path) => {
          });
          store.run().then(() => {
@@ -283,7 +287,7 @@ describe('Store', () => {
 
    describe('._getForceLoadRepos()', () => {
       it('should make store dir', () => {
-         sinon.stub(store, '_reposConfig').value({'test': {name: 'test', load: true}});
+         sinon.stub(store, '_config').value({repositories: {'test': {name: 'test', load: true}}});
          chai.expect(new Set(['test'])).to.deep.equal(store._getForceLoadRepos());
       });
    });
