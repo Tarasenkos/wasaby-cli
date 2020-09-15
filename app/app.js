@@ -43,8 +43,12 @@ async function run(resources, port) {
       require(['Env/Env', 'Application/Initializer', 'SbisEnv/PresentationService', 'UI/Base', 'Core/core-init'], function(Env, AppInit, PS, UIBase) {
          Env.constants.resourceRoot = resourceRoot;
          Env.constants.modules = require('json!/contents').modules;
-         // eslint-disable-next-line new-cap
-         AppInit.default({ resourceRoot }, new PS.default({ resourceRoot }), new UIBase.StateReceiver());
+
+         if (!AppInit.isInit()) {
+            // eslint-disable-next-line new-cap
+            AppInit.default({ resourceRoot }, new PS.default({ resourceRoot }), new UIBase.StateReceiver());
+         }
+
          console.log(`server started http://localhost:${availablePort}`);
          resolve();
       }, function(err) {
