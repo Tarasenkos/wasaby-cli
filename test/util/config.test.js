@@ -125,11 +125,13 @@ describe('config', () => {
          chai.expect(config.getRepsFromConfig(wsSection)).to.deep.equal({
             name: {
                url: 'https://git.sbis.ru/sbis/name.git',
-               version: undefined
+               version: undefined,
+               load: true
             },
             name2: {
                url: 'https://git.sbis.ru/sbis/name2.git',
-               version: 'rc-20.6000'
+               version: 'rc-20.6000',
+               load: true
             }
          });
       });

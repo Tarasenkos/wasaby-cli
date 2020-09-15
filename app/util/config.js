@@ -146,30 +146,6 @@ function getRepsFromConfig(wsSection) {
    return result;
 }
 
-
-/**
- * cdn
- navigation-configuration
- permission
- rmi
- rmi_test
- Router
- saby-devtool
- saby-i18n
- saby-inferno
- saby-types
- saby-ui
- sbis-plugin-client
- sbis3-schemeeditor
- sbis3-ws
- sbis3-ws1
- sbis3.engine
- sbis3controls
- viewsettings
- wasaby-app
- wasaby-controls
- wasaby-polyfills
- */
 module.exports = {
    get: get,
    getVersion: getVersion,

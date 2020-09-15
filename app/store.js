@@ -3,15 +3,14 @@ const path = require('path');
 const logger = require('./util/logger');
 const Base = require('./base');
 const Git = require('./util/git');
-const ModulesMap = require('./util/modulesMap');
 const Project = require('./xml/project');
 const pMap = require('p-map');
 
 const PARALLEL_CHECKOUT = 2;
 /**
- * Класс отвечающий за подготовку репозиториев для тестирования
+ * Класс отвечающий за установку зависимостей
  * @class Store
- * @author Ганшин Я.ОТывл
+ * @author Ганшин Я.О.
  */
 
 class Store extends Base {
@@ -19,7 +18,7 @@ class Store extends Base {
       super(cfg);
       this._store = cfg.store;
       this._argvOptions = cfg.argvOptions;
-      this._reposConfig = cfg.reposConfig;
+      this._config = cfg.config;
       this._rc = cfg.rc;
       this._testRep = cfg.testRep;
       this._projectPath = cfg.projectPath;
@@ -33,7 +32,6 @@ class Store extends Base {
       logger.log('Инициализация хранилища');
       try {
          await fs.mkdirs(this._store);
-         const promises = [];
 
          await pMap(await this._getReposList(), (rep) => {
             return this.initRep(rep);
@@ -53,7 +51,7 @@ class Store extends Base {
     * @return {Promise<void>}
     */
    async initRep(name) {
-      const cfg = this._reposConfig[name];
+      const cfg = this._config.repositories[name];
 
       // если есть путь до репозитория то его не надо выкачивать
       if (!cfg.skip && !cfg.path) {
@@ -112,8 +110,8 @@ class Store extends Base {
    async cloneRepToStore(name) {
       if (!fs.existsSync(path.join(this._store, name))) {
          try {
-            logger.log(`git clone ${this._reposConfig[name].url}`, name);
-            await this._shell.execute(`git clone ${this._reposConfig[name].url} ${name}`, this._store, {
+            logger.log(`git clone ${this._config.repositories[name].url}`, name);
+            await this._shell.execute(`git clone ${this._config.repositories[name].url} ${name}`, this._store, {
                processName: `clone ${name}`
             });
          } catch (err) {
@@ -129,7 +127,7 @@ class Store extends Base {
     */
    async _getReposList() {
       if (this._testRep.includes('all')) {
-         return new Set(Object.keys(this._reposConfig));
+         return new Set(Object.keys(this._config.repositories));
       }
       const reposFromMap = this._modulesMap.getRequiredRepositories();
       const reposFromArgv = this._getReposFromArgv();
@@ -145,7 +143,7 @@ class Store extends Base {
     */
    _getReposFromArgv() {
       const repos = new Set();
-      for (const name of Object.keys(this._reposConfig)) {
+      for (const name of Object.keys(this._config.repositories)) {
          if (this._argvOptions.hasOwnProperty(name)) {
             repos.add(name);
          }
@@ -182,8 +180,8 @@ class Store extends Base {
     */
    _getForceLoadRepos() {
       const repos = new Set();
-      for (const name of Object.keys(this._reposConfig)) {
-         if (this._reposConfig[name].load) {
+      for (const name of Object.keys(this._config.repositories)) {
+         if (this._config.repositories[name].load) {
             repos.add(name);
          }
       }

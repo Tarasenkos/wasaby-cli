@@ -14,7 +14,8 @@ const WSCoreDepends = ['Types', 'Env', 'View', 'Vdom', 'UI'];
  */
 class ModulesMap {
    constructor(cfg) {
-      this._reposConfig = cfg.reposConfig;
+      this._config = cfg.config;
+      this._entry = ModulesMap.prepareEntryPointModules(cfg.entry);
       this._store = cfg.store;
       this._testRep = cfg.testRep;
       this._modulesMap = new Map();
@@ -103,7 +104,6 @@ class ModulesMap {
       return result;
    }
 
-
    /**
     * Возвращает список необходимых модулей
     * @return {Array}
@@ -113,7 +113,9 @@ class ModulesMap {
          return this._modulesList;
       }
       let list = [];
-      if (this._only) {
+      if (this._entry.length > 0) {
+         list = this.getChildModules(this.getEntryModules());
+      } else if (this._only) {
          this._testRep.forEach((name) => {
             list = list.concat(this.getModulesByRep(name));
          });
@@ -187,10 +189,10 @@ class ModulesMap {
     */
    _findModulesInStore() {
       const s3mods = [];
-      Object.keys(this._reposConfig).forEach((name) => {
+      Object.keys(this._config.repositories).forEach((name) => {
          let repositoryPath = this.getRepositoryPath(name);
-         if (this._reposConfig[name].modulesPath) {
-            repositoryPath = path.join(repositoryPath, this._reposConfig[name].modulesPath);
+         if (this._config.repositories[name].modulesPath) {
+            repositoryPath = path.join(repositoryPath, this._config.repositories[name].modulesPath);
          }
 
          walkDir(repositoryPath, (filePath) => {
@@ -199,11 +201,13 @@ class ModulesMap {
                splitFilePath.splice(-1, 1);
                const modulePath = path.join.apply(path, splitFilePath);
                const moduleName = splitFilePath[splitFilePath.length - 1];
+               const absolutePath = path.join(repositoryPath, filePath);
                s3mods.push({
-                  s3mod: path.join(repositoryPath, filePath),
+                  s3mod: absolutePath,
                   name: moduleName,
                   path: path.join(repositoryPath, modulePath),
-                  rep: name
+                  rep: name,
+                  entry: this._entry.includes(absolutePath)
                });
             }
          }, [path.join(repositoryPath, 'build-ui'), path.join(repositoryPath, 'node_modules'), this._resources]);
@@ -220,7 +224,7 @@ class ModulesMap {
    async _addToModulesMap(modules) {
       await pMap(modules, cfg => (
          xml.readXmlFile(cfg.s3mod).then((xmlObj) => {
-            if (!this._modulesMap.has(cfg.name) && xmlObj.ui_module) {
+            if (!this._modulesMap.has(cfg.name) && xmlObj.ui_module || cfg.entry) {
                cfg.depends = [];
 
                if (xmlObj.ui_module.depends && xmlObj.ui_module.depends[0]) {
@@ -238,7 +242,7 @@ class ModulesMap {
                }
 
                if (xmlObj.ui_module.unit_test) {
-                  const repCfg = this._reposConfig[cfg.rep];
+                  const repCfg = this._config.repositories[cfg.rep];
                   const onlyNode = xmlObj.ui_module.unit_test[0].$ && xmlObj.ui_module.unit_test[0].$.onlyNode;
                   cfg.unitTest = true;
                   cfg.testInBrowser = repCfg.unitInBrowser && !(onlyNode);
@@ -261,7 +265,7 @@ class ModulesMap {
     * @return {string}
     */
    getRepositoryPath(repName) {
-      return this._reposConfig[repName].path || path.join(this._store, repName);
+      return this._config.repositories[repName].path || path.join(this._store, repName);
    }
 
    /**
@@ -332,6 +336,7 @@ class ModulesMap {
 
    /**
     * Возвращает модули для cdn
+    * @returns {Array<String>}
     */
    getCDNModules() {
       let modules = [];
@@ -341,6 +346,44 @@ class ModulesMap {
          }
       });
       return modules;
+   }
+
+   /**
+    * Возвращает модули указанные в точке входа
+    * @returns {Array<String>}
+    */
+   getEntryModules() {
+      const result = [];
+      this._modulesMap.forEach(cfg => {
+         if (cfg.entry) {
+            result.push(cfg.name);
+         }
+      });
+      return result;
+   }
+
+   /**
+    * Нормализует пути до модулей
+    * @returns {Array<String>}
+    * @private
+    */
+   static prepareEntryPointModules(entry) {
+      if (entry) {
+         return entry.map((pathToModule) => {
+            let absolutePath = pathToModule;
+
+            if (!path.isAbsolute(absolutePath)) {
+               absolutePath = path.normalize(path.join(process.cwd(), pathToModule));
+            }
+
+            if (!fs.existsSync(absolutePath)) {
+               throw new Error(`Не найден модуль ${absolutePath}, указанный в параметре entry, проверьте указанный путь.`);
+            }
+
+            return absolutePath;
+         });
+      }
+      return [];
    }
 }
 

@@ -25,7 +25,7 @@ class Cli {
    constructor() {
       this._argvOptions = Cli._getArgvOptions();
       const cfg = config.get(this._argvOptions);
-      this._reposConfig = cfg.repositories;
+      this._config = cfg;
 
       this._store = this._argvOptions.store || path.join(__dirname, cfg.store);
 
@@ -99,7 +99,7 @@ class Cli {
          builderCache: this._builderCache,
          projectPath: this._projectPath,
          rc: this._rc,
-         reposConfig: this._reposConfig,
+         config: this._config,
          resources: this._resources,
          store: this._store,
          testRep: this._testRep,
@@ -121,7 +121,7 @@ class Cli {
       const store = new Store({
          argvOptions: this._argvOptions,
          rc: this._rc,
-         reposConfig: this._reposConfig,
+         config: this._config,
          store: this._store,
          testRep: this._testRep,
          only: this._only,
@@ -134,7 +134,7 @@ class Cli {
 
    async test() {
       const test = new Test({
-         reposConfig: this._reposConfig,
+         config: this._config,
          resources: this._resources,
          store: this._store,
          testRep: this._testRep,
@@ -182,13 +182,14 @@ class Cli {
 
    async prepare() {
       const makeTsConfig = new Prepare({
-         reposConfig: this._reposConfig,
+         config: this._config,
          store: this._store,
          testRep: this._testRep,
          only: this._only,
          resources: this._resources,
          builderCache: this._builderCache,
-         tsconfig: this._argvOptions.tsconfig
+         tsconfig: this._argvOptions.tsconfig,
+         argvOptions: this._argvOptions
       });
 
       await makeTsConfig.run();
@@ -205,12 +206,13 @@ class Cli {
       const createIndex = new CreateIndex({
          moduleName: this._argvOptions.moduleName,
          resources: this._resources,
-         reposConfig: this._reposConfig,
+         config: this._config,
          store: this._store,
          testRep: this._testRep,
          workDir: this._workDir,
          only: this._only,
-         reBuildMap: this._reBuildMap
+         reBuildMap: this._reBuildMap,
+         argvOptions: this._argvOptions
       });
       await createIndex.run();
    }
