@@ -15,6 +15,7 @@ const CreateModule = require('./app/createModule');
 
 const ERROR_CODE = 2;
 const LOG_FOLDER = 'log';
+
 /**
  * Модуль для запуска юнит тестов
  * @class Cli
@@ -37,10 +38,11 @@ class Cli {
       this.tasks = this._argvOptions.tasks ? this._argvOptions.tasks.split(',') : ['initStore', 'build', 'startTest'];
       this._only = !!this._argvOptions.only;
 
+      // eslint-disable-next-line id-match
       logger.logFile = path.join(this._argvOptions.workspace || __dirname, LOG_FOLDER, `test-cli-${this.tasks.join('_')}.log`);
 
       if (this._argvOptions.rep) {
-         this._testRep = this._argvOptions.rep.split(',').map(name => name.trim())
+         this._testRep = this._argvOptions.rep.split(',').map(name => name.trim());
       } else if (cfg.testRep) {
          this._testRep = cfg.testRep;
          this._only = true;
@@ -106,8 +108,8 @@ class Cli {
          buildTools: this._buildTools,
          workDir: this._workDir,
          workspace: this._workspace,
-         release:  this._argvOptions.release,
-         watcher:  this._argvOptions.watcher,
+         release: this._argvOptions.release,
+         watcher: this._argvOptions.watcher,
          builderBaseConfig: this._argvOptions.builderConfig,
          only: this._only,
          pathToJinnee: this._argvOptions.pathToJinnee,
@@ -197,7 +199,7 @@ class Cli {
 
    app() {
       const cfg = config.get();
-      const port =  this._argvOptions.port || cfg.port;
+      const port = this._argvOptions.port || cfg.port;
 
       return app.run(this._resources, port);
    }
@@ -211,7 +213,6 @@ class Cli {
          testRep: this._testRep,
          workDir: this._workDir,
          only: this._only,
-         reBuildMap: this._reBuildMap,
          argvOptions: this._argvOptions
       });
       await createIndex.run();
@@ -254,7 +255,7 @@ module.exports = Cli;
 
 // eslint-disable-next-line id-match
 if (require.main.filename === __filename) {
-   // Если файл запущен напрямую запускаем тестирование
+   // Если файл запущен напрямую запускаем run
    const cli = new Cli();
    cli.run().catch((e) => {
       logger.error(e);
