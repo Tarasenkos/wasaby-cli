@@ -11,6 +11,7 @@ const config = require('./app/util/config');
 const logger = require('./app/util/logger');
 const app = require('./app/app');
 const CreateIndex = require('./app/createIndex');
+const CreateModule = require('./app/createModule');
 
 const ERROR_CODE = 2;
 const LOG_FOLDER = 'log';
@@ -87,6 +88,9 @@ class Cli {
       }
       if (this.tasks.includes('createIndex')) {
          await this.createIndex();
+      }
+      if (this.tasks.includes('createModule')) {
+         await this.createModule();
       }
    }
 
@@ -211,6 +215,21 @@ class Cli {
          argvOptions: this._argvOptions
       });
       await createIndex.run();
+   }
+
+   async createModule() {
+      const createModule = new CreateModule({
+         rc: this._rc,
+         config: this._config,
+         store: this._store,
+         testRep: this._testRep,
+         only: this._only,
+         resources: this._resources,
+         path: this._argvOptions.path,
+         argvOptions: this._argvOptions
+      });
+
+      await createModule.run();
    }
 
    /**
