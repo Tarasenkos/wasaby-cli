@@ -197,8 +197,9 @@ class Build extends Base {
       builderConfig = this._options.release ? { ...builderConfig, ...RELEASE_FLAGS } : builderConfig;
       builderConfig.output = this._options.resources;
       builderConfig.symlinks = !this._options.copy;
-      builderConfig.staticServer = this._hotReloadPort;
-
+      if (this._hotReloadPort) {
+         builderConfig.staticServer = `localhost:${this._hotReloadPort}`;
+      }
       builderConfig.logs = path.join(this._options.workDir, 'logs');
 
       return fs.outputFile(`./${BUILDER_CONFIG_NAME}`, JSON.stringify(builderConfig, null, 4));
