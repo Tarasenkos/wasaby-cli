@@ -16,7 +16,7 @@ const RELEASE_FLAGS = {
    customPack: true,
    dependenciesGraph: true
 };
-
+const HOT_RELOAD_PORT = 10777;
 /**
  * Класс отвечающий за сборку ресурсов для тестов
  * @author Ганшин Я.О
@@ -44,7 +44,7 @@ class Build extends Base {
 
          await this._tslibInstall();
          if (this._options.buildTools === 'builder') {
-            this._hotReloadPort = await getPort();
+            this._hotReloadPort = await getPort(HOT_RELOAD_PORT);
             await Promise.all([
                this._startHotReloadServer(),
                this._initWithBuilder()
@@ -83,15 +83,22 @@ class Build extends Base {
       );
    }
 
+   /**
+    * Запускает сервер hot reload
+    * @returns {Promise<void>}
+    * @private
+    */
    async _startHotReloadServer() {
       const hotReload = path.join(this._options.resources, HOT_RELOAD_SERVER);
-      console.log('')
-      await this._shell.execute(
-         `node ${hotReload} --port=${this._hotReloadPort}`,
-         process.cwd(), {
-            name: 'hotReload'
-         }
-      );
+      if (this._options.watcher && fs.existsSync(hotReload)) {
+         logger.log('hot reload server started', 'hotReload');
+         await this._shell.execute(
+            `node ${hotReload} --port=${this._hotReloadPort}`,
+            process.cwd(), {
+               name: 'hotReload'
+            }
+         );
+      }
    }
 
    /**
