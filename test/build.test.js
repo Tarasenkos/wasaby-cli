@@ -28,6 +28,7 @@ describe('Build', () => {
          },
          store: '',
          workDir: '',
+         resources: '',
          workspace: 'application',
          rc: 'rc-10.1000',
          argvOptions: {}
@@ -140,6 +141,35 @@ describe('Build', () => {
                done();
             }
          })
+      })
+   });
+
+   describe('_startHotReloadServer()', () => {
+      let stubExists;
+      beforeEach(() => {
+         stubExists = sinon.stub(fs, 'existsSync').callsFake(() => true);
+      })
+      it('should start hotreload server', (done) => {
+         stubExecute.callsFake((cmd) => {
+            chai.expect(cmd).to.include('HotReload');
+            done();
+         });
+         build._options.watcher = true;
+         build._startHotReloadServer();
+      });
+      it('should not start hotreload server', () => {
+         build._options.watcher = false;
+         build._startHotReloadServer();
+         chai.expect(stubExecute.called).is.false
+      });
+      it('should not start hotreload server when server not existis', () => {
+         build._options.watcher = true;
+         stubExists.callsFake(() => false);
+         build._startHotReloadServer();
+         chai.expect(stubExecute.called).is.false
+      });
+      afterEach(() => {
+         stubExists.restore();
       })
    });
 

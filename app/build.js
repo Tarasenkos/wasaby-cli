@@ -5,16 +5,18 @@ const Base = require('./base');
 const Sdk = require('./util/sdk');
 const Project = require('./xml/project');
 const walkDir = require('./util/walkDir');
+const getPort = require('./net/getPort');
 
-const builderConfigName = 'builderConfig.json';
-const builderBaseConfig = '../builderConfig.base.json';
+const BUILDER_CONFIG_NAME = 'builderConfig.json';
+const BUILDER_BASE_CONFIG = '../builderConfig.base.json';
+const HOT_RELOAD_SERVER = 'HotReload/eventStream/third-party/server';
 const RELEASE_FLAGS = {
    minimize: true,
    wml: true,
    customPack: true,
    dependenciesGraph: true
 };
-
+const HOT_RELOAD_PORT = 10777;
 /**
  * Класс отвечающий за сборку ресурсов для тестов
  * @author Ганшин Я.О
@@ -28,7 +30,7 @@ class Build extends Base {
       if (cfg.builderBaseConfig) {
          this._builderBaseConfig = path.relative(__dirname, path.join(process.cwd(), cfg.builderBaseConfig));
       } else {
-         this._builderBaseConfig = builderBaseConfig;
+         this._builderBaseConfig = BUILDER_BASE_CONFIG;
       }
    }
 
@@ -42,7 +44,11 @@ class Build extends Base {
 
          await this._tslibInstall();
          if (this._options.buildTools === 'builder') {
-            await this._initWithBuilder();
+            this._hotReloadPort = await getPort(HOT_RELOAD_PORT);
+            await Promise.all([
+               this._startHotReloadServer(),
+               this._initWithBuilder()
+            ]);
          } else {
             await this._initWithJinnee();
          }
@@ -60,15 +66,14 @@ class Build extends Base {
 
    /**
     * Сборка ресурсов через билдер
-    * @param {String} builderOutput Папка в которую складыватся результат работы билдера
     * @returns {Promise<void>}
     * @private
     */
-   async _initWithBuilder(builderOutput) {
+   async _initWithBuilder() {
       const gulpPath = require.resolve('gulp/bin/gulp.js');
       const builderPath = require.resolve('sbis3-builder/gulpfile.js');
       const build = this._options.watcher ? 'buildOnChangeWatcher' : 'build';
-      await this._makeBuilderConfig(builderOutput);
+      await this._makeBuilderConfig();
       await this._shell.execute(
          `node ${gulpPath} --gulpfile=${builderPath} ${build} --config=${this._builderCfg}`,
          process.cwd(), {
@@ -76,6 +81,24 @@ class Build extends Base {
             errorLabel: '[ERROR]'
          }
       );
+   }
+
+   /**
+    * Запускает сервер hot reload
+    * @returns {Promise<void>}
+    * @private
+    */
+   async _startHotReloadServer() {
+      const hotReload = path.join(this._options.resources, HOT_RELOAD_SERVER);
+      if (this._options.watcher && fs.existsSync(hotReload)) {
+         logger.log('hot reload server started', 'hotReload');
+         await this._shell.execute(
+            `node ${hotReload} --port=${this._hotReloadPort}`,
+            process.cwd(), {
+               name: 'hotReload'
+            }
+         );
+      }
    }
 
    /**
@@ -105,7 +128,6 @@ class Build extends Base {
       if (this._options.copy) {
          Build._copySymlincResources(this._options.resources);
       }
-
    }
 
    /**
@@ -126,7 +148,7 @@ class Build extends Base {
       try {
          await fs.symlink(tsLib, wsTslib);
       } catch (e) {
-         logger.error(`Ошбка копирования tslib: ${e}`);
+         logger.error(`Ошибка копирования tslib: ${e}`);
       }
    }
 
@@ -152,14 +174,14 @@ class Build extends Base {
     * @return {Promise<void>}
     * @private
     */
-   _makeBuilderConfig(output) {
+   _makeBuilderConfig() {
       let builderConfig = require(this._builderBaseConfig);
       const testList = this._modulesMap.getRequiredModules();
 
       this._modulesMap.getChildModules(testList).forEach((moduleName) => {
          const cfg = this._modulesMap.get(moduleName);
 
-         //TODO Удалить, довабил по ошибке https://online.sbis.ru/opendoc.html?guid=4c7b5d67-6afa-4222-b3cd-22b2e658b3a8
+         // TODO Удалить, довабил по ошибке https://online.sbis.ru/opendoc.html?guid=4c7b5d67-6afa-4222-b3cd-22b2e658b3a8
          if (cfg !== undefined) {
             const isNameInConfig = builderConfig.modules.find(item => (item.name === moduleName));
             if (!isNameInConfig) {
@@ -173,12 +195,14 @@ class Build extends Base {
       });
 
       builderConfig = this._options.release ? { ...builderConfig, ...RELEASE_FLAGS } : builderConfig;
-      builderConfig.output = output || this._options.resources;
+      builderConfig.output = this._options.resources;
       builderConfig.symlinks = !this._options.copy;
-
+      if (this._hotReloadPort) {
+         builderConfig.staticServer = `localhost:${this._hotReloadPort}`;
+      }
       builderConfig.logs = path.join(this._options.workDir, 'logs');
 
-      return fs.outputFile(`./${builderConfigName}`, JSON.stringify(builderConfig, null, 4));
+      return fs.outputFile(`./${BUILDER_CONFIG_NAME}`, JSON.stringify(builderConfig, null, 4));
    }
 
    static _copySymlincResources(resources) {
