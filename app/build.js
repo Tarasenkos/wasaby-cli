@@ -55,6 +55,8 @@ class Build extends Base {
          await this._linkCDN();
          logger.log('Подготовка тестов завершена успешно');
       } catch (e) {
+         // TODO надо фильтровать ошибки билдера и в этом случае копировать cdn
+         await this._linkCDN();
          if (e.message) {
             e.message = `Сборка ресурсов завершена с ошибкой: ${e}`;
          } else {
