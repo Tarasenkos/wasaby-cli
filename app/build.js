@@ -9,7 +9,7 @@ const getPort = require('./net/getPort');
 
 const BUILDER_CONFIG_NAME = 'builderConfig.json';
 const BUILDER_BASE_CONFIG = '../builderConfig.base.json';
-const HOT_RELOAD_SERVER = 'HotReload/eventStream/third-party/server';
+const HOT_RELOAD_SERVER = 'eventStream/third-party/server';
 const RELEASE_FLAGS = {
    minimize: true,
    wml: true,
@@ -44,7 +44,9 @@ class Build extends Base {
 
          await this._tslibInstall();
          if (this._options.buildTools === 'builder') {
-            this._hotReloadPort = await getPort(HOT_RELOAD_PORT);
+            if (this._shouldStartHotReload()) {
+               this._hotReloadPort = await getPort(HOT_RELOAD_PORT);
+            }
             await Promise.all([
                this._startHotReloadServer(),
                this._initWithBuilder()
@@ -86,16 +88,36 @@ class Build extends Base {
    }
 
    /**
+    *
+    * @returns {boolean}
+    * @private
+    */
+   _shouldStartHotReload() {
+      if (this._options.watcher && this._modulesMap.has('HotReload')) {
+         return fs.existsSync(this._getHotReloadPath());
+      }
+      return false;
+   }
+
+   /**
+    * Возвращает путь до сервера hotreload
+    * @returns {string}
+    * @private
+    */
+   _getHotReloadPath() {
+      return path.join(this._modulesMap.get('HotReload').path, HOT_RELOAD_SERVER);
+   }
+
+   /**
     * Запускает сервер hot reload
     * @returns {Promise<void>}
     * @private
     */
    async _startHotReloadServer() {
-      const hotReload = path.join(this._options.resources, HOT_RELOAD_SERVER);
-      if (this._options.watcher && fs.existsSync(hotReload)) {
+      if (this._shouldStartHotReload()) {
          logger.log('hot reload server started', 'hotReload');
          await this._shell.execute(
-            `node ${hotReload} --port=${this._hotReloadPort}`,
+            `node ${this._getHotReloadPath()} --port=${this._hotReloadPort}`,
             process.cwd(), {
                name: 'hotReload'
             }

@@ -104,8 +104,17 @@ describe('Build', () => {
             chai.expect(config).to.deep.include(baseConfig);
             done();
          });
+         build._makeBuilderConfig();
+      });
 
-         build._makeBuilderConfig(baseConfig.output);
+      it('should add staticserver if defined hot reload port', (done) => {
+         stubfs.callsFake((fileName, config) => {
+            config = JSON.parse(config);
+            chai.expect(config.staticServer).to.equal('localhost:10777');
+            done();
+         });
+         build._hotReloadPort = 10777;
+         build._makeBuilderConfig();
       });
 
       afterEach(() => {
@@ -123,7 +132,6 @@ describe('Build', () => {
          fsLink.restore();
       });
       it('should copy ts config', (done) => {
-         let cmd;
          fsLink.callsFake((c) => {
             chai.expect(c).to.includes('tslib.js');
             done();
@@ -140,15 +148,15 @@ describe('Build', () => {
             if (cmd.includes('buildOnChangeWatcher')) {
                done();
             }
-         })
-      })
+         });
+      });
    });
 
    describe('_startHotReloadServer()', () => {
       let stubExists;
       beforeEach(() => {
          stubExists = sinon.stub(fs, 'existsSync').callsFake(() => true);
-      })
+      });
       it('should start hotreload server', (done) => {
          stubExecute.callsFake((cmd) => {
             chai.expect(cmd).to.include('HotReload');
@@ -160,17 +168,17 @@ describe('Build', () => {
       it('should not start hotreload server', () => {
          build._options.watcher = false;
          build._startHotReloadServer();
-         chai.expect(stubExecute.called).is.false
+         chai.expect(stubExecute.called).is.false;
       });
       it('should not start hotreload server when server not existis', () => {
          build._options.watcher = true;
          stubExists.callsFake(() => false);
          build._startHotReloadServer();
-         chai.expect(stubExecute.called).is.false
+         chai.expect(stubExecute.called).is.false;
       });
       afterEach(() => {
          stubExists.restore();
-      })
+      });
    });
 
    describe('._initWithJinnee()', () => {
