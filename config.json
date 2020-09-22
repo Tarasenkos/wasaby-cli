@@ -1,5 +1,4 @@
 {
-   "store": "store",
    "workDir": "application",
    "gitMirror": "platform-git.sbis.ru",
    "repositories": {

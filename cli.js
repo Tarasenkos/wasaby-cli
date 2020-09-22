@@ -15,7 +15,7 @@ const CreateModule = require('./app/createModule');
 
 const ERROR_CODE = 2;
 const LOG_FOLDER = 'log';
-
+const STORE = path.join(__dirname, 'store')
 /**
  * Модуль для запуска юнит тестов
  * @class Cli
@@ -28,7 +28,10 @@ class Cli {
       const cfg = config.get(this._argvOptions);
       this._config = cfg;
 
-      this._store = this._argvOptions.store || path.join(__dirname, cfg.store);
+      this._store = this._argvOptions.store || cfg.store || STORE;
+      if (!path.isAbsolute(this._store)) {
+         this._store = path.normalize(path.join(process.cwd(), this._store));
+      }
 
       // на _repos остались завязаны srv и скрипт сборки пока это не убрать
       this._store = path.join(this._store, '_repos');
@@ -190,7 +193,7 @@ class Cli {
          only: this._only,
          resources: this._resources,
          builderCache: this._builderCache,
-         tsconfig: this._argvOptions.tsconfig,
+         tsconfig: this._argvOptions.tsconfig || this._config.tsconfig,
          argvOptions: this._argvOptions
       });
 
