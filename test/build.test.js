@@ -156,13 +156,19 @@ describe('Build', () => {
       let stubExists;
       beforeEach(() => {
          stubExists = sinon.stub(fs, 'existsSync').callsFake(() => true);
+         sinon.stub(build, '_modulesMap').value({
+            get: (name) => {
+               return name === 'HotReload' ? {path: 'path/to/HotReload'} : {};
+            },
+            has: (name) => name === 'HotReload'
+         });
       });
       it('should start hotreload server', (done) => {
          stubExecute.callsFake((cmd) => {
             chai.expect(cmd).to.include('HotReload');
             done();
          });
-         build._options.watcher = true;
+         sinon.stub(build, '_shouldStartHotReload').callsFake(() => true);
          build._startHotReloadServer();
       });
       it('should not start hotreload server', () => {
