@@ -41,10 +41,10 @@ describe('Project', () => {
       ]);
       modulesMap.getRequiredModules = () => {
          return ['test11','test22'];
-      }
+      };
       modulesMap.getChildModules = () => {
          return ['test11','test22'];
-      }
+      };
       sinon.stub(project, '_modulesMap').value(modulesMap);
       stubxmlWrite = sinon.stub(xml, 'writeXmlFile').callsFake(() => undefined);
    });
@@ -167,14 +167,24 @@ describe('Project', () => {
                }
             ]
          }
-      }
+      };
       beforeEach(() => {
          stubxml.callsFake((path) => srv);
       });
 
       it('should add modules to srv', async () => {
          await project._addModulesToSrv('path');
-         chai.expect(3).to.equal(srv.service.items[0].ui_module.length)
+         chai.expect(3).to.equal(srv.service.items[0].ui_module.length);
+      });
+
+      it('should add dependencies for modules from srv', (done) => {
+         project._modulesInSrv = ['testSrv'];
+         project._addModulesToSrv('path');
+         sinon.stub(project._modulesMap, 'getChildModules').callsFake((modules) => {
+            chai.expect(modules).to.includes('testSrv');
+            done();
+            return [];
+         });
       });
    });
 });
