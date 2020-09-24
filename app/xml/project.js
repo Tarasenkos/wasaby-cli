@@ -174,12 +174,12 @@ class Project {
     * @private
     */
    async _addModulesToSrv(srvPath) {
-      const testList = this._modulesMap.getRequiredModules();
-      if (testList.length > 0) {
+      const requiredModules = [...this._modulesInSrv, ...this._modulesMap.getRequiredModules()];
+      if (requiredModules.length > 0) {
          const srv = await xml.readXmlFile(srvPath);
          const modules = getUiModules(srv);
 
-         this._modulesMap.getChildModules(testList).forEach((moduleName) => {
+         this._modulesMap.getChildModules(requiredModules).forEach((moduleName) => {
             if (!this._modulesInSrv.includes(moduleName)) {
                const cfg = this._modulesMap.get(moduleName);
                const dirName = path.dirname(srvPath);

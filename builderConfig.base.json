@@ -9,7 +9,6 @@
    "clearOutput": true,
    "tsc": true,
    "less": true,
-   "themes": true,
    "symlinks": true,
    "modules": []
 }
