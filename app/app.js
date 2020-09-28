@@ -40,9 +40,10 @@ async function run(resources, port) {
 
    console.log('start init');
    const ready = new Promise((resolve, reject) => {
-      require(['Env/Env', 'Application/Initializer', 'SbisEnv/PresentationService', 'UI/Base', 'Core/core-init'], function(Env, AppInit, PS, UIBase) {
+      global.contents = require('json!/contents');
+      require(['Env/Env', 'Application/Initializer', 'SbisEnv/PresentationService', 'UI/Base', 'Core/core-init', 'I18n/i18n'], function(Env, AppInit, PS, UIBase) {
          Env.constants.resourceRoot = resourceRoot;
-         Env.constants.modules = require('json!/contents').modules;
+         Env.constants.modules = global.contents.modules;
 
          if (!AppInit.isInit()) {
             // eslint-disable-next-line new-cap

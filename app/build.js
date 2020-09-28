@@ -229,6 +229,13 @@ class Build extends Base {
       return fs.outputFile(`./${BUILDER_CONFIG_NAME}`, JSON.stringify(builderConfig, null, 4));
    }
 
+   _addLocalization(builderConfig) {
+      if (this._options.localization) {
+         builderConfig.localization = ["ru-RU", "en-US"];
+         builderConfig["default-localization"] = "ru-RU";
+      }
+   }
+
    static _copySymlincResources(resources) {
       walkDir(resources, (file) => {
          const fullPath = path.join(resources, file);
