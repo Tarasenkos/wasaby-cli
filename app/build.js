@@ -44,6 +44,7 @@ class Build extends Base {
 
          await this._tslibInstall();
          if (this._options.buildTools === 'builder') {
+            this._pathTocdn = path.join(__dirname, '../resources', 'cdn');
             if (this._shouldStartHotReload()) {
                this._hotReloadPort = await getPort(HOT_RELOAD_PORT);
             }
@@ -52,13 +53,12 @@ class Build extends Base {
                this._initWithBuilder()
             ]);
          } else {
+            this._pathTocdn = path.join(this._options.resources, 'cdn');
             await this._initWithJinnee();
+            await this._linkCDN();
          }
-         await this._linkCDN();
          logger.log('Подготовка тестов завершена успешно');
       } catch (e) {
-         // TODO надо фильтровать ошибки билдера и в этом случае копировать cdn
-         await this._linkCDN();
          if (e.message) {
             e.message = `Сборка ресурсов завершена с ошибкой: ${e}`;
          } else {
@@ -77,6 +77,8 @@ class Build extends Base {
       const gulpPath = require.resolve('gulp/bin/gulp.js');
       const builderPath = require.resolve('sbis3-builder/gulpfile.js');
       const build = this._options.watcher ? 'buildOnChangeWatcher' : 'build';
+
+      await this._linkCDN()
       await this._makeBuilderConfig();
       await this._shell.execute(
          `node ${gulpPath} --gulpfile=${builderPath} ${build} --config=${this._builderCfg}`,
@@ -185,7 +187,7 @@ class Build extends Base {
       const promises = [];
       this._modulesMap.getCDNModules().forEach((name) => {
          const cfg = this._modulesMap.get(name);
-         const pathLink = path.join(this._options.resources, 'cdn', name);
+         const pathLink = path.join(this._pathTocdn, name);
          promises.push(fs.copy(cfg.path, pathLink).catch((e) => {
             logger.error(`Ошибка копирования модуля ${name}:  ${e}`);
          }));
@@ -216,6 +218,11 @@ class Build extends Base {
                });
             }
          }
+      });
+
+      builderConfig.modules.push({
+         name: 'cdn',
+         path: this._pathTocdn
       });
 
       builderConfig = this._options.release ? { ...builderConfig, ...RELEASE_FLAGS } : builderConfig;
