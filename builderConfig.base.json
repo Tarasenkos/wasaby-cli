@@ -1,7 +1,5 @@
 {
    "cache": "./build-ui/builder-json-cache",
-   "output": "./application/unit",
-   "logs": "./application/logs",
    "typescript": true,
    "contents": true,
    "tsconfig": "es5.test.json",
