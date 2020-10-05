@@ -68,6 +68,7 @@ describe('Build', () => {
                   test1: {}
                }
             },
+            resources: '',
             store: '',
             buildTools: 'jinnee',
             argvOptions: {}
@@ -97,14 +98,15 @@ describe('Build', () => {
             has: () => false
          });
       });
-      it('should make builder config like base', (done) => {
+      it('should make builder config like base', () => {
          let baseConfig = require('../builderConfig.base.json');
+         build._pathTocdn = '/cdn'
+         let tConfig = {};
          stubfs.callsFake((fileName, config) => {
-            config = JSON.parse(config);
-            chai.expect(config).to.deep.include(baseConfig);
-            done();
+            tConfig = JSON.parse(config);
          });
          build._makeBuilderConfig();
+         chai.expect(tConfig).to.deep.include(baseConfig);
       });
 
       it('should add staticserver if defined hot reload port', (done) => {
