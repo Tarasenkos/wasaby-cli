@@ -62,9 +62,9 @@ async function run(resources, port, config) {
       });
    });
 
-   if (config && config.expressRoure) {
-      Object.keys(config.expressRoure).forEach((route) => {
-         let module = require(path.join(path.relative(__dirname, workDir), config.expressRoure[route]));
+   if (config && config.expressRoute) {
+      Object.keys(config.expressRoute).forEach((route) => {
+         let module = require(path.join(path.relative(__dirname, workDir), config.expressRoute[route]));
          app.use(route, module);
       });
    }
