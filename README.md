@@ -102,6 +102,27 @@
             "port": 777    
         }
     } 
+
+Так же можно задать кастомные роутинги для демо сервера.
+    
+    {
+        "wasaby-cli": {
+            "expressRoute": {
+                "/service": "service.js"
+            }     
+        }
+    }
+    
+js модуль должен экспотрировать express.Router
+   
+    const express = require('express');
+    const router = express.Router();
+    
+    router.get('/', (req, res) => {
+
+    });
+    
+    module.exports = router;      
         
 ## Подготовка окружения
 Подготоваливает окружение: копирует tsConfig, esLint.
@@ -147,3 +168,4 @@
 * copy - Копировать ресурсы, по умолчанию создаются симлинки
 * tsconfig - Путь до базового tsconfig, по умолчнию берется saby-typescript/configs/es5.dev.json 
 * entry - Названия модулей для которых следует собирать приложение, по умочанию все модули репозитория  
+* expressRoute - Объект содержащий кастомные роутинги для express
