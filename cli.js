@@ -204,7 +204,7 @@ class Cli {
       const cfg = config.get();
       const port = this._argvOptions.port || cfg.port;
 
-      return app.run(this._resources, port);
+      return app.run(this._resources, port, this._config);
    }
 
    async createIndex() {
