@@ -6,6 +6,8 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const serveStatic = require('serve-static');
 const getPort = require('./net/getPort');
+const path = require('path');
+
 const global = (function() {
    // eslint-disable-next-line no-eval
    return this || (0, eval)('this');
@@ -16,11 +18,13 @@ const resourceRoot = '/';
  * Запускает сервер приложения
  * @param {String} resources Путь до ресурсов
  * @param {Number} port Порт на котором будет запущен сервер
+ * @param {Object} config Конфиг приложения
  */
-async function run(resources, port) {
+
+async function run(resources, port, config) {
    const app = express();
    const availablePort = await getPort(port);
-
+   const workDir = process.cwd();
    process.chdir(resources);
 
    app.use(bodyParser.json());
@@ -28,21 +32,21 @@ async function run(resources, port) {
    app.use('/', serveStatic('./'));
    app.listen(availablePort);
 
-   let require = isolated.prepareTestEnvironment(
-      '',
-      undefined,
-      false,
-      undefined,
-      false
+   let requirejs = isolated.prepareTestEnvironment(
+       '',
+       undefined,
+       false,
+       undefined,
+       false
    );
 
-   global.require = require;
-
+   global.require = requirejs;
    console.log('start init');
+
    const ready = new Promise((resolve, reject) => {
-      require(['Env/Env', 'Application/Initializer', 'SbisEnv/PresentationService', 'UI/Base', 'Core/core-init'], function(Env, AppInit, PS, UIBase) {
+      requirejs(['Env/Env', 'Application/Initializer', 'SbisEnv/PresentationService', 'UI/Base', 'Core/core-init'], function(Env, AppInit, PS, UIBase) {
          Env.constants.resourceRoot = resourceRoot;
-         Env.constants.modules = require('json!/contents').modules;
+         Env.constants.modules = requirejs('json!/contents').modules;
 
          if (!AppInit.isInit()) {
             // eslint-disable-next-line new-cap
@@ -57,6 +61,13 @@ async function run(resources, port) {
          reject(err);
       });
    });
+
+   if (config && config.expressRoute) {
+      Object.keys(config.expressRoute).forEach((route) => {
+         let module = require(path.join(path.relative(__dirname, workDir), config.expressRoute[route]));
+         app.use(route, module);
+      });
+   }
 
    /* server side render */
    app.get('/*', (req, res) => {
