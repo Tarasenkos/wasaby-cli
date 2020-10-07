@@ -70,7 +70,7 @@ async function run(resources, port, config) {
    }
 
    /* server side render */
-   app.get('/:moduleName/*', (req, res) => {
+   app.get('/*', (req, res) => {
       ready.then(() => {
          serverSideRender(req, res);
       });
@@ -106,12 +106,9 @@ function serverSideRender(req, res) {
       return el.length > 0;
    });
 
-   let cmp;
-   if (pathRoot.indexOf('app') > -1) {
-      cmp = pathRoot[0] + '/Index';
-   } else {
-      cmp = pathRoot.join('/') + '/Index';
-   }
+   const sabyRouter = requirejs('Router/ServerRouting');
+   const cmp = sabyRouter.getAppName(req);
+
    try {
       requirejs(cmp);
    } catch (e) {
