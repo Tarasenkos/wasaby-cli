@@ -95,33 +95,22 @@ function serverSideRender(req, res) {
    const UIBase = requirejs('UI/Base');
    AppInit.startRequest(undefined, new UIBase.StateReceiver());
 
-   const tpl = requirejs('wml!Controls/Application/Route');
-
-   let pathRoot = req.originalUrl.split('/');
-   if (!pathRoot) {
-      console.error('Incorrect url. Couldn\'t resolve path to root component');
-   }
-
-   pathRoot = pathRoot.filter(function(el) {
-      return el.length > 0;
-   });
-
    const sabyRouter = requirejs('Router/ServerRouting');
-   const cmp = sabyRouter.getAppName(req);
+   const moduleName = sabyRouter.getAppName(req);
 
    try {
-      requirejs(cmp);
+      requirejs(moduleName);
    } catch (e) {
       res.status(404).end(JSON.stringify(e, null, 2));
 
       return;
    }
 
-   const rendering = tpl({
+   const rendering = UIBase.BaseRoute({
       lite: true,
       wsRoot: '/WS.Core/',
       resourceRoot,
-      application: cmp,
+      application: moduleName,
       appRoot: '/',
       _options: {
          preInitScript: 'window.wsConfig.debug = true;window.wsConfig.userConfigSupport = false;'
