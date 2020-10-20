@@ -93,7 +93,7 @@ describe('config', () => {
                   name: 'test',
                   version: '20.2000.0'
                };
-            } else if (path.includes('wasabycli.json')) {
+            } else if (path.includes('wasaby-cli.json')) {
                return {
                   wasabyConfig: true
                }

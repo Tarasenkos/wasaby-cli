@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 
 const CONFIG = path.normalize(path.join(__dirname, '../../config.json'));
-const WASABYCLI = 'wasabycli.json';
+const WASABYCLI = 'wasaby-cli.json';
 /**
  * Модуль для работы с конфигом test-cli
  * @author Ганшин Я.О
