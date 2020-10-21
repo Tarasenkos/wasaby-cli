@@ -119,6 +119,14 @@
       "notice": {
          "mirror": "git.sbis.ru",
          "url": "notice/core"
+      },
+      "time-zone": {
+         "mirror": "git.sbis.ru",
+         "url": "work-time-mgmt/time-zone"
+      },
+      "plugin": {
+         "mirror": "git.sbis.ru",
+         "url": "plugin/core"
       }
    }
 }
