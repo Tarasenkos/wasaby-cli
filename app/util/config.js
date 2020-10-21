@@ -2,7 +2,7 @@ const path = require('path');
 const fs = require('fs-extra');
 
 const CONFIG = path.normalize(path.join(__dirname, '../../config.json'));
-
+const WASABYCLI = 'wasaby-cli.json';
 /**
  * Модуль для работы с конфигом test-cli
  * @author Ганшин Я.О
@@ -41,6 +41,9 @@ function get(argvOptions = {}) {
       wsSection.repositories = Object.assign(config.repositories, getRepsFromConfig(wsSection));
       Object.assign(config, wsSection);
    }
+
+   const wasabyConfig = loadWasabyConfig();
+   Object.assign(config, wasabyConfig);
 
    return config;
 }
@@ -144,6 +147,14 @@ function getRepsFromConfig(wsSection) {
    }
 
    return result;
+}
+
+function loadWasabyConfig() {
+   const configPath = path.join(process.cwd(), WASABYCLI);
+   if (fs.existsSync(configPath)) {
+      return fs.readJSONSync(configPath);
+   }
+   return {};
 }
 
 module.exports = {

@@ -5,12 +5,13 @@ const fs = require('fs-extra');
 
 describe('config', () => {
    describe('.get()', () => {
-      let stubReadJSON;
+      let stubReadJSON, stubExistsSync;
       beforeEach(() => {
          stubReadJSON = sinon.stub(fs, 'readJSONSync').callsFake(() => {});
       });
       afterEach(() => {
          stubReadJSON.restore();
+         stubExistsSync && stubExistsSync.restore();
       });
 
       it('should consists version', async () => {
@@ -85,6 +86,30 @@ describe('config', () => {
          chai.expect(expected).to.deep.equal(config.get({}).repositories['test']);
       });
 
+      it('should add path to existed repository', async () => {
+         stubReadJSON.callsFake((path) => {
+            if (path.includes('package.json')) {
+               return {
+                  name: 'test',
+                  version: '20.2000.0'
+               };
+            } else if (path.includes('wasaby-cli.json')) {
+               return {
+                  wasabyConfig: true
+               }
+            } else {
+               const cfg = stubReadJSON.wrappedMethod(path);
+               cfg.repositories = {
+                  'test': {
+                     'url': 'test11'
+                  }
+               };
+               return cfg;
+            }
+         });
+         stubExistsSync = sinon.stub(fs, 'existsSync').callsFake((cfg) => true);
+         chai.expect(config.get({})).to.includes({wasabyConfig: true});
+      });
 
       it('should make git url', async () => {
          stubReadJSON.callsFake((path) => {
