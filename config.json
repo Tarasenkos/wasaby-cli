@@ -127,6 +127,10 @@
       "plugin": {
          "mirror": "git.sbis.ru",
          "url": "plugin/core"
+      },
+      "sbis3-crypto": {
+         "mirror": "git.sbis.ru",
+         "url": "root/sbis3-crypto"
       }
    }
 }
