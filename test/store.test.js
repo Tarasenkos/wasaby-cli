@@ -225,7 +225,7 @@ describe('Store', () => {
                chai.expect(cmd).to.equal('git checkout -f my/branch');
                done();
             }
-            return Promise.resolve([]);
+            return Promise.resolve();
          });
 
          store.checkout('name', 'my/branch:rc-20.4000');
