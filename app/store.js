@@ -79,16 +79,13 @@ class Store extends Base {
          path: path.join(this._store, name),
          name: name
       });
+
       let [branch, mergeWith] = commit.split(':');
       const isBranch = Git.isBranch(branch);
 
+      logger.log(`Переключение на ветку ${branch}`, name);
       await git.update();
       if (isBranch) {
-         if (branch.includes('rc-')) {
-            branch = await git.getNearestRcBranch(branch);
-         }
-
-         logger.log(`Переключение на ветку ${branch}`, name);
          try {
             await git.checkout(branch);
          } catch (err) {

@@ -17,16 +17,13 @@
     npx wasaby-cli --tasks=initStore --rmi=my/branch   
       
 Для того что бы добавить прикладные репозитории в сборку нужно в секции wasaby-cli вашего package.json файла, добавить  
-параметр repositories, можно добавлять как ссылку на гит так и путь до своего локального репозитория, так же можно 
-передать путь до платформенноого репозитория, по умолчанию они описаны в конфиге wasaby-cli. 
+параметр repositories
 
     {
         "wasaby-cli": {
             "repositories": {
                 "name": "https://git.sbis.ru/sbis/name.git",
-                "name2": "https://git.sbis.ru/sbis/name2.git#rc-20.6000",
-                "name3": "../name3",
-                "sbis3-ws": "../sbis3-ws"
+                "name2": "https://git.sbis.ru/sbis/name2.git#rc-20.6000"
             }  
         }
     }
@@ -172,4 +169,3 @@ js модуль должен экспотрировать express.Router
 * tsconfig - Путь до базового tsconfig, по умолчнию берется saby-typescript/configs/es5.dev.json 
 * entry - Названия модулей для которых следует собирать приложение, по умочанию все модули репозитория  
 * expressRoute - Объект содержащий кастомные роутинги для express
-* links - объект содержащий ссылки на локальные репозитории

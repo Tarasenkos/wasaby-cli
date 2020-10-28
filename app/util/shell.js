@@ -61,28 +61,27 @@ class Shell {
       const result = [];
       this._childProcessMap.push(childProccess);
 
-      childProccess.stdout.on('data', (data) => {
-         const dataString = data.toString();
-         if (!params.silent) {
+      if (!params.silent) {
+         childProccess.stdout.on('data', (data) => {
+            const dataString = data.toString();
             logger.log(dataString, params.processName);
-         }
-         if (params.errorLabel && dataString.includes(params.errorLabel)) {
-            errors.push(dataString);
-         } else {
-            result.push(dataString);
-         }
-      });
+            if (params.errorLabel && dataString.includes(params.errorLabel)) {
+               errors.push(dataString);
+            } else {
+               result.push(dataString);
+            }
+         });
 
-      childProccess.stderr.on('data', (data) => {
-         const dataString = data.toString();
-         if (!params.silent) {
+         childProccess.stderr.on('data', (data) => {
+            const dataString = data.toString();
             logger.log(dataString, params.processName);
-         }
-         // TODO надо подумать как фильтровать warning
-         if (!(/warning/i.test(dataString))) {
-            errors.push(dataString);
-         }
-      });
+
+            // TODO надо подумать как фильтровать warning
+            if (!(/warning/i.test(dataString))) {
+               errors.push(dataString);
+            }
+         });
+      }
 
       return new Promise((resolve, reject) => {
          childProccess.on('exit', (code, signal) => {
