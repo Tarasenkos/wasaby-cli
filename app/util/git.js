@@ -114,10 +114,10 @@ class Git {
       const detectedBranch = `${majorRcVersion}${minorRcVersion}`;
 
       if (!majorRcVersion || !minorRcVersion || !detectedBranch) {
-         return rc;
+         return '';
       }
 
-      return detectedBranch;
+      return detectedBranch || rc;
    }
 
    /**
