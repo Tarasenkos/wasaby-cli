@@ -3,7 +3,7 @@ const fs = require('fs-extra');
 
 const CONFIG = path.normalize(path.join(__dirname, '../../config.json'));
 const WASABYCLI = 'wasaby-cli.json';
-const isUrl = /(git|ssh|https?|git@[-\w.]+):$/;
+const isUrl = /(git|ssh|https?|git@[-\w.]+):/;
 
 /**
  * Модуль для работы с конфигом test-cli

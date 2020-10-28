@@ -117,7 +117,7 @@ class Git {
          return '';
       }
 
-      return detectedBranch;
+      return detectedBranch || rc;
    }
 
    /**

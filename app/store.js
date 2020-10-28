@@ -84,8 +84,8 @@ class Store extends Base {
 
       await git.update();
       if (isBranch) {
-         if (commit.includes('rc-')) {
-            branch = await git.getNearestRcBranch(commit);
+         if (branch.includes('rc-')) {
+            branch = await git.getNearestRcBranch(branch);
          }
 
          logger.log(`Переключение на ветку ${branch}`, name);
