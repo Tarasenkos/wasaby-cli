@@ -106,7 +106,7 @@ class Git {
       }
 
       if (numbersVersBranchs.length === 0) {
-         return '';
+         return rc;
       }
 
       const majorRcVersion = rc.slice(0, rc.lastIndexOf('.') + 1);
