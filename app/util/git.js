@@ -127,8 +127,9 @@ class Git {
     */
    async _getAllBranch() {
       const result = await this._shell.execute('git branch -r', this._path, {
-         name: 'git branch -r',
-         silent: true
+         silent: true,
+         processName: `${this._name} git branch -r`,
+         maxBuffer: 1024 * 1024 * 2
       });
 
       return result.join('').replace(/ /g, '').split('\n');
