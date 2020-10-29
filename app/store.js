@@ -85,7 +85,7 @@ class Store extends Base {
       await git.update();
       if (isBranch) {
          if (branch.includes('rc-')) {
-            const branch = await git.getNearestRcBranch(branch);
+            branch = await git.getNearestRcBranch(branch);
             logger.log(`getNearestRcBranch return ${branch}`, name);
          }
 
