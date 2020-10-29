@@ -1,6 +1,7 @@
 const Shell = require('./shell');
 const config = require('./config');
 const ERROR_MERGE_CODE = 101;
+const logger = require('../util/logger');
 
 /**
  * Ксласс содержащий методы работы с гитом
@@ -45,6 +46,7 @@ class Git {
     * @returns {Promise<any>}
     */
    reset(revision) {
+      logger.log(`git reset --hard ${revision}`);
       return this._shell.execute(`git reset --hard ${revision}`, this._path, {
          processName: `${this._name} git reset`
       });
@@ -70,6 +72,68 @@ class Git {
          processName: `${this._name} git checkout`
       });
    }
+
+
+   /**
+    * Функция пытаеться найти ближайщую rc ветку.
+    * @param rc - rc ветка переданная пользователем.
+    * @returns {Promise<String>}
+    */
+   async getNearestRcBranch(rc) {
+      const allBranch = await this._getAllBranch();
+      const mask = `origin/${rc.slice(0, rc.lastIndexOf('.') + 2)}`;
+      const branchMask = [];
+
+      for (const branch of allBranch) {
+         if (branch.startsWith(mask)) {
+            branchMask.push(branch);
+         }
+      }
+
+      if (branchMask.includes(`origin/${rc}`)) {
+         return rc;
+      }
+
+      const numberVersionRC = +rc.slice(rc.lastIndexOf('.') + 1);
+      const numbersVersBranchs = [];
+
+      for (const branch of branchMask) {
+         let numberVersionBranch = branch.slice(branch.lastIndexOf('.') + 1);
+
+         if (/^\d*$/.test(numberVersionBranch) && numberVersionRC < +numberVersionBranch) {
+            numbersVersBranchs.push(+numberVersionBranch);
+         }
+      }
+
+      if (numbersVersBranchs.length === 0) {
+         return rc;
+      }
+
+      const majorRcVersion = rc.slice(0, rc.lastIndexOf('.') + 1);
+      const minorRcVersion = numbersVersBranchs.sort((a, b) => a - b).shift();
+      const detectedBranch = `${majorRcVersion}${minorRcVersion}`;
+
+      if (!majorRcVersion || !minorRcVersion || !detectedBranch) {
+         return rc;
+      }
+
+      return detectedBranch;
+   }
+
+   /**
+    * Возрашает все ветки в репозитории.
+    * @returns {Promise<string[]>}
+    * @private
+    */
+   async _getAllBranch() {
+      const result = await this._shell.execute('git branch -r', this._path, {
+         name: 'git branch -r',
+         silent: true
+      });
+
+      return result.join('').replace(/ /g, '').split('\n');
+   }
+
 
    /**
     * Выполняет git merge
