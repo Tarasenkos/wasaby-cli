@@ -3,6 +3,8 @@ const fs = require('fs-extra');
 
 const CONFIG = path.normalize(path.join(__dirname, '../../config.json'));
 const WASABYCLI = 'wasaby-cli.json';
+const isUrl = /(git|ssh|https?|git@[-\w.]+):/;
+
 /**
  * Модуль для работы с конфигом test-cli
  * @author Ганшин Я.О
@@ -43,7 +45,14 @@ function get(argvOptions = {}) {
    }
 
    const wasabyConfig = loadWasabyConfig();
+   wasabyConfig.repositories = Object.assign(config.repositories, getRepsFromConfig(wasabyConfig));
    Object.assign(config, wasabyConfig);
+
+   if (config.links) {
+      Object.keys(config.links).forEach((name) => {
+
+      });
+   }
 
    return config;
 }
@@ -137,12 +146,21 @@ function getRepsFromConfig(wsSection) {
 
    if (wsSection.repositories) {
       Object.keys(wsSection.repositories).forEach((name) => {
-         let url = wsSection.repositories[name].split('#');
-         result[name] = {
-            url: url[0],
-            version: url[1],
-            load: true
-         };
+         let link = wsSection.repositories[name];
+
+         if (isUrl.test(link)) {
+            link = link.split('#');
+            result[name] = {
+               url: link[0],
+               version: link[1],
+               load: true
+            };
+         } else {
+            result[name] = {
+               path: path.isAbsolute(link) ? link : path.normalize(path.join(process.cwd(), link)),
+               skipStore: true
+            };
+         }
       });
    }
 
