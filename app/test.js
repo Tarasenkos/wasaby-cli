@@ -207,7 +207,7 @@ class Test extends Base {
          if (moduleCfg && moduleCfg.depends) {
             moduleCfg.depends.forEach((dependModuleName) => {
                const dependModuleCfg = this._modulesMap.get(dependModuleName);
-               let nycModulePath = [dependModuleName, '**', '*.js'];
+               let nycModulePath = [dependModuleName.replace(/ /g, '_'), '**', '*.js'];
                if (!this._options.only || dependModuleCfg && namesArray.includes(dependModuleCfg.rep)) {
                   if (nycPath) {
                      nycModulePath.unshift(nycPath);
