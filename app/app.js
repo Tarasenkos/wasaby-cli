@@ -94,7 +94,8 @@ function serverSideRender(req, res) {
    const AppInit = requirejs('Application/Initializer');
    const UIBase = requirejs('UI/Base');
    const AppState = requirejs('Application/State');
-   AppInit.startRequest(undefined, new AppState.StateReceiver());
+   const UIState = requirejs('UI/State');
+   AppInit.startRequest(undefined, new AppState.StateReceiver(UIState.Serializer));
 
    const sabyRouter = requirejs('Router/ServerRouting');
    const moduleName = sabyRouter.getAppName(req);
