@@ -3,7 +3,7 @@
    "version": "21.1000.0",
    "description": "Build and run unit tests for wasaby",
    "scripts": {
-      "test": "mocha",
+      "test": "mocha ./test --recursive",
       "test:coverage": "nyc --reporter=html npm run test",
       "install-selenium": "npm install selenium-standalone@6.14.x && node node_modules/selenium-standalone/bin/selenium-standalone install",
       "tslint": "tslint -q app/**/*.js"
