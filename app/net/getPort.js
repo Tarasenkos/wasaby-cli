@@ -1,7 +1,6 @@
 const net = require('net');
 
-const MIN_PORT = 1024;
-const MAX_PORT = 65536;
+const MAX_ATTEMPT = 666;
 
 /**
  * Поиск свободного порта
@@ -14,33 +13,40 @@ const MAX_PORT = 65536;
  * @returns {Promise<Number>}
  */
 const checkPort = function(port) {
-   return new Promise((resolve, reject) => {
+   return new Promise((resolve) => {
       const server = net.createServer();
       server.unref();
-      server.on('error', reject);
+      server.on('error', () => {
+         resolve(false);
+      });
       server.listen(port, () => {
          server.close(() => {
-            resolve(port);
+            resolve(true);
          });
       });
    });
 };
 
+const randomPort = () => {
+   return 40000 + Math.ceil(Math.random() * 10000);
+}
+
 /**
  * Возвращает свободный порт
- * @param {Number} minPort - Порт начиная от которого надо искать свободный
  * @returns {Promise<Number>}
  */
-module.exports = async function getPort(minPort) {
-   for (let port = minPort || MIN_PORT; port <= MAX_PORT; port++) {
-      try {
-         // eslint-disable-next-line no-await-in-loop
-         return await checkPort(port);
-      } catch (error) {
-         if (!['EADDRINUSE', 'EACCES'].includes(error.code)) {
-            throw error;
-         }
+module.exports = async function getPort(userPort) {
+   if (userPort && await checkPort(userPort)) {
+      return userPort;
+   }
+
+   for (let attempt = 0; attempt <= MAX_ATTEMPT; attempt++) {
+      const port = randomPort();
+
+      if (await checkPort(port)) {
+         return port;
       }
    }
+
    throw new Error('Нет свободных портов');
 };

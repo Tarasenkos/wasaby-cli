@@ -46,7 +46,7 @@ class Build extends Base {
          if (this._options.buildTools === 'builder') {
             this._pathTocdn = path.join(__dirname, '../resources', 'cdn');
             if (this._shouldStartHotReload()) {
-               this._hotReloadPort = await getPort(HOT_RELOAD_PORT);
+               this._hotReloadPort = await getPort();
             }
             await Promise.all([
                this._startHotReloadServer(),
