@@ -1,7 +1,5 @@
 const net = require('net');
 
-const MIN_PORT = 1024;
-const MAX_PORT = 65536;
 const MAX_ATTEMPT = 666;
 
 /**
@@ -30,17 +28,7 @@ const checkPort = function(port) {
 };
 
 const randomPort = () => {
-   let randomNumber = Math.ceil(Math.random() * 100000);
-
-   if (randomNumber > MAX_PORT) {
-      randomNumber = Math.ceil(randomNumber / 2);
-   }
-
-   if (randomNumber < MIN_PORT) {
-      randomNumber = randomNumber + MIN_PORT;
-   }
-
-   return randomNumber;
+   return 40000 + Math.ceil(Math.random() * 10000);
 }
 
 /**
