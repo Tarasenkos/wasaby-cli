@@ -47,7 +47,11 @@ const randomPort = () => {
  * Возвращает свободный порт
  * @returns {Promise<Number>}
  */
-module.exports = async function getPort() {
+module.exports = async function getPort(userPort) {
+   if (userPort && await checkPort(userPort)) {
+      return userPort;
+   }
+
    for (let attempt = 0; attempt <= MAX_ATTEMPT; attempt++) {
       const port = randomPort();
 

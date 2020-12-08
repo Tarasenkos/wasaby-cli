@@ -23,7 +23,7 @@ const resourceRoot = '/';
 
 async function run(resources, port, config) {
    const app = express();
-   const availablePort = await getPort();
+   const availablePort = await getPort(port);
    const workDir = process.cwd();
    process.chdir(resources);
 
