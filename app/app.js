@@ -44,13 +44,13 @@ async function run(resources, port, config) {
    console.log('start init');
 
    const ready = new Promise((resolve, reject) => {
-      requirejs(['Env/Env', 'Application/Initializer', 'SbisEnv/PresentationService', 'Application/State', 'Core/core-init'], function(Env, AppInit, PS,  AppState) {
+      requirejs(['Env/Env', 'Application/Initializer', 'SbisEnv/PresentationService', 'Application/State', 'Core/core-init', 'UI/State'], function(Env, AppInit, PS,  AppState, UIState) {
          Env.constants.resourceRoot = resourceRoot;
          Env.constants.modules = requirejs('json!/contents').modules;
 
          if (!AppInit.isInit()) {
             // eslint-disable-next-line new-cap
-            AppInit.default({ resourceRoot }, new PS.default({ resourceRoot }), new AppState.StateReceiver());
+            AppInit.default({ resourceRoot }, new PS.default({ resourceRoot }), new AppState.StateReceiver(UIState.Serializer));
          }
 
          console.log(`server started http://localhost:${availablePort}`);
@@ -94,7 +94,8 @@ function serverSideRender(req, res) {
    const AppInit = requirejs('Application/Initializer');
    const UIBase = requirejs('UI/Base');
    const AppState = requirejs('Application/State');
-   AppInit.startRequest(undefined, new AppState.StateReceiver());
+   const UIState = requirejs('UI/State');
+   AppInit.startRequest(undefined, new AppState.StateReceiver(UIState.Serializer));
 
    const sabyRouter = requirejs('Router/ServerRouting');
    const moduleName = sabyRouter.getAppName(req);
