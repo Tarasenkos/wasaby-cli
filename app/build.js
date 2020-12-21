@@ -79,23 +79,21 @@ class Build extends Base {
 
       await this._linkCDN()
       await this._makeBuilderConfig();
+      await this._startBuilder(gulpPath, builderPath, 'build');
+
+      if (this._options.watcher) {
+         await this._startBuilder(gulpPath, builderPath, 'buildOnChangeWatcher');
+      }
+   }
+
+   async _startBuilder(gulpPath, builderPath, buildMode) {
       await this._shell.execute(
-         `node ${gulpPath} --gulpfile=${builderPath} build --config=${this._builderCfg}`,
+         `node ${gulpPath} --gulpfile=${builderPath} ${buildMode} --config=${this._builderCfg}`,
          process.cwd(), {
             name: 'builder',
             errorLabel: '[ERROR]'
          }
       );
-
-      if (this._options.watcher) {
-         await this._shell.execute(
-            `node ${gulpPath} --gulpfile=${builderPath} buildOnChangeWatcher --config=${this._builderCfg}`,
-            process.cwd(), {
-               name: 'builder',
-               errorLabel: '[ERROR]'
-            }
-         );
-      }
    }
 
    /**
