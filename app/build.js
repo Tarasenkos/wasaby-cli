@@ -76,17 +76,26 @@ class Build extends Base {
    async _initWithBuilder() {
       const gulpPath = require.resolve('gulp/bin/gulp.js');
       const builderPath = require.resolve('sbis3-builder/gulpfile.js');
-      const build = this._options.watcher ? 'buildOnChangeWatcher' : 'build';
 
       await this._linkCDN()
       await this._makeBuilderConfig();
       await this._shell.execute(
-         `node ${gulpPath} --gulpfile=${builderPath} ${build} --config=${this._builderCfg}`,
+         `node ${gulpPath} --gulpfile=${builderPath} build --config=${this._builderCfg}`,
          process.cwd(), {
             name: 'builder',
             errorLabel: '[ERROR]'
          }
       );
+
+      if (this._options.watcher) {
+         await this._shell.execute(
+            `node ${gulpPath} --gulpfile=${builderPath} buildOnChangeWatcher --config=${this._builderCfg}`,
+            process.cwd(), {
+               name: 'builder',
+               errorLabel: '[ERROR]'
+            }
+         );
+      }
    }
 
    /**

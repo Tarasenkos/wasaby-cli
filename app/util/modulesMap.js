@@ -325,6 +325,25 @@ class ModulesMap {
       await fs.writeJSON(MAP_FILE, mapObject);
    }
 
+   _addCyclicDependencies() {
+      // TODO удалить как удалят WS.Core
+      // У ws.core невозможно указать зависимости из-за циклической зависимостей.
+      if (this.has('WS.Core')) {
+         let cfg = this.get('WS.Core');
+         cfg.depends = cfg.depends.concat(WSCoreDepends);
+         this.set('WS.Core', cfg);
+      }
+
+      // TODO Удалить после закрытия задачи
+      // Нельзя физичиски добавить в UI зависимость SbisEnvUI, из-за циклической зависиомтси побробности в диалоге.
+      // https://online.sbis.ru/open_dialog.html?guid=960a2040-f9aa-49ec-a361-ff4120536ddd
+      if (this.has('UI')) {
+         let cfg = this.get('UI');
+         cfg.depends.push('SbisEnvUI');
+         this.set('UI', cfg);
+      }
+   }
+
    _addWsCoreDepends() {
       // У ws.core невозможно указать зависимости, удалить как удалят ws.core
       if (this.has('WS.Core')) {
