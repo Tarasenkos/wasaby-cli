@@ -8,6 +8,35 @@ const TS_CONFIG_TEMPLATE = require('../resources/tsconfig.template.json');
 const TSCONFIG_PATH = path.join(process.cwd(), 'tsconfig.json');
 
 /**
+ * All of requirejs substitutions that are useful for
+ * interface module WS.Core
+ * @type {Map<string, string>}
+ */
+const REQUIRE_JS_SUBSTITUTIONS = new Map([
+   ['WS', ''],
+   ['Core', 'core'],
+   ['Lib', 'lib'],
+   ['Ext', 'lib/Ext'],
+   ['Helpers', 'core/helpers'],
+   ['Transport', 'transport']
+]);
+
+/**
+ * There are requirejs substitutions in WS.Core\
+ * interface module, so we need to put all of it
+ * into paths options of tsconfig for proper navigation
+ * to this modules in all ts files that are using this modules
+ * e.g. import * as getResourceUrl from 'Core/helpers/getResourceUrl'
+ */
+function generatePathsForWSCore(relativePath) {
+   const result = {};
+   REQUIRE_JS_SUBSTITUTIONS.forEach((value, key) => {
+      result[`${key}/*`] = [path.join(relativePath, value, '*')];
+   });
+   return result;
+}
+
+/**
  * Класс отвечающий за генерацию tsconfig
  * @author Ганшин Я.О
  */
@@ -47,11 +76,11 @@ class Prepare extends Base {
       const tsPath = require.resolve('saby-typescript/cli/install.js');
 
       return this._shell.execute(
-         `node ${tsPath} --tslib=${wsTslib} --tsconfig=skip`,
-         process.cwd(), {
-            force: true,
-            name: 'typescriptInstall'
-         }
+          `node ${tsPath} --tslib=${wsTslib} --tsconfig=skip`,
+          process.cwd(), {
+             force: true,
+             name: 'typescriptInstall'
+          }
       );
    }
 
@@ -63,11 +92,15 @@ class Prepare extends Base {
     */
    async _getPaths() {
       const testList = this._modulesMap.getRequiredModules();
-      const paths = {};
+      let paths = {};
       this._modulesMap.getChildModules(testList).forEach((moduleName) => {
          const relativePath = this._getRelativePath(moduleName);
          if (relativePath !== moduleName) {
-            paths[moduleName + '/*'] = [relativePath + '/*'];
+            if (moduleName === 'WS.Core') {
+               paths = {...paths, ...generatePathsForWSCore(relativePath)};
+            } else {
+               paths[moduleName + '/*'] = [relativePath + '/*'];
+            }
          }
       });
 
