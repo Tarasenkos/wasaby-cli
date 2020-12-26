@@ -8,7 +8,7 @@ const INDEX_FILE_NAME = 'Index.js';
 const INDEX_TEMPLATE_PATH = path.normalize(path.join(__dirname, '../resources/index.html'));
 const jsFile = /^[^.]*\.js$/;
 
-const DEFAULT_URL = '/:moduleName/app/:app';
+const DEFAULT_URL = '/DemoStand/app/:app';
 const MAX_NESTING_LEVEL = 2;
 
 /**
@@ -22,7 +22,7 @@ class CreateIndex extends Base {
       this._moduleName = cfg.moduleName;
       this._resources = cfg.resources;
       this._contents = {};
-      this._urlTemplate = DEFAULT_URL.replace(':moduleName', this._moduleName);
+      this._urlTemplate = DEFAULT_URL;
    }
 
    async _run() {
