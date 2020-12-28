@@ -179,7 +179,7 @@ class ModulesMap {
          await this._addToModulesMap(modules);
          await this._loadMap();
       }
-      this._addWsCoreDepends();
+      this._addCyclicDependencies();
    }
 
    /**
@@ -340,16 +340,8 @@ class ModulesMap {
       if (this.has('UI')) {
          let cfg = this.get('UI');
          cfg.depends.push('SbisEnvUI');
+         cfg.depends.push('SbisEnvUI-default-theme');
          this.set('UI', cfg);
-      }
-   }
-
-   _addWsCoreDepends() {
-      // У ws.core невозможно указать зависимости, удалить как удалят ws.core
-      if (this.has('WS.Core')) {
-         let cfg = this.get('WS.Core');
-         cfg.depends = cfg.depends.concat(WSCoreDepends);
-         this.set('WS.Core', cfg);
       }
    }
 
