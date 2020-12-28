@@ -44,7 +44,7 @@ async function run(resources, port, config) {
    console.log('start init');
 
    const ready = new Promise((resolve, reject) => {
-      requirejs(['Env/Env', 'Application/Initializer', 'SbisEnv/PresentationService', 'Application/State', 'UI/State', 'Core/core-init'], function(Env, AppInit, PS,  AppState, UIState) {
+      requirejs(['Env/Env', 'Application/Initializer', 'SbisEnv/PresentationService', 'Application/State', 'Core/core-init', 'UI/State'], function(Env, AppInit, PS,  AppState, CoreInit, UIState) {
          Env.constants.resourceRoot = resourceRoot;
          Env.constants.modules = requirejs('json!/contents').modules;
 
