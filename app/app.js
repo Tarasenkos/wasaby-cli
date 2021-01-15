@@ -107,9 +107,7 @@ function serverSideRender(req, res) {
    const moduleName = sabyRouter.getAppName(req);
 
    try {
-      if (typeof requirejs(moduleName) === 'undefined') {
-         throw new Error();
-      }
+      requirejs(moduleName)
    } catch (e) {
       res.status(404).end(JSON.stringify(e, null, 2));
 
