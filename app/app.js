@@ -70,6 +70,12 @@ async function run(resources, port, config) {
    }
 
    /* server side render */
+   /** Костлище решается в задаче https://online.sbis.ru/opendoc.html?guid=c3b9523f-1ea2-4dc8-aa03-27dd82e77a2d */
+   app.get('/ParametersWebAPI/Scope.js', (req, res) => {
+      res.writeHead(200, { 'Content-Type': 'text/javascript' });
+      res.end("define('ParametersWebAPI/Scope', [], function(){})\n");
+   });
+
    app.get('/*', (req, res) => {
       ready.then(() => {
          serverSideRender(req, res);
@@ -101,7 +107,7 @@ function serverSideRender(req, res) {
    const moduleName = sabyRouter.getAppName(req);
 
    try {
-      requirejs(moduleName);
+      requirejs(moduleName)
    } catch (e) {
       res.status(404).end(JSON.stringify(e, null, 2));
 
