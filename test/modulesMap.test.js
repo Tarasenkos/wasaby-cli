@@ -47,6 +47,7 @@ describe('modulesMap', () => {
                name: 'tttModule',
                path:  path.join('test1', 'tttModule'),
                rep: 'test1',
+               useModuleMap: false,
                entry: false
             },
             {
@@ -54,6 +55,7 @@ describe('modulesMap', () => {
                name: 'tttModule',
                path: path.join('test2', 'tttModule'),
                rep: 'test2',
+               useModuleMap: false,
                entry: false
             }
          ]);
