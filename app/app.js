@@ -98,39 +98,33 @@ function serverSideRender(req, res) {
    process.domain.res = res;
 
    const AppInit = requirejs('Application/Initializer');
-   const UIBase = requirejs('UI/Base');
    const AppState = requirejs('Application/State');
    const UIState = requirejs('UI/State');
    AppInit.startRequest(undefined, new AppState.StateReceiver(UIState.Serializer));
 
    const sabyRouter = requirejs('Router/ServerRouting');
-   const moduleName = sabyRouter.getAppName(req);
 
-   try {
-      requirejs(moduleName)
-   } catch (e) {
-      res.status(404).end(JSON.stringify(e, null, 2));
-
-      return;
-   }
-
-   const rendering = UIBase.BaseRoute({
+   const options = {
       lite: true,
       wsRoot: '/WS.Core/',
       resourceRoot,
-      application: moduleName,
       appRoot: '/',
       _options: {
          preInitScript: 'window.wsConfig.debug = true;window.wsConfig.userConfigSupport = false;'
       }
-   });
-
-   Promise.resolve(rendering).then((html) => {
-      res.writeHead(200, { 'Content-Type': 'text/html' });
+   }
+   const onSuccessHandler = function (html) {
+      res.writeHead(200, {'Content-Type': 'text/html'});
       res.end(html);
-   }).catch((e) => {
-      res.status(500).end(JSON.stringify(e, null, 2));
-   });
+   }
+   const onNotFoundHandler = function(err) {
+      res.status(404).end(JSON.stringify(err, null, 2));
+   }
+
+   sabyRouter.getPageSource(options, req, onSuccessHandler, onNotFoundHandler)
+      .catch((e) => {
+         res.status(500).end(JSON.stringify(e, null, 2));
+      });
    setDebugCookie(req, res);
 }
 
