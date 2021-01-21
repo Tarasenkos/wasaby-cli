@@ -116,11 +116,6 @@
          "mirror": "git.sbis.ru",
          "url": "engine/informers"
       },
-      "online_inside": {
-         "useMapOnly": true,
-         "mirror": "git.sbis.ru",
-         "url": "online/inside"
-      },
       "notice_core": {
          "useMapOnly": true,
          "mirror": "git.sbis.ru",
