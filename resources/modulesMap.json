@@ -3925,7 +3925,7 @@
   },
   "NoticeCenter": {
     "s3mod": "notice_core/client/NoticeCenter/NoticeCenter.s3mod",
-    "name": "NoticeCenterRoute",
+    "name": "NoticeCenter",
     "path": "notice_core/client/NoticeCenter",
     "rep": "notice_core",
     "entry": false,

@@ -234,17 +234,15 @@ class ModulesMap {
       await pMap(modules, cfg => (
          xml.readXmlFile(cfg.s3mod).then((xmlObj) => {
             if (!this._modulesMap.has(cfg.name) && xmlObj.ui_module || cfg.entry) {
-               if (cfg.useModuleMap) {
-                  if (moduleMap.hasOwnProperty(cfg.name)) {
-                     this._modulesMap.set(cfg.name, moduleMap[cfg.name]);
-                  }
-
+               if (cfg.useModuleMap && !moduleMap.hasOwnProperty(cfg.name)) {
                   return;
                }
 
                cfg.depends = [];
 
-               if (xmlObj.ui_module.depends && xmlObj.ui_module.depends[0]) {
+               if (cfg.useModuleMap) {
+                  cfg.depends = moduleMap[cfg.name].depends;
+               } else if (xmlObj.ui_module.depends && xmlObj.ui_module.depends[0]) {
                   const depends = xmlObj.ui_module.depends[0];
                   if (depends.ui_module) {
                      depends.ui_module.forEach((item) => {
