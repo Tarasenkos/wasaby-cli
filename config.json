@@ -107,6 +107,26 @@
       "imageEditor2": {
          "mirror": "git.sbis.ru",
          "url": "engine/imageeditor"
+      },
+      "engine_saby-page": {
+         "mirror": "git.sbis.ru",
+         "url": "engine/saby-page"
+      },
+      "engine_informers": {
+         "mirror": "git.sbis.ru",
+         "url": "engine/informers"
+      },
+      "online_inside": {
+         "mirror": "git.sbis.ru",
+         "url": "online/inside"
+      },
+      "notice_core": {
+         "mirror": "git.sbis.ru",
+         "url": "notice/core"
+      },
+      "notice_engine": {
+         "mirror": "git.sbis.ru",
+         "url": "notice/engine"
       }
    }
 }
