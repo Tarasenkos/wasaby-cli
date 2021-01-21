@@ -182,6 +182,10 @@ class ModulesMap {
       this._addCyclicDependencies();
    }
 
+   async getModuleMap() {
+      return await fs.readJSON(path.join(MAP_FILE));
+   }
+
    /**
     * Ищет модули в репозитории по s3mod
     * @return {Array}
@@ -190,6 +194,7 @@ class ModulesMap {
    _findModulesInStore() {
       const s3mods = [];
       Object.keys(this._config.repositories).forEach((name) => {
+
          let repositoryPath = this.getRepositoryPath(name);
          if (this._config.repositories[name].modulesPath) {
             repositoryPath = path.join(repositoryPath, this._config.repositories[name].modulesPath);
@@ -202,11 +207,13 @@ class ModulesMap {
                const modulePath = path.join.apply(path, splitFilePath);
                const moduleName = splitFilePath[splitFilePath.length - 1];
                const absolutePath = path.join(repositoryPath, filePath);
+
                s3mods.push({
                   s3mod: absolutePath,
                   name: moduleName,
                   path: path.join(repositoryPath, modulePath),
                   rep: name,
+                  useModuleMap: this._config.repositories[name].useMapOnly,
                   entry: this._entry.includes(absolutePath)
                });
             }
@@ -222,9 +229,19 @@ class ModulesMap {
     * @private
     */
    async _addToModulesMap(modules) {
+      let moduleMap = await this.getModuleMap();
+
       await pMap(modules, cfg => (
          xml.readXmlFile(cfg.s3mod).then((xmlObj) => {
             if (!this._modulesMap.has(cfg.name) && xmlObj.ui_module || cfg.entry) {
+               if (cfg.useModuleMap) {
+                  if (moduleMap.hasOwnProperty(cfg.name)) {
+                     this._modulesMap.set(cfg.name, moduleMap[cfg.name]);
+                  }
+
+                  return;
+               }
+
                cfg.depends = [];
 
                if (xmlObj.ui_module.depends && xmlObj.ui_module.depends[0]) {
@@ -290,7 +307,7 @@ class ModulesMap {
     * @private
     */
    async _loadMap() {
-      let mapObject = await fs.readJSON(path.join(MAP_FILE));
+      let mapObject = await this.getModuleMap();
       for (let key of Object.keys(mapObject)) {
          if (!this._modulesMap.has(key)) {
             let mapObjectValue = mapObject[key];
@@ -309,7 +326,7 @@ class ModulesMap {
       let mapObject = {};
 
       if (fs.existsSync(MAP_FILE)) {
-         mapObject = await fs.readJSON(MAP_FILE);
+         mapObject = await this.getModuleMap();
       }
 
       this._modulesMap.forEach((value, key) => {
