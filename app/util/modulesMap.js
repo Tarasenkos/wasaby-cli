@@ -213,7 +213,7 @@ class ModulesMap {
                   name: moduleName,
                   path: path.join(repositoryPath, modulePath),
                   rep: name,
-                  useModuleMap: this._config.repositories[name].useMapOnly,
+                  useModuleMap: this._config.repositories[name].useMapOnly || false,
                   entry: this._entry.includes(absolutePath)
                });
             }
