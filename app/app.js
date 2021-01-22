@@ -18,10 +18,11 @@ const resourceRoot = '/';
  * Запускает сервер приложения
  * @param {String} resources Путь до ресурсов
  * @param {Number} port Порт на котором будет запущен сервер
+ * @param {Boolean} isDebug Запустить стенд в дебег режиме.
  * @param {Object} config Конфиг приложения
  */
 
-async function run(resources, port, config) {
+async function run(resources, port, isDebug, config) {
    const app = express();
    const availablePort = await getPort(port || 1024);
    const workDir = process.cwd();
@@ -78,13 +79,13 @@ async function run(resources, port, config) {
 
    app.get('/*', (req, res) => {
       ready.then(() => {
-         serverSideRender(req, res);
+         serverSideRender(req, res, isDebug);
       });
    });
 }
 
 
-function serverSideRender(req, res) {
+function serverSideRender(req, res, isDebug) {
    req.compatible = false;
 
    if (!process.domain) {
@@ -121,7 +122,7 @@ function serverSideRender(req, res) {
       application: moduleName,
       appRoot: '/',
       _options: {
-         preInitScript: 'window.wsConfig.debug = true;window.wsConfig.userConfigSupport = false;'
+         preInitScript: `window.wsConfig.debug = ${isDebug};window.wsConfig.userConfigSupport = false;`
       }
    });
 
@@ -131,7 +132,10 @@ function serverSideRender(req, res) {
    }).catch((e) => {
       res.status(500).end(JSON.stringify(e, null, 2));
    });
-   setDebugCookie(req, res);
+
+   if (isDebug) {
+      setDebugCookie(req, res);
+   }
 }
 
 function setDebugCookie(req, res) {

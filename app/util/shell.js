@@ -1,6 +1,11 @@
 const childProcess = require('child_process');
 const logger = require('./logger');
 
+const whiteCodeList = [
+   0,
+   6
+];
+
 /**
  * Класс для вызова shell команд
  * @class Shell
@@ -93,7 +98,7 @@ class Shell {
                errors.push(message);
                logger.log(message, params.processName);
                reject(errors);
-            } else if (params.force || (!code && !childProccess.withErrorKill)) {
+            } else if (params.force || (whiteCodeList.includes(code) && !childProccess.withErrorKill)) {
                resolve(result);
             } else {
                reject(errors);

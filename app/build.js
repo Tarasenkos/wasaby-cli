@@ -218,17 +218,26 @@ class Build extends Base {
          if (cfg !== undefined) {
             const isNameInConfig = builderConfig.modules.find(item => (item.name === moduleName));
             if (!isNameInConfig) {
-               builderConfig.modules.push({
+               const module = {
                   name: moduleName,
                   path: cfg.path,
                   required: cfg.required
-               });
+               };
+
+               if (cfg.unitTest) {
+                  module.minimize = false;
+                  module.deprecatedXhtml = false
+                  module.wml = false;
+               }
+
+               builderConfig.modules.push(module);
             }
          }
       });
 
       builderConfig.modules.push({
          name: 'cdn',
+         minimize: false,
          path: this._pathTocdn
       });
 
