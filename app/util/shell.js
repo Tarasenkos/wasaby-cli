@@ -6,6 +6,10 @@ const whiteCodeList = [
    6
 ];
 
+function isGoodExitCode(code) {
+   return typeof code === 'undefined' || whiteCodeList.includes(code);
+}
+
 /**
  * Класс для вызова shell команд
  * @class Shell
@@ -98,7 +102,7 @@ class Shell {
                errors.push(message);
                logger.log(message, params.processName);
                reject(errors);
-            } else if (params.force || (whiteCodeList.includes(code) && !childProccess.withErrorKill)) {
+            } else if (params.force || (isGoodExitCode(code) && !childProccess.withErrorKill)) {
                resolve(result);
             } else {
                reject(errors);
