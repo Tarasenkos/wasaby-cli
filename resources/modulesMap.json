@@ -4,10 +4,10 @@
     "name": "DemoStand",
     "path": "wasaby-controls\\DemoStand",
     "rep": "wasaby-controls",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
-      "WS.Core",
       "RequireJsLoader",
       "Controls-default-theme",
       "Router",
@@ -21,10 +21,11 @@
     "forCDN": false
   },
   "Animation": {
-    "s3mod": "sbis3.engine/client/Animation/Animation.s3mod",
+    "s3mod": "sbis3.engine\\client\\Animation\\Animation.s3mod",
     "name": "Animation",
-    "path": "sbis3.engine/client/Animation",
+    "path": "sbis3.engine\\client\\Animation",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -38,10 +39,11 @@
     "forCDN": false
   },
   "Calculator": {
-    "s3mod": "sbis3.engine/client/Calculator/Calculator.s3mod",
+    "s3mod": "sbis3.engine\\client\\Calculator\\Calculator.s3mod",
     "name": "Calculator",
-    "path": "sbis3.engine/client/Calculator",
+    "path": "sbis3.engine\\client\\Calculator",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -57,10 +59,11 @@
     "forCDN": false
   },
   "Calculator-default-theme": {
-    "s3mod": "sbis3.engine/client/Calculator-default-theme/Calculator-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\Calculator-default-theme\\Calculator-default-theme.s3mod",
     "name": "Calculator-default-theme",
-    "path": "sbis3.engine/client/Calculator-default-theme",
+    "path": "sbis3.engine\\client\\Calculator-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -71,10 +74,11 @@
     "forCDN": false
   },
   "Clipboard": {
-    "s3mod": "sbis3.engine/client/Clipboard/Clipboard.s3mod",
+    "s3mod": "sbis3.engine\\client\\Clipboard\\Clipboard.s3mod",
     "name": "Clipboard",
-    "path": "sbis3.engine/client/Clipboard",
+    "path": "sbis3.engine\\client\\Clipboard",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -87,10 +91,11 @@
     "forCDN": false
   },
   "Controls-onlinenavigation-theme": {
-    "s3mod": "sbis3.engine/client/Controls-onlinenavigation-theme/Controls-onlinenavigation-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\Controls-onlinenavigation-theme\\Controls-onlinenavigation-theme.s3mod",
     "name": "Controls-onlinenavigation-theme",
-    "path": "sbis3.engine/client/Controls-onlinenavigation-theme",
+    "path": "sbis3.engine\\client\\Controls-onlinenavigation-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme"
@@ -100,10 +105,11 @@
     "forCDN": false
   },
   "DateRange": {
-    "s3mod": "sbis3.engine/client/DateRange/DateRange.s3mod",
+    "s3mod": "sbis3.engine\\client\\DateRange\\DateRange.s3mod",
     "name": "DateRange",
-    "path": "sbis3.engine/client/DateRange",
+    "path": "sbis3.engine\\client\\DateRange",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -116,10 +122,11 @@
     "forCDN": false
   },
   "Engine-demo": {
-    "s3mod": "sbis3.engine/client/Engine-demo/Engine-demo.s3mod",
+    "s3mod": "sbis3.engine\\client\\Engine-demo\\Engine-demo.s3mod",
     "name": "Engine-demo",
-    "path": "sbis3.engine/client/Engine-demo",
+    "path": "sbis3.engine\\client\\Engine-demo",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Layout",
@@ -141,6 +148,8 @@
       "EngineUser",
       "Hint",
       "Hint-default-theme",
+      "Hint-onlinenavigation-theme",
+      "ServiceUpdateNotifier",
       "LongOperations",
       "Merge",
       "Merge-default-theme",
@@ -175,17 +184,24 @@
       "ViewConfiguration-default-theme",
       "StylesConfiguration",
       "StylesConfiguration-default-theme",
-      "Page"
+      "Page",
+      "DocsEditor",
+      "DocsEditor-default-theme",
+      "Emotions",
+      "Emotions-default-theme",
+      "Carousel",
+      "DemoStand"
     ],
     "id": "a7909725-2310-4cd7-857b-10bfd68f6758",
     "required": false,
     "forCDN": false
   },
   "EngineLanguage": {
-    "s3mod": "sbis3.engine/client/EngineLanguage/EngineLanguage.s3mod",
+    "s3mod": "sbis3.engine\\client\\EngineLanguage\\EngineLanguage.s3mod",
     "name": "EngineLanguage",
-    "path": "sbis3.engine/client/EngineLanguage",
+    "path": "sbis3.engine\\client\\EngineLanguage",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "I18n",
@@ -198,10 +214,11 @@
     "forCDN": false
   },
   "EngineLink": {
-    "s3mod": "sbis3.engine/client/EngineLink/EngineLink.s3mod",
+    "s3mod": "sbis3.engine\\client\\EngineLink\\EngineLink.s3mod",
     "name": "EngineLink",
-    "path": "sbis3.engine/client/EngineLink",
+    "path": "sbis3.engine\\client\\EngineLink",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -214,10 +231,11 @@
     "forCDN": false
   },
   "EngineUser": {
-    "s3mod": "sbis3.engine/client/EngineUser/EngineUser.s3mod",
+    "s3mod": "sbis3.engine\\client\\EngineUser\\EngineUser.s3mod",
     "name": "EngineUser",
-    "path": "sbis3.engine/client/EngineUser",
+    "path": "sbis3.engine\\client\\EngineUser",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "UI",
@@ -232,10 +250,11 @@
     "forCDN": false
   },
   "EngineUser-default-theme": {
-    "s3mod": "sbis3.engine/client/EngineUser-default-theme/EngineUser-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\EngineUser-default-theme\\EngineUser-default-theme.s3mod",
     "name": "EngineUser-default-theme",
-    "path": "sbis3.engine/client/EngineUser-default-theme",
+    "path": "sbis3.engine\\client\\EngineUser-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -246,10 +265,11 @@
     "forCDN": false
   },
   "Export": {
-    "s3mod": "sbis3.engine/client/Export/Export.s3mod",
+    "s3mod": "sbis3.engine\\client\\Export\\Export.s3mod",
     "name": "Export",
-    "path": "sbis3.engine/client/Export",
+    "path": "sbis3.engine\\client\\Export",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Types",
@@ -264,10 +284,11 @@
     "forCDN": false
   },
   "Export-default-theme": {
-    "s3mod": "sbis3.engine/client/Export-default-theme/Export-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\Export-default-theme\\Export-default-theme.s3mod",
     "name": "Export-default-theme",
-    "path": "sbis3.engine/client/Export-default-theme",
+    "path": "sbis3.engine\\client\\Export-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -278,10 +299,11 @@
     "forCDN": false
   },
   "ExtControls": {
-    "s3mod": "sbis3.engine/client/ExtControls/ExtControls.s3mod",
+    "s3mod": "sbis3.engine\\client\\ExtControls\\ExtControls.s3mod",
     "name": "ExtControls",
-    "path": "sbis3.engine/client/ExtControls",
+    "path": "sbis3.engine\\client\\ExtControls",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -294,10 +316,11 @@
     "forCDN": false
   },
   "ExtControls-default-theme": {
-    "s3mod": "sbis3.engine/client/ExtControls-default-theme/ExtControls-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\ExtControls-default-theme\\ExtControls-default-theme.s3mod",
     "name": "ExtControls-default-theme",
-    "path": "sbis3.engine/client/ExtControls-default-theme",
+    "path": "sbis3.engine\\client\\ExtControls-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -308,10 +331,11 @@
     "forCDN": false
   },
   "Graphs": {
-    "s3mod": "sbis3.engine/client/Graphs/Graphs.s3mod",
+    "s3mod": "sbis3.engine\\client\\Graphs\\Graphs.s3mod",
     "name": "Graphs",
-    "path": "sbis3.engine/client/Graphs",
+    "path": "sbis3.engine\\client\\Graphs",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -327,10 +351,11 @@
     "forCDN": false
   },
   "Graphs-default-theme": {
-    "s3mod": "sbis3.engine/client/Graphs-default-theme/Graphs-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\Graphs-default-theme\\Graphs-default-theme.s3mod",
     "name": "Graphs-default-theme",
-    "path": "sbis3.engine/client/Graphs-default-theme",
+    "path": "sbis3.engine\\client\\Graphs-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -341,15 +366,16 @@
     "forCDN": false
   },
   "Guest": {
-    "s3mod": "sbis3.engine/client/Guest/Guest.s3mod",
+    "s3mod": "sbis3.engine\\client\\Guest\\Guest.s3mod",
     "name": "Guest",
-    "path": "sbis3.engine/client/Guest",
+    "path": "sbis3.engine\\client\\Guest",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "EngineLanguage",
       "SBIS3.CONTROLS",
-      "WS.Core",
+      "UI",
       "Env",
       "Types",
       "RequireJsLoader"
@@ -359,10 +385,11 @@
     "forCDN": false
   },
   "Headers": {
-    "s3mod": "sbis3.engine/client/Headers/Headers.s3mod",
+    "s3mod": "sbis3.engine\\client\\Headers\\Headers.s3mod",
     "name": "Headers",
-    "path": "sbis3.engine/client/Headers",
+    "path": "sbis3.engine\\client\\Headers",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "UI",
@@ -378,10 +405,11 @@
     "forCDN": false
   },
   "Headers-default-theme": {
-    "s3mod": "sbis3.engine/client/Headers-default-theme/Headers-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\Headers-default-theme\\Headers-default-theme.s3mod",
     "name": "Headers-default-theme",
-    "path": "sbis3.engine/client/Headers-default-theme",
+    "path": "sbis3.engine\\client\\Headers-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -392,10 +420,11 @@
     "forCDN": false
   },
   "Hint": {
-    "s3mod": "sbis3.engine/client/Hint/Hint.s3mod",
+    "s3mod": "sbis3.engine\\client\\Hint\\Hint.s3mod",
     "name": "Hint",
-    "path": "sbis3.engine/client/Hint",
+    "path": "sbis3.engine\\client\\Hint",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "UI",
@@ -412,10 +441,11 @@
     "forCDN": false
   },
   "IEMedia": {
-    "s3mod": "sbis3.engine/client/IEMedia/IEMedia.s3mod",
+    "s3mod": "sbis3.engine\\client\\IEMedia\\IEMedia.s3mod",
     "name": "IEMedia",
-    "path": "sbis3.engine/client/IEMedia",
+    "path": "sbis3.engine\\client\\IEMedia",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "821abc3e-744a-4621-bcdb-1d1746def3eb",
@@ -423,10 +453,11 @@
     "forCDN": false
   },
   "Import": {
-    "s3mod": "sbis3.engine/client/Import/Import.s3mod",
+    "s3mod": "sbis3.engine\\client\\Import\\Import.s3mod",
     "name": "Import",
-    "path": "sbis3.engine/client/Import",
+    "path": "sbis3.engine\\client\\Import",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "UI",
@@ -442,10 +473,11 @@
     "forCDN": false
   },
   "Import-default-theme": {
-    "s3mod": "sbis3.engine/client/Import-default-theme/Import-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\Import-default-theme\\Import-default-theme.s3mod",
     "name": "Import-default-theme",
-    "path": "sbis3.engine/client/Import-default-theme",
+    "path": "sbis3.engine\\client\\Import-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -456,10 +488,11 @@
     "forCDN": false
   },
   "KanbanBase": {
-    "s3mod": "sbis3.engine/client/KanbanBase/KanbanBase.s3mod",
+    "s3mod": "sbis3.engine\\client\\KanbanBase\\KanbanBase.s3mod",
     "name": "KanbanBase",
-    "path": "sbis3.engine/client/KanbanBase",
+    "path": "sbis3.engine\\client\\KanbanBase",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -471,10 +504,11 @@
     "forCDN": false
   },
   "KanbanBase-default-theme": {
-    "s3mod": "sbis3.engine/client/KanbanBase-default-theme/KanbanBase-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\KanbanBase-default-theme\\KanbanBase-default-theme.s3mod",
     "name": "KanbanBase-default-theme",
-    "path": "sbis3.engine/client/KanbanBase-default-theme",
+    "path": "sbis3.engine\\client\\KanbanBase-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -485,10 +519,11 @@
     "forCDN": false
   },
   "Keyboard": {
-    "s3mod": "sbis3.engine/client/Keyboard/Keyboard.s3mod",
+    "s3mod": "sbis3.engine\\client\\Keyboard\\Keyboard.s3mod",
     "name": "Keyboard",
-    "path": "sbis3.engine/client/Keyboard",
+    "path": "sbis3.engine\\client\\Keyboard",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -501,10 +536,11 @@
     "forCDN": false
   },
   "Keyboard-default-theme": {
-    "s3mod": "sbis3.engine/client/Keyboard-default-theme/Keyboard-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\Keyboard-default-theme\\Keyboard-default-theme.s3mod",
     "name": "Keyboard-default-theme",
-    "path": "sbis3.engine/client/Keyboard-default-theme",
+    "path": "sbis3.engine\\client\\Keyboard-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -515,10 +551,11 @@
     "forCDN": false
   },
   "Layout": {
-    "s3mod": "sbis3.engine/client/Layout/Layout.s3mod",
+    "s3mod": "sbis3.engine\\client\\Layout\\Layout.s3mod",
     "name": "Layout",
-    "path": "sbis3.engine/client/Layout",
+    "path": "sbis3.engine\\client\\Layout",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -527,17 +564,19 @@
       "Env",
       "Types",
       "ParametersWebAPI",
-      "RequireJsLoader"
+      "RequireJsLoader",
+      "Hint"
     ],
     "id": "d61e9307-ee6b-47f5-8a16-5d056fe644f4",
     "required": false,
     "forCDN": false
   },
   "Layout-default-theme": {
-    "s3mod": "sbis3.engine/client/Layout-default-theme/Layout-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\Layout-default-theme\\Layout-default-theme.s3mod",
     "name": "Layout-default-theme",
-    "path": "sbis3.engine/client/Layout-default-theme",
+    "path": "sbis3.engine\\client\\Layout-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -548,10 +587,11 @@
     "forCDN": false
   },
   "LongOperations": {
-    "s3mod": "sbis3.engine/client/LongOperations/LongOperations.s3mod",
+    "s3mod": "sbis3.engine\\client\\LongOperations\\LongOperations.s3mod",
     "name": "LongOperations",
-    "path": "sbis3.engine/client/LongOperations",
+    "path": "sbis3.engine\\client\\LongOperations",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Layout",
@@ -573,10 +613,11 @@
     "forCDN": false
   },
   "LongOperations-default-theme": {
-    "s3mod": "sbis3.engine/client/LongOperations-default-theme/LongOperations-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\LongOperations-default-theme\\LongOperations-default-theme.s3mod",
     "name": "LongOperations-default-theme",
-    "path": "sbis3.engine/client/LongOperations-default-theme",
+    "path": "sbis3.engine\\client\\LongOperations-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -587,10 +628,11 @@
     "forCDN": false
   },
   "Merge": {
-    "s3mod": "sbis3.engine/client/Merge/Merge.s3mod",
+    "s3mod": "sbis3.engine\\client\\Merge\\Merge.s3mod",
     "name": "Merge",
-    "path": "sbis3.engine/client/Merge",
+    "path": "sbis3.engine\\client\\Merge",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "UI",
@@ -605,10 +647,11 @@
     "forCDN": false
   },
   "Merge-default-theme": {
-    "s3mod": "sbis3.engine/client/Merge-default-theme/Merge-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\Merge-default-theme\\Merge-default-theme.s3mod",
     "name": "Merge-default-theme",
-    "path": "sbis3.engine/client/Merge-default-theme",
+    "path": "sbis3.engine\\client\\Merge-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -619,10 +662,11 @@
     "forCDN": false
   },
   "Name": {
-    "s3mod": "sbis3.engine/client/Name/Name.s3mod",
+    "s3mod": "sbis3.engine\\client\\Name\\Name.s3mod",
     "name": "Name",
-    "path": "sbis3.engine/client/Name",
+    "path": "sbis3.engine\\client\\Name",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Env",
@@ -639,10 +683,11 @@
     "forCDN": false
   },
   "Name-default-theme": {
-    "s3mod": "sbis3.engine/client/Name-default-theme/Name-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\Name-default-theme\\Name-default-theme.s3mod",
     "name": "Name-default-theme",
-    "path": "sbis3.engine/client/Name-default-theme",
+    "path": "sbis3.engine\\client\\Name-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "36919d55-52ef-49c9-b0d5-f614242c209b",
@@ -650,10 +695,11 @@
     "forCDN": false
   },
   "NavigationPanels": {
-    "s3mod": "engine_saby-page/client/NavigationPanels/NavigationPanels.s3mod",
+    "s3mod": "engine_saby-page\\client\\NavigationPanels\\NavigationPanels.s3mod",
     "name": "NavigationPanels",
-    "path": "engine_saby-page/client/NavigationPanels",
+    "path": "engine_saby-page\\client\\NavigationPanels",
     "rep": "engine_saby-page",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Env",
@@ -664,17 +710,23 @@
       "Vdom",
       "Router",
       "RequireJsLoader",
-      "ParametersWebAPI"
+      "ParametersWebAPI",
+      "Permission",
+      "EngineUser",
+      "SbisEnvUI",
+      "SbisEnvUI-default-theme",
+      "Hint"
     ],
     "id": "f026eed7-c09d-4e61-a852-0575be0778e3",
     "required": false,
     "forCDN": false
   },
   "NavigationPanels-default-theme": {
-    "s3mod": "engine_saby-page/client/NavigationPanels-default-theme/NavigationPanels-default-theme.s3mod",
+    "s3mod": "engine_saby-page\\client\\NavigationPanels-default-theme\\NavigationPanels-default-theme.s3mod",
     "name": "NavigationPanels-default-theme",
-    "path": "engine_saby-page/client/NavigationPanels-default-theme",
+    "path": "engine_saby-page\\client\\NavigationPanels-default-theme",
     "rep": "engine_saby-page",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -685,10 +737,11 @@
     "forCDN": false
   },
   "NavigationPanels-onlinenavigation-theme": {
-    "s3mod": "engine_saby-page/client/NavigationPanels-onlinenavigation-theme/NavigationPanels-onlinenavigation-theme.s3mod",
+    "s3mod": "engine_saby-page\\client\\NavigationPanels-onlinenavigation-theme\\NavigationPanels-onlinenavigation-theme.s3mod",
     "name": "NavigationPanels-onlinenavigation-theme",
-    "path": "engine_saby-page/client/NavigationPanels-onlinenavigation-theme",
+    "path": "engine_saby-page\\client\\NavigationPanels-onlinenavigation-theme",
     "rep": "engine_saby-page",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "NavigationPanels-default-theme"
@@ -698,10 +751,11 @@
     "forCDN": false
   },
   "WS3Browser": {
-    "s3mod": "sbis3.engine/client/Old/WS3Browser/WS3Browser.s3mod",
+    "s3mod": "sbis3.engine\\client\\Old\\WS3Browser\\WS3Browser.s3mod",
     "name": "WS3Browser",
-    "path": "sbis3.engine/client/Old/WS3Browser",
+    "path": "sbis3.engine\\client\\Old\\WS3Browser",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SBIS3.CONTROLS",
@@ -715,10 +769,11 @@
     "forCDN": false
   },
   "WS3ColumnsEditor": {
-    "s3mod": "sbis3.engine/client/Old/WS3ColumnsEditor/WS3ColumnsEditor.s3mod",
+    "s3mod": "sbis3.engine\\client\\Old\\WS3ColumnsEditor\\WS3ColumnsEditor.s3mod",
     "name": "WS3ColumnsEditor",
-    "path": "sbis3.engine/client/Old/WS3ColumnsEditor",
+    "path": "sbis3.engine\\client\\Old\\WS3ColumnsEditor",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "8478d093-b9f9-4075-9362-da3eaf2911ad",
@@ -726,10 +781,11 @@
     "forCDN": false
   },
   "WS3DialogAction": {
-    "s3mod": "sbis3.engine/client/Old/WS3DialogAction/WS3DialogAction.s3mod",
+    "s3mod": "sbis3.engine\\client\\Old\\WS3DialogAction\\WS3DialogAction.s3mod",
     "name": "WS3DialogAction",
-    "path": "sbis3.engine/client/Old/WS3DialogAction",
+    "path": "sbis3.engine\\client\\Old\\WS3DialogAction",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SBIS3.CONTROLS"
@@ -739,10 +795,11 @@
     "forCDN": false
   },
   "WS3ExpandPanel": {
-    "s3mod": "sbis3.engine/client/Old/WS3ExpandPanel/WS3ExpandPanel.s3mod",
+    "s3mod": "sbis3.engine\\client\\Old\\WS3ExpandPanel\\WS3ExpandPanel.s3mod",
     "name": "WS3ExpandPanel",
-    "path": "sbis3.engine/client/Old/WS3ExpandPanel",
+    "path": "sbis3.engine\\client\\Old\\WS3ExpandPanel",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SBIS3.CONTROLS",
@@ -754,10 +811,11 @@
     "forCDN": false
   },
   "WS3ExportPresets": {
-    "s3mod": "sbis3.engine/client/Old/WS3ExportPresets/WS3ExportPresets.s3mod",
+    "s3mod": "sbis3.engine\\client\\Old\\WS3ExportPresets\\WS3ExportPresets.s3mod",
     "name": "WS3ExportPresets",
-    "path": "sbis3.engine/client/Old/WS3ExportPresets",
+    "path": "sbis3.engine\\client\\Old\\WS3ExportPresets",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -769,10 +827,11 @@
     "forCDN": false
   },
   "WS3Header": {
-    "s3mod": "sbis3.engine/client/Old/WS3Header/WS3Header.s3mod",
+    "s3mod": "sbis3.engine\\client\\Old\\WS3Header\\WS3Header.s3mod",
     "name": "WS3Header",
-    "path": "sbis3.engine/client/Old/WS3Header",
+    "path": "sbis3.engine\\client\\Old\\WS3Header",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SBIS3.CONTROLS",
@@ -785,10 +844,11 @@
     "forCDN": false
   },
   "WS3LinkProcessor": {
-    "s3mod": "sbis3.engine/client/Old/WS3LinkProcessor/WS3LinkProcessor.s3mod",
+    "s3mod": "sbis3.engine\\client\\Old\\WS3LinkProcessor\\WS3LinkProcessor.s3mod",
     "name": "WS3LinkProcessor",
-    "path": "sbis3.engine/client/Old/WS3LinkProcessor",
+    "path": "sbis3.engine\\client\\Old\\WS3LinkProcessor",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Types",
@@ -800,10 +860,11 @@
     "forCDN": false
   },
   "WS3LongOperations": {
-    "s3mod": "sbis3.engine/client/Old/WS3LongOperations/WS3LongOperations.s3mod",
+    "s3mod": "sbis3.engine\\client\\Old\\WS3LongOperations\\WS3LongOperations.s3mod",
     "name": "WS3LongOperations",
-    "path": "sbis3.engine/client/Old/WS3LongOperations",
+    "path": "sbis3.engine\\client\\Old\\WS3LongOperations",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SBIS3.CONTROLS",
@@ -820,10 +881,11 @@
     "forCDN": false
   },
   "WS3MiniCard": {
-    "s3mod": "sbis3.engine/client/Old/WS3MiniCard/WS3MiniCard.s3mod",
+    "s3mod": "sbis3.engine\\client\\Old\\WS3MiniCard\\WS3MiniCard.s3mod",
     "name": "WS3MiniCard",
-    "path": "sbis3.engine/client/Old/WS3MiniCard",
+    "path": "sbis3.engine\\client\\Old\\WS3MiniCard",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SBIS3.CONTROLS",
@@ -836,10 +898,11 @@
     "forCDN": false
   },
   "WS3NavigationPanel": {
-    "s3mod": "sbis3.engine/client/Old/WS3NavigationPanel/WS3NavigationPanel.s3mod",
+    "s3mod": "sbis3.engine\\client\\Old\\WS3NavigationPanel\\WS3NavigationPanel.s3mod",
     "name": "WS3NavigationPanel",
-    "path": "sbis3.engine/client/Old/WS3NavigationPanel",
+    "path": "sbis3.engine\\client\\Old\\WS3NavigationPanel",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SBIS3.CONTROLS",
@@ -851,10 +914,11 @@
     "forCDN": false
   },
   "WS3Page": {
-    "s3mod": "sbis3.engine/client/Old/WS3Page/WS3Page.s3mod",
+    "s3mod": "sbis3.engine\\client\\Old\\WS3Page\\WS3Page.s3mod",
     "name": "WS3Page",
-    "path": "sbis3.engine/client/Old/WS3Page",
+    "path": "sbis3.engine\\client\\Old\\WS3Page",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -870,10 +934,11 @@
     "forCDN": false
   },
   "WS3ReportFilter": {
-    "s3mod": "sbis3.engine/client/Old/WS3ReportFilter/WS3ReportFilter.s3mod",
+    "s3mod": "sbis3.engine\\client\\Old\\WS3ReportFilter\\WS3ReportFilter.s3mod",
     "name": "WS3ReportFilter",
-    "path": "sbis3.engine/client/Old/WS3ReportFilter",
+    "path": "sbis3.engine\\client\\Old\\WS3ReportFilter",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SBIS3.CONTROLS",
@@ -885,10 +950,11 @@
     "forCDN": false
   },
   "WS3RoutesMessage": {
-    "s3mod": "sbis3.engine/client/Old/WS3RoutesMessage/WS3RoutesMessage.s3mod",
+    "s3mod": "sbis3.engine\\client\\Old\\WS3RoutesMessage\\WS3RoutesMessage.s3mod",
     "name": "WS3RoutesMessage",
-    "path": "sbis3.engine/client/Old/WS3RoutesMessage",
+    "path": "sbis3.engine\\client\\Old\\WS3RoutesMessage",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS3Page",
@@ -903,10 +969,11 @@
     "forCDN": false
   },
   "OnlinePage": {
-    "s3mod": "sbis3.engine/client/OnlinePage/OnlinePage.s3mod",
+    "s3mod": "sbis3.engine\\client\\OnlinePage\\OnlinePage.s3mod",
     "name": "OnlinePage",
-    "path": "sbis3.engine/client/OnlinePage",
+    "path": "sbis3.engine\\client\\OnlinePage",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -926,17 +993,19 @@
       "ServiceUpdateNotifier",
       "EngineUser-default-theme",
       "Page",
-      "RequireJsLoader"
+      "RequireJsLoader",
+      "WasabyLoader"
     ],
     "id": "75df871e-813e-4fd1-ad70-125c9396947c",
     "required": false,
     "forCDN": false
   },
   "Page": {
-    "s3mod": "engine_saby-page/client/Page/Page.s3mod",
+    "s3mod": "engine_saby-page\\client\\Page\\Page.s3mod",
     "name": "Page",
-    "path": "engine_saby-page/client/Page",
+    "path": "engine_saby-page\\client\\Page",
     "rep": "engine_saby-page",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -957,10 +1026,11 @@
     "forCDN": false
   },
   "PopupNotifications": {
-    "s3mod": "sbis3.engine/client/PopupNotifications/PopupNotifications.s3mod",
+    "s3mod": "sbis3.engine\\client\\PopupNotifications\\PopupNotifications.s3mod",
     "name": "PopupNotifications",
-    "path": "sbis3.engine/client/PopupNotifications",
+    "path": "sbis3.engine\\client\\PopupNotifications",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -974,10 +1044,11 @@
     "forCDN": false
   },
   "Previewer": {
-    "s3mod": "sbis3.engine/client/Previewer/Previewer.s3mod",
+    "s3mod": "sbis3.engine\\client\\Previewer\\Previewer.s3mod",
     "name": "Previewer",
-    "path": "sbis3.engine/client/Previewer",
+    "path": "sbis3.engine\\client\\Previewer",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Browser"
@@ -987,10 +1058,11 @@
     "forCDN": false
   },
   "Printer": {
-    "s3mod": "sbis3.engine/client/Printer/Printer.s3mod",
+    "s3mod": "sbis3.engine\\client\\Printer\\Printer.s3mod",
     "name": "Printer",
-    "path": "sbis3.engine/client/Printer",
+    "path": "sbis3.engine\\client\\Printer",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -1006,10 +1078,11 @@
     "forCDN": false
   },
   "Printer-default-theme": {
-    "s3mod": "sbis3.engine/client/Printer-default-theme/Printer-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\Printer-default-theme\\Printer-default-theme.s3mod",
     "name": "Printer-default-theme",
-    "path": "sbis3.engine/client/Printer-default-theme",
+    "path": "sbis3.engine\\client\\Printer-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -1020,10 +1093,11 @@
     "forCDN": false
   },
   "RichEditor": {
-    "s3mod": "sbis3.engine/client/RichEditor/RichEditor.s3mod",
+    "s3mod": "sbis3.engine\\client\\RichEditor\\RichEditor.s3mod",
     "name": "RichEditor",
-    "path": "sbis3.engine/client/RichEditor",
+    "path": "sbis3.engine\\client\\RichEditor",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -1033,17 +1107,19 @@
       "Vdom",
       "UI",
       "RequireJsLoader",
-      "ExtControls"
+      "ExtControls",
+      "EngineUser"
     ],
     "id": "cb6296b0-5b42-4794-b8cf-8fd6706ce254",
     "required": false,
     "forCDN": false
   },
   "RichEditor-default-theme": {
-    "s3mod": "sbis3.engine/client/RichEditor-default-theme/RichEditor-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\RichEditor-default-theme\\RichEditor-default-theme.s3mod",
     "name": "RichEditor-default-theme",
-    "path": "sbis3.engine/client/RichEditor-default-theme",
+    "path": "sbis3.engine\\client\\RichEditor-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -1054,10 +1130,11 @@
     "forCDN": false
   },
   "ServiceUpdateNotifier": {
-    "s3mod": "sbis3.engine/client/ServiceUpdateNotifier/ServiceUpdateNotifier.s3mod",
+    "s3mod": "sbis3.engine\\client\\ServiceUpdateNotifier\\ServiceUpdateNotifier.s3mod",
     "name": "ServiceUpdateNotifier",
-    "path": "sbis3.engine/client/ServiceUpdateNotifier",
+    "path": "sbis3.engine\\client\\ServiceUpdateNotifier",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -1076,10 +1153,11 @@
     "forCDN": false
   },
   "Summation": {
-    "s3mod": "sbis3.engine/client/Summation/Summation.s3mod",
+    "s3mod": "sbis3.engine\\client\\Summation\\Summation.s3mod",
     "name": "Summation",
-    "path": "sbis3.engine/client/Summation",
+    "path": "sbis3.engine\\client\\Summation",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -1094,10 +1172,11 @@
     "forCDN": false
   },
   "Summation-default-theme": {
-    "s3mod": "sbis3.engine/client/Summation-default-theme/Summation-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\Summation-default-theme\\Summation-default-theme.s3mod",
     "name": "Summation-default-theme",
-    "path": "sbis3.engine/client/Summation-default-theme",
+    "path": "sbis3.engine\\client\\Summation-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -1108,10 +1187,11 @@
     "forCDN": false
   },
   "TestDevTools": {
-    "s3mod": "sbis3.engine/client/TestDevTools/TestDevTools.s3mod",
+    "s3mod": "sbis3.engine\\client\\TestDevTools\\TestDevTools.s3mod",
     "name": "TestDevTools",
-    "path": "sbis3.engine/client/TestDevTools",
+    "path": "sbis3.engine\\client\\TestDevTools",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -1123,10 +1203,11 @@
     "forCDN": false
   },
   "Unload": {
-    "s3mod": "sbis3.engine/client/Unload/Unload.s3mod",
+    "s3mod": "sbis3.engine\\client\\Unload\\Unload.s3mod",
     "name": "Unload",
-    "path": "sbis3.engine/client/Unload",
+    "path": "sbis3.engine\\client\\Unload",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -1141,10 +1222,11 @@
     "forCDN": false
   },
   "Upload": {
-    "s3mod": "sbis3.engine/client/Upload/Upload.s3mod",
+    "s3mod": "sbis3.engine\\client\\Upload\\Upload.s3mod",
     "name": "Upload",
-    "path": "sbis3.engine/client/Upload",
+    "path": "sbis3.engine\\client\\Upload",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Types",
@@ -1163,10 +1245,11 @@
     "forCDN": false
   },
   "UserStatus": {
-    "s3mod": "sbis3.engine/client/UserStatus/UserStatus.s3mod",
+    "s3mod": "sbis3.engine\\client\\UserStatus\\UserStatus.s3mod",
     "name": "UserStatus",
-    "path": "sbis3.engine/client/UserStatus",
+    "path": "sbis3.engine\\client\\UserStatus",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "UI",
@@ -1181,10 +1264,11 @@
     "forCDN": false
   },
   "ViewConfiguration": {
-    "s3mod": "sbis3.engine/client/ViewConfiguration/ViewConfiguration.s3mod",
+    "s3mod": "sbis3.engine\\client\\ViewConfiguration\\ViewConfiguration.s3mod",
     "name": "ViewConfiguration",
-    "path": "sbis3.engine/client/ViewConfiguration",
+    "path": "sbis3.engine\\client\\ViewConfiguration",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -1198,10 +1282,11 @@
     "forCDN": false
   },
   "ViewConfiguration-default-theme": {
-    "s3mod": "sbis3.engine/client/ViewConfiguration-default-theme/ViewConfiguration-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\ViewConfiguration-default-theme\\ViewConfiguration-default-theme.s3mod",
     "name": "ViewConfiguration-default-theme",
-    "path": "sbis3.engine/client/ViewConfiguration-default-theme",
+    "path": "sbis3.engine\\client\\ViewConfiguration-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -1212,10 +1297,11 @@
     "forCDN": false
   },
   "Wizard": {
-    "s3mod": "sbis3.engine/client/Wizard/Wizard.s3mod",
+    "s3mod": "sbis3.engine\\client\\Wizard\\Wizard.s3mod",
     "name": "Wizard",
-    "path": "sbis3.engine/client/Wizard",
+    "path": "sbis3.engine\\client\\Wizard",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -1229,10 +1315,11 @@
     "forCDN": false
   },
   "Wizard-default-theme": {
-    "s3mod": "sbis3.engine/client/Wizard-default-theme/Wizard-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\Wizard-default-theme\\Wizard-default-theme.s3mod",
     "name": "Wizard-default-theme",
-    "path": "sbis3.engine/client/Wizard-default-theme",
+    "path": "sbis3.engine\\client\\Wizard-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -1243,10 +1330,11 @@
     "forCDN": false
   },
   "EngineUnit": {
-    "s3mod": "sbis3.engine/test/EngineUnit/EngineUnit.s3mod",
+    "s3mod": "sbis3.engine\\test\\EngineUnit\\EngineUnit.s3mod",
     "name": "EngineUnit",
-    "path": "sbis3.engine/test/EngineUnit",
+    "path": "sbis3.engine\\test\\EngineUnit",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "EngineLanguage",
@@ -1260,6 +1348,7 @@
       "NavigationPanels",
       "Previewer",
       "RichEditor",
+      "StylesConfiguration",
       "Summation",
       "Wizard",
       "ViewConfiguration",
@@ -1278,7 +1367,10 @@
       "Export",
       "Engine-demo",
       "Printer",
-      "DocsEditor"
+      "DocsEditor",
+      "Emotions",
+      "SabyPage",
+      "Carousel"
     ],
     "unitTest": true,
     "testInBrowser": true,
@@ -1287,25 +1379,28 @@
     "forCDN": false
   },
   "Types": {
-    "s3mod": "saby-types/Types/Types.s3mod",
+    "s3mod": "saby-types\\Types\\Types.s3mod",
     "name": "Types",
-    "path": "saby-types/Types",
+    "path": "saby-types\\Types",
     "rep": "saby-types",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Env",
       "I18n",
-      "WS.Core"
+      "WS.Core",
+      "WasabyLoader"
     ],
     "id": "686f183d-0bcc-4732-b4e4-6016c2a67a0f",
     "required": true,
     "forCDN": false
   },
   "TypesUnit": {
-    "s3mod": "saby-types/TypesUnit/TypesUnit.s3mod",
+    "s3mod": "saby-types\\TypesUnit\\TypesUnit.s3mod",
     "name": "TypesUnit",
-    "path": "saby-types/TypesUnit",
+    "path": "saby-types\\TypesUnit",
     "rep": "saby-types",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Types"
@@ -1316,10 +1411,11 @@
     "forCDN": false
   },
   "I18n": {
-    "s3mod": "saby-i18n/I18n/I18n.s3mod",
+    "s3mod": "saby-i18n\\I18n\\I18n.s3mod",
     "name": "I18n",
-    "path": "saby-i18n/I18n",
+    "path": "saby-i18n\\I18n",
     "rep": "saby-i18n",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Env"
@@ -1329,10 +1425,11 @@
     "forCDN": false
   },
   "I18nTest": {
-    "s3mod": "saby-i18n/I18nTest/I18nTest.s3mod",
+    "s3mod": "saby-i18n\\I18nTest\\I18nTest.s3mod",
     "name": "I18nTest",
-    "path": "saby-i18n/I18nTest",
+    "path": "saby-i18n\\I18nTest",
     "rep": "saby-i18n",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "I18n",
@@ -1344,10 +1441,11 @@
     "forCDN": false
   },
   "Demo": {
-    "s3mod": "sbis3-ws/Demo/Demo.s3mod",
+    "s3mod": "sbis3-ws\\Demo\\Demo.s3mod",
     "name": "Demo",
-    "path": "sbis3-ws/Demo",
+    "path": "sbis3-ws\\Demo",
     "rep": "sbis3-ws",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "10efeac7-0f02-4c73-9474-0d1d0db07766",
@@ -1355,53 +1453,57 @@
     "forCDN": false
   },
   "Vdom": {
-    "s3mod": "sbis3-ws/Vdom/Vdom.s3mod",
+    "s3mod": "sbis3-ws\\Vdom\\Vdom.s3mod",
     "name": "Vdom",
-    "path": "sbis3-ws/Vdom",
+    "path": "sbis3-ws\\Vdom",
     "rep": "sbis3-ws",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
-      "View",
       "Env",
-      "WS.Core",
-      "Types"
+      "UI"
     ],
     "id": "0f5d26db-dd61-4957-9375-8861ad66f219",
     "required": true,
     "forCDN": false
   },
   "View": {
-    "s3mod": "sbis3-ws/View/View.s3mod",
+    "s3mod": "sbis3-ws\\View\\View.s3mod",
     "name": "View",
-    "path": "sbis3-ws/View",
+    "path": "sbis3-ws\\View",
     "rep": "sbis3-ws",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Inferno",
-      "WS.Core"
+      "WS.Core",
+      "UI"
     ],
     "id": "10efeac7-0f02-4c73-9474-0d1d0db077b6",
     "required": true,
     "forCDN": false
   },
   "WS.Core": {
-    "s3mod": "sbis3-ws/WS.Core/WS.Core.s3mod",
+    "s3mod": "sbis3-ws\\WS.Core\\WS.Core.s3mod",
     "name": "WS.Core",
-    "path": "sbis3-ws/WS.Core",
+    "path": "sbis3-ws\\WS.Core",
     "rep": "sbis3-ws",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
-      "RequireJsLoader"
+      "RequireJsLoader",
+      "WasabyLoader"
     ],
     "id": "0df0fce3-53ba-47f8-987d-edf1fd078295",
     "required": true,
     "forCDN": false
   },
   "WS.Deprecated": {
-    "s3mod": "sbis3-ws/WS.Deprecated/WS.Deprecated.s3mod",
+    "s3mod": "sbis3-ws\\WS.Deprecated\\WS.Deprecated.s3mod",
     "name": "WS.Deprecated",
-    "path": "sbis3-ws/WS.Deprecated",
+    "path": "sbis3-ws\\WS.Deprecated",
     "rep": "sbis3-ws",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "07b0c2ab-d7f1-4d46-94cc-e10d1508fc59",
@@ -1409,10 +1511,11 @@
     "forCDN": false
   },
   "WSTests": {
-    "s3mod": "sbis3-ws/test/WSTests/WSTests.s3mod",
+    "s3mod": "sbis3-ws\\test\\WSTests\\WSTests.s3mod",
     "name": "WSTests",
-    "path": "sbis3-ws/test/WSTests",
+    "path": "sbis3-ws\\test\\WSTests",
     "rep": "sbis3-ws",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "0df0fce3-53ba-47f8-987d-edf1fd078240",
@@ -1420,10 +1523,11 @@
     "forCDN": false
   },
   "WSUnit": {
-    "s3mod": "sbis3-ws/test/WSUnit/WSUnit.s3mod",
+    "s3mod": "sbis3-ws\\test\\WSUnit\\WSUnit.s3mod",
     "name": "WSUnit",
-    "path": "sbis3-ws/test/WSUnit",
+    "path": "sbis3-ws\\test\\WSUnit",
     "rep": "sbis3-ws",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Inferno",
@@ -1444,10 +1548,11 @@
     "forCDN": false
   },
   "Examples": {
-    "s3mod": "sbis3controls/Examples/Examples.s3mod",
+    "s3mod": "sbis3controls\\Examples\\Examples.s3mod",
     "name": "Examples",
-    "path": "sbis3controls/Examples",
+    "path": "sbis3controls\\Examples",
     "rep": "sbis3controls",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SBIS3.CONTROLS",
@@ -1466,10 +1571,11 @@
     "forCDN": false
   },
   "SBIS3.CONTROLS": {
-    "s3mod": "sbis3controls/SBIS3.CONTROLS/SBIS3.CONTROLS.s3mod",
+    "s3mod": "sbis3controls\\SBIS3.CONTROLS\\SBIS3.CONTROLS.s3mod",
     "name": "SBIS3.CONTROLS",
-    "path": "sbis3controls/SBIS3.CONTROLS",
+    "path": "sbis3controls\\SBIS3.CONTROLS",
     "rep": "sbis3controls",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Types",
@@ -1489,10 +1595,11 @@
     "forCDN": false
   },
   "SBIS3CONTROLSUnit": {
-    "s3mod": "sbis3controls/tests/SBIS3CONTROLSUnit/SBIS3CONTROLSUnit.s3mod",
+    "s3mod": "sbis3controls\\tests\\SBIS3CONTROLSUnit\\SBIS3CONTROLSUnit.s3mod",
     "name": "SBIS3CONTROLSUnit",
-    "path": "sbis3controls/tests/SBIS3CONTROLSUnit",
+    "path": "sbis3controls\\tests\\SBIS3CONTROLSUnit",
     "rep": "sbis3controls",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SBIS3.CONTROLS",
@@ -1506,10 +1613,11 @@
     "forCDN": false
   },
   "Controls": {
-    "s3mod": "wasaby-controls/Controls/Controls.s3mod",
+    "s3mod": "wasaby-controls\\Controls\\Controls.s3mod",
     "name": "Controls",
-    "path": "wasaby-controls/Controls",
+    "path": "wasaby-controls\\Controls",
     "rep": "wasaby-controls",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Types",
@@ -1517,21 +1625,24 @@
       "SbisEnv",
       "WS.Core",
       "Env",
+      "EnvConfig",
       "Browser",
       "View",
       "Vdom",
       "UI",
-      "I18n"
+      "I18n",
+      "WasabyLoader"
     ],
     "id": "f6fdf353-3ab3-4dbb-8671-01c2b418bf0a",
     "required": true,
     "forCDN": false
   },
   "Controls-default-theme": {
-    "s3mod": "wasaby-controls/Controls-default-theme/Controls-default-theme.s3mod",
+    "s3mod": "wasaby-controls\\Controls-default-theme\\Controls-default-theme.s3mod",
     "name": "Controls-default-theme",
-    "path": "wasaby-controls/Controls-default-theme",
+    "path": "wasaby-controls\\Controls-default-theme",
     "rep": "wasaby-controls",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls"
@@ -1541,10 +1652,11 @@
     "forCDN": false
   },
   "Controls-demo": {
-    "s3mod": "wasaby-controls/Controls-demo/Controls-demo.s3mod",
+    "s3mod": "wasaby-controls\\Controls-demo\\Controls-demo.s3mod",
     "name": "Controls-demo",
-    "path": "wasaby-controls/Controls-demo",
+    "path": "wasaby-controls\\Controls-demo",
     "rep": "wasaby-controls",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -1554,21 +1666,24 @@
       "Router",
       "SbisEnvUI-default-theme",
       "File",
-      "HotReload"
+      "HotReload",
+      "WasabyLoader",
+      "DemoStand",
+      "EnvConfig"
     ],
     "id": "0641abed-e0fb-4f42-990c-4c24bdbd7bd0",
     "required": false,
     "forCDN": false
   },
   "ControlsUnit": {
-    "s3mod": "wasaby-controls/tests/ControlsUnit/ControlsUnit.s3mod",
+    "s3mod": "wasaby-controls\\tests\\ControlsUnit\\ControlsUnit.s3mod",
     "name": "ControlsUnit",
-    "path": "wasaby-controls/tests/ControlsUnit",
+    "path": "wasaby-controls\\tests\\ControlsUnit",
     "rep": "wasaby-controls",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
-      "Controls-demo",
       "Controls-default-theme",
       "SbisEnvUI"
     ],
@@ -1578,15 +1693,15 @@
     "forCDN": false
   },
   "Browser": {
-    "s3mod": "rmi/src/client/Browser/Browser.s3mod",
+    "s3mod": "rmi\\src\\client\\Browser\\Browser.s3mod",
     "name": "Browser",
-    "path": "rmi/src/client/Browser",
+    "path": "rmi\\src\\client\\Browser",
     "rep": "rmi",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Types",
       "I18n",
-      "View",
       "SbisEnv"
     ],
     "id": "656177e2-4d75-42fa-9173-977dc90ff121",
@@ -1594,10 +1709,11 @@
     "forCDN": false
   },
   "Env": {
-    "s3mod": "rmi/src/client/Env/Env.s3mod",
+    "s3mod": "rmi\\src\\client\\Env\\Env.s3mod",
     "name": "Env",
-    "path": "rmi/src/client/Env",
+    "path": "rmi\\src\\client\\Env",
     "rep": "rmi",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Application",
@@ -1608,10 +1724,11 @@
     "forCDN": false
   },
   "File": {
-    "s3mod": "rmi/src/client/File/File.s3mod",
+    "s3mod": "rmi\\src\\client\\File\\File.s3mod",
     "name": "File",
-    "path": "rmi/src/client/File",
+    "path": "rmi\\src\\client\\File",
     "rep": "rmi",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Types",
@@ -1625,10 +1742,11 @@
     "forCDN": false
   },
   "File-demo": {
-    "s3mod": "rmi/src/client/File-demo/File-demo.s3mod",
+    "s3mod": "rmi\\src\\client\\File-demo\\File-demo.s3mod",
     "name": "File-demo",
-    "path": "rmi/src/client/File-demo",
+    "path": "rmi\\src\\client\\File-demo",
     "rep": "rmi",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -1640,10 +1758,11 @@
     "forCDN": false
   },
   "ParametersWebAPI": {
-    "s3mod": "rmi/src/client/ParametersWebAPI/ParametersWebAPI.s3mod",
+    "s3mod": "rmi\\src\\client\\ParametersWebAPI\\ParametersWebAPI.s3mod",
     "name": "ParametersWebAPI",
-    "path": "rmi/src/client/ParametersWebAPI",
+    "path": "rmi\\src\\client\\ParametersWebAPI",
     "rep": "rmi",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "e4bbd0f2-f7ce-404e-88b2-5130d105b770",
@@ -1651,10 +1770,11 @@
     "forCDN": false
   },
   "SbisEnv": {
-    "s3mod": "rmi/src/client/SbisEnv/SbisEnv.s3mod",
+    "s3mod": "rmi\\src\\client\\SbisEnv\\SbisEnv.s3mod",
     "name": "SbisEnv",
-    "path": "rmi/src/client/SbisEnv",
+    "path": "rmi\\src\\client\\SbisEnv",
     "rep": "rmi",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Application",
@@ -1665,10 +1785,11 @@
     "forCDN": false
   },
   "SbisEnvUI": {
-    "s3mod": "rmi/src/client/SbisEnvUI/SbisEnvUI.s3mod",
+    "s3mod": "rmi\\src\\client\\SbisEnvUI\\SbisEnvUI.s3mod",
     "name": "SbisEnvUI",
-    "path": "rmi/src/client/SbisEnvUI",
+    "path": "rmi\\src\\client\\SbisEnvUI",
     "rep": "rmi",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Browser",
@@ -1676,17 +1797,19 @@
       "Controls-default-theme",
       "Env",
       "UI",
-      "WS.Core"
+      "WS.Core",
+      "Application"
     ],
     "id": "a10cb1cb-b23d-4ef6-a757-4f7382e0e8d1",
     "required": true,
     "forCDN": false
   },
   "SbisEnvUI-default-theme": {
-    "s3mod": "rmi/src/client/SbisEnvUI-default-theme/SbisEnvUI-default-theme.s3mod",
+    "s3mod": "rmi\\src\\client\\SbisEnvUI-default-theme\\SbisEnvUI-default-theme.s3mod",
     "name": "SbisEnvUI-default-theme",
-    "path": "rmi/src/client/SbisEnvUI-default-theme",
+    "path": "rmi\\src\\client\\SbisEnvUI-default-theme",
     "rep": "rmi",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SbisEnvUI"
@@ -1698,10 +1821,11 @@
     "forCDN": false
   },
   "SbisEnvUI-demo": {
-    "s3mod": "rmi/src/client/SbisEnvUI-demo/SbisEnvUI-demo.s3mod",
+    "s3mod": "rmi\\src\\client\\SbisEnvUI-demo\\SbisEnvUI-demo.s3mod",
     "name": "SbisEnvUI-demo",
-    "path": "rmi/src/client/SbisEnvUI-demo",
+    "path": "rmi\\src\\client\\SbisEnvUI-demo",
     "rep": "rmi",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SbisEnvUI",
@@ -1719,10 +1843,11 @@
     "forCDN": false
   },
   "SbisFile": {
-    "s3mod": "rmi/src/client/SbisFile/SbisFile.s3mod",
+    "s3mod": "rmi\\src\\client\\SbisFile\\SbisFile.s3mod",
     "name": "SbisFile",
-    "path": "rmi/src/client/SbisFile",
+    "path": "rmi\\src\\client\\SbisFile",
     "rep": "rmi",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Types",
@@ -1737,10 +1862,11 @@
     "forCDN": false
   },
   "BrowserTest": {
-    "s3mod": "rmi/tests/unit/BrowserTest/BrowserTest.s3mod",
+    "s3mod": "rmi\\tests\\unit\\BrowserTest\\BrowserTest.s3mod",
     "name": "BrowserTest",
-    "path": "rmi/tests/unit/BrowserTest",
+    "path": "rmi\\tests\\unit\\BrowserTest",
     "rep": "rmi",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Browser"
@@ -1752,10 +1878,11 @@
     "forCDN": false
   },
   "EnvTest": {
-    "s3mod": "rmi/tests/unit/EnvTest/EnvTest.s3mod",
+    "s3mod": "rmi\\tests\\unit\\EnvTest\\EnvTest.s3mod",
     "name": "EnvTest",
-    "path": "rmi/tests/unit/EnvTest",
+    "path": "rmi\\tests\\unit\\EnvTest",
     "rep": "rmi",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Env"
@@ -1767,10 +1894,11 @@
     "forCDN": false
   },
   "FileTest": {
-    "s3mod": "rmi/tests/unit/FileTest/FileTest.s3mod",
+    "s3mod": "rmi\\tests\\unit\\FileTest\\FileTest.s3mod",
     "name": "FileTest",
-    "path": "rmi/tests/unit/FileTest",
+    "path": "rmi\\tests\\unit\\FileTest",
     "rep": "rmi",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "File",
@@ -1785,10 +1913,11 @@
     "forCDN": false
   },
   "ParametersWebAPITest": {
-    "s3mod": "rmi/tests/unit/ParametersWebAPITest/ParametersWebAPITest.s3mod",
+    "s3mod": "rmi\\tests\\unit\\ParametersWebAPITest\\ParametersWebAPITest.s3mod",
     "name": "ParametersWebAPITest",
-    "path": "rmi/tests/unit/ParametersWebAPITest",
+    "path": "rmi\\tests\\unit\\ParametersWebAPITest",
     "rep": "rmi",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "ParametersWebAPI",
@@ -1801,10 +1930,11 @@
     "forCDN": false
   },
   "SbisEnvTest": {
-    "s3mod": "rmi/tests/unit/SbisEnvTest/SbisEnvTest.s3mod",
+    "s3mod": "rmi\\tests\\unit\\SbisEnvTest\\SbisEnvTest.s3mod",
     "name": "SbisEnvTest",
-    "path": "rmi/tests/unit/SbisEnvTest",
+    "path": "rmi\\tests\\unit\\SbisEnvTest",
     "rep": "rmi",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Browser"
@@ -1816,10 +1946,11 @@
     "forCDN": false
   },
   "SbisEnvUITest": {
-    "s3mod": "rmi/tests/unit/SbisEnvUITest/SbisEnvUITest.s3mod",
+    "s3mod": "rmi\\tests\\unit\\SbisEnvUITest\\SbisEnvUITest.s3mod",
     "name": "SbisEnvUITest",
-    "path": "rmi/tests/unit/SbisEnvUITest",
+    "path": "rmi\\tests\\unit\\SbisEnvUITest",
     "rep": "rmi",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SbisEnvUI"
@@ -1831,10 +1962,11 @@
     "forCDN": false
   },
   "SbisFileTest": {
-    "s3mod": "rmi/tests/unit/SbisFileTest/SbisFileTest.s3mod",
+    "s3mod": "rmi\\tests\\unit\\SbisFileTest\\SbisFileTest.s3mod",
     "name": "SbisFileTest",
-    "path": "rmi/tests/unit/SbisFileTest",
+    "path": "rmi\\tests\\unit\\SbisFileTest",
     "rep": "rmi",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "File",
@@ -1849,10 +1981,11 @@
     "forCDN": false
   },
   "Application": {
-    "s3mod": "wasaby-app/src/Application/Application.s3mod",
+    "s3mod": "wasaby-app\\src\\Application\\Application.s3mod",
     "name": "Application",
-    "path": "wasaby-app/src/Application",
+    "path": "wasaby-app\\src\\Application",
     "rep": "wasaby-app",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "323fd54f-1fab-42a6-8aea-6726d6392d53",
@@ -1860,10 +1993,11 @@
     "forCDN": false
   },
   "AppUnit": {
-    "s3mod": "wasaby-app/test/AppUnit/AppUnit.s3mod",
+    "s3mod": "wasaby-app\\test\\AppUnit\\AppUnit.s3mod",
     "name": "AppUnit",
-    "path": "wasaby-app/test/AppUnit",
+    "path": "wasaby-app\\test\\AppUnit",
     "rep": "wasaby-app",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Application",
@@ -1876,10 +2010,11 @@
     "forCDN": false
   },
   "Router": {
-    "s3mod": "Router/Router/Router.s3mod",
+    "s3mod": "Router\\Router\\Router.s3mod",
     "name": "Router",
-    "path": "Router/Router",
+    "path": "Router\\Router",
     "rep": "Router",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Vdom",
@@ -1894,10 +2029,11 @@
     "forCDN": false
   },
   "RouterDemo": {
-    "s3mod": "Router/RouterDemo/RouterDemo.s3mod",
+    "s3mod": "Router\\RouterDemo\\RouterDemo.s3mod",
     "name": "RouterDemo",
-    "path": "Router/RouterDemo",
+    "path": "Router\\RouterDemo",
     "rep": "Router",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Router",
@@ -1909,10 +2045,11 @@
     "forCDN": false
   },
   "RouterTest": {
-    "s3mod": "Router/RouterTest/RouterTest.s3mod",
+    "s3mod": "Router\\RouterTest\\RouterTest.s3mod",
     "name": "RouterTest",
-    "path": "Router/RouterTest",
+    "path": "Router\\RouterTest",
     "rep": "Router",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Router",
@@ -1926,10 +2063,11 @@
     "forCDN": false
   },
   "Compiler": {
-    "s3mod": "saby-ui/Compiler/Compiler.s3mod",
+    "s3mod": "saby-ui\\Compiler\\Compiler.s3mod",
     "name": "Compiler",
-    "path": "saby-ui/Compiler",
+    "path": "saby-ui\\Compiler",
     "rep": "saby-ui",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "1456f36f-76ef-4323-a2dd-a22bc91e7209",
@@ -1937,10 +2075,11 @@
     "forCDN": false
   },
   "Markup": {
-    "s3mod": "saby-ui/Markup/Markup.s3mod",
+    "s3mod": "saby-ui\\Markup\\Markup.s3mod",
     "name": "Markup",
-    "path": "saby-ui/Markup",
+    "path": "saby-ui\\Markup",
     "rep": "saby-ui",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "e76c9481-9d6f-49a4-b71f-b567061e6e38",
@@ -1948,10 +2087,11 @@
     "forCDN": false
   },
   "TextMarkup": {
-    "s3mod": "saby-ui/TextMarkup/TextMarkup.s3mod",
+    "s3mod": "saby-ui\\TextMarkup\\TextMarkup.s3mod",
     "name": "TextMarkup",
-    "path": "saby-ui/TextMarkup",
+    "path": "saby-ui\\TextMarkup",
     "rep": "saby-ui",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "722575bb-20cd-4218-9093-245add574a8e",
@@ -1959,45 +2099,51 @@
     "forCDN": false
   },
   "UI": {
-    "s3mod": "saby-ui/UI/UI.s3mod",
+    "s3mod": "saby-ui\\UI\\UI.s3mod",
     "name": "UI",
-    "path": "saby-ui/UI",
+    "path": "saby-ui\\UI",
     "rep": "saby-ui",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
-      "View",
       "Env",
       "SbisEnv",
       "Application",
       "I18n",
-      "Types"
+      "Types",
+      "Inferno",
+      "WasabyLoader"
     ],
     "id": "f27abe12-19df-4c9f-b886-634bd20a0011",
     "required": true,
     "forCDN": false
   },
   "UIDemo": {
-    "s3mod": "saby-ui/UIDemo/UIDemo.s3mod",
+    "s3mod": "saby-ui\\UIDemo\\UIDemo.s3mod",
     "name": "UIDemo",
-    "path": "saby-ui/UIDemo",
+    "path": "saby-ui\\UIDemo",
     "rep": "saby-ui",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "UIDemo-default-theme",
       "UI",
       "Controls",
-      "Router"
+      "Router",
+      "SbisEnvUI",
+      "SbisEnvUI-default-theme"
     ],
     "id": "85db6f66-683e-4ab1-9531-cfa9a718f696",
     "required": true,
     "forCDN": false
   },
   "UIDemo-default-theme": {
-    "s3mod": "saby-ui/UIDemo-default-theme/UIDemo-default-theme.s3mod",
+    "s3mod": "saby-ui\\UIDemo-default-theme\\UIDemo-default-theme.s3mod",
     "name": "UIDemo-default-theme",
-    "path": "saby-ui/UIDemo-default-theme",
+    "path": "saby-ui\\UIDemo-default-theme",
     "rep": "saby-ui",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "981002dc-65bb-40bc-8489-a18683d011fc",
@@ -2005,10 +2151,11 @@
     "forCDN": false
   },
   "UITest": {
-    "s3mod": "saby-ui/UITest/UITest.s3mod",
+    "s3mod": "saby-ui\\UITest\\UITest.s3mod",
     "name": "UITest",
-    "path": "saby-ui/UITest",
+    "path": "saby-ui\\UITest",
     "rep": "saby-ui",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "UI",
@@ -2021,10 +2168,11 @@
     "forCDN": false
   },
   "VirtualDom": {
-    "s3mod": "saby-ui/VirtualDom/VirtualDom.s3mod",
+    "s3mod": "saby-ui\\VirtualDom\\VirtualDom.s3mod",
     "name": "VirtualDom",
-    "path": "saby-ui/VirtualDom",
+    "path": "saby-ui\\VirtualDom",
     "rep": "saby-ui",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "24fe698c-de89-4825-b2ff-2c5d264543b1",
@@ -2032,10 +2180,11 @@
     "forCDN": false
   },
   "VirtualTreeMarkup": {
-    "s3mod": "saby-ui/VirtualTreeMarkup/VirtualTreeMarkup.s3mod",
+    "s3mod": "saby-ui\\VirtualTreeMarkup\\VirtualTreeMarkup.s3mod",
     "name": "VirtualTreeMarkup",
-    "path": "saby-ui/VirtualTreeMarkup",
+    "path": "saby-ui\\VirtualTreeMarkup",
     "rep": "saby-ui",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "20900143-d257-48ef-b5db-0ccc8141fe4b",
@@ -2043,10 +2192,11 @@
     "forCDN": false
   },
   "WmlBuilder": {
-    "s3mod": "saby-ui/WmlBuilder/WmlBuilder.s3mod",
+    "s3mod": "saby-ui\\WmlBuilder\\WmlBuilder.s3mod",
     "name": "WmlBuilder",
-    "path": "saby-ui/WmlBuilder",
+    "path": "saby-ui\\WmlBuilder",
     "rep": "saby-ui",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "16b7a546-95bc-437c-af6a-77f8bbf2a724",
@@ -2054,10 +2204,11 @@
     "forCDN": false
   },
   "AccordionFont": {
-    "s3mod": "cdn/AccordionFont/AccordionFont.s3mod",
+    "s3mod": "cdn\\AccordionFont\\AccordionFont.s3mod",
     "name": "AccordionFont",
-    "path": "cdn/AccordionFont",
+    "path": "cdn\\AccordionFont",
     "rep": "cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "658a9cce-31ba-4cfe-ac20-eca0e01efc39",
@@ -2065,10 +2216,11 @@
     "forCDN": true
   },
   "AccordionFont-IE": {
-    "s3mod": "cdn/AccordionFont-IE/AccordionFont-IE.s3mod",
+    "s3mod": "cdn\\AccordionFont-IE\\AccordionFont-IE.s3mod",
     "name": "AccordionFont-IE",
-    "path": "cdn/AccordionFont-IE",
+    "path": "cdn\\AccordionFont-IE",
     "rep": "cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "d29a0267-f17c-4f18-8f7e-0938b889397d",
@@ -2076,10 +2228,11 @@
     "forCDN": true
   },
   "Boomerang": {
-    "s3mod": "cdn/Boomerang/Boomerang.s3mod",
+    "s3mod": "cdn\\Boomerang\\Boomerang.s3mod",
     "name": "Boomerang",
-    "path": "cdn/Boomerang",
+    "path": "cdn\\Boomerang",
     "rep": "cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "73faafcb-60e4-4566-a66a-f6ab906f06b7",
@@ -2087,10 +2240,11 @@
     "forCDN": true
   },
   "CbucIcons": {
-    "s3mod": "cdn/CbucIcons/CbucIcons.s3mod",
+    "s3mod": "cdn\\CbucIcons\\CbucIcons.s3mod",
     "name": "CbucIcons",
-    "path": "cdn/CbucIcons",
+    "path": "cdn\\CbucIcons",
     "rep": "cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "d122870a-8b0a-44f9-aeeb-3986418dcf2a",
@@ -2098,10 +2252,11 @@
     "forCDN": true
   },
   "CbucIcons-IE": {
-    "s3mod": "cdn/CbucIcons-IE/CbucIcons-IE.s3mod",
+    "s3mod": "cdn\\CbucIcons-IE\\CbucIcons-IE.s3mod",
     "name": "CbucIcons-IE",
-    "path": "cdn/CbucIcons-IE",
+    "path": "cdn\\CbucIcons-IE",
     "rep": "cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "938d0978-3fca-4c9d-9946-ba3ae46255a6",
@@ -2109,10 +2264,11 @@
     "forCDN": true
   },
   "EmojiFont": {
-    "s3mod": "cdn/EmojiFont/EmojiFont.s3mod",
+    "s3mod": "cdn\\EmojiFont\\EmojiFont.s3mod",
     "name": "EmojiFont",
-    "path": "cdn/EmojiFont",
+    "path": "cdn\\EmojiFont",
     "rep": "cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "8b84202c-52fd-4297-bc0e-a436ef83a24a",
@@ -2120,10 +2276,11 @@
     "forCDN": true
   },
   "EmojiFont-IE": {
-    "s3mod": "cdn/EmojiFont-IE/EmojiFont-IE.s3mod",
+    "s3mod": "cdn\\EmojiFont-IE\\EmojiFont-IE.s3mod",
     "name": "EmojiFont-IE",
-    "path": "cdn/EmojiFont-IE",
+    "path": "cdn\\EmojiFont-IE",
     "rep": "cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "648d006e-7c63-4b16-9df9-8f0e2004aef7",
@@ -2131,10 +2288,11 @@
     "forCDN": true
   },
   "Highcharts": {
-    "s3mod": "cdn/Highcharts/Highcharts.s3mod",
+    "s3mod": "cdn\\Highcharts\\Highcharts.s3mod",
     "name": "Highcharts",
-    "path": "cdn/Highcharts",
+    "path": "cdn\\Highcharts",
     "rep": "cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "70fd296c-ed07-4fe5-9393-f8fdc9fc7df3",
@@ -2142,10 +2300,11 @@
     "forCDN": true
   },
   "JQuery": {
-    "s3mod": "cdn/JQuery/JQuery.s3mod",
+    "s3mod": "cdn\\JQuery\\JQuery.s3mod",
     "name": "JQuery",
-    "path": "cdn/JQuery",
+    "path": "cdn\\JQuery",
     "rep": "cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "b127fcb9-f164-4ae5-a6a0-658ce340d648",
@@ -2153,10 +2312,11 @@
     "forCDN": true
   },
   "LoaderIndicator": {
-    "s3mod": "cdn/LoaderIndicator/LoaderIndicator.s3mod",
+    "s3mod": "cdn\\LoaderIndicator\\LoaderIndicator.s3mod",
     "name": "LoaderIndicator",
-    "path": "cdn/LoaderIndicator",
+    "path": "cdn\\LoaderIndicator",
     "rep": "cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "3255ad33-c963-4899-abe5-4e35e00a18be",
@@ -2164,10 +2324,11 @@
     "forCDN": true
   },
   "Maintenance": {
-    "s3mod": "cdn/Maintenance/Maintenance.s3mod",
+    "s3mod": "cdn\\Maintenance\\Maintenance.s3mod",
     "name": "Maintenance",
-    "path": "cdn/Maintenance",
+    "path": "cdn\\Maintenance",
     "rep": "cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "6b37add7-3560-46f0-b5d8-1566166ee3e8",
@@ -2175,10 +2336,11 @@
     "forCDN": true
   },
   "RequireJS": {
-    "s3mod": "cdn/RequireJS/RequireJS.s3mod",
+    "s3mod": "cdn\\RequireJS\\RequireJS.s3mod",
     "name": "RequireJS",
-    "path": "cdn/RequireJS",
+    "path": "cdn\\RequireJS",
     "rep": "cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "60e42987-4d2c-4455-a254-97257c2314d6",
@@ -2186,10 +2348,11 @@
     "forCDN": true
   },
   "TensorFont": {
-    "s3mod": "cdn/TensorFont/TensorFont.s3mod",
+    "s3mod": "cdn\\TensorFont\\TensorFont.s3mod",
     "name": "TensorFont",
-    "path": "cdn/TensorFont",
+    "path": "cdn\\TensorFont",
     "rep": "cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "cf6f5767-7fa3-4d2d-b360-9e56af200aea",
@@ -2197,10 +2360,11 @@
     "forCDN": true
   },
   "TensorFont-IE": {
-    "s3mod": "cdn/TensorFont-IE/TensorFont-IE.s3mod",
+    "s3mod": "cdn\\TensorFont-IE\\TensorFont-IE.s3mod",
     "name": "TensorFont-IE",
-    "path": "cdn/TensorFont-IE",
+    "path": "cdn\\TensorFont-IE",
     "rep": "cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "60eab040-41dd-42ed-907d-1efa033282dd",
@@ -2208,10 +2372,11 @@
     "forCDN": true
   },
   "AceEditor": {
-    "s3mod": "sbis-cdn/AceEditor/AceEditor.s3mod",
+    "s3mod": "sbis-cdn\\AceEditor\\AceEditor.s3mod",
     "name": "AceEditor",
-    "path": "sbis-cdn/AceEditor",
+    "path": "sbis-cdn\\AceEditor",
     "rep": "sbis-cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "ed17c631-6d03-4913-8c5d-e2081c398774",
@@ -2219,10 +2384,11 @@
     "forCDN": true
   },
   "DeprecatedRC": {
-    "s3mod": "sbis-cdn/DeprecatedRC/DeprecatedRC.s3mod",
+    "s3mod": "sbis-cdn\\DeprecatedRC\\DeprecatedRC.s3mod",
     "name": "DeprecatedRC",
-    "path": "sbis-cdn/DeprecatedRC",
+    "path": "sbis-cdn\\DeprecatedRC",
     "rep": "sbis-cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "fdb882aa-243b-4556-8c55-599fff50bfed",
@@ -2230,10 +2396,11 @@
     "forCDN": true
   },
   "HelpPersonDima": {
-    "s3mod": "sbis-cdn/HelpPersonDima/HelpPersonDima.s3mod",
+    "s3mod": "sbis-cdn\\HelpPersonDima\\HelpPersonDima.s3mod",
     "name": "HelpPersonDima",
-    "path": "sbis-cdn/HelpPersonDima",
+    "path": "sbis-cdn\\HelpPersonDima",
     "rep": "sbis-cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "bb9d13a7-09e6-4301-a08d-4f53bca1e175",
@@ -2241,10 +2408,11 @@
     "forCDN": true
   },
   "HelpPersonEugene": {
-    "s3mod": "sbis-cdn/HelpPersonEugene/HelpPersonEugene.s3mod",
+    "s3mod": "sbis-cdn\\HelpPersonEugene\\HelpPersonEugene.s3mod",
     "name": "HelpPersonEugene",
-    "path": "sbis-cdn/HelpPersonEugene",
+    "path": "sbis-cdn\\HelpPersonEugene",
     "rep": "sbis-cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "86fc58c8-3ba2-42b1-b0be-be009cec971d",
@@ -2252,10 +2420,11 @@
     "forCDN": true
   },
   "HelpPersonLara": {
-    "s3mod": "sbis-cdn/HelpPersonLara/HelpPersonLara.s3mod",
+    "s3mod": "sbis-cdn\\HelpPersonLara\\HelpPersonLara.s3mod",
     "name": "HelpPersonLara",
-    "path": "sbis-cdn/HelpPersonLara",
+    "path": "sbis-cdn\\HelpPersonLara",
     "rep": "sbis-cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "6d519c9d-3a61-46a5-84c0-0e4e9929b2c7",
@@ -2263,10 +2432,11 @@
     "forCDN": true
   },
   "HelpPersonLeonid": {
-    "s3mod": "sbis-cdn/HelpPersonLeonid/HelpPersonLeonid.s3mod",
+    "s3mod": "sbis-cdn\\HelpPersonLeonid\\HelpPersonLeonid.s3mod",
     "name": "HelpPersonLeonid",
-    "path": "sbis-cdn/HelpPersonLeonid",
+    "path": "sbis-cdn\\HelpPersonLeonid",
     "rep": "sbis-cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "28fc9195-cf95-4ad5-b3fa-4ce525f19005",
@@ -2274,10 +2444,11 @@
     "forCDN": true
   },
   "HelpPersonNP": {
-    "s3mod": "sbis-cdn/HelpPersonNP/HelpPersonNP.s3mod",
+    "s3mod": "sbis-cdn\\HelpPersonNP\\HelpPersonNP.s3mod",
     "name": "HelpPersonNP",
-    "path": "sbis-cdn/HelpPersonNP",
+    "path": "sbis-cdn\\HelpPersonNP",
     "rep": "sbis-cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "ae996c06-d657-4fe6-b94a-764623144191",
@@ -2285,10 +2456,11 @@
     "forCDN": true
   },
   "PaperJS": {
-    "s3mod": "sbis-cdn/PaperJS/PaperJS.s3mod",
+    "s3mod": "sbis-cdn\\PaperJS\\PaperJS.s3mod",
     "name": "PaperJS",
-    "path": "sbis-cdn/PaperJS",
+    "path": "sbis-cdn\\PaperJS",
     "rep": "sbis-cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "43323ca3-f7ce-49e4-bf82-262468de512c",
@@ -2296,10 +2468,11 @@
     "forCDN": true
   },
   "SabyLogo": {
-    "s3mod": "sbis-cdn/SabyLogo/SabyLogo.s3mod",
+    "s3mod": "sbis-cdn\\SabyLogo\\SabyLogo.s3mod",
     "name": "SabyLogo",
-    "path": "sbis-cdn/SabyLogo",
+    "path": "sbis-cdn\\SabyLogo",
     "rep": "sbis-cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "fc996c96-7f82-4560-b957-981d356a6a83",
@@ -2307,10 +2480,11 @@
     "forCDN": true
   },
   "SabyMan": {
-    "s3mod": "sbis-cdn/SabyMan/SabyMan.s3mod",
+    "s3mod": "sbis-cdn\\SabyMan\\SabyMan.s3mod",
     "name": "SabyMan",
-    "path": "sbis-cdn/SabyMan",
+    "path": "sbis-cdn\\SabyMan",
     "rep": "sbis-cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "9c03d68e-4397-4ee9-a9c8-b03b5d0449f5",
@@ -2318,10 +2492,11 @@
     "forCDN": true
   },
   "AppconfigurationCDN": {
-    "s3mod": "engine-cdn/AppconfigurationCDN/AppconfigurationCDN.s3mod",
+    "s3mod": "engine-cdn\\AppconfigurationCDN\\AppconfigurationCDN.s3mod",
     "name": "AppconfigurationCDN",
-    "path": "engine-cdn/AppconfigurationCDN",
+    "path": "engine-cdn\\AppconfigurationCDN",
     "rep": "engine-cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "25610361-bd3f-4592-9859-63064063f5cb",
@@ -2329,10 +2504,11 @@
     "forCDN": true
   },
   "FabricJS": {
-    "s3mod": "engine-cdn/FabricJS/FabricJS.s3mod",
+    "s3mod": "engine-cdn\\FabricJS\\FabricJS.s3mod",
     "name": "FabricJS",
-    "path": "engine-cdn/FabricJS",
+    "path": "engine-cdn\\FabricJS",
     "rep": "engine-cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "caa155a2-6947-44b1-a34d-b5f51fccfde8",
@@ -2340,10 +2516,11 @@
     "forCDN": true
   },
   "ImageEditorRC": {
-    "s3mod": "engine-cdn/ImageEditorRC/ImageEditorRC.s3mod",
+    "s3mod": "engine-cdn\\ImageEditorRC\\ImageEditorRC.s3mod",
     "name": "ImageEditorRC",
-    "path": "engine-cdn/ImageEditorRC",
+    "path": "engine-cdn\\ImageEditorRC",
     "rep": "engine-cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "ee70b48f-dc64-45ae-984a-f9dbd85f51a0",
@@ -2351,10 +2528,11 @@
     "forCDN": true
   },
   "SchemeEditorCDN": {
-    "s3mod": "engine-cdn/SchemeEditorCDN/SchemeEditorCDN.s3mod",
+    "s3mod": "engine-cdn\\SchemeEditorCDN\\SchemeEditorCDN.s3mod",
     "name": "SchemeEditorCDN",
-    "path": "engine-cdn/SchemeEditorCDN",
+    "path": "engine-cdn\\SchemeEditorCDN",
     "rep": "engine-cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "8df3cde2-0ecc-4839-9504-9be55343c09a",
@@ -2362,10 +2540,11 @@
     "forCDN": true
   },
   "ViewSettingsCDN": {
-    "s3mod": "engine-cdn/ViewSettingsCDN/ViewSettingsCDN.s3mod",
+    "s3mod": "engine-cdn\\ViewSettingsCDN\\ViewSettingsCDN.s3mod",
     "name": "ViewSettingsCDN",
-    "path": "engine-cdn/ViewSettingsCDN",
+    "path": "engine-cdn\\ViewSettingsCDN",
     "rep": "engine-cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "6e2c351e-fc7c-4bed-b718-e2eb28ac3d0e",
@@ -2373,10 +2552,11 @@
     "forCDN": true
   },
   "SchemeEditor": {
-    "s3mod": "sbis3-schemeeditor/client/SchemeEditor/SchemeEditor.s3mod",
+    "s3mod": "sbis3-schemeeditor\\client\\SchemeEditor\\SchemeEditor.s3mod",
     "name": "SchemeEditor",
-    "path": "sbis3-schemeeditor/client/SchemeEditor",
+    "path": "sbis3-schemeeditor\\client\\SchemeEditor",
     "rep": "sbis3-schemeeditor",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -2387,10 +2567,11 @@
     "forCDN": false
   },
   "SchemeEditor-default-theme": {
-    "s3mod": "sbis3-schemeeditor/client/SchemeEditor-default-theme/SchemeEditor-default-theme.s3mod",
+    "s3mod": "sbis3-schemeeditor\\client\\SchemeEditor-default-theme\\SchemeEditor-default-theme.s3mod",
     "name": "SchemeEditor-default-theme",
-    "path": "sbis3-schemeeditor/client/SchemeEditor-default-theme",
+    "path": "sbis3-schemeeditor\\client\\SchemeEditor-default-theme",
     "rep": "sbis3-schemeeditor",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SchemeEditor"
@@ -2400,10 +2581,11 @@
     "forCDN": false
   },
   "SchemeEditor-demo": {
-    "s3mod": "sbis3-schemeeditor/client/SchemeEditor-demo/SchemeEditor-demo.s3mod",
+    "s3mod": "sbis3-schemeeditor\\client\\SchemeEditor-demo\\SchemeEditor-demo.s3mod",
     "name": "SchemeEditor-demo",
-    "path": "sbis3-schemeeditor/client/SchemeEditor-demo",
+    "path": "sbis3-schemeeditor\\client\\SchemeEditor-demo",
     "rep": "sbis3-schemeeditor",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SchemeEditor",
@@ -2420,10 +2602,11 @@
     "forCDN": false
   },
   "SchemeEditor-demo-online": {
-    "s3mod": "sbis3-schemeeditor/client/SchemeEditor-demo-online/SchemeEditor-demo-online.s3mod",
+    "s3mod": "sbis3-schemeeditor\\client\\SchemeEditor-demo-online\\SchemeEditor-demo-online.s3mod",
     "name": "SchemeEditor-demo-online",
-    "path": "sbis3-schemeeditor/client/SchemeEditor-demo-online",
+    "path": "sbis3-schemeeditor\\client\\SchemeEditor-demo-online",
     "rep": "sbis3-schemeeditor",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SchemeEditor",
@@ -2440,10 +2623,11 @@
     "forCDN": false
   },
   "SchemeEditorTest": {
-    "s3mod": "sbis3-schemeeditor/tests/unit/SchemeEditorTest/SchemeEditorTest.s3mod",
+    "s3mod": "sbis3-schemeeditor\\tests\\unit\\SchemeEditorTest\\SchemeEditorTest.s3mod",
     "name": "SchemeEditorTest",
-    "path": "sbis3-schemeeditor/tests/unit/SchemeEditorTest",
+    "path": "sbis3-schemeeditor\\tests\\unit\\SchemeEditorTest",
     "rep": "sbis3-schemeeditor",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SchemeEditor"
@@ -2455,10 +2639,11 @@
     "forCDN": false
   },
   "Permission": {
-    "s3mod": "permission/client/Permission/Permission.s3mod",
+    "s3mod": "permission\\client\\Permission\\Permission.s3mod",
     "name": "Permission",
-    "path": "permission/client/Permission",
+    "path": "permission\\client\\Permission",
     "rep": "permission",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "ParametersWebAPI",
@@ -2473,10 +2658,11 @@
     "forCDN": false
   },
   "PermissionUnit": {
-    "s3mod": "permission/tests/unit/PermissionUnit/PermissionUnit.s3mod",
+    "s3mod": "permission\\tests\\unit\\PermissionUnit\\PermissionUnit.s3mod",
     "name": "PermissionUnit",
-    "path": "permission/tests/unit/PermissionUnit",
+    "path": "permission\\tests\\unit\\PermissionUnit",
     "rep": "permission",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Permission"
@@ -2487,10 +2673,11 @@
     "forCDN": false
   },
   "ViewSettings": {
-    "s3mod": "viewsettings/client/ViewSettings/ViewSettings.s3mod",
+    "s3mod": "viewsettings\\client\\ViewSettings\\ViewSettings.s3mod",
     "name": "ViewSettings",
-    "path": "viewsettings/client/ViewSettings",
+    "path": "viewsettings\\client\\ViewSettings",
     "rep": "viewsettings",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -2508,10 +2695,11 @@
     "forCDN": false
   },
   "SBIS3.Plugin": {
-    "s3mod": "sbis-plugin-client/SBIS3.Plugin/SBIS3.Plugin.s3mod",
+    "s3mod": "sbis-plugin-client\\SBIS3.Plugin\\SBIS3.Plugin.s3mod",
     "name": "SBIS3.Plugin",
-    "path": "sbis-plugin-client/SBIS3.Plugin",
+    "path": "sbis-plugin-client\\SBIS3.Plugin",
     "rep": "sbis-plugin-client",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Browser",
@@ -2529,10 +2717,11 @@
     "forCDN": false
   },
   "SBISPluginComponents": {
-    "s3mod": "sbis-plugin-client/SBISPluginComponents/SBISPluginComponents.s3mod",
+    "s3mod": "sbis-plugin-client\\SBISPluginComponents\\SBISPluginComponents.s3mod",
     "name": "SBISPluginComponents",
-    "path": "sbis-plugin-client/SBISPluginComponents",
+    "path": "sbis-plugin-client\\SBISPluginComponents",
     "rep": "sbis-plugin-client",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SBIS3.Plugin",
@@ -2547,10 +2736,11 @@
     "forCDN": false
   },
   "WorkspaceDiagnostic": {
-    "s3mod": "sbis-plugin-client/WorkspaceDiagnostic/WorkspaceDiagnostic.s3mod",
+    "s3mod": "sbis-plugin-client\\WorkspaceDiagnostic\\WorkspaceDiagnostic.s3mod",
     "name": "WorkspaceDiagnostic",
-    "path": "sbis-plugin-client/WorkspaceDiagnostic",
+    "path": "sbis-plugin-client\\WorkspaceDiagnostic",
     "rep": "sbis-plugin-client",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SBIS3.Plugin",
@@ -2559,17 +2749,19 @@
       "WS.Core",
       "Env",
       "UI",
-      "RequireJsLoader"
+      "RequireJsLoader",
+      "Hint"
     ],
     "id": "cb08b4bf-32c3-475c-8dff-e1f433becf52",
     "required": true,
     "forCDN": false
   },
   "SBIS3PluginUnit": {
-    "s3mod": "sbis-plugin-client/test/SBIS3PluginUnit/SBIS3PluginUnit.s3mod",
+    "s3mod": "sbis-plugin-client\\test\\SBIS3PluginUnit\\SBIS3PluginUnit.s3mod",
     "name": "SBIS3PluginUnit",
-    "path": "sbis-plugin-client/test/SBIS3PluginUnit",
+    "path": "sbis-plugin-client\\test\\SBIS3PluginUnit",
     "rep": "sbis-plugin-client",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SBIS3.Plugin"
@@ -2580,10 +2772,11 @@
     "forCDN": false
   },
   "Navigation": {
-    "s3mod": "navigation-configuration/client/Navigation/Navigation.s3mod",
+    "s3mod": "navigation-configuration\\client\\Navigation\\Navigation.s3mod",
     "name": "Navigation",
-    "path": "navigation-configuration/client/Navigation",
+    "path": "navigation-configuration\\client\\Navigation",
     "rep": "navigation-configuration",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -2597,10 +2790,11 @@
     "forCDN": false
   },
   "Access-demo": {
-    "s3mod": "access-control/client/Access-demo/Access-demo.s3mod",
+    "s3mod": "access-control\\client\\Access-demo\\Access-demo.s3mod",
     "name": "Access-demo",
-    "path": "access-control/client/Access-demo",
+    "path": "access-control\\client\\Access-demo",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Router",
@@ -2621,10 +2815,11 @@
     "forCDN": false
   },
   "Applications": {
-    "s3mod": "access-control/client/Applications/Applications.s3mod",
+    "s3mod": "access-control\\client\\Applications\\Applications.s3mod",
     "name": "Applications",
-    "path": "access-control/client/Applications",
+    "path": "access-control\\client\\Applications",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -2639,10 +2834,11 @@
     "forCDN": false
   },
   "AuthFramework": {
-    "s3mod": "access-control/client/AuthFramework/AuthFramework.s3mod",
+    "s3mod": "access-control\\client\\AuthFramework\\AuthFramework.s3mod",
     "name": "AuthFramework",
-    "path": "access-control/client/AuthFramework",
+    "path": "access-control\\client\\AuthFramework",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -2659,10 +2855,11 @@
     "forCDN": false
   },
   "AuthThemes": {
-    "s3mod": "access-control/client/AuthThemes/AuthThemes.s3mod",
+    "s3mod": "access-control\\client\\AuthThemes\\AuthThemes.s3mod",
     "name": "AuthThemes",
-    "path": "access-control/client/AuthThemes",
+    "path": "access-control\\client\\AuthThemes",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -2677,10 +2874,11 @@
     "forCDN": false
   },
   "Authentication": {
-    "s3mod": "access-control/client/Authentication/Authentication.s3mod",
+    "s3mod": "access-control\\client\\Authentication\\Authentication.s3mod",
     "name": "Authentication",
-    "path": "access-control/client/Authentication",
+    "path": "access-control\\client\\Authentication",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Antibot",
@@ -2696,10 +2894,11 @@
     "forCDN": false
   },
   "AuthenticationCarryOffline": {
-    "s3mod": "access-control/client/AuthenticationCarryOffline/AuthenticationCarryOffline.s3mod",
+    "s3mod": "access-control\\client\\AuthenticationCarryOffline\\AuthenticationCarryOffline.s3mod",
     "name": "AuthenticationCarryOffline",
-    "path": "access-control/client/AuthenticationCarryOffline",
+    "path": "access-control\\client\\AuthenticationCarryOffline",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "AuthFramework",
@@ -2711,10 +2910,11 @@
     "forCDN": false
   },
   "AuthenticationDesktop": {
-    "s3mod": "access-control/client/AuthenticationDesktop/AuthenticationDesktop.s3mod",
+    "s3mod": "access-control\\client\\AuthenticationDesktop\\AuthenticationDesktop.s3mod",
     "name": "AuthenticationDesktop",
-    "path": "access-control/client/AuthenticationDesktop",
+    "path": "access-control\\client\\AuthenticationDesktop",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -2725,10 +2925,11 @@
     "forCDN": false
   },
   "DevicesTrusted": {
-    "s3mod": "access-control/client/DevicesTrusted/DevicesTrusted.s3mod",
+    "s3mod": "access-control\\client\\DevicesTrusted\\DevicesTrusted.s3mod",
     "name": "DevicesTrusted",
-    "path": "access-control/client/DevicesTrusted",
+    "path": "access-control\\client\\DevicesTrusted",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Browser",
@@ -2748,10 +2949,11 @@
     "forCDN": false
   },
   "EnterUnderUser": {
-    "s3mod": "access-control/client/EnterUnderUser/EnterUnderUser.s3mod",
+    "s3mod": "access-control\\client\\EnterUnderUser\\EnterUnderUser.s3mod",
     "name": "EnterUnderUser",
-    "path": "access-control/client/EnterUnderUser",
+    "path": "access-control\\client\\EnterUnderUser",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -2767,24 +2969,27 @@
     "forCDN": false
   },
   "FeatureAccess": {
-    "s3mod": "access-control/client/FeatureAccess/FeatureAccess.s3mod",
+    "s3mod": "access-control\\client\\FeatureAccess\\FeatureAccess.s3mod",
     "name": "FeatureAccess",
-    "path": "access-control/client/FeatureAccess",
+    "path": "access-control\\client\\FeatureAccess",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "ParametersWebAPI",
-      "Permission"
+      "Permission",
+      "EngineUser"
     ],
     "id": "633caf98-1d4a-4775-ac2a-56d8668008bc",
     "required": true,
     "forCDN": false
   },
   "FeatureControlTestPage": {
-    "s3mod": "access-control/client/FeatureControlTestPage/FeatureControlTestPage.s3mod",
+    "s3mod": "access-control\\client\\FeatureControlTestPage\\FeatureControlTestPage.s3mod",
     "name": "FeatureControlTestPage",
-    "path": "access-control/client/FeatureControlTestPage",
+    "path": "access-control\\client\\FeatureControlTestPage",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "OnlinePage",
@@ -2796,10 +3001,11 @@
     "forCDN": false
   },
   "HistoryChanges": {
-    "s3mod": "access-control/client/HistoryChanges/HistoryChanges.s3mod",
+    "s3mod": "access-control\\client\\HistoryChanges\\HistoryChanges.s3mod",
     "name": "HistoryChanges",
-    "path": "access-control/client/HistoryChanges",
+    "path": "access-control\\client\\HistoryChanges",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -2809,17 +3015,20 @@
       "UI",
       "Controls",
       "Layout-default-theme",
-      "RequireJsLoader"
+      "RequireJsLoader",
+      "Hint",
+      "Hint-default-theme"
     ],
     "id": "eec8a455-5d31-4311-a657-c1ea9b4cc9e9",
     "required": true,
     "forCDN": false
   },
   "HistoryClients": {
-    "s3mod": "access-control/client/HistoryClients/HistoryClients.s3mod",
+    "s3mod": "access-control\\client\\HistoryClients\\HistoryClients.s3mod",
     "name": "HistoryClients",
-    "path": "access-control/client/HistoryClients",
+    "path": "access-control\\client\\HistoryClients",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -2837,10 +3046,11 @@
     "forCDN": false
   },
   "IntegrationSettings": {
-    "s3mod": "access-control/client/IntegrationSettings/IntegrationSettings.s3mod",
+    "s3mod": "access-control\\client\\IntegrationSettings\\IntegrationSettings.s3mod",
     "name": "IntegrationSettings",
-    "path": "access-control/client/IntegrationSettings",
+    "path": "access-control\\client\\IntegrationSettings",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -2854,10 +3064,11 @@
     "forCDN": false
   },
   "LdapClient": {
-    "s3mod": "access-control/client/LdapClient/LdapClient.s3mod",
+    "s3mod": "access-control\\client\\LdapClient\\LdapClient.s3mod",
     "name": "LdapClient",
-    "path": "access-control/client/LdapClient",
+    "path": "access-control\\client\\LdapClient",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "AuthFramework",
@@ -2872,10 +3083,11 @@
     "forCDN": false
   },
   "OAuthService": {
-    "s3mod": "access-control/client/OAuthService/OAuthService.s3mod",
+    "s3mod": "access-control\\client\\OAuthService\\OAuthService.s3mod",
     "name": "OAuthService",
-    "path": "access-control/client/OAuthService",
+    "path": "access-control\\client\\OAuthService",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "0b6cbbdd-b619-4c00-82b4-601f321c99f4",
@@ -2883,10 +3095,11 @@
     "forCDN": false
   },
   "ProfileAccess": {
-    "s3mod": "access-control/client/ProfileAccess/ProfileAccess.s3mod",
+    "s3mod": "access-control\\client\\ProfileAccess\\ProfileAccess.s3mod",
     "name": "ProfileAccess",
-    "path": "access-control/client/ProfileAccess",
+    "path": "access-control\\client\\ProfileAccess",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "AuthFramework",
@@ -2897,17 +3110,19 @@
       "Types",
       "EngineUser",
       "Permission",
-      "RequireJsLoader"
+      "RequireJsLoader",
+      "Hint"
     ],
     "id": "7fab34df-87b8-4261-a1b4-7981bea8f424",
     "required": false,
     "forCDN": false
   },
   "RedButton": {
-    "s3mod": "access-control/client/RedButton/RedButton.s3mod",
+    "s3mod": "access-control\\client\\RedButton\\RedButton.s3mod",
     "name": "RedButton",
-    "path": "access-control/client/RedButton",
+    "path": "access-control\\client\\RedButton",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Types",
@@ -2920,10 +3135,11 @@
     "forCDN": false
   },
   "Registration": {
-    "s3mod": "access-control/client/Registration/Registration.s3mod",
+    "s3mod": "access-control\\client\\Registration\\Registration.s3mod",
     "name": "Registration",
-    "path": "access-control/client/Registration",
+    "path": "access-control\\client\\Registration",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "fdbb9516-5374-4aed-b598-b0c21ceadf72",
@@ -2931,10 +3147,11 @@
     "forCDN": false
   },
   "Rights": {
-    "s3mod": "access-control/client/Rights/Rights.s3mod",
+    "s3mod": "access-control\\client\\Rights\\Rights.s3mod",
     "name": "Rights",
-    "path": "access-control/client/Rights",
+    "path": "access-control\\client\\Rights",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -2958,10 +3175,11 @@
     "forCDN": false
   },
   "RightsCloud": {
-    "s3mod": "access-control/client/RightsCloud/RightsCloud.s3mod",
+    "s3mod": "access-control\\client\\RightsCloud\\RightsCloud.s3mod",
     "name": "RightsCloud",
-    "path": "access-control/client/RightsCloud",
+    "path": "access-control\\client\\RightsCloud",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Rights",
@@ -2976,10 +3194,11 @@
     "forCDN": false
   },
   "RightsEmployee": {
-    "s3mod": "access-control/client/RightsEmployee/RightsEmployee.s3mod",
+    "s3mod": "access-control\\client\\RightsEmployee\\RightsEmployee.s3mod",
     "name": "RightsEmployee",
-    "path": "access-control/client/RightsEmployee",
+    "path": "access-control\\client\\RightsEmployee",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -3000,10 +3219,11 @@
     "forCDN": false
   },
   "SecuritySettings": {
-    "s3mod": "access-control/client/SecuritySettings/SecuritySettings.s3mod",
+    "s3mod": "access-control\\client\\SecuritySettings\\SecuritySettings.s3mod",
     "name": "SecuritySettings",
-    "path": "access-control/client/SecuritySettings",
+    "path": "access-control\\client\\SecuritySettings",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -3020,10 +3240,11 @@
     "forCDN": false
   },
   "UserInvite": {
-    "s3mod": "access-control/client/UserInvite/UserInvite.s3mod",
+    "s3mod": "access-control\\client\\UserInvite\\UserInvite.s3mod",
     "name": "UserInvite",
-    "path": "access-control/client/UserInvite",
+    "path": "access-control\\client\\UserInvite",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -3036,17 +3257,19 @@
     "forCDN": false
   },
   "AccessUnit": {
-    "s3mod": "access-control/tests/AccessUnit/AccessUnit.s3mod",
+    "s3mod": "access-control\\tests\\AccessUnit\\AccessUnit.s3mod",
     "name": "AccessUnit",
-    "path": "access-control/tests/AccessUnit",
+    "path": "access-control\\tests\\AccessUnit",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Permission",
       "WS.Core",
       "Access-demo",
       "Rights",
-      "RequireJsLoader"
+      "RequireJsLoader",
+      "FeatureAccess"
     ],
     "unitTest": true,
     "id": "f74d449d-24b0-42f9-a593-1c48291b4680",
@@ -3054,10 +3277,11 @@
     "forCDN": false
   },
   "Antibot": {
-    "s3mod": "sbis-core/client/Antibot/Antibot.s3mod",
+    "s3mod": "sbis-core\\client\\Antibot\\Antibot.s3mod",
     "name": "Antibot",
-    "path": "sbis-core/client/Antibot",
+    "path": "sbis-core\\client\\Antibot",
     "rep": "sbis-core",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -3087,10 +3311,11 @@
     "forCDN": false
   },
   "PresentationService": {
-    "s3mod": "sbis-core/client/PresentationService/PresentationService.s3mod",
+    "s3mod": "sbis-core\\client\\PresentationService\\PresentationService.s3mod",
     "name": "PresentationService",
-    "path": "sbis-core/client/PresentationService",
+    "path": "sbis-core\\client\\PresentationService",
     "rep": "sbis-core",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -3106,10 +3331,11 @@
     "forCDN": false
   },
   "Validation": {
-    "s3mod": "sbis-core/client/Validation/Validation.s3mod",
+    "s3mod": "sbis-core\\client\\Validation\\Validation.s3mod",
     "name": "Validation",
-    "path": "sbis-core/client/Validation",
+    "path": "sbis-core\\client\\Validation",
     "rep": "sbis-core",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "RequireJsLoader",
@@ -3117,17 +3343,19 @@
       "Controls",
       "SBIS3.CONTROLS",
       "Env",
-      "Types"
+      "Types",
+      "SbisEnvUI"
     ],
     "id": "a1d40778-92e8-4c5e-bb0a-9a45724c168f",
     "required": false,
     "forCDN": false
   },
   "RUM": {
-    "s3mod": "rmi_test/RUM/RUM.s3mod",
+    "s3mod": "rmi_test\\RUM\\RUM.s3mod",
     "name": "RUM",
-    "path": "rmi_test/RUM",
+    "path": "rmi_test\\RUM",
     "rep": "rmi_test",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Env",
@@ -3141,10 +3369,11 @@
     "forCDN": false
   },
   "RmiTestClient": {
-    "s3mod": "rmi_test/RmiTestClient/RmiTestClient.s3mod",
+    "s3mod": "rmi_test\\RmiTestClient\\RmiTestClient.s3mod",
     "name": "RmiTestClient",
-    "path": "rmi_test/RmiTestClient",
+    "path": "rmi_test\\RmiTestClient",
     "rep": "rmi_test",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -3163,10 +3392,11 @@
     "forCDN": false
   },
   "DevtoolsTest": {
-    "s3mod": "saby-devtool/DevtoolsTest/DevtoolsTest.s3mod",
+    "s3mod": "saby-devtool\\DevtoolsTest\\DevtoolsTest.s3mod",
     "name": "DevtoolsTest",
-    "path": "saby-devtool/DevtoolsTest",
+    "path": "saby-devtool\\DevtoolsTest",
     "rep": "saby-devtool",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Profiler",
@@ -3175,7 +3405,8 @@
       "Devtool",
       "Search",
       "Debugging",
-      "injection"
+      "injection",
+      "Focus"
     ],
     "unitTest": true,
     "id": "cfa0d2ed-6026-476a-9244-042099a8a5b8",
@@ -3183,10 +3414,11 @@
     "forCDN": false
   },
   "Controls-devtools-theme": {
-    "s3mod": "saby-devtool/src/app/Controls-devtools-theme/Controls-devtools-theme.s3mod",
+    "s3mod": "saby-devtool\\src\\app\\Controls-devtools-theme\\Controls-devtools-theme.s3mod",
     "name": "Controls-devtools-theme",
-    "path": "saby-devtool/src/app/Controls-devtools-theme",
+    "path": "saby-devtool\\src\\app\\Controls-devtools-theme",
     "rep": "saby-devtool",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "a696c0f9-8a5b-44da-ad11-8fb084e002da",
@@ -3194,10 +3426,11 @@
     "forCDN": false
   },
   "Debugging": {
-    "s3mod": "saby-devtool/src/app/Debugging/Debugging.s3mod",
+    "s3mod": "saby-devtool\\src\\app\\Debugging\\Debugging.s3mod",
     "name": "Debugging",
-    "path": "saby-devtool/src/app/Debugging",
+    "path": "saby-devtool\\src\\app\\Debugging",
     "rep": "saby-devtool",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Types",
@@ -3221,10 +3454,11 @@
     "forCDN": false
   },
   "Debugging-devtools-theme": {
-    "s3mod": "saby-devtool/src/app/Debugging-devtools-theme/Debugging-devtools-theme.s3mod",
+    "s3mod": "saby-devtool\\src\\app\\Debugging-devtools-theme\\Debugging-devtools-theme.s3mod",
     "name": "Debugging-devtools-theme",
-    "path": "saby-devtool/src/app/Debugging-devtools-theme",
+    "path": "saby-devtool\\src\\app\\Debugging-devtools-theme",
     "rep": "saby-devtool",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "572940bb-286c-4c95-9a2f-7ea28fd38752",
@@ -3232,10 +3466,11 @@
     "forCDN": false
   },
   "DependencyWatcher": {
-    "s3mod": "saby-devtool/src/app/DependencyWatcher/DependencyWatcher.s3mod",
+    "s3mod": "saby-devtool\\src\\app\\DependencyWatcher\\DependencyWatcher.s3mod",
     "name": "DependencyWatcher",
-    "path": "saby-devtool/src/app/DependencyWatcher",
+    "path": "saby-devtool\\src\\app\\DependencyWatcher",
     "rep": "saby-devtool",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Types",
@@ -3259,10 +3494,11 @@
     "forCDN": false
   },
   "DependencyWatcher-devtools-theme": {
-    "s3mod": "saby-devtool/src/app/DependencyWatcher-devtools-theme/DependencyWatcher-devtools-theme.s3mod",
+    "s3mod": "saby-devtool\\src\\app\\DependencyWatcher-devtools-theme\\DependencyWatcher-devtools-theme.s3mod",
     "name": "DependencyWatcher-devtools-theme",
-    "path": "saby-devtool/src/app/DependencyWatcher-devtools-theme",
+    "path": "saby-devtool\\src\\app\\DependencyWatcher-devtools-theme",
     "rep": "saby-devtool",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "606ba894-c3c1-4631-9853-d8c3826d92bd",
@@ -3270,10 +3506,11 @@
     "forCDN": false
   },
   "Devtool": {
-    "s3mod": "saby-devtool/src/app/Devtool/Devtool.s3mod",
+    "s3mod": "saby-devtool\\src\\app\\Devtool\\Devtool.s3mod",
     "name": "Devtool",
-    "path": "saby-devtool/src/app/Devtool",
+    "path": "saby-devtool\\src\\app\\Devtool",
     "rep": "saby-devtool",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Types",
@@ -3292,22 +3529,26 @@
       "Elements",
       "DependencyWatcher",
       "Debugging",
+      "Focus",
       "Controls-devtools-theme",
       "Debugging-devtools-theme",
       "DependencyWatcher-devtools-theme",
       "Devtool-devtools-theme",
       "Elements-devtools-theme",
-      "Profiler-devtools-theme"
+      "Profiler-devtools-theme",
+      "Focus-devtools-theme",
+      "WasabyLoader"
     ],
     "id": "8fc415e2-ad25-4452-aabb-a94e0e290dfe",
     "required": false,
     "forCDN": false
   },
   "Devtool-devtools-theme": {
-    "s3mod": "saby-devtool/src/app/Devtool-devtools-theme/Devtool-devtools-theme.s3mod",
+    "s3mod": "saby-devtool\\src\\app\\Devtool-devtools-theme\\Devtool-devtools-theme.s3mod",
     "name": "Devtool-devtools-theme",
-    "path": "saby-devtool/src/app/Devtool-devtools-theme",
+    "path": "saby-devtool\\src\\app\\Devtool-devtools-theme",
     "rep": "saby-devtool",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "d5a1c6fc-5ade-4194-b7d1-5f614f06043f",
@@ -3315,10 +3556,11 @@
     "forCDN": false
   },
   "Elements": {
-    "s3mod": "saby-devtool/src/app/Elements/Elements.s3mod",
+    "s3mod": "saby-devtool\\src\\app\\Elements\\Elements.s3mod",
     "name": "Elements",
-    "path": "saby-devtool/src/app/Elements",
+    "path": "saby-devtool\\src\\app\\Elements",
     "rep": "saby-devtool",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Types",
@@ -3344,10 +3586,11 @@
     "forCDN": false
   },
   "Elements-devtools-theme": {
-    "s3mod": "saby-devtool/src/app/Elements-devtools-theme/Elements-devtools-theme.s3mod",
+    "s3mod": "saby-devtool\\src\\app\\Elements-devtools-theme\\Elements-devtools-theme.s3mod",
     "name": "Elements-devtools-theme",
-    "path": "saby-devtool/src/app/Elements-devtools-theme",
+    "path": "saby-devtool\\src\\app\\Elements-devtools-theme",
     "rep": "saby-devtool",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "87addb9a-b1a3-4827-ad3a-abc0a0028184",
@@ -3355,10 +3598,11 @@
     "forCDN": false
   },
   "Layout-devtools-theme": {
-    "s3mod": "saby-devtool/src/app/Layout-devtools-theme/Layout-devtools-theme.s3mod",
+    "s3mod": "saby-devtool\\src\\app\\Layout-devtools-theme\\Layout-devtools-theme.s3mod",
     "name": "Layout-devtools-theme",
-    "path": "saby-devtool/src/app/Layout-devtools-theme",
+    "path": "saby-devtool\\src\\app\\Layout-devtools-theme",
     "rep": "saby-devtool",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "4b105013-c6bb-4bd5-b324-c7395edb0d62",
@@ -3366,10 +3610,11 @@
     "forCDN": false
   },
   "LogicParentPanel": {
-    "s3mod": "saby-devtool/src/app/LogicParentPanel/LogicParentPanel.s3mod",
+    "s3mod": "saby-devtool\\src\\app\\LogicParentPanel\\LogicParentPanel.s3mod",
     "name": "LogicParentPanel",
-    "path": "saby-devtool/src/app/LogicParentPanel",
+    "path": "saby-devtool\\src\\app\\LogicParentPanel",
     "rep": "saby-devtool",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls"
@@ -3379,10 +3624,11 @@
     "forCDN": false
   },
   "Profiler": {
-    "s3mod": "saby-devtool/src/app/Profiler/Profiler.s3mod",
+    "s3mod": "saby-devtool\\src\\app\\Profiler\\Profiler.s3mod",
     "name": "Profiler",
-    "path": "saby-devtool/src/app/Profiler",
+    "path": "saby-devtool\\src\\app\\Profiler",
     "rep": "saby-devtool",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Types",
@@ -3407,10 +3653,11 @@
     "forCDN": false
   },
   "Profiler-devtools-theme": {
-    "s3mod": "saby-devtool/src/app/Profiler-devtools-theme/Profiler-devtools-theme.s3mod",
+    "s3mod": "saby-devtool\\src\\app\\Profiler-devtools-theme\\Profiler-devtools-theme.s3mod",
     "name": "Profiler-devtools-theme",
-    "path": "saby-devtool/src/app/Profiler-devtools-theme",
+    "path": "saby-devtool\\src\\app\\Profiler-devtools-theme",
     "rep": "saby-devtool",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "84715dd5-2bb6-4b55-9e80-8e1f62f0c887",
@@ -3418,10 +3665,11 @@
     "forCDN": false
   },
   "Search": {
-    "s3mod": "saby-devtool/src/app/Search/Search.s3mod",
+    "s3mod": "saby-devtool\\src\\app\\Search\\Search.s3mod",
     "name": "Search",
-    "path": "saby-devtool/src/app/Search",
+    "path": "saby-devtool\\src\\app\\Search",
     "rep": "saby-devtool",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Extension"
@@ -3431,10 +3679,11 @@
     "forCDN": false
   },
   "injection": {
-    "s3mod": "saby-devtool/src/injection/injection.s3mod",
+    "s3mod": "saby-devtool\\src\\injection\\injection.s3mod",
     "name": "injection",
-    "path": "saby-devtool/src/injection",
+    "path": "saby-devtool\\src\\injection",
     "rep": "saby-devtool",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "8c360c99-f4dd-438a-8dba-f7895687565a",
@@ -3442,10 +3691,11 @@
     "forCDN": false
   },
   "Extension": {
-    "s3mod": "saby-devtool/src/shared/Extension/Extension.s3mod",
+    "s3mod": "saby-devtool\\src\\shared\\Extension\\Extension.s3mod",
     "name": "Extension",
-    "path": "saby-devtool/src/shared/Extension",
+    "path": "saby-devtool\\src\\shared\\Extension",
     "rep": "saby-devtool",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "fe7ac5f4-313e-4fea-93be-9f54fca9a946",
@@ -3453,10 +3703,11 @@
     "forCDN": false
   },
   "Inferno": {
-    "s3mod": "saby-inferno/Inferno/Inferno.s3mod",
+    "s3mod": "saby-inferno\\Inferno\\Inferno.s3mod",
     "name": "Inferno",
-    "path": "saby-inferno/Inferno",
+    "path": "saby-inferno\\Inferno",
     "rep": "saby-inferno",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -3467,10 +3718,11 @@
     "forCDN": false
   },
   "Polyfills": {
-    "s3mod": "wasaby-polyfills/Polyfills/Polyfills.s3mod",
+    "s3mod": "wasaby-polyfills\\Polyfills\\Polyfills.s3mod",
     "name": "Polyfills",
-    "path": "wasaby-polyfills/Polyfills",
+    "path": "wasaby-polyfills\\Polyfills",
     "rep": "wasaby-polyfills",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "f1c298b6-b127-4f3e-8499-55ad5427ee14",
@@ -3478,10 +3730,11 @@
     "forCDN": false
   },
   "Hint-default-theme": {
-    "s3mod": "sbis3.engine/client/Hint-default-theme/Hint-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\Hint-default-theme\\Hint-default-theme.s3mod",
     "name": "Hint-default-theme",
-    "path": "sbis3.engine/client/Hint-default-theme",
+    "path": "sbis3.engine\\client\\Hint-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -3492,10 +3745,11 @@
     "forCDN": false
   },
   "HistoryChanges-default-theme": {
-    "s3mod": "access-control/client/HistoryChanges-default-theme/HistoryChanges-default-theme.s3mod",
+    "s3mod": "access-control\\client\\HistoryChanges-default-theme\\HistoryChanges-default-theme.s3mod",
     "name": "HistoryChanges-default-theme",
-    "path": "access-control/client/HistoryChanges-default-theme",
+    "path": "access-control\\client\\HistoryChanges-default-theme",
     "rep": "access-control",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -3506,10 +3760,11 @@
     "forCDN": false
   },
   "RequireJsLoader": {
-    "s3mod": "wasaby-requirejs-loader/RequireJsLoader/RequireJsLoader.s3mod",
+    "s3mod": "wasaby-requirejs-loader\\RequireJsLoader\\RequireJsLoader.s3mod",
     "name": "RequireJsLoader",
-    "path": "wasaby-requirejs-loader/RequireJsLoader",
+    "path": "wasaby-requirejs-loader\\RequireJsLoader",
     "rep": "wasaby-requirejs-loader",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "7e8aabad-d60f-4c48-aa74-f29d78fd8be2",
@@ -3517,10 +3772,11 @@
     "forCDN": false
   },
   "RequireJsLoaderUnit": {
-    "s3mod": "wasaby-requirejs-loader/RequireJsLoaderUnit/RequireJsLoaderUnit.s3mod",
+    "s3mod": "wasaby-requirejs-loader\\RequireJsLoaderUnit\\RequireJsLoaderUnit.s3mod",
     "name": "RequireJsLoaderUnit",
-    "path": "wasaby-requirejs-loader/RequireJsLoaderUnit",
+    "path": "wasaby-requirejs-loader\\RequireJsLoaderUnit",
     "rep": "wasaby-requirejs-loader",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "RequireJsLoader"
@@ -3531,10 +3787,11 @@
     "forCDN": false
   },
   "HotReload": {
-    "s3mod": "wasaby-hot-reload/HotReload/HotReload.s3mod",
+    "s3mod": "wasaby-hot-reload\\HotReload\\HotReload.s3mod",
     "name": "HotReload",
-    "path": "wasaby-hot-reload/HotReload",
+    "path": "wasaby-hot-reload\\HotReload",
     "rep": "wasaby-hot-reload",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "db97ce92-b7ce-4ff3-9649-dc43fd3c36bf",
@@ -3542,10 +3799,11 @@
     "forCDN": false
   },
   "HotReloadUnit": {
-    "s3mod": "wasaby-hot-reload/HotReloadUnit/HotReloadUnit.s3mod",
+    "s3mod": "wasaby-hot-reload\\HotReloadUnit\\HotReloadUnit.s3mod",
     "name": "HotReloadUnit",
-    "path": "wasaby-hot-reload/HotReloadUnit",
+    "path": "wasaby-hot-reload\\HotReloadUnit",
     "rep": "wasaby-hot-reload",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "HotReload"
@@ -3556,10 +3814,11 @@
     "forCDN": false
   },
   "DateRange-default-theme": {
-    "s3mod": "sbis3.engine/client/DateRange-default-theme/DateRange-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\DateRange-default-theme\\DateRange-default-theme.s3mod",
     "name": "DateRange-default-theme",
-    "path": "sbis3.engine/client/DateRange-default-theme",
+    "path": "sbis3.engine\\client\\DateRange-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -3570,10 +3829,11 @@
     "forCDN": false
   },
   "DocsEditor": {
-    "s3mod": "sbis3.engine/client/DocsEditor/DocsEditor.s3mod",
+    "s3mod": "sbis3.engine\\client\\DocsEditor\\DocsEditor.s3mod",
     "name": "DocsEditor",
-    "path": "sbis3.engine/client/DocsEditor",
+    "path": "sbis3.engine\\client\\DocsEditor",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -3582,6 +3842,8 @@
       "Controls-default-theme",
       "Vdom",
       "UI",
+      "ParametersWebAPI",
+      "RichEditor",
       "RequireJsLoader"
     ],
     "id": "1e0c2580-8f1c-4c80-9c2c-6d8608f1c11b",
@@ -3589,10 +3851,11 @@
     "forCDN": false
   },
   "DocsEditor-default-theme": {
-    "s3mod": "sbis3.engine/client/DocsEditor-default-theme/DocsEditor-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\DocsEditor-default-theme\\DocsEditor-default-theme.s3mod",
     "name": "DocsEditor-default-theme",
-    "path": "sbis3.engine/client/DocsEditor-default-theme",
+    "path": "sbis3.engine\\client\\DocsEditor-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -3603,10 +3866,11 @@
     "forCDN": false
   },
   "SabyPage": {
-    "s3mod": "engine_saby-page/client/SabyPage/SabyPage.s3mod",
+    "s3mod": "engine_saby-page\\client\\SabyPage\\SabyPage.s3mod",
     "name": "SabyPage",
-    "path": "engine_saby-page/client/SabyPage",
+    "path": "engine_saby-page\\client\\SabyPage",
     "rep": "engine_saby-page",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -3615,6 +3879,7 @@
       "Permission",
       "ViewSettings",
       "EngineUser",
+      "NavigationPanels",
       "WasabyLoader"
     ],
     "id": "24655279-c638-47c2-8de6-3326035e2de2",
@@ -3622,10 +3887,11 @@
     "forCDN": false
   },
   "StylesConfiguration": {
-    "s3mod": "sbis3.engine/client/StylesConfiguration/StylesConfiguration.s3mod",
+    "s3mod": "sbis3.engine\\client\\StylesConfiguration\\StylesConfiguration.s3mod",
     "name": "StylesConfiguration",
-    "path": "sbis3.engine/client/StylesConfiguration",
+    "path": "sbis3.engine\\client\\StylesConfiguration",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls",
@@ -3640,10 +3906,11 @@
     "forCDN": false
   },
   "StylesConfiguration-default-theme": {
-    "s3mod": "sbis3.engine/client/StylesConfiguration-default-theme/StylesConfiguration-default-theme.s3mod",
+    "s3mod": "sbis3.engine\\client\\StylesConfiguration-default-theme\\StylesConfiguration-default-theme.s3mod",
     "name": "StylesConfiguration-default-theme",
-    "path": "sbis3.engine/client/StylesConfiguration-default-theme",
+    "path": "sbis3.engine\\client\\StylesConfiguration-default-theme",
     "rep": "sbis3.engine",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Controls-default-theme",
@@ -3654,10 +3921,11 @@
     "forCDN": false
   },
   "Punycode": {
-    "s3mod": "cdn/Punycode/Punycode.s3mod",
+    "s3mod": "cdn\\Punycode\\Punycode.s3mod",
     "name": "Punycode",
-    "path": "cdn/Punycode",
+    "path": "cdn\\Punycode",
     "rep": "cdn",
+    "useModuleMap": false,
     "entry": false,
     "depends": [],
     "id": "4f3efacd-c90d-42bd-8e84-3605d01cb9ee",
@@ -3665,10 +3933,11 @@
     "forCDN": true
   },
   "ImageEditor": {
-    "s3mod": "imageEditor2/ImageEditor/ImageEditor.s3mod",
+    "s3mod": "imageEditor2\\ImageEditor\\ImageEditor.s3mod",
     "name": "ImageEditor",
-    "path": "imageEditor2/ImageEditor",
+    "path": "imageEditor2\\ImageEditor",
     "rep": "imageEditor2",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -3682,10 +3951,11 @@
     "forCDN": false
   },
   "ImageEditor2": {
-    "s3mod": "imageEditor2/ImageEditor2/ImageEditor2.s3mod",
+    "s3mod": "imageEditor2\\ImageEditor2\\ImageEditor2.s3mod",
     "name": "ImageEditor2",
-    "path": "imageEditor2/ImageEditor2",
+    "path": "imageEditor2\\ImageEditor2",
     "rep": "imageEditor2",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "ParametersWebAPI",
@@ -3696,36 +3966,36 @@
       "SbisEnvUI",
       "SbisEnvUI-default-theme"
     ],
-    "unitTest": true,
     "id": "96b6db30-679e-4601-a42e-224603964e8a",
     "required": true,
     "forCDN": false
   },
   "ImageEditor2-default-theme": {
-    "s3mod": "imageEditor2/ImageEditor2-default-theme/ImageEditor2-default-theme.s3mod",
+    "s3mod": "imageEditor2\\ImageEditor2-default-theme\\ImageEditor2-default-theme.s3mod",
     "name": "ImageEditor2-default-theme",
-    "path": "imageEditor2/ImageEditor2-default-theme",
+    "path": "imageEditor2\\ImageEditor2-default-theme",
     "rep": "imageEditor2",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "ImageEditor2"
     ],
-    "unitTest": true,
     "id": "0fcba3ef-c014-4267-bf06-8cdcdb67c570",
     "required": true,
     "forCDN": false
   },
   "ImageEditor2-demo": {
-    "s3mod": "imageEditor2/ImageEditor2-demo/ImageEditor2-demo.s3mod",
+    "s3mod": "imageEditor2\\ImageEditor2-demo\\ImageEditor2-demo.s3mod",
     "name": "ImageEditor2-demo",
-    "path": "imageEditor2/ImageEditor2-demo",
+    "path": "imageEditor2\\ImageEditor2-demo",
     "rep": "imageEditor2",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "ImageEditor2",
-      "ImageEditor2-default-theme"
+      "ImageEditor2-default-theme",
+      "Router"
     ],
-    "unitTest": true,
     "id": "256bcf0b-2d79-4e15-aa88-e496773b76a5",
     "required": true,
     "forCDN": false
@@ -3744,24 +4014,27 @@
     "forCDN": false
   },
   "SabyPageUnit": {
-    "s3mod": "engine_saby-page/test/SabyPageUnit/SabyPageUnit.s3mod",
+    "s3mod": "engine_saby-page\\test\\SabyPageUnit\\SabyPageUnit.s3mod",
     "name": "SabyPageUnit",
-    "path": "engine_saby-page/test/SabyPageUnit",
+    "path": "engine_saby-page\\test\\SabyPageUnit",
     "rep": "engine_saby-page",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SabyPage",
       "SabyPage-demo"
     ],
-    "id": "16d6a735-086e-458b-963d-2dfa97f48c62",
+    "unitTest": true,
+    "id": "4cde93a1-86e2-4a93-a181-b2dd35761335",
     "required": true,
     "forCDN": false
   },
   "SabyPage-demo": {
-    "s3mod": "engine_saby-page/client/SabyPage-demo/SabyPage-demo.s3mod",
+    "s3mod": "engine_saby-page\\client\\SabyPage-demo\\SabyPage-demo.s3mod",
     "name": "SabyPage-demo",
-    "path": "engine_saby-page/client/SabyPage-demo",
+    "path": "engine_saby-page\\client\\SabyPage-demo",
     "rep": "engine_saby-page",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "SabyPage",
@@ -3793,10 +4066,11 @@
     "forCDN": false
   },
   "Informers": {
-    "s3mod": "engine_informers/client/Informers/Informers.s3mod",
+    "s3mod": "engine_informers\\client\\Informers\\Informers.s3mod",
     "name": "Informers",
-    "path": "engine_informers/client/Informers",
+    "path": "engine_informers\\client\\Informers",
     "rep": "engine_informers",
+    "useModuleMap": false,
     "entry": false,
     "depends": [
       "Browser",
@@ -3807,17 +4081,19 @@
       "UI",
       "EngineUser",
       "SBIS3.CONTROLS",
-      "RequireJsLoader"
+      "RequireJsLoader",
+      "Permission"
     ],
     "id": "4866972e-db12-4eb2-bb34-5054df7d672f",
-    "required": false,
+    "required": true,
     "forCDN": false
   },
   "NoticeCenterRoute": {
-    "s3mod": "notice_core/client/NoticeCenterRoute/NoticeCenterRoute.s3mod",
+    "s3mod": "notice_core\\client\\NoticeCenterRoute\\NoticeCenterRoute.s3mod",
     "name": "NoticeCenterRoute",
-    "path": "notice_core/client/NoticeCenterRoute",
+    "path": "notice_core\\client\\NoticeCenterRoute",
     "rep": "notice_core",
+    "useModuleMap": true,
     "entry": false,
     "depends": [
       "Browser",
@@ -3829,14 +4105,15 @@
       "ViewSettings"
     ],
     "id": "9d7a3cfc-ad08-41ac-a7a8-2467134e13e1",
-    "required": false,
+    "required": true,
     "forCDN": false
   },
   "NoticeCenterBase": {
-    "s3mod": "notice_core/client/NoticeCenterBase/NoticeCenterBase.s3mod",
+    "s3mod": "notice_core\\client\\NoticeCenterBase\\NoticeCenterBase.s3mod",
     "name": "NoticeCenterBase",
-    "path": "notice_core/client/NoticeCenterBase",
+    "path": "notice_core\\client\\NoticeCenterBase",
     "rep": "notice_core",
+    "useModuleMap": true,
     "entry": false,
     "depends": [
       "RichEditor",
@@ -3846,14 +4123,15 @@
       "Controls-default-theme"
     ],
     "id": "da822605-6bea-4d5c-a1c9-436834d954d8",
-    "required": false,
+    "required": true,
     "forCDN": false
   },
   "NoticeConstants": {
-    "s3mod": "notice_core/client/NoticeConstants/NoticeConstants.s3mod",
+    "s3mod": "notice_core\\client\\NoticeConstants\\NoticeConstants.s3mod",
     "name": "NoticeConstants",
-    "path": "notice_core/client/NoticeConstants",
+    "path": "notice_core\\client\\NoticeConstants",
     "rep": "notice_core",
+    "useModuleMap": true,
     "entry": false,
     "depends": [
       "WS.Core",
@@ -3864,14 +4142,15 @@
       "RequireJsLoader"
     ],
     "id": "4bf2fda6-2225-46a8-a185-ce3f32f7ebe7",
-    "required": false,
+    "required": true,
     "forCDN": false
   },
   "NoticeCenter": {
-    "s3mod": "notice_core/client/NoticeCenter/NoticeCenter.s3mod",
+    "s3mod": "notice_core\\client\\NoticeCenter\\NoticeCenter.s3mod",
     "name": "NoticeCenter",
-    "path": "notice_core/client/NoticeCenter",
+    "path": "notice_core\\client\\NoticeCenter",
     "rep": "notice_core",
+    "useModuleMap": true,
     "entry": false,
     "depends": [
       "Application",
@@ -3896,21 +4175,342 @@
       "CloudStatisticsHelper"
     ],
     "id": "e345a362-86e3-408b-b8cf-f6b67279c512",
-    "required": false,
+    "required": true,
     "forCDN": false
   },
   "CloudStatisticsHelper": {
-    "s3mod": "notice_engine/client/CloudStatisticsHelper/CloudStatisticsHelper.s3mod",
+    "s3mod": "notice_engine\\client\\CloudStatisticsHelper\\CloudStatisticsHelper.s3mod",
     "name": "CloudStatisticsHelper",
-    "path": "notice_engine/client/CloudStatisticsHelper",
+    "path": "notice_engine\\client\\CloudStatisticsHelper",
     "rep": "notice_engine",
+    "useModuleMap": true,
     "entry": false,
     "depends": [
       "Types",
       "Browser"
     ],
     "id": "dedaa03e-7294-4388-979d-da5fccf4a109",
+    "required": true,
+    "forCDN": false
+  },
+  "Carousel": {
+    "s3mod": "sbis3.engine\\client\\Carousel\\Carousel.s3mod",
+    "name": "Carousel",
+    "path": "sbis3.engine\\client\\Carousel",
+    "rep": "sbis3.engine",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Controls",
+      "Types",
+      "Controls-default-theme",
+      "UI"
+    ],
+    "id": "e86caf7c-156a-4858-8710-fcf3d8abcfbf",
     "required": false,
+    "forCDN": false
+  },
+  "Carousel-default-theme": {
+    "s3mod": "sbis3.engine\\client\\Carousel-default-theme\\Carousel-default-theme.s3mod",
+    "name": "Carousel-default-theme",
+    "path": "sbis3.engine\\client\\Carousel-default-theme",
+    "rep": "sbis3.engine",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Controls-default-theme",
+      "Carousel"
+    ],
+    "id": "c4a4d6ec-f112-47d0-97c2-3f97fd6e96ce",
+    "required": true,
+    "forCDN": false
+  },
+  "Emotions": {
+    "s3mod": "sbis3.engine\\client\\Emotions\\Emotions.s3mod",
+    "name": "Emotions",
+    "path": "sbis3.engine\\client\\Emotions",
+    "rep": "sbis3.engine",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Controls",
+      "Controls-default-theme",
+      "UI",
+      "Types",
+      "NavigationPanels"
+    ],
+    "id": "818c550c-4d8f-4469-a6d3-970b7e327c09",
+    "required": false,
+    "forCDN": false
+  },
+  "Emotions-default-theme": {
+    "s3mod": "sbis3.engine\\client\\Emotions-default-theme\\Emotions-default-theme.s3mod",
+    "name": "Emotions-default-theme",
+    "path": "sbis3.engine\\client\\Emotions-default-theme",
+    "rep": "sbis3.engine",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Controls-default-theme",
+      "Emotions"
+    ],
+    "id": "21473b7f-f1b8-48a1-a83d-339389fa3a9e",
+    "required": true,
+    "forCDN": false
+  },
+  "Hint-onlinenavigation-theme": {
+    "s3mod": "sbis3.engine\\client\\Hint-onlinenavigation-theme\\Hint-onlinenavigation-theme.s3mod",
+    "name": "Hint-onlinenavigation-theme",
+    "path": "sbis3.engine\\client\\Hint-onlinenavigation-theme",
+    "rep": "sbis3.engine",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Controls-default-theme",
+      "Hint"
+    ],
+    "id": "8c51f3e5-da26-42bb-a5ed-dcd9fdd344c3",
+    "required": true,
+    "forCDN": false
+  },
+  "RichEditorImage": {
+    "s3mod": "sbis3.engine\\client\\RichEditorImage\\RichEditorImage.s3mod",
+    "name": "RichEditorImage",
+    "path": "sbis3.engine\\client\\RichEditorImage",
+    "rep": "sbis3.engine",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Controls",
+      "Env",
+      "Types",
+      "DOCVIEW3",
+      "EngineUser",
+      "UI"
+    ],
+    "id": "6fcab978-35f7-48d5-8782-c1777aa35bef",
+    "required": false,
+    "forCDN": false
+  },
+  "EnvConfig": {
+    "s3mod": "rmi\\src\\client\\EnvConfig\\EnvConfig.s3mod",
+    "name": "EnvConfig",
+    "path": "rmi\\src\\client\\EnvConfig",
+    "rep": "rmi",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "WS.Core",
+      "Browser",
+      "Env",
+      "ParametersWebAPI",
+      "Types"
+    ],
+    "id": "4220f331-8217-437b-810c-8c4479323a27",
+    "required": true,
+    "forCDN": false
+  },
+  "ApplicationDemo": {
+    "s3mod": "wasaby-app\\test\\Integration\\ApplicationDemo\\ApplicationDemo.s3mod",
+    "name": "ApplicationDemo",
+    "path": "wasaby-app\\test\\Integration\\ApplicationDemo",
+    "rep": "wasaby-app",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Application",
+      "Router",
+      "WS.Core",
+      "I18n",
+      "SbisEnvUI"
+    ],
+    "id": "2da1f07a-4b6e-40db-b5af-a356f4c2620d",
+    "required": true,
+    "forCDN": false
+  },
+  "Codemirror": {
+    "s3mod": "cdn\\Codemirror\\Codemirror.s3mod",
+    "name": "Codemirror",
+    "path": "cdn\\Codemirror",
+    "rep": "cdn",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [],
+    "id": "8755d022-a014-42a3-8023-fb90f98c0edc",
+    "required": false,
+    "forCDN": true
+  },
+  "React": {
+    "s3mod": "cdn\\React\\React.s3mod",
+    "name": "React",
+    "path": "cdn\\React",
+    "rep": "cdn",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [],
+    "id": "04893517-aa08-463e-b9d5-7b50688fff2d",
+    "required": false,
+    "forCDN": true
+  },
+  "Permission-demo": {
+    "s3mod": "permission\\client\\Permission-demo\\Permission-demo.s3mod",
+    "name": "Permission-demo",
+    "path": "permission\\client\\Permission-demo",
+    "rep": "permission",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Router",
+      "Controls",
+      "Permission",
+      "Controls-default-theme"
+    ],
+    "id": "c3a9b5bd-9410-4370-8f70-a0255732bd92",
+    "required": false,
+    "forCDN": false
+  },
+  "ApplicationsBase": {
+    "s3mod": "access-control\\client\\ApplicationsBase\\ApplicationsBase.s3mod",
+    "name": "ApplicationsBase",
+    "path": "access-control\\client\\ApplicationsBase",
+    "rep": "access-control",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Controls",
+      "WS.Core",
+      "Env",
+      "FeatureAccess",
+      "Rights",
+      "Types",
+      "UI",
+      "Vdom",
+      "RequireJsLoader"
+    ],
+    "id": "5b6089c8-0462-4893-8a49-1388b7385e30",
+    "required": true,
+    "forCDN": false
+  },
+  "AuthFramework-default-theme": {
+    "s3mod": "access-control\\client\\AuthFramework-default-theme\\AuthFramework-default-theme.s3mod",
+    "name": "AuthFramework-default-theme",
+    "path": "access-control\\client\\AuthFramework-default-theme",
+    "rep": "access-control",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [],
+    "id": "37c82efd-88af-4d6d-b168-8838d59829ea",
+    "required": true,
+    "forCDN": false
+  },
+  "AuthFramework-retail-theme": {
+    "s3mod": "access-control\\client\\AuthFramework-retail-theme\\AuthFramework-retail-theme.s3mod",
+    "name": "AuthFramework-retail-theme",
+    "path": "access-control\\client\\AuthFramework-retail-theme",
+    "rep": "access-control",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [],
+    "id": "bcc2cfce-6f8d-49c8-857e-492064a39e9a",
+    "required": true,
+    "forCDN": false
+  },
+  "SsoSbisRu": {
+    "s3mod": "access-control\\client\\SsoSbisRu\\SsoSbisRu.s3mod",
+    "name": "SsoSbisRu",
+    "path": "access-control\\client\\SsoSbisRu",
+    "rep": "access-control",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "WS.Core",
+      "Env",
+      "Types"
+    ],
+    "id": "166f2660-ab1f-42f8-8c5e-2dc4d95fc3f6",
+    "required": true,
+    "forCDN": false
+  },
+  "Focus": {
+    "s3mod": "saby-devtool\\src\\app\\Focus\\Focus.s3mod",
+    "name": "Focus",
+    "path": "saby-devtool\\src\\app\\Focus",
+    "rep": "saby-devtool",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Types",
+      "Application",
+      "SbisEnv",
+      "WS.Core",
+      "Env",
+      "Browser",
+      "View",
+      "Vdom",
+      "UI",
+      "Controls",
+      "Extension",
+      "Elements",
+      "Focus-devtools-theme"
+    ],
+    "id": "14fc0dc0-9b76-4e5e-97b7-696a82b8d545",
+    "required": true,
+    "forCDN": false
+  },
+  "Focus-devtools-theme": {
+    "s3mod": "saby-devtool\\src\\app\\Focus-devtools-theme\\Focus-devtools-theme.s3mod",
+    "name": "Focus-devtools-theme",
+    "path": "saby-devtool\\src\\app\\Focus-devtools-theme",
+    "rep": "saby-devtool",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [],
+    "id": "ad0358c8-d003-49f2-a89d-9a826474c9f4",
+    "required": true,
+    "forCDN": false
+  },
+  "WasabyLoader": {
+    "s3mod": "wasaby-requirejs-loader\\WasabyLoader\\WasabyLoader.s3mod",
+    "name": "WasabyLoader",
+    "path": "wasaby-requirejs-loader\\WasabyLoader",
+    "rep": "wasaby-requirejs-loader",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "RequireJsLoader"
+    ],
+    "id": "37e402f1-2fb0-4b73-81c5-113cf94dbf1c",
+    "required": true,
+    "forCDN": false
+  },
+  "WasabyLoaderUnit": {
+    "s3mod": "wasaby-requirejs-loader\\WasabyLoaderUnit\\WasabyLoaderUnit.s3mod",
+    "name": "WasabyLoaderUnit",
+    "path": "wasaby-requirejs-loader\\WasabyLoaderUnit",
+    "rep": "wasaby-requirejs-loader",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "WasabyLoader"
+    ],
+    "unitTest": true,
+    "id": "e7ee4ba7-5b66-473c-9a12-a11f08f59f01",
+    "required": true,
+    "forCDN": false
+  },
+  "ImageEditor2Tests": {
+    "s3mod": "imageEditor2\\ImageEditor2Tests\\ImageEditor2Tests.s3mod",
+    "name": "ImageEditor2Tests",
+    "path": "imageEditor2\\ImageEditor2Tests",
+    "rep": "imageEditor2",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "ImageEditor2"
+    ],
+    "unitTest": true,
+    "id": "997f5b59-90c9-4a99-886d-f49984e33e0b",
+    "required": true,
     "forCDN": false
   }
 }
