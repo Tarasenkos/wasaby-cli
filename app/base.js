@@ -18,6 +18,7 @@ class Base {
          resources: cfg.resources,
          only: cfg.only,
          reBuildMap: cfg.reBuildMap,
+         useOnlyCache: cfg.useOnlyCache,
          entry: cfg.argvOptions.entry || cfg.config.entry
       });
    }

@@ -22,6 +22,7 @@ class ModulesMap {
       this._resources = cfg.resources;
       this._only = cfg.only;
       this._reBuildMap = cfg.reBuildMap;
+      this._useOnlyCache = cfg.useOnlyCache;
    }
 
    /**
@@ -171,7 +172,8 @@ class ModulesMap {
     * @return {Promise<void>}
     */
    async build() {
-      const modules = this._findModulesInStore();
+      const modules = this._useOnlyCache ? [] : this._findModulesInStore();
+
       if (this._reBuildMap) {
          await this._addToModulesMap(modules);
          await this._saveMap();

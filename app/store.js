@@ -15,6 +15,7 @@ const PARALLEL_CHECKOUT = 2;
 
 class Store extends Base {
    constructor(cfg) {
+      cfg.useOnlyCache = true;
       super(cfg);
       this._store = cfg.store;
       this._argvOptions = cfg.argvOptions;
