@@ -24,6 +24,7 @@ const resourceRoot = '/';
 async function run(resources, port, config) {
    const app = express();
    const availablePort = await getPort(port || 1024);
+   const rootModule = config.rootModule || '';
    const workDir = process.cwd();
    process.chdir(resources);
 
@@ -53,7 +54,7 @@ async function run(resources, port, config) {
             AppInit.default({ resourceRoot }, new PS.default({ resourceRoot }), new AppState.StateReceiver(UIState.Serializer));
          }
 
-         console.log(`server started http://localhost:${availablePort}`);
+         console.log(`server started http://localhost:${availablePort}/${rootModule}`);
          resolve();
       }, function(err) {
          console.error(err);
