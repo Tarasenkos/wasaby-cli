@@ -41,7 +41,7 @@ describe('modulesMap', () => {
          });
       });
       it('should find all modules in repository', () => {
-         return chai.expect(modulesMap._findModulesInStore('test1')).to.deep.equal([
+         return chai.expect(modulesMap._findModulesInStore()).to.deep.equal([
             {
                s3mod: path.join('test1', 'tttModule', 'ttt.s3mod'),
                name: 'tttModule',
