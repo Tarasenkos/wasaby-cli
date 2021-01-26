@@ -172,7 +172,7 @@ class ModulesMap {
     * @return {Promise<void>}
     */
    async build() {
-      const modules = this._useOnlyCache ? [] : this._findModulesInStore();
+      const modules = this._useOnlyCache ? this._findModulesInStore(true) : this._findModulesInStore();
 
       if (this._reBuildMap) {
          await this._addToModulesMap(modules);
@@ -193,9 +193,12 @@ class ModulesMap {
     * @return {Array}
     * @private
     */
-   _findModulesInStore() {
+   _findModulesInStore(onlyLocal) {
       const s3mods = [];
       Object.keys(this._config.repositories).forEach((name) => {
+         if (onlyLocal && !this._config.repositories[name].localeRep) {
+            return;
+         }
 
          let repositoryPath = this.getRepositoryPath(name);
          if (this._config.repositories[name].modulesPath) {
