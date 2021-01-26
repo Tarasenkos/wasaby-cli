@@ -34,12 +34,19 @@ async function run(resources, port, isDebug, config) {
    app.use('/', serveStatic('./'));
    app.listen(availablePort);
 
+   const contents = require(path.join(resources, 'contents.json'));
+
+   if (!isDebug) {
+      global.contents = contents;
+   }
+
    let requirejs = isolated.prepareTestEnvironment(
        '',
        undefined,
        false,
        undefined,
-       false
+       false,
+       !isDebug
    );
 
    global.require = requirejs;
@@ -48,7 +55,7 @@ async function run(resources, port, isDebug, config) {
    const ready = new Promise((resolve, reject) => {
       requirejs(['Env/Env', 'Application/Initializer', 'SbisEnv/PresentationService', 'Application/State', 'Core/core-init', 'UI/State'], function(Env, AppInit, PS,  AppState, CoreInit, UIState) {
          Env.constants.resourceRoot = resourceRoot;
-         Env.constants.modules = requirejs('json!/contents').modules;
+         Env.constants.modules = contents.modules;
 
          if (!AppInit.isInit()) {
             // eslint-disable-next-line new-cap
