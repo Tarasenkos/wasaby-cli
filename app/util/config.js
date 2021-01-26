@@ -38,6 +38,7 @@ function get(argvOptions = {}) {
          config.repositories[packageConfig.name] = {};
       }
       config.repositories[packageConfig.name].skipStore = true;
+      config.repositories[packageConfig.name].localeRep = true;
       config.repositories[packageConfig.name].path = process.cwd();
       const wsSection = packageConfig['wasaby-cli'] || {};
       wsSection.repositories = Object.assign(config.repositories, getRepsFromConfig(wsSection));

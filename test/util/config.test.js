@@ -55,6 +55,7 @@ describe('config', () => {
             }
          });
          const expected = {
+            "localeRep": true,
             path: process.cwd(),
             skipStore: true
          };
@@ -81,6 +82,7 @@ describe('config', () => {
          const expected = {
             path: process.cwd(),
             skipStore: true,
+            "localeRep": true,
             url: 'https://platform-git.sbis.ru/test11.git'
          };
          chai.expect(expected).to.deep.equal(config.get({}).repositories['test']);
