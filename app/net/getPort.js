@@ -39,6 +39,8 @@ const randomPort = () => {
  */
 module.exports = async function getPort(userPort) {
    if (userPort && !busyPorts.has(userPort) && await checkPort(userPort)) {
+      busyPorts.add(userPort);
+
       return userPort;
    }
 
