@@ -8,5 +8,6 @@
    "tsc": true,
    "less": true,
    "symlinks": true,
+   "resourcesUrl": false,
    "modules": []
 }
