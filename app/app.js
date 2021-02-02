@@ -26,6 +26,7 @@ async function run(resources, port, isDebug, config) {
    const app = express();
    const availablePort = await getPort(port || 1024);
    const rootModule = config.rootModule || '';
+   const reactApp = !!config.reactApp;
    const workDir = process.cwd();
    process.chdir(resources);
 
@@ -53,13 +54,16 @@ async function run(resources, port, isDebug, config) {
    console.log('start init');
 
    const ready = new Promise((resolve, reject) => {
-      requirejs(['Env/Env', 'Application/Initializer', 'SbisEnv/PresentationService', 'Application/State', 'Core/core-init', 'UI/State'], function(Env, AppInit, PS,  AppState, CoreInit, UIState) {
+      requirejs(['Env/Env', 'Application/Initializer', 'SbisEnv/PresentationService', 'Application/State',
+                 'Core/core-init', 'UI/State'],
+      function(Env, AppInit, PS,  AppState, CoreInit, UIState) {
          Env.constants.resourceRoot = resourceRoot;
          Env.constants.modules = contents.modules;
 
          if (!AppInit.isInit()) {
+            const config = { resourceRoot, reactApp };
             // eslint-disable-next-line new-cap
-            AppInit.default({ resourceRoot }, new PS.default({ resourceRoot }), new AppState.StateReceiver(UIState.Serializer));
+            AppInit.default(config, new PS.default(config), new AppState.StateReceiver(UIState.Serializer));
          }
 
          console.log(`server started http://localhost:${availablePort}/${rootModule}`);
@@ -87,13 +91,12 @@ async function run(resources, port, isDebug, config) {
 
    app.get('/*', (req, res) => {
       ready.then(() => {
-         serverSideRender(req, res, isDebug);
+         serverSideRender(req, res, { isDebug, reactApp });
       });
    });
 }
 
-
-function serverSideRender(req, res, isDebug) {
+function serverSideRender(req, res, config) {
    req.compatible = false;
 
    if (!process.domain) {
@@ -118,8 +121,9 @@ function serverSideRender(req, res, isDebug) {
       wsRoot: '/WS.Core/',
       resourceRoot,
       appRoot: '/',
+      reactApp: config.reactApp,
       _options: {
-         preInitScript: `window.wsConfig.debug = ${isDebug};window.wsConfig.userConfigSupport = false;`
+         preInitScript: `window.wsConfig.debug = ${config.isDebug};window.wsConfig.userConfigSupport = false;`
       }
    }
    const onSuccessHandler = function (html) {
@@ -135,7 +139,7 @@ function serverSideRender(req, res, isDebug) {
          res.status(500).end(JSON.stringify(e, null, 2));
       });
 
-   if (isDebug) {
+   if (config.isDebug) {
       setDebugCookie(req, res);
    }
 }
