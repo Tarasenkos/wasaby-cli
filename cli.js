@@ -66,6 +66,12 @@ class Cli {
       }
 
       this._builderCache = this._argvOptions.builderCache || './build-ui/builder-json-cache';
+      /**
+       * Признак того, что приложение запустится в режиме react-приложения
+       * @type {boolean}
+       * @private
+       */
+      this._reactApp = !!this._argvOptions.reactApp;
    }
 
    /**
@@ -204,8 +210,9 @@ class Cli {
       const cfg = config.get();
       const port = this._argvOptions.port || cfg.port;
       const isDebug = !(this._argvOptions.release || cfg.release);
+      const options = Object.assign({reactApp: this._reactApp}, this._config);
 
-      return app.run(this._resources, port, isDebug, this._config);
+      return app.run(this._resources, port, isDebug, options);
    }
 
    async createIndex() {
