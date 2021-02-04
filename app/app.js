@@ -54,16 +54,16 @@ async function run(resources, port, isDebug, config) {
    console.log('start init');
 
    const ready = new Promise((resolve, reject) => {
-      requirejs(['Env/Env', 'Application/Initializer', 'SbisEnv/PresentationService', 'Application/State',
-                 'Core/core-init', 'UI/State'],
-      function(Env, AppInit, PS,  AppState, CoreInit, UIState) {
+      requirejs(['Env/Env', 'Application/Initializer', 'Application/State',
+                 'Core/core-init', 'UI/State', 'Application/Env'],
+      function(Env, AppInit, AppState, CoreInit, UIState, AppEnv) {
          Env.constants.resourceRoot = resourceRoot;
          Env.constants.modules = contents.modules;
 
          if (!AppInit.isInit()) {
             const config = { resourceRoot, reactApp };
             // eslint-disable-next-line new-cap
-            AppInit.default(config, new PS.default(config), new AppState.StateReceiver(UIState.Serializer));
+            AppInit.default(config, new AppEnv.EnvNodeJS(config), new AppState.StateReceiver(UIState.Serializer));
          }
 
          console.log(`server started http://localhost:${availablePort}/${rootModule}`);
@@ -97,22 +97,10 @@ async function run(resources, port, isDebug, config) {
 }
 
 function serverSideRender(req, res, config) {
-   req.compatible = false;
-
-   if (!process.domain) {
-      process.domain = {
-         enter: () => undefined,
-         exit: () => undefined
-      };
-   }
-
-   process.domain.req = req;
-   process.domain.res = res;
-
    const AppInit = requirejs('Application/Initializer');
    const AppState = requirejs('Application/State');
    const UIState = requirejs('UI/State');
-   AppInit.startRequest(undefined, new AppState.StateReceiver(UIState.Serializer));
+   AppInit.startRequest(undefined, new AppState.StateReceiver(UIState.Serializer), () => req, () => res);
 
    const sabyRouter = requirejs('Router/ServerRouting');
 
