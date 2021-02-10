@@ -3094,18 +3094,6 @@
     "required": false,
     "forCDN": false
   },
-  "OnlineCDN":{
-    "s3mod":"online-cdn\\OnlineCDN\\OnlineCDN.s3mod",
-    "name":"OnlineCDN",
-    "path":"online-cdn\\OnlineCDN",
-    "rep":"online-cdn",
-    "useModuleMap":false,
-    "entry":false,
-    "depends":[],
-    "id":"fd701948-fd2c-489b-a514-e958418882f4",
-    "required":false,
-    "forCDN":true
-  },
   "ProfileAccess": {
     "s3mod": "access-control\\client\\ProfileAccess\\ProfileAccess.s3mod",
     "name": "ProfileAccess",

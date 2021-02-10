@@ -54,10 +54,6 @@
          "mirror": "git.sbis.ru",
          "url": "engine/cdn"
       },
-      "online-cdn": {
-         "mirror": "git.sbis.ru",
-         "url": "online/cdn"
-      },
       "sbis3-schemeeditor": {
          "mirror": "git.sbis.ru",
          "url": "engine/schemeeditor",
