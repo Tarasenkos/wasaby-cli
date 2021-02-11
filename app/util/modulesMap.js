@@ -342,7 +342,9 @@ class ModulesMap {
          };
       });
 
-      await fs.writeJSON(MAP_FILE, mapObject);
+      await fs.writeJSON(MAP_FILE, mapObject, {
+         space: 2
+      });
    }
 
    _addCyclicDependencies() {
