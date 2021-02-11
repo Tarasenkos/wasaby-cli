@@ -77,7 +77,7 @@ class sdk {
          pathToJinnee,
          {
             name: 'jinnee-deploy',
-            errorLabel: '[ERROR]\tGulp:'
+            errorLabel: '[ERROR]'
          }
       );
    }
