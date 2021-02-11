@@ -343,7 +343,7 @@ class ModulesMap {
       });
 
       await fs.writeJSON(MAP_FILE, mapObject, {
-         space: 2
+         spaces: 2
       });
    }
 
