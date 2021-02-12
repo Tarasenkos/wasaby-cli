@@ -4071,8 +4071,7 @@
       "NoticeCenterRoute",
       "NoticeConstants",
       "ExtControls-default-theme",
-      "ServiceUpdateNotifier",
-      "OnlineCDN"
+      "ServiceUpdateNotifier"
     ],
     "id": "16d6a735-086e-458b-963d-2dfa97f48c62",
     "required": true,
