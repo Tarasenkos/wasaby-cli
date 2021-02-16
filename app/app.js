@@ -97,6 +97,9 @@ async function run(resources, port, isDebug, config) {
 }
 
 function serverSideRender(req, res, config) {
+   setCookie(req, res, 's3debug', true, config.isDebug);
+   setCookie(req, res, 'reactFeatures', 'Control', config.reactApp);
+
    const AppInit = requirejs('Application/Initializer');
    const AppState = requirejs('Application/State');
    const UIState = requirejs('UI/State');
@@ -127,15 +130,15 @@ function serverSideRender(req, res, config) {
          res.status(500).end(JSON.stringify(e, null, 2));
       });
 
-   if (config.isDebug) {
-      setDebugCookie(req, res);
-   }
 }
 
-function setDebugCookie(req, res) {
-   if (req.cookies.s3debug === undefined) {
-      res.cookie('s3debug', true, { maxAge: 900000, httpOnly: true });
-      console.log('cookie s3debug created successfully');
+function setCookie(req, res, name, value, needSet) {
+   if (needSet !== true) {
+      return;
+   }
+   if (req.cookies[name] === undefined) {
+      res.cookie(name, value, { maxAge: 900000 });
+      console.log(`cookie ${name} created successfully`);
    }
 }
 
