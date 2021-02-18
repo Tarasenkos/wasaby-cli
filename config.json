@@ -99,6 +99,9 @@
       "saby-inferno": {
          "url": "saby/inferno"
       },
+      "saby_react": {
+         "url": "saby/react"
+      },
       "wasaby-polyfills": {
          "url": "saby/wasaby-polyfills"
       },
@@ -119,6 +122,10 @@
       "engine_informers": {
          "mirror": "git.sbis.ru",
          "url": "engine/informers"
+      },
+      "engine_navigation": {
+         "mirror": "git.sbis.ru",
+         "url": "engine/navigation"
       },
       "notice_core": {
          "useMapOnly": true,
