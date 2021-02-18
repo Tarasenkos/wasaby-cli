@@ -97,8 +97,7 @@ async function run(resources, port, isDebug, config) {
 }
 
 function serverSideRender(req, res, config) {
-   setCookie(req, res, 's3debug', true, config.isDebug);
-   setCookie(req, res, 'reactFeatures', 'Control', config.reactApp);
+   presetCookies(req, res, config);
 
    const AppInit = requirejs('Application/Initializer');
    const AppState = requirejs('Application/State');
@@ -132,14 +131,27 @@ function serverSideRender(req, res, config) {
 
 }
 
-function setCookie(req, res, name, value, needSet) {
-   if (needSet !== true) {
-      return;
+function presetCookies(req, res, config) {
+   if (config.isDebug) {
+      setCookie(req, res, 's3debug', true);
    }
+   if (config.reactApp) {
+      setCookie(req, res, 'reactFeatures', 'Control');
+   } else {
+      deleteCookie(req, res, 'reactFeatures');
+   }
+}
+
+function setCookie(req, res, name, value) {
    if (req.cookies[name] === undefined) {
       res.cookie(name, value, { maxAge: 900000 });
       console.log(`cookie ${name} created successfully`);
    }
+}
+
+function deleteCookie(req, res, name) {
+   res.cookie(name, '', { maxAge: 0 });
+   console.log(`cookie ${name} deleted successfully`);
 }
 
 module.exports = {
