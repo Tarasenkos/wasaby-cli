@@ -55,24 +55,24 @@ async function run(resources, port, isDebug, config) {
 
    const ready = new Promise((resolve, reject) => {
       requirejs(['Env/Env', 'Application/Initializer', 'Application/State',
-                 'Core/core-init', 'UI/State', 'Application/Env'],
-      function(Env, AppInit, AppState, CoreInit, UIState, AppEnv) {
-         Env.constants.resourceRoot = resourceRoot;
-         Env.constants.modules = contents.modules;
+             'Core/core-init', 'UI/State', 'Application/Env'],
+          function (Env, AppInit, AppState, CoreInit, UIState, AppEnv) {
+             Env.constants.resourceRoot = resourceRoot;
+             Env.constants.modules = contents.modules;
 
-         if (!AppInit.isInit()) {
-            const config = { resourceRoot, reactApp };
-            // eslint-disable-next-line new-cap
-            AppInit.default(config, new AppEnv.EnvNodeJS(config), new AppState.StateReceiver(UIState.Serializer));
-         }
+             if (!AppInit.isInit()) {
+                const config = {resourceRoot, reactApp, dataLoader: 'RouterDemoNew/PageController'};
+                // eslint-disable-next-line new-cap
+                AppInit.default(config, new AppEnv.EnvNodeJS(config), new AppState.StateReceiver(UIState.Serializer));
+             }
 
-         console.log(`server started http://localhost:${availablePort}/${rootModule}`);
-         resolve();
-      }, function(err) {
-         console.error(err);
-         console.error('core init failed');
-         reject(err);
-      });
+             console.log(`server started http://localhost:${availablePort}/${rootModule}`);
+             resolve();
+          }, function (err) {
+             console.error(err);
+             console.error('core init failed');
+             reject(err);
+          });
    });
 
    if (config && config.expressRoute) {
@@ -124,11 +124,36 @@ function serverSideRender(req, res, config) {
       res.status(404).end(JSON.stringify(err, null, 2));
    }
 
-   sabyRouter.getPageSource(options, req, onSuccessHandler, onNotFoundHandler)
-      .catch((e) => {
-         res.status(500).end(JSON.stringify(e, null, 2));
-      });
 
+
+   Promise.resolve(getDataLoaderPromise(req))
+       .then((pageConfig) => {
+          if (pageConfig) {
+             if (options._options) {
+                options._options['templateName'] = pageConfig.templateName;
+                options._options['templateOptions'] = pageConfig.templateOptions;
+             } else {
+                options._options = pageConfig;
+             }
+             // options.scope = {pageData: data};
+          }
+          return sabyRouter.getPageSource(options, req, onSuccessHandler, onNotFoundHandler)
+       })
+       .catch((e) => {
+          res.status(500).end(JSON.stringify(e, null, 2));
+       });
+
+}
+
+// предзагрузка данных
+function getDataLoaderPromise(req) {
+   const AppEnv = requirejs('Application/Env');
+   const dataLoader = AppEnv.getConfig('dataLoader');
+   if (dataLoader) {
+      const dataLoaderObj = requirejs(dataLoader);
+      return dataLoaderObj.getPageConfig(req.path);
+   }
+   return Promise.resolve({});
 }
 
 function presetCookies(req, res, config) {
