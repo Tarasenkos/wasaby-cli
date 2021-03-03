@@ -99,6 +99,16 @@ async function run(resources, port, isDebug, config) {
 function serverSideRender(req, res, config) {
    presetCookies(req, res, config);
 
+   // нужно заполнять process.domain, т.к. в Env/Env:detection есть завязки на него, напр. при определении IE
+   if (!process.domain) {
+      process.domain = {
+         enter: () => undefined,
+         exit: () => undefined
+      };
+   }
+   process.domain.req = req;
+   process.domain.res = res;
+
    const AppInit = requirejs('Application/Initializer');
    const AppState = requirejs('Application/State');
    const UIState = requirejs('UI/State');
@@ -150,8 +160,10 @@ function setCookie(req, res, name, value) {
 }
 
 function deleteCookie(req, res, name) {
-   res.cookie(name, '', { maxAge: 0 });
-   console.log(`cookie ${name} deleted successfully`);
+   if (req.cookies[name] !== undefined) {
+      res.cookie(name, '', {maxAge: 0});
+      console.log(`cookie ${name} deleted successfully`);
+   }
 }
 
 module.exports = {
