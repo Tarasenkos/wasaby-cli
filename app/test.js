@@ -17,6 +17,7 @@ const REPORT_PATH = '{workspace}/artifacts/{module}/xunit-report.xml';
 const ALLOWED_ERRORS_FILE = path.normalize(path.join(__dirname, '..', 'resources', 'allowedErrors.json'));
 const MAX_TEST_RESTART = 5;
 
+const AVAILABLE_REPORT_FORMAT = ['json', 'html', 'text'];
 
 const _private = {
 
@@ -177,50 +178,59 @@ class Test extends Base {
     * @private
     */
    async _getTestConfig(names, suffix, testModules) {
-      const testConfig = require('../testConfig.base.json');
-      let cfg = { ...testConfig };
-      const fullName = names + (suffix || '');
-      let workspace = fsUtil.relative(this._options.workDir, this._options.workspace);
-      const testModulesArray = testModules instanceof Array ? testModules : [testModules];
-      workspace = workspace || '.';
+      const cfg = {...require('../testConfig.base.json')};
+      const fullName = `${names}${suffix || ''}`;
+
+      // options of browser units
       cfg.url = { ...cfg.url };
-      this._port = await getPort();
-      cfg.url.port = this._port;
-      this._portMap.set(names, this._port);
-      cfg.tests = testModulesArray;
+      cfg.url.port = await getPort();
+      cfg.driverPort = await getPort();
+      this._portMap.set(names, cfg.url.port);
+
+      // common options
+      cfg.tests = testModules instanceof Array ? testModules : [testModules];
       cfg.root = fsUtil.relative(process.cwd(), this._options.resources);
-      cfg.htmlCoverageReport = cfg.htmlCoverageReport.replace('{module}', fullName).replace('{workspace}', workspace);
-      cfg.jsonCoverageReport = cfg.jsonCoverageReport.replace('{module}', fullName).replace('{workspace}', workspace);
       cfg.report = this.getReportPath(fullName);
       cfg.ignoreLeaks = !this._options.checkLeaks;
+
+      // coverage options
+      const workspace = fsUtil.relative(this._options.workDir, this._options.workspace) || '.';
+
+      cfg.htmlCoverageReport = cfg.htmlCoverageReport.replace('{module}', fullName).replace('{workspace}', workspace);
+      cfg.jsonCoverageReport = cfg.jsonCoverageReport.replace('{module}', fullName).replace('{workspace}', workspace);
       cfg.nyc = {
-         'include': [],
-         'reportDir': path.dirname(cfg.jsonCoverageReport),
-         'cwd': this._options.workDir,
-         'report': ['json', 'text', 'html'].includes(this._options.coverage) ? this._options.coverage : 'html'
+         include: [],
+         reportDir: path.dirname(cfg.jsonCoverageReport),
+         cwd: this._options.workDir,
+         report: AVAILABLE_REPORT_FORMAT.includes(this._options.coverage) ? this._options.coverage : 'html'
       };
 
-      let nycPath = path.relative(this._options.workDir, this._options.resources);
+      const nycPath = path.relative(this._options.workDir, this._options.resources);
       const namesArray = (names instanceof Array) ? names : [names];
-      testModulesArray.forEach((testModuleName) => {
+
+      cfg.tests.forEach((testModuleName) => {
          const moduleCfg = this._modulesMap.get(testModuleName);
-         if (moduleCfg && moduleCfg.depends) {
-            moduleCfg.depends.forEach((dependModuleName) => {
-               const dependModuleCfg = this._modulesMap.get(dependModuleName);
-               let nycModulePath = [dependModuleName.replace(/ /g, '_'), '**', '*.js'];
-               if (!this._options.only || dependModuleCfg && namesArray.includes(dependModuleCfg.rep)) {
-                  if (nycPath) {
-                     nycModulePath.unshift(nycPath);
-                  }
-                  cfg.nyc.include.push(nycModulePath.join('/'));
-               }
-            });
+
+         if (!(moduleCfg && moduleCfg.depends)) {
+            return;
          }
+
+         moduleCfg.depends.forEach((dependModuleName) => {
+            const dependModuleCfg = this._modulesMap.get(dependModuleName);
+
+            if (!this._options.only || (dependModuleCfg && namesArray.includes(dependModuleCfg.rep))) {
+               cfg.nyc.include.push(`${nycPath ? nycPath + '/' : ''}${dependModuleName.replace(/ /g, '_')}/**/*.js`);
+            }
+         });
       });
+
+      // deleting old report
       if (await fs.exists(cfg.report)) {
          await fs.remove(cfg.report);
       }
+
       this._testReports.set(fullName, cfg.report);
+
       return cfg;
    }
 

@@ -190,7 +190,8 @@
       "Emotions-default-theme",
       "Carousel",
       "EngineLink",
-      "DemoStand"
+      "DemoStand",
+      "SiteEditorBase"
     ],
     "id": "a7909725-2310-4cd7-857b-10bfd68f6758",
     "required": false,
@@ -1374,7 +1375,9 @@
       "Printer",
       "DocsEditor",
       "Emotions",
-      "Carousel"
+      "Carousel",
+      "Keyboard",
+      "SiteEditorBase"
     ],
     "unitTest": true,
     "testInBrowser": true,
@@ -4074,7 +4077,6 @@
       "Router",
       "Page",
       "Graphs",
-      "Graphs-default-theme",
       "Hint",
       "Hint-default-theme",
       "Hint-onlinenavigation-theme",
@@ -4649,6 +4651,59 @@
     ],
     "id": "648fa32b-aca5-4891-8342-56ea1d956477",
     "required": true,
+    "forCDN": false
+  },
+  "SiteEditorBase": {
+    "s3mod": "sbis3.engine\\client\\SiteEditorBase\\SiteEditorBase.s3mod",
+    "name": "SiteEditorBase",
+    "path": "sbis3.engine\\client\\SiteEditorBase",
+    "rep": "sbis3.engine",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Controls",
+      "Controls-default-theme",
+      "RichEditor",
+      "Types",
+      "UI"
+    ],
+    "id": "1d44df9d-a504-4fcc-8d22-719544ceeff7",
+    "required": false,
+    "forCDN": false
+  },
+  "SiteEditorBase-default-theme": {
+    "s3mod": "sbis3.engine\\client\\SiteEditorBase-default-theme\\SiteEditorBase-default-theme.s3mod",
+    "name": "SiteEditorBase-default-theme",
+    "path": "sbis3.engine\\client\\SiteEditorBase-default-theme",
+    "rep": "sbis3.engine",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Controls-default-theme",
+      "SiteEditorBase"
+    ],
+    "id": "1b25ed39-5cfb-41c9-a177-4ebee77be440",
+    "required": true,
+    "forCDN": false
+  },
+  "TextEditor": {
+    "s3mod": "sbis3.engine\\client\\TextEditor\\TextEditor.s3mod",
+    "name": "TextEditor",
+    "path": "sbis3.engine\\client\\TextEditor",
+    "rep": "sbis3.engine",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Controls",
+      "Env",
+      "Types",
+      "Controls-default-theme",
+      "Vdom",
+      "UI",
+      "RequireJsLoader"
+    ],
+    "id": "2cb60425-4d5f-46b1-816b-124d3742cca9",
+    "required": false,
     "forCDN": false
   }
 }
