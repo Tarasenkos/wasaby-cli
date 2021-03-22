@@ -4370,10 +4370,10 @@
     "forCDN": true
   },
   "React": {
-    "s3mod": "saby-react\\React\\React.s3mod",
+    "s3mod": "saby_react\\React\\React.s3mod",
     "name": "React",
-    "path": "saby-react\\React",
-    "rep": "saby-react",
+    "path": "saby_react\\React",
+    "rep": "saby_react",
     "useModuleMap": false,
     "entry": false,
     "depends": [],
