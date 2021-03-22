@@ -2123,6 +2123,7 @@
       "I18n",
       "Types",
       "Inferno",
+      "React",
       "WasabyLoader",
       "Compiler"
     ],
@@ -4369,16 +4370,16 @@
     "forCDN": true
   },
   "React": {
-    "s3mod": "cdn\\React\\React.s3mod",
+    "s3mod": "saby-react\\React\\React.s3mod",
     "name": "React",
-    "path": "cdn\\React",
-    "rep": "cdn",
+    "path": "saby-react\\React",
+    "rep": "saby-react",
     "useModuleMap": false,
     "entry": false,
     "depends": [],
-    "id": "04893517-aa08-463e-b9d5-7b50688fff2d",
-    "required": false,
-    "forCDN": true
+    "id": "a5e32491-7b02-45b1-b65d-53e9723ec0cd",
+    "required": true,
+    "forCDN": false
   },
   "Permission-demo": {
     "s3mod": "permission\\client\\Permission-demo\\Permission-demo.s3mod",
