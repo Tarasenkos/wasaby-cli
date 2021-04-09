@@ -84,6 +84,7 @@ class Store extends Base {
       const isBranch = Git.isBranch(branch);
 
       await git.update();
+
       if (isBranch) {
          if (branch.includes('rc-')) {
             branch = await git.getNearestRcBranch(branch);
@@ -91,18 +92,22 @@ class Store extends Base {
          }
 
          logger.log(`Переключение на ветку ${branch}`, name);
+
          try {
             await git.checkout(branch);
          } catch (err) {
             throw new Error(`Ошибка при переключение на ветку ${branch} в репозитории ${name}: ${err}`);
          }
       }
+
       await git.reset(isBranch ? `remotes/origin/${branch}` : branch);
       await git.clean();
 
       if (isBranch && !branch.includes('rc-')) {
-         mergeWith =  mergeWith || git.getVersion() || this._rc;
+         mergeWith = mergeWith || Git.getRcBranch(branch) || git.getVersion() || this._rc;
+
          logger.log(`Попытка смержить ветку '${branch}' с '${mergeWith}'`, name);
+
          await git.merge(mergeWith);
       }
    }

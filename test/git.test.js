@@ -82,4 +82,14 @@ describe('Git', () => {
             getVersion.restore();
         })
     })
+
+    describe('getRcBranch()', () => {
+        it('should return rc-21.2000', () => {
+            chai.assert.strictEqual(Git.getRcBranch('21.2000/foo'), 'rc-21.2000');
+        });
+
+        it('should return undefined', () => {
+            chai.assert.isUndefined(Git.getRcBranch('MyBranch/foo'));
+        });
+    })
 });

@@ -3,6 +3,8 @@ const config = require('./config');
 const ERROR_MERGE_CODE = 101;
 const logger = require('../util/logger');
 
+const RC_BRANCH_LENGTH = 7;
+
 /**
  * Ксласс содержащий методы работы с гитом
  * @class Git
@@ -199,6 +201,22 @@ class Git {
       if (packageConfig) {
          return config.getVersion(packageConfig);
       }
+
+      return undefined;
+   }
+
+   /**
+    * Определяет rc ветку из имени переданной ветки.
+    * @param branch {String} Имя ветки из которой надо опредилть rc.
+    * @returns {String}
+    */
+   static getRcBranch(branch) {
+      const rc = branch.split('/')[0];
+
+      if (rc.length === RC_BRANCH_LENGTH && rc.includes('.')) {
+         return `rc-${rc}`
+      }
+
       return undefined;
    }
 
