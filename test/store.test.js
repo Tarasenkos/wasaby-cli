@@ -163,7 +163,7 @@ describe('Store', () => {
          });
          stubModule = sinon.stub(store, '_testRep').value('test');
          store.checkout('test', '20.1000/branch').then(() => {
-            chai.expect(`git merge remotes/origin/rc-20.4000`).to.equal(commandsArray[5]);
+            chai.expect(`git merge remotes/origin/rc-20.1000`).to.equal(commandsArray[5]);
             done();
          });
       });
@@ -176,7 +176,7 @@ describe('Store', () => {
          });
          stubModule = sinon.stub(store, '_testRep').value('test');
          store.checkout('testAdd', '20.1000/branch').then(() => {
-            chai.expect(`git merge remotes/origin/rc-20.4000`).to.equal(commandsArray[5]);
+            chai.expect(`git merge remotes/origin/rc-20.1000`).to.equal(commandsArray[5]);
             done();
          });
       });
