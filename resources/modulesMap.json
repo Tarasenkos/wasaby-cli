@@ -3793,7 +3793,9 @@
     "rep": "wasaby-requirejs-loader",
     "useModuleMap": false,
     "entry": false,
-    "depends": [],
+    "depends": [
+      "HotReload"
+    ],
     "id": "7e8aabad-d60f-4c48-aa74-f29d78fd8be2",
     "required": true,
     "forCDN": false
