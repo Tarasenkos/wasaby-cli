@@ -289,9 +289,12 @@ class ModulesMap {
                cfg.required = !!xmlObj.ui_module.$.required;
                cfg.forCDN = xmlObj.ui_module.$.for_cdn === '1';
 
-               if (this.isReact && xmlObj.ui_module.$.is_react === '1') {
-                  //TODO Убрать когда возможность задать реализацию будет из корообки.
-                  this._modulesMap.set(cfg.name, cfg);
+               // TODO Убрать когда возможность задать реализацию будет из корообки.
+               if (xmlObj.ui_module.$.is_react === '1') {
+                  if (this.isReact) {
+                     cfg.isReact = true;
+                     this._modulesMap.set(cfg.name, cfg);
+                  }
                } else if (!this._modulesMap.has(cfg.name)) {
                   this._modulesMap.set(cfg.name, cfg);
                }
@@ -339,7 +342,15 @@ class ModulesMap {
             let mapObjectValue = mapObject[key];
             mapObjectValue.path = path.join(this._store, mapObjectValue.path);
             mapObjectValue.s3mod = path.join(this._store, mapObjectValue.s3mod);
-            this._modulesMap.set(key, mapObjectValue);
+
+            // TODO Убрать когда возможность задать реализацию будет из корообки.
+            if (mapObjectValue.isReact === true) {
+               if (this.isReact) {
+                  this._modulesMap.set(key, mapObjectValue);
+               }
+            } else {
+               this._modulesMap.set(key, mapObjectValue);
+            }
          }
       }
    }
