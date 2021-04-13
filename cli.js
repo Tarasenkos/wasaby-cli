@@ -124,6 +124,8 @@ class Cli {
          pathToJinnee: this._argvOptions.pathToJinnee,
          argvOptions: this._argvOptions,
          copy: !!this._argvOptions.copy,
+         //TODO Убрать когда возможность задать реализацию будет из корообки.
+         isReact: this._argvOptions.react,
       });
       await build.run();
    }

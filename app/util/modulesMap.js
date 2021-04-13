@@ -23,6 +23,7 @@ class ModulesMap {
       this._only = cfg.only;
       this._reBuildMap = cfg.reBuildMap;
       this._useOnlyCache = cfg.useOnlyCache;
+      this.isReact = cfg.isReact;
    }
 
    /**
@@ -139,8 +140,24 @@ class ModulesMap {
       } else {
          list = this.getTestModulesByRep('all');
       }
+
       this._modulesList = list;
       return this._modulesList;
+   }
+
+   //TODO Убрать когда возможность задать реализацию будет из корообки.
+   injectReactModules(modules) {
+      const result = [];
+
+      for (const module of modules) {
+         if (this.reactModules.has(module.name)) {
+            result.push(this.reactModules.get(module.name));
+         }
+
+         result.push(module);
+      }
+
+      return result;
    }
 
    /**
@@ -238,7 +255,7 @@ class ModulesMap {
 
       await pMap(modules, cfg => (
          xml.readXmlFile(cfg.s3mod).then((xmlObj) => {
-            if (!this._modulesMap.has(cfg.name) && xmlObj.ui_module || cfg.entry) {
+            if (xmlObj.ui_module || cfg.entry) {
                if (cfg.useModuleMap && !moduleMap.hasOwnProperty(cfg.name)) {
                   return;
                }
@@ -271,7 +288,13 @@ class ModulesMap {
                cfg.id = xmlObj.ui_module.$.id;
                cfg.required = !!xmlObj.ui_module.$.required;
                cfg.forCDN = xmlObj.ui_module.$.for_cdn === '1';
-               this._modulesMap.set(cfg.name, cfg);
+
+               if (this.isReact && xmlObj.ui_module.$.is_react === '1') {
+                  //TODO Убрать когда возможность задать реализацию будет из корообки.
+                  this._modulesMap.set(cfg.name, cfg);
+               } else if (!this._modulesMap.has(cfg.name)) {
+                  this._modulesMap.set(cfg.name, cfg);
+               }
             }
          })
       ), {
