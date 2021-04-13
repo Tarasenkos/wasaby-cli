@@ -19,7 +19,9 @@ class Base {
          only: cfg.only,
          reBuildMap: cfg.reBuildMap,
          useOnlyCache: cfg.useOnlyCache,
-         entry: cfg.argvOptions.entry || cfg.config.entry
+         entry: cfg.argvOptions.entry || cfg.config.entry,
+         //TODO Убрать когда возможность задать реализацию будет из корообки.
+         isReact: cfg.isReact
       });
    }
 

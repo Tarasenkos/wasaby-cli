@@ -191,7 +191,8 @@
       "Carousel",
       "EngineLink",
       "DemoStand",
-      "SiteEditorBase"
+      "SiteEditorBase",
+      "TextEditor"
     ],
     "id": "a7909725-2310-4cd7-857b-10bfd68f6758",
     "required": false,
@@ -278,7 +279,8 @@
       "Controls-default-theme",
       "UI",
       "Vdom",
-      "Permission"
+      "Permission",
+      "Hint"
     ],
     "id": "582a86e5-a9fd-4eaa-9265-57b64e2f65df",
     "required": true,
@@ -998,7 +1000,8 @@
       "EngineUser-default-theme",
       "Page",
       "RequireJsLoader",
-      "WasabyLoader"
+      "WasabyLoader",
+      "ExtControls"
     ],
     "id": "75df871e-813e-4fd1-ad70-125c9396947c",
     "required": false,
@@ -2123,9 +2126,11 @@
       "I18n",
       "Types",
       "Inferno",
-      "React",
       "WasabyLoader",
-      "Compiler"
+      "Compiler",
+      "React",
+      "UICore",
+      "UICommon"
     ],
     "id": "f27abe12-19df-4c9f-b886-634bd20a0011",
     "required": true,
@@ -2709,9 +2714,9 @@
     "forCDN": false
   },
   "SBIS3.Plugin": {
-    "s3mod": "sbis-plugin-client\\SBIS3.Plugin\\SBIS3.Plugin.s3mod",
+    "s3mod": "sbis-plugin-client\\client\\SBIS3.Plugin\\SBIS3.Plugin.s3mod",
     "name": "SBIS3.Plugin",
-    "path": "sbis-plugin-client\\SBIS3.Plugin",
+    "path": "sbis-plugin-client\\client\\SBIS3.Plugin",
     "rep": "sbis-plugin-client",
     "useModuleMap": false,
     "entry": false,
@@ -2732,9 +2737,9 @@
     "forCDN": false
   },
   "SBISPluginComponents": {
-    "s3mod": "sbis-plugin-client\\SBISPluginComponents\\SBISPluginComponents.s3mod",
+    "s3mod": "sbis-plugin-client\\client\\SBISPluginComponents\\SBISPluginComponents.s3mod",
     "name": "SBISPluginComponents",
-    "path": "sbis-plugin-client\\SBISPluginComponents",
+    "path": "sbis-plugin-client\\client\\SBISPluginComponents",
     "rep": "sbis-plugin-client",
     "useModuleMap": false,
     "entry": false,
@@ -2751,9 +2756,9 @@
     "forCDN": false
   },
   "WorkspaceDiagnostic": {
-    "s3mod": "sbis-plugin-client\\WorkspaceDiagnostic\\WorkspaceDiagnostic.s3mod",
+    "s3mod": "sbis-plugin-client\\client\\WorkspaceDiagnostic\\WorkspaceDiagnostic.s3mod",
     "name": "WorkspaceDiagnostic",
-    "path": "sbis-plugin-client\\WorkspaceDiagnostic",
+    "path": "sbis-plugin-client\\client\\WorkspaceDiagnostic",
     "rep": "sbis-plugin-client",
     "useModuleMap": false,
     "entry": false,
@@ -2840,6 +2845,7 @@
       "WS.Core",
       "Env",
       "Person",
+      "PersonDeprecated",
       "SBIS3.CONTROLS",
       "Types",
       "RequireJsLoader"
@@ -3155,7 +3161,8 @@
       "Types",
       "UI",
       "Controls",
-      "Vdom"
+      "Vdom",
+      "Permission"
     ],
     "id": "4056fe9c-8ce3-44cf-a942-b1366eb3d53c",
     "required": true,
@@ -3168,7 +3175,9 @@
     "rep": "access-control",
     "useModuleMap": false,
     "entry": false,
-    "depends": [],
+    "depends": [
+      "AuthFramework"
+    ],
     "id": "fdbb9516-5374-4aed-b598-b0c21ceadf72",
     "required": false,
     "forCDN": false
@@ -3195,7 +3204,8 @@
       "Merge",
       "Hint",
       "RequireJsLoader",
-      "FeatureAccess"
+      "FeatureAccess",
+      "Export"
     ],
     "id": "4a29c448-fa34-4585-a408-e23dd6d8e4a5",
     "required": false,
@@ -3235,6 +3245,7 @@
       "Env",
       "Types",
       "Person",
+      "PersonDeprecated",
       "Employee",
       "WS3Page",
       "Staff",
@@ -3311,11 +3322,13 @@
     "useModuleMap": false,
     "entry": false,
     "depends": [
-      "WS.Core",
       "RequireJsLoader",
       "Env",
-      "SBIS3.CONTROLS",
-      "Types"
+      "Types",
+      "Browser",
+      "Controls",
+      "UI",
+      "Vdom"
     ],
     "id": "6dfb7cdb-e902-4288-b0ad-8dc1e66b7be7",
     "required": false,
@@ -3351,7 +3364,8 @@
       "Env",
       "Router",
       "UI",
-      "View"
+      "View",
+      "SbisEnvUI"
     ],
     "id": "fb94fd38-9965-46b6-9820-568d32c5f78e",
     "required": false,
@@ -3793,9 +3807,7 @@
     "rep": "wasaby-requirejs-loader",
     "useModuleMap": false,
     "entry": false,
-    "depends": [
-      "HotReload"
-    ],
+    "depends": [],
     "id": "7e8aabad-d60f-4c48-aa74-f29d78fd8be2",
     "required": true,
     "forCDN": false
@@ -3910,7 +3922,9 @@
       "ViewSettings",
       "EngineUser",
       "NavigationPanels",
-      "WasabyLoader"
+      "WasabyLoader",
+      "ExtControls",
+      "ExtControls-default-theme"
     ],
     "id": "24655279-c638-47c2-8de6-3326035e2de2",
     "required": true,
@@ -3929,7 +3943,8 @@
       "Controls-default-theme",
       "Vdom",
       "UI",
-      "RichEditor"
+      "RichEditor",
+      "Permission"
     ],
     "id": "7f7dffec-003d-489a-9afe-a78b44beaac4",
     "required": false,
@@ -3994,7 +4009,9 @@
       "RichEditor",
       "RichEditor-default-theme",
       "SbisEnvUI",
-      "SbisEnvUI-default-theme"
+      "SbisEnvUI-default-theme",
+      "Browser",
+      "Env"
     ],
     "id": "96b6db30-679e-4601-a42e-224603964e8a",
     "required": true,
@@ -4068,6 +4085,7 @@
     "entry": false,
     "depends": [
       "SabyPage",
+      "Controls-default-theme",
       "Controls-onlinenavigation-theme",
       "NavigationPanels-onlinenavigation-theme",
       "EngineUser",
@@ -4080,6 +4098,7 @@
       "Router",
       "Page",
       "Graphs",
+      "Graphs-default-theme",
       "Hint",
       "Hint-default-theme",
       "Hint-onlinenavigation-theme",
@@ -4088,6 +4107,7 @@
       "NoticeCenterBase",
       "NoticeCenterRoute",
       "NoticeConstants",
+      "ExtControls",
       "ExtControls-default-theme",
       "ServiceUpdateNotifier"
     ],
@@ -4411,7 +4431,6 @@
       "Controls",
       "WS.Core",
       "Env",
-      "FeatureAccess",
       "Rights",
       "Types",
       "UI",
@@ -4546,9 +4565,9 @@
     "forCDN": false
   },
   "SBIS3PluginSettingsOnline": {
-    "s3mod": "sbis-plugin-client\\SBIS3PluginSettingsOnline\\SBIS3PluginSettingsOnline.s3mod",
+    "s3mod": "sbis-plugin-client\\client\\SBIS3PluginSettingsOnline\\SBIS3PluginSettingsOnline.s3mod",
     "name": "SBIS3PluginSettingsOnline",
-    "path": "sbis-plugin-client\\SBIS3PluginSettingsOnline",
+    "path": "sbis-plugin-client\\client\\SBIS3PluginSettingsOnline",
     "rep": "sbis-plugin-client",
     "useModuleMap": false,
     "entry": false,
@@ -4707,6 +4726,95 @@
     ],
     "id": "2cb60425-4d5f-46b1-816b-124d3742cca9",
     "required": false,
+    "forCDN": false
+  },
+  "Superbundles": {
+    "s3mod": "sbis3.engine\\client\\Superbundles\\Superbundles.s3mod",
+    "name": "Superbundles",
+    "path": "sbis3.engine\\client\\Superbundles",
+    "rep": "sbis3.engine",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [],
+    "id": "49867eda-4587-4cdc-b22c-9b6ee62eff26",
+    "required": true,
+    "forCDN": false
+  },
+  "UICommon": {
+    "s3mod": "saby-ui\\UICommon\\UICommon.s3mod",
+    "name": "UICommon",
+    "path": "saby-ui\\UICommon",
+    "rep": "saby-ui",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [],
+    "id": "0f15ac6b-86b2-4265-9da1-05eac93ebdf6",
+    "required": true,
+    "forCDN": false
+  },
+  "UICore": {
+    "s3mod": "saby-ui\\UIInferno\\UICore\\UICore.s3mod",
+    "name": "UICore",
+    "path": "saby-ui\\UIInferno\\UICore",
+    "rep": "saby-ui",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "UICommon"
+    ],
+    "id": "548e4ee9-10cd-4227-9e3c-0811958f979c",
+    "required": true,
+    "forCDN": false
+  },
+  "Common": {
+    "s3mod": "sbis-cdn\\Common\\Common.s3mod",
+    "name": "Common",
+    "path": "sbis-cdn\\Common",
+    "rep": "sbis-cdn",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [],
+    "id": "869dca4c-0eb8-4e3c-b6c6-814897a32f55",
+    "required": true,
+    "forCDN": true
+  },
+  "NavigationPanels-demo": {
+    "s3mod": "engine_saby-page\\client\\NavigationPanels-demo\\NavigationPanels-demo.s3mod",
+    "name": "NavigationPanels-demo",
+    "path": "engine_saby-page\\client\\NavigationPanels-demo",
+    "rep": "engine_saby-page",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "SabyPage",
+      "Controls-default-theme",
+      "Controls-onlinenavigation-theme",
+      "NavigationPanels-onlinenavigation-theme",
+      "NavigationPanels",
+      "NavigationPanels-default-theme",
+      "Router",
+      "Page"
+    ],
+    "id": "056530f3-4d52-4264-ace4-dcb0eb048891",
+    "required": true,
+    "forCDN": false
+  },
+  "AppBootstrapDemo": {
+    "s3mod": "wasaby-app\\test\\Integration\\AppBootstrapDemo\\AppBootstrapDemo.s3mod",
+    "name": "AppBootstrapDemo",
+    "path": "wasaby-app\\test\\Integration\\AppBootstrapDemo",
+    "rep": "wasaby-app",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Application",
+      "Router",
+      "WS.Core",
+      "I18n",
+      "SbisEnvUI"
+    ],
+    "id": "2da1f07a-4b6e-40db-b5af-a356f4c2620d",
+    "required": true,
     "forCDN": false
   }
 }
