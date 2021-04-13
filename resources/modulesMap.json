@@ -4816,5 +4816,23 @@
     "id": "2da1f07a-4b6e-40db-b5af-a356f4c2620d",
     "required": true,
     "forCDN": false
+  },
+  "ReactUnitTest": {
+    "s3mod": "saby-ui\\UIReact\\ReactUnitTest\\ReactUnitTest.s3mod",
+    "name": "ReactUnitTest",
+    "path": "saby-ui\\UIReact\\ReactUnitTest",
+    "rep": "saby-ui",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "UI",
+      "UICore"
+    ],
+    "unitTest": true,
+    "testInBrowser": true,
+    "id": "62bf645b-207a-4e83-b06d-41e8c51d6485",
+    "required": false,
+    "forCDN": false,
+    "isReact": true
   }
 }

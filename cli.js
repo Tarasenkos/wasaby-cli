@@ -161,7 +161,9 @@ class Cli {
          report: this._argvOptions.report,
          browser: this._argvOptions.browser,
          node: this._argvOptions.node,
-         argvOptions: this._argvOptions
+         argvOptions: this._argvOptions,
+         //TODO Убрать когда возможность задать реализацию будет из корообки.
+         isReact: this._argvOptions.react,
       });
 
       await test.run();
