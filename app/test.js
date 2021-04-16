@@ -184,7 +184,6 @@ class Test extends Base {
       // options of browser units
       cfg.url = { ...cfg.url };
       cfg.url.port = await getPort();
-      cfg.driverPort = await getPort();
       this._portMap.set(names, cfg.url.port);
 
       // common options
