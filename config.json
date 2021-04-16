@@ -80,6 +80,10 @@
          "mirror": "git.sbis.ru",
          "url": "navigation-configuration/navigation"
       },
+      "navigation-configuration_configuration": {
+         "mirror": "git.sbis.ru",
+         "url": "navigation-configuration/configuration"
+      },
       "access-control": {
          "mirror": "git.sbis.ru",
          "url": "sbis/access-control"
