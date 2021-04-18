@@ -4708,5 +4708,194 @@
     "id": "2cb60425-4d5f-46b1-816b-124d3742cca9",
     "required": false,
     "forCDN": false
+  },
+  "Superbundles": {
+    "s3mod": "sbis3.engine\\client\\Superbundles\\Superbundles.s3mod",
+    "name": "Superbundles",
+    "path": "sbis3.engine\\client\\Superbundles",
+    "rep": "sbis3.engine",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [],
+    "id": "49867eda-4587-4cdc-b22c-9b6ee62eff26",
+    "required": true,
+    "forCDN": false
+  },
+  "UICommon": {
+    "s3mod": "saby-ui\\UICommon\\UICommon.s3mod",
+    "name": "UICommon",
+    "path": "saby-ui\\UICommon",
+    "rep": "saby-ui",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [],
+    "id": "0f15ac6b-86b2-4265-9da1-05eac93ebdf6",
+    "required": true,
+    "forCDN": false
+  },
+  "UICore": {
+    "s3mod": "saby-ui\\UIInferno\\UICore\\UICore.s3mod",
+    "name": "UICore",
+    "path": "saby-ui\\UIInferno\\UICore",
+    "rep": "saby-ui",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "UICommon"
+    ],
+    "id": "548e4ee9-10cd-4227-9e3c-0811958f979c",
+    "required": true,
+    "forCDN": false
+  },
+  "Common": {
+    "s3mod": "sbis-cdn\\Common\\Common.s3mod",
+    "name": "Common",
+    "path": "sbis-cdn\\Common",
+    "rep": "sbis-cdn",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [],
+    "id": "869dca4c-0eb8-4e3c-b6c6-814897a32f55",
+    "required": true,
+    "forCDN": true
+  },
+  "App": {
+    "s3mod": "navigation-configuration_configuration\\client\\App\\App.s3mod",
+    "name": "App",
+    "path": "navigation-configuration_configuration\\client\\App",
+    "rep": "navigation-configuration_configuration",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Controls",
+      "Controls-default-theme",
+      "Types",
+      "Carousel",
+      "Carousel-default-theme",
+      "ExtControls",
+      "ExtControls-default-theme",
+      "Hint",
+      "Hint-default-theme",
+      "Hint-onlinenavigation-theme"
+    ],
+    "id": "fa876524-b6c2-42cd-894e-c5c77543feb5",
+    "required": true,
+    "forCDN": false
+  },
+  "Configuration": {
+    "s3mod": "navigation-configuration_configuration\\client\\Configuration\\Configuration.s3mod",
+    "name": "Configuration",
+    "path": "navigation-configuration_configuration\\client\\Configuration",
+    "rep": "navigation-configuration_configuration",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "WS.Core",
+      "SBIS3.CONTROLS",
+      "Navigation",
+      "NavigationPanels",
+      "NavigationPanels-default-theme",
+      "Env",
+      "Types",
+      "RequireJsLoader",
+      "WasabyLoader",
+      "ParametersWebAPI"
+    ],
+    "id": "1c578123-3233-4dc4-b652-7c9504298950",
+    "required": true,
+    "forCDN": false
+  },
+  "Configuration-default-theme": {
+    "s3mod": "navigation-configuration_configuration\\client\\Configuration-default-theme\\Configuration-default-theme.s3mod",
+    "name": "Configuration-default-theme",
+    "path": "navigation-configuration_configuration\\client\\Configuration-default-theme",
+    "rep": "navigation-configuration_configuration",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Configuration",
+      "Controls-default-theme"
+    ],
+    "id": "c568b6ad-69a2-4fd4-9d68-b8467466441d",
+    "required": true,
+    "forCDN": false
+  },
+  "Configuration-demo": {
+    "s3mod": "navigation-configuration_configuration\\client\\Configuration-demo\\Configuration-demo.s3mod",
+    "name": "Configuration-demo",
+    "path": "navigation-configuration_configuration\\client\\Configuration-demo",
+    "rep": "navigation-configuration_configuration",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Configuration",
+      "Configuration-default-theme",
+      "Router",
+      "SbisEnvUI",
+      "WS.Core",
+      "SBIS3.CONTROLS",
+      "Navigation",
+      "Env",
+      "Types",
+      "NavigationPanels",
+      "NavigationPanels-default-theme",
+      "App"
+    ],
+    "id": "63abd598-bbc7-43e5-a468-0906f479fdb0",
+    "required": true,
+    "forCDN": false
+  },
+  "SettingsInterface": {
+    "s3mod": "navigation-configuration_configuration\\client\\SettingsInterface\\SettingsInterface.s3mod",
+    "name": "SettingsInterface",
+    "path": "navigation-configuration_configuration\\client\\SettingsInterface",
+    "rep": "navigation-configuration_configuration",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "EngineLanguage",
+      "Carousel",
+      "Carousel-default-theme"
+    ],
+    "id": "35b3f5da-7e9b-4352-a498-03270af5ff89",
+    "required": true,
+    "forCDN": false
+  },
+  "ConfigurationUnit": {
+    "s3mod": "navigation-configuration_configuration\\test\\ConfigurationUnit\\ConfigurationUnit.s3mod",
+    "name": "ConfigurationUnit",
+    "path": "navigation-configuration_configuration\\test\\ConfigurationUnit",
+    "rep": "navigation-configuration_configuration",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Configuration",
+      "Configuration-demo"
+    ],
+    "unitTest": true,
+    "id": "4cde93a1-86e2-4a93-a181-b2dd35761234",
+    "required": true,
+    "forCDN": false
+  },
+  "NavigationPanels-demo": {
+    "s3mod": "engine_saby-page\\client\\NavigationPanels-demo\\NavigationPanels-demo.s3mod",
+    "name": "NavigationPanels-demo",
+    "path": "engine_saby-page\\client\\NavigationPanels-demo",
+    "rep": "engine_saby-page",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "SabyPage",
+      "Controls-default-theme",
+      "Controls-onlinenavigation-theme",
+      "NavigationPanels-onlinenavigation-theme",
+      "NavigationPanels",
+      "NavigationPanels-default-theme",
+      "Router",
+      "Page"
+    ],
+    "id": "056530f3-4d52-4264-ace4-dcb0eb048891",
+    "required": true,
+    "forCDN": false
   }
 }
