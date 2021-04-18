@@ -4834,5 +4834,123 @@
     "required": false,
     "forCDN": false,
     "isReact": true
+  },
+  "App": {
+    "s3mod": "navigation-configuration_configuration\\client\\App\\App.s3mod",
+    "name": "App",
+    "path": "navigation-configuration_configuration\\client\\App",
+    "rep": "navigation-configuration_configuration",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Controls",
+      "Controls-default-theme",
+      "Types",
+      "Carousel",
+      "Carousel-default-theme",
+      "ExtControls",
+      "ExtControls-default-theme",
+      "Hint",
+      "Hint-default-theme",
+      "Hint-onlinenavigation-theme"
+    ],
+    "id": "fa876524-b6c2-42cd-894e-c5c77543feb5",
+    "required": true,
+    "forCDN": false
+  },
+  "Configuration": {
+    "s3mod": "navigation-configuration_configuration\\client\\Configuration\\Configuration.s3mod",
+    "name": "Configuration",
+    "path": "navigation-configuration_configuration\\client\\Configuration",
+    "rep": "navigation-configuration_configuration",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "WS.Core",
+      "SBIS3.CONTROLS",
+      "Navigation",
+      "NavigationPanels",
+      "NavigationPanels-default-theme",
+      "Env",
+      "Types",
+      "RequireJsLoader",
+      "WasabyLoader",
+      "ParametersWebAPI"
+    ],
+    "id": "1c578123-3233-4dc4-b652-7c9504298950",
+    "required": true,
+    "forCDN": false
+  },
+  "Configuration-default-theme": {
+    "s3mod": "navigation-configuration_configuration\\client\\Configuration-default-theme\\Configuration-default-theme.s3mod",
+    "name": "Configuration-default-theme",
+    "path": "navigation-configuration_configuration\\client\\Configuration-default-theme",
+    "rep": "navigation-configuration_configuration",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Configuration",
+      "Controls-default-theme"
+    ],
+    "id": "c568b6ad-69a2-4fd4-9d68-b8467466441d",
+    "required": true,
+    "forCDN": false
+  },
+  "Configuration-demo": {
+    "s3mod": "navigation-configuration_configuration\\client\\Configuration-demo\\Configuration-demo.s3mod",
+    "name": "Configuration-demo",
+    "path": "navigation-configuration_configuration\\client\\Configuration-demo",
+    "rep": "navigation-configuration_configuration",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Configuration",
+      "Configuration-default-theme",
+      "Router",
+      "SbisEnvUI",
+      "WS.Core",
+      "SBIS3.CONTROLS",
+      "Navigation",
+      "Env",
+      "Types",
+      "NavigationPanels",
+      "NavigationPanels-default-theme",
+      "App"
+    ],
+    "id": "63abd598-bbc7-43e5-a468-0906f479fdb0",
+    "required": true,
+    "forCDN": false
+  },
+  "SettingsInterface": {
+    "s3mod": "navigation-configuration_configuration\\client\\SettingsInterface\\SettingsInterface.s3mod",
+    "name": "SettingsInterface",
+    "path": "navigation-configuration_configuration\\client\\SettingsInterface",
+    "rep": "navigation-configuration_configuration",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "EngineLanguage",
+      "Carousel",
+      "Carousel-default-theme"
+    ],
+    "id": "35b3f5da-7e9b-4352-a498-03270af5ff89",
+    "required": true,
+    "forCDN": false
+  },
+  "ConfigurationUnit": {
+    "s3mod": "navigation-configuration_configuration\\test\\ConfigurationUnit\\ConfigurationUnit.s3mod",
+    "name": "ConfigurationUnit",
+    "path": "navigation-configuration_configuration\\test\\ConfigurationUnit",
+    "rep": "navigation-configuration_configuration",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Configuration",
+      "Configuration-demo"
+    ],
+    "unitTest": true,
+    "id": "4cde93a1-86e2-4a93-a181-b2dd35761234",
+    "required": true,
+    "forCDN": false
   }
 }
