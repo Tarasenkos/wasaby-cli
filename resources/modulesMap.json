@@ -5118,7 +5118,6 @@
     "depends": [
       "SiteEditorExternal"
     ],
-    "unitTest": true,
     "id": "4abe4e67-b1ce-4ca5-98ba-da025dd862ae",
     "required": false,
     "forCDN": false
