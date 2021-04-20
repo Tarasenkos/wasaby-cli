@@ -131,6 +131,14 @@
          "mirror": "git.sbis.ru",
          "url": "engine/navigation"
       },
+      "site-development_site-widgets": {
+         "mirror": "git.sbis.ru",
+         "url": "site-development/site-widgets"
+      },
+      "site-development_site-editor": {
+         "mirror": "git.sbis.ru",
+         "url": "site-development/site-editor"
+      },
       "notice_core": {
          "useMapOnly": true,
          "mirror": "git.sbis.ru",

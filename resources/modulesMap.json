@@ -1824,8 +1824,6 @@
     "depends": [
       "SbisEnvUI"
     ],
-    "unitTest": true,
-    "testInBrowser": true,
     "id": "ea29a33a-6636-4a1f-a655-1dec6974e04e",
     "required": true,
     "forCDN": false
@@ -4951,6 +4949,239 @@
     "unitTest": true,
     "id": "4cde93a1-86e2-4a93-a181-b2dd35761234",
     "required": true,
+    "forCDN": false
+  },
+  "NavigationPanels-demo": {
+    "s3mod": "engine_saby-page\\client\\NavigationPanels-demo\\NavigationPanels-demo.s3mod",
+    "name": "NavigationPanels-demo",
+    "path": "engine_saby-page\\client\\NavigationPanels-demo",
+    "rep": "engine_saby-page",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "SabyPage",
+      "Controls-default-theme",
+      "Controls-onlinenavigation-theme",
+      "NavigationPanels-onlinenavigation-theme",
+      "NavigationPanels",
+      "NavigationPanels-default-theme",
+      "Router",
+      "Page"
+    ],
+    "id": "056530f3-4d52-4264-ace4-dcb0eb048891",
+    "required": true,
+    "forCDN": false
+  },
+  "CommonHelpPerson": {
+    "s3mod": "sbis-cdn\\CommonHelpPerson\\CommonHelpPerson.s3mod",
+    "name": "CommonHelpPerson",
+    "path": "sbis-cdn\\CommonHelpPerson",
+    "rep": "sbis-cdn",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [],
+    "id": "869dca4c-0eb8-4e3c-b6c6-814897a32f55",
+    "required": true,
+    "forCDN": true
+  },
+  "BaseWidget": {
+    "s3mod": "site-development_site-widgets\\BaseWidget\\BaseWidget.s3mod",
+    "name": "BaseWidget",
+    "path": "site-development_site-widgets\\BaseWidget",
+    "rep": "site-development_site-widgets",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Env",
+      "Types",
+      "Controls",
+      "Controls-default-theme",
+      "Vdom",
+      "UI"
+    ],
+    "id": "6f11ba9e-12b0-4d76-afba-746ff5d5e849",
+    "required": true,
+    "forCDN": false
+  },
+  "OnlineWidgets": {
+    "s3mod": "site-development_site-widgets\\OnlineWidgets\\OnlineWidgets.s3mod",
+    "name": "OnlineWidgets",
+    "path": "site-development_site-widgets\\OnlineWidgets",
+    "rep": "site-development_site-widgets",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Types",
+      "Controls",
+      "Controls-default-theme",
+      "Vdom",
+      "UI",
+      "Graphs",
+      "BaseWidget",
+      "ActiveSales",
+      "WS.Core",
+      "Warehouse_Stats",
+      "RequireJsLoader",
+      "ViewSettings"
+    ],
+    "id": "78567adc-0854-4e7b-bb66-de590a560020",
+    "required": true,
+    "forCDN": false
+  },
+  "Widget": {
+    "s3mod": "site-development_site-widgets\\Widget\\Widget.s3mod",
+    "name": "Widget",
+    "path": "site-development_site-widgets\\Widget",
+    "rep": "site-development_site-widgets",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Types",
+      "Controls",
+      "Controls-default-theme",
+      "Vdom",
+      "UI",
+      "BaseWidget",
+      "RichEditor",
+      "DOCVIEW3",
+      "DOCVIEW3Core",
+      "SiteEditorExternal",
+      "PTComponents",
+      "Name"
+    ],
+    "id": "271dc56d-1fdc-44e3-8736-282224349e0f",
+    "required": true,
+    "forCDN": false
+  },
+  "PollWizard": {
+    "s3mod": "site-development_site-editor\\client\\PollWizard\\PollWizard.s3mod",
+    "name": "PollWizard",
+    "path": "site-development_site-editor\\client\\PollWizard",
+    "rep": "site-development_site-editor",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Types",
+      "Controls",
+      "Controls-default-theme",
+      "Vdom",
+      "UI",
+      "BaseWidget",
+      "Wizard",
+      "Widget",
+      "SiteEditorCommon"
+    ],
+    "id": "a42f75a2-9b69-4a42-96c9-349db5c8af2f",
+    "required": true,
+    "forCDN": false
+  },
+  "SiteEditor": {
+    "s3mod": "site-development_site-editor\\client\\SiteEditor\\SiteEditor.s3mod",
+    "name": "SiteEditor",
+    "path": "site-development_site-editor\\client\\SiteEditor",
+    "rep": "site-development_site-editor",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Types",
+      "SiteEditorExternal",
+      "SiteEditorCommon",
+      "SiteView",
+      "Controls",
+      "Controls-default-theme",
+      "Vdom",
+      "UI",
+      "ParametersWebAPI",
+      "BaseWidget",
+      "Widget",
+      "SbisEnvUI",
+      "ExtControls",
+      "ExtControls-default-theme",
+      "File",
+      "Page",
+      "Hint",
+      "Wizard",
+      "AuthFramework",
+      "PollWizard"
+    ],
+    "id": "b455fe88-d470-4f9b-8997-2f0df293cc9c",
+    "required": true,
+    "forCDN": false
+  },
+  "SiteEditorCommon": {
+    "s3mod": "site-development_site-editor\\client\\SiteEditorCommon\\SiteEditorCommon.s3mod",
+    "name": "SiteEditorCommon",
+    "path": "site-development_site-editor\\client\\SiteEditorCommon",
+    "rep": "site-development_site-editor",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Types",
+      "Controls"
+    ],
+    "id": "039c8d18-83b0-4823-b27e-5683c3d962c4",
+    "required": true,
+    "forCDN": false
+  },
+  "SiteEditorExternal": {
+    "s3mod": "site-development_site-editor\\client\\SiteEditorExternal\\SiteEditorExternal.s3mod",
+    "name": "SiteEditorExternal",
+    "path": "site-development_site-editor\\client\\SiteEditorExternal",
+    "rep": "site-development_site-editor",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Types",
+      "Controls",
+      "Controls-default-theme",
+      "Vdom",
+      "UI",
+      "BaseWidget",
+      "Wizard",
+      "SiteEditorCommon"
+    ],
+    "id": "e28814ab-f075-49ac-b964-4adc2d30e23f",
+    "required": true,
+    "forCDN": false
+  },
+  "SiteView": {
+    "s3mod": "site-development_site-editor\\client\\SiteView\\SiteView.s3mod",
+    "name": "SiteView",
+    "path": "site-development_site-editor\\client\\SiteView",
+    "rep": "site-development_site-editor",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "Types",
+      "SiteEditorExternal",
+      "SiteEditorCommon",
+      "Controls",
+      "Controls-default-theme",
+      "Vdom",
+      "Env",
+      "UI",
+      "PTComponents",
+      "BaseWidget",
+      "Application",
+      "SiteEditorCommon"
+    ],
+    "id": "46f59172-39f5-4604-8890-3ccd2ccd2f1e",
+    "required": true,
+    "forCDN": false
+  },
+  "SiteEditorExternalUnit": {
+    "s3mod": "site-development_site-editor\\client\\tests\\SiteEditorExternalUnit\\SiteEditorExternalUnit.s3mod",
+    "name": "SiteEditorExternalUnit",
+    "path": "site-development_site-editor\\client\\tests\\SiteEditorExternalUnit",
+    "rep": "site-development_site-editor",
+    "useModuleMap": false,
+    "entry": false,
+    "depends": [
+      "SiteEditorExternal"
+    ],
+    "unitTest": true,
+    "id": "4abe4e67-b1ce-4ca5-98ba-da025dd862ae",
+    "required": false,
     "forCDN": false
   }
 }
