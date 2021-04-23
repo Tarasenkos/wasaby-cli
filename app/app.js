@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 const serveStatic = require('serve-static');
 const getPort = require('./net/getPort');
 const path = require('path');
+const fs = require('fs-extra');
 
 const global = (function() {
    // eslint-disable-next-line no-eval
@@ -23,6 +24,11 @@ const resourceRoot = '/';
  */
 
 async function run(resources, port, isDebug, config) {
+   // Если иконка не задана в вёрстке, Chrome делает запрос за favicon.ico в корень сайта.
+   // Кладём в корень пустой файл, чтобы не получать 404.
+   // Когда все демки будут строиться через один роутинг, добавим иконку в вёрстку корневого шаблона.
+   fs.outputFileSync(path.join(resources, 'favicon.ico'), '');
+
    const app = express();
    const availablePort = await getPort(port || 1024);
    const rootModule = config.rootModule || '';
